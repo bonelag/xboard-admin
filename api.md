@@ -14,7 +14,7 @@ Dưới đây là danh sách toàn bộ các Path và API Endpoints được tr�
 - [ ] `/settings`
 
 ## Frontend Router Paths (Quản lý)
-- [ ] `/` (Dashboard)
+- [x] `/` (Dashboard)
 - [ ] `/finance/coupon`
 - [ ] `/finance/gift-card`
 - [ ] `/finance/order`
