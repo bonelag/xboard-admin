@@ -159,3 +159,12 @@ Dưới đây là danh sách toàn bộ các Path và API Endpoints được tr�
 
 ## API Endpoints - User
 - [x] `/user/info`
+- [ ] `/user/fetchUserInfo`
+
+## API Endpoints - System
+- [ ] `/system/getQueueStats`
+
+## API Endpoints - Plugin
+- [ ] `/plugin/getPlugins`
+- [ ] `/plugin/crud-demo`
+- [ ] `/plugin/menu-demo`
