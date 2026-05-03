@@ -16,10 +16,7 @@ const AUTH_PATHS = new Set([
 
 export function App() {
     const location = useHashLocation();
-    const auth = useAuthState((snapshot) => ({
-        token: snapshot.token,
-        isLoggedIn: snapshot.isLoggedIn,
-    }));
+    const auth = useAuthState();
 
     useAuthGuard();
 

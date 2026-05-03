@@ -13,9 +13,7 @@ call npm run build
 if exist "..\dist" (
     echo [3/3] Dang sao chep cac file can thiet...
     if not exist "..\dist\locales" mkdir "..\dist\locales"
-    if exist "i18n\locales\*.js" (
-        copy /y "i18n\locales\*.js" "..\dist\locales\"
-    )
+    xcopy /Y /E "i18n\locales\*" "..\dist\locales\"
     if exist "..\dist\.vite\manifest.json" (
         move /y "..\dist\.vite\manifest.json" "..\dist\manifest.json"
         rmdir "..\dist\.vite"

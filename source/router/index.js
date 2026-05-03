@@ -26,6 +26,9 @@ export function subscribeLocation(listener) {
     };
 }
 
+let cachedHash = null;
+let cachedLocation = null;
+
 export function getCurrentLocation() {
     if (typeof window === "undefined") {
         return {
@@ -35,7 +38,12 @@ export function getCurrentLocation() {
         };
     }
 
-    return parseHashLocation(window.location.hash);
+    if (cachedHash !== window.location.hash || !cachedLocation) {
+        cachedHash = window.location.hash;
+        cachedLocation = parseHashLocation(cachedHash);
+    }
+
+    return cachedLocation;
 }
 
 export function navigate(pathname = "/", options = {}) {

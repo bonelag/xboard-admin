@@ -8,11 +8,7 @@ import { useTranslation } from "../../i18n/index.js";
 
 export function HomeView() {
     const { t } = useTranslation("common");
-    const auth = useAuthState((snapshot) => ({
-        token: snapshot.token,
-        userInfo: snapshot.userInfo,
-        isLoggedIn: snapshot.isLoggedIn,
-    }));
+    const auth = useAuthState();
     const title = globalThis.window?.settings?.title || "XBoard";
 
     useDocumentTitle(title);

@@ -5,10 +5,7 @@ import { isPublicPath, redirectToSignIn } from "../router/index.js";
 
 export function useAuthGuard() {
     const location = useHashLocation();
-    const auth = useAuthState((snapshot) => ({
-        token: snapshot.token,
-        isLoggedIn: snapshot.isLoggedIn,
-    }));
+    const auth = useAuthState();
 
     useEffect(() => {
         if (typeof window === "undefined") {

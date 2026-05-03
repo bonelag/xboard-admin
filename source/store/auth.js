@@ -5,7 +5,7 @@ const ACCESS_TOKEN_KEY = "access_token";
 
 const listeners = new Set();
 
-const state = {
+let currentState = {
     token: authStorage.get(ACCESS_TOKEN_KEY, ""),
     userInfo: null,
     isLoggedIn: Boolean(authStorage.get(ACCESS_TOKEN_KEY, "")),
@@ -14,13 +14,12 @@ const state = {
 };
 
 function emit() {
+    currentState = { ...currentState };
     listeners.forEach((listener) => listener());
 }
 
 export function getAuthState() {
-    return {
-        ...state,
-    };
+    return currentState;
 }
 
 export function subscribeAuth(listener) {
@@ -30,18 +29,18 @@ export function subscribeAuth(listener) {
     };
 }
 
-export function useAuthState(selector = (snapshot) => snapshot) {
+export function useAuthState() {
     return useSyncExternalStore(
         subscribeAuth,
-        () => selector(getAuthState()),
-        () => selector(getAuthState()),
+        getAuthState,
+        getAuthState,
     );
 }
 
 export function setAuthToken(token) {
     const value = token ? String(token) : "";
-    state.token = value;
-    state.isLoggedIn = Boolean(value);
+    currentState.token = value;
+    currentState.isLoggedIn = Boolean(value);
 
     if (value) {
         authStorage.set(ACCESS_TOKEN_KEY, value);
@@ -54,27 +53,27 @@ export function setAuthToken(token) {
 }
 
 export function setUserInfo(userInfo) {
-    state.userInfo = userInfo ?? null;
+    currentState.userInfo = userInfo ?? null;
     emit();
-    return state.userInfo;
+    return currentState.userInfo;
 }
 
 export function setAuthLoading(loading) {
-    state.loading = Boolean(loading);
+    currentState.loading = Boolean(loading);
     emit();
 }
 
 export function setAuthError(error) {
-    state.error = error || null;
+    currentState.error = error || null;
     emit();
 }
 
 export function clearAuthSession() {
     authStorage.remove(ACCESS_TOKEN_KEY);
-    state.token = "";
-    state.userInfo = null;
-    state.isLoggedIn = false;
-    state.loading = false;
-    state.error = null;
+    currentState.token = "";
+    currentState.userInfo = null;
+    currentState.isLoggedIn = false;
+    currentState.loading = false;
+    currentState.error = null;
     emit();
 }
