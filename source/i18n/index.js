@@ -227,15 +227,28 @@ function readPath(object, path) {
     }, object);
 }
 
-function translate(messages, namespace, key, fallback) {
-    const [explicitNamespace, explicitKey] = key.includes(":") ? key.split(":") : [namespace, key];
-    const value = readPath(messages?.[explicitNamespace], explicitKey);
-
-    if (typeof value === "string") {
-        return value;
+function interpolate(message, values) {
+    if (!isObject(values)) {
+        return message;
     }
 
-    return fallback || key;
+    return message.replace(/\{\{\s*([\w.-]+)\s*\}\}/g, (match, variableName) => {
+        const value = readPath(values, variableName);
+        return value == null ? match : String(value);
+    });
+}
+
+function translate(messages, namespace, key, fallbackOrValues, explicitFallback) {
+    const [explicitNamespace, explicitKey] = key.includes(":") ? key.split(":") : [namespace, key];
+    const value = readPath(messages?.[explicitNamespace], explicitKey);
+    const values = isObject(fallbackOrValues) ? fallbackOrValues : null;
+    const fallback = isObject(fallbackOrValues) ? explicitFallback : fallbackOrValues;
+
+    if (typeof value === "string") {
+        return interpolate(value, values);
+    }
+
+    return interpolate(fallback || key, values);
 }
 
 const I18nContext = createContext({
@@ -254,6 +267,8 @@ export function I18nProvider({ children }) {
         let active = true;
 
         const loader = localeLoaders[language];
+        setMessages(getMessagesForLanguage(language));
+
         if (loader) {
             loader()
                 .then((module) => {
@@ -293,7 +308,7 @@ export function I18nProvider({ children }) {
             setLanguage(validLanguage);
         };
 
-        const t = (key, fallback) => translate(messages, "auth", key, fallback);
+        const t = (key, valuesOrFallback, fallback) => translate(messages, "auth", key, valuesOrFallback, fallback);
 
         return {
             language,
@@ -311,7 +326,7 @@ export function useTranslation(namespace = "auth") {
     const context = useContext(I18nContext);
 
     return useMemo(() => {
-        const t = (key, fallback) => translate(context.messages, namespace, key, fallback);
+        const t = (key, valuesOrFallback, fallback) => translate(context.messages, namespace, key, valuesOrFallback, fallback);
 
         return {
             language: context.language,

@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./app.jsx";
 import { I18nProvider } from "./i18n/index.js";
+import { applyTheme } from "./utils/theme.js";
 import "./assets/styles/index.css";
 
 function resolveMountPoint() {
@@ -15,6 +16,8 @@ function resolveMountPoint() {
 const mountPoint = resolveMountPoint();
 
 if (mountPoint) {
+    applyTheme();
+
     createRoot(mountPoint).render(
         <React.StrictMode>
             <I18nProvider>

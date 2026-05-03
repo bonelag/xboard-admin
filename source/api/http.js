@@ -3,6 +3,11 @@ function getBaseUrl() {
     return baseUrl.endsWith("/") ? `${baseUrl}api/v2` : `${baseUrl}/api/v2`;
 }
 
+function getSecurePath() {
+    const securePath = globalThis.window?.settings?.secure_path || "";
+    return securePath ? `/${securePath.replace(/^\/+|\/+$/g, "")}` : "";
+}
+
 function normalizeHeaders(headers) {
     const contentLanguage =
         (typeof window !== "undefined" && window.localStorage.getItem("i18nextLng")) || "vi-VN";
@@ -53,7 +58,11 @@ export async function requestJson(path, options = {}) {
         nextHeaders.Authorization = token;
     }
 
-    const response = await fetch(`${getBaseUrl()}${path.startsWith("/") ? path : `/${path}`}`, {
+    const publicPaths = ["/passport/auth/login", "/passport/auth/token2Login", "/passport/auth/register", "/guest/comm/config", "/passport/comm/sendEmailVerify", "/passport/auth/forget", "/user/info"];
+    const nextPath = path.startsWith("/") ? path : `/${path}`;
+    const prefix = publicPaths.includes(nextPath.split("?")[0]) ? "" : getSecurePath();
+
+    const response = await fetch(`${getBaseUrl()}${prefix}${nextPath}`, {
         method,
         headers: nextHeaders,
         body: toJsonBody(body),
