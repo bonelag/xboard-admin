@@ -1,0 +1,6 @@
+{
+    "setting": {
+        "appDomain": "http://xb.test",
+        "appAdminPath": "/admin123"
+    }
+}
