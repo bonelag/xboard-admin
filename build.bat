@@ -14,6 +14,11 @@ if exist "..\dist" (
     echo [3/3] Dang sao chep cac file can thiet...
     if not exist "..\dist\locales" mkdir "..\dist\locales"
     xcopy /Y /E "i18n\locales\*" "..\dist\locales\"
+    if not exist "..\dist\assets\workers" mkdir "..\dist\assets\workers"
+    copy /Y "..\minify\assets\css.worker.js" "..\dist\assets\workers\css.worker.js"
+    copy /Y "..\minify\assets\html.worker.js" "..\dist\assets\workers\html.worker.js"
+    copy /Y "..\minify\assets\json.worker.js" "..\dist\assets\workers\json.worker.js"
+    copy /Y "..\minify\assets\ts.worker.js" "..\dist\assets\workers\ts.worker.js"
     if exist "..\dist\.vite\manifest.json" (
         move /y "..\dist\.vite\manifest.json" "..\dist\manifest.json"
         rmdir "..\dist\.vite"

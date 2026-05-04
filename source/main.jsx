@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./app.jsx";
 import { I18nProvider } from "./i18n/index.js";
+import { setupMonacoWorkers } from "./utils/monacoWorkers.js";
 import { applyTheme } from "./utils/theme.js";
 import "./assets/styles/index.css";
 
@@ -17,6 +18,7 @@ const mountPoint = resolveMountPoint();
 
 if (mountPoint) {
     applyTheme();
+    setupMonacoWorkers();
 
     createRoot(mountPoint).render(
         <React.StrictMode>
