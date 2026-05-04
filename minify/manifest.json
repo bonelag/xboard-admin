@@ -1,6 +1,6 @@
 {
   "index.html": {
-    "file": "assets/index-BdbgNvrf.js",
+    "file": "assets/index.min.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
@@ -8,11 +8,11 @@
       "assets/index-CYqGixs-.css"
     ],
     "assets": [
-      "assets/codicon-ngg6Pgfi.ttf"
+      "assets/font.codicon.ttf"
     ]
   },
   "node_modules/monaco-editor/esm/vs/base/browser/ui/codicons/codicon/codicon.ttf": {
-    "file": "assets/codicon-ngg6Pgfi.ttf",
+    "file": "assets/font.codicon.ttf",
     "src": "node_modules/monaco-editor/esm/vs/base/browser/ui/codicons/codicon/codicon.ttf"
   }
 }

@@ -1,10 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { fetchDashboardStats, fetchOrderStats, fetchQueueStats, fetchTrafficRank } from "../../api/dashboard.js";
 import { navigate } from "../../router/index.js";
 import { clearAuthSession, useAuthState } from "../../store/auth.js";
 import { useTranslation } from "../../i18n/index.js";
+import { DateRangePicker } from "../../components/DateRangePicker.jsx";
 import { SIDEBAR_NAV_GROUPS, SidebarIcon } from "../../components/Sidebar.jsx";
+import { classNames } from "../../utils/classNames.js";
 import { persistTheme, resolveTheme } from "../../utils/theme.js";
 
 const ICONS = {
@@ -57,12 +59,14 @@ const ORDER_RANGE_OPTIONS = [
     { value: "90d", labelKey: "overview.last90Days", days: 90 },
     { value: "180d", labelKey: "overview.last180Days", days: 180 },
     { value: "365d", labelKey: "overview.lastYear", days: 365 },
+    { value: "custom", labelKey: "overview.customRange" },
 ];
 
 const TRAFFIC_RANGE_OPTIONS = [
     { value: "today", labelKey: "trafficRank.today" },
     { value: "last7days", labelKey: "trafficRank.last7days" },
     { value: "last30days", labelKey: "trafficRank.last30days" },
+    { value: "custom", labelKey: "trafficRank.customRange" },
 ];
 
 const PANEL_TIMEZONE_OFFSET_MINUTES = 480;
@@ -81,6 +85,18 @@ function addDays(date, days) {
     return nextDate;
 }
 
+function startOfLocalDay(date) {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+function getDefaultCustomRange() {
+    const today = startOfLocalDay(new Date());
+    return {
+        from: addDays(today, -7),
+        to: today,
+    };
+}
+
 function formatDateForApi(date) {
     const panelDate = toPanelDate(date);
     const year = panelDate.getFullYear();
@@ -89,7 +105,14 @@ function formatDateForApi(date) {
     return `${year}-${month}-${day}`;
 }
 
-function getOrderRange(rangeValue) {
+function getOrderRange(rangeValue, customRange) {
+    if (rangeValue === "custom" && customRange?.from && customRange?.to) {
+        return {
+            start_date: formatDateForApi(customRange.from),
+            end_date: formatDateForApi(customRange.to),
+        };
+    }
+
     const range = ORDER_RANGE_OPTIONS.find((item) => item.value === rangeValue) || ORDER_RANGE_OPTIONS[1];
     const panelNow = toPanelDate(new Date());
 
@@ -99,8 +122,18 @@ function getOrderRange(rangeValue) {
     };
 }
 
-function getTrafficRange(rangeValue) {
+function getTrafficRange(rangeValue, customRange) {
     const panelNow = toPanelDate(new Date());
+
+    if (rangeValue === "custom" && customRange?.from && customRange?.to) {
+        const panelStart = new Date(customRange.from.getFullYear(), customRange.from.getMonth(), customRange.from.getDate());
+        const panelEnd = addDays(new Date(customRange.to.getFullYear(), customRange.to.getMonth(), customRange.to.getDate()), 1);
+
+        return {
+            start_time: Math.round(fromPanelDate(panelStart).getTime() / 1000),
+            end_time: Math.round(fromPanelDate(panelEnd).getTime() / 1000),
+        };
+    }
 
     if (rangeValue === "last7days" || rangeValue === "last30days") {
         const days = rangeValue === "last30days" ? 30 : 7;
@@ -187,7 +220,52 @@ function LanguageFlag({ code }) {
 }
 
 function RangeSelect({ value, onChange, options, t, ariaLabel }) {
-    return <select className="h-9 w-[120px] rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring" value={value} onChange={(event) => onChange(event.target.value)} aria-label={ariaLabel}>{options.map((item) => <option value={item.value} key={item.value}>{t(item.labelKey)}</option>)}</select>;
+    const [open, setOpen] = useState(false);
+    const rootRef = useRef(null);
+    const selected = options.find((item) => item.value === value) || options[0];
+
+    useEffect(() => {
+        if (!open) {
+            return undefined;
+        }
+
+        const handlePointerDown = (event) => {
+            if (!rootRef.current?.contains(event.target)) {
+                setOpen(false);
+            }
+        };
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                setOpen(false);
+            }
+        };
+
+        document.addEventListener("pointerdown", handlePointerDown);
+        document.addEventListener("keydown", handleKeyDown);
+        return () => {
+            document.removeEventListener("pointerdown", handlePointerDown);
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [open]);
+
+    return (
+        <div ref={rootRef} className="relative">
+            <button type="button" className="inline-flex h-9 w-[120px] items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-1 focus:ring-ring" aria-label={ariaLabel} aria-haspopup="listbox" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+                <span className="truncate">{t(selected.labelKey)}</span>
+                <Icon name="chevron" className="ml-2 h-4 w-4 flex-shrink-0 opacity-70" viewBox="0 0 15 15" />
+            </button>
+            {open && (
+                <div className="absolute left-0 top-10 z-50 min-w-[120px] rounded-md border bg-popover p-1 text-popover-foreground shadow-md" role="listbox">
+                    {options.map((item) => (
+                        <button type="button" className={classNames("flex w-full items-center justify-between rounded-sm px-3 py-2 text-left text-sm hover:bg-accent hover:text-accent-foreground", item.value === value && "bg-secondary")} role="option" aria-selected={item.value === value} onClick={() => { onChange(item.value); setOpen(false); }} key={item.value}>
+                            <span>{t(item.labelKey)}</span>
+                            {item.value === value && <span className="ml-4">✓</span>}
+                        </button>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
 }
 
 function SegmentedControl({ value, onChange, options }) {
@@ -242,21 +320,21 @@ function RevenueChart({ data, mode, t }) {
     })}</svg></div>;
 }
 
-function RevenueOverview({ t, stats, range, onRangeChange, mode, onModeChange }) {
+function RevenueOverview({ t, stats, range, onRangeChange, customDateRange, onCustomDateRangeChange, mode, onModeChange }) {
     const data = stats || {};
     const summary = data.summary || {};
-    const selectedRange = getOrderRange(range);
+    const selectedRange = getOrderRange(range, customDateRange);
     const startDate = summary.start_date || selectedRange.start_date;
     const endDate = summary.end_date || selectedRange.end_date;
 
-    return <div className="rounded-xl border bg-card text-card-foreground shadow"><div className="flex flex-col space-y-1.5 p-6"><div className="flex flex-wrap items-center justify-between gap-3"><div><h3 className="font-semibold leading-none tracking-tight">{t("overview.title")}</h3><p className="text-sm text-muted-foreground">{startDate} {t("overview.to")} {endDate}</p></div><div className="flex items-center gap-2"><RangeSelect value={range} onChange={onRangeChange} options={ORDER_RANGE_OPTIONS} t={t} ariaLabel={t("overview.selectTimeRange")} /><SegmentedControl value={mode} onChange={onModeChange} options={[{ value: "amount", label: t("overview.amount") }, { value: "count", label: t("overview.count") }]} /></div></div></div><div className="p-6 pt-0"><div className="grid grid-cols-2 gap-4"><div className="space-y-1"><div className="text-sm text-muted-foreground">{t("overview.totalIncome")}</div><div className="text-2xl font-bold">{formatCurrency(summary.paid_total)}</div><div className="text-xs text-muted-foreground">{t("overview.totalTransactions", { count: numberValue(summary.paid_count) })}</div><div className="text-xs text-muted-foreground">{t("overview.avgOrderAmount")}{formatCurrency(summary.avg_paid_amount)}</div></div><div className="space-y-1"><div className="text-sm text-muted-foreground">{t("overview.totalCommission")}</div><div className="text-2xl font-bold">{formatCurrency(summary.commission_total)}</div><div className="text-xs text-muted-foreground">{t("overview.totalTransactions", { count: numberValue(summary.commission_count) })}</div><div className="text-xs text-muted-foreground">{t("overview.commissionRate")} {numberValue(summary.commission_rate).toFixed(2)}%</div></div></div><RevenueChart data={data.list || []} mode={mode} t={t} /></div></div>;
+    return <div className="rounded-xl border bg-card text-card-foreground shadow"><div className="flex flex-col space-y-1.5 p-6"><div className="flex flex-wrap items-center justify-between gap-3"><div><h3 className="font-semibold leading-none tracking-tight">{t("overview.title")}</h3><p className="text-sm text-muted-foreground">{startDate} {t("overview.to")} {endDate}</p></div><div className="flex flex-wrap items-center gap-2"><div className="flex min-w-0 flex-wrap items-center gap-1"><RangeSelect value={range} onChange={onRangeChange} options={ORDER_RANGE_OPTIONS} t={t} ariaLabel={t("overview.selectTimeRange")} />{range === "custom" && <DateRangePicker value={customDateRange} onChange={onCustomDateRangeChange} placeholder={t("overview.selectDate")} />}</div><SegmentedControl value={mode} onChange={onModeChange} options={[{ value: "amount", label: t("overview.amount") }, { value: "count", label: t("overview.count") }]} /></div></div></div><div className="p-6 pt-0"><div className="grid grid-cols-2 gap-4"><div className="space-y-1"><div className="text-sm text-muted-foreground">{t("overview.totalIncome")}</div><div className="text-2xl font-bold">{formatCurrency(summary.paid_total)}</div><div className="text-xs text-muted-foreground">{t("overview.totalTransactions", { count: numberValue(summary.paid_count) })}</div><div className="text-xs text-muted-foreground">{t("overview.avgOrderAmount")}{formatCurrency(summary.avg_paid_amount)}</div></div><div className="space-y-1"><div className="text-sm text-muted-foreground">{t("overview.totalCommission")}</div><div className="text-2xl font-bold">{formatCurrency(summary.commission_total)}</div><div className="text-xs text-muted-foreground">{t("overview.totalTransactions", { count: numberValue(summary.commission_count) })}</div><div className="text-xs text-muted-foreground">{t("overview.commissionRate")} {numberValue(summary.commission_rate).toFixed(2)}%</div></div></div><RevenueChart data={data.list || []} mode={mode} t={t} /></div></div>;
 }
 
-function TrafficRankCard({ title, icon, t, items, range, onRangeChange }) {
+function TrafficRankCard({ title, icon, t, items, range, onRangeChange, customDateRange, onCustomDateRangeChange }) {
     const rows = Array.isArray(items) ? items : [];
     const maxValue = rows[0]?.value || 1;
 
-    return <div className="rounded-xl border bg-card text-card-foreground shadow"><div className="flex flex-col space-y-1.5 p-6 flex-none pb-2"><div className="flex flex-wrap items-center justify-between gap-2"><h3 className="tracking-tight flex items-center text-base font-medium"><Icon name={icon} className="mr-2 h-4 w-4" />{title}</h3><div className="flex min-w-0 items-center gap-1"><RangeSelect value={range} onChange={onRangeChange} options={TRAFFIC_RANGE_OPTIONS} t={t} ariaLabel={t("trafficRank.selectTimeRange")} /><Icon name="activity" className="h-4 w-4 flex-shrink-0 text-muted-foreground" /></div></div></div><div className="p-6 pt-0 flex-1">{items === null ? <div className="flex h-[400px] items-center justify-center"><div className="animate-pulse">{t("common:loading")}</div></div> : rows.length ? <div className="h-[400px] overflow-auto pr-4"><div className="space-y-3">{rows.map((item) => <div key={item.id} className="flex items-center justify-between space-x-2 rounded-lg bg-muted/50 p-2 transition-colors hover:bg-muted/70"><div className="min-w-0 flex-1"><div className="flex items-center justify-between"><span className="truncate text-sm font-medium">{item.name}</span><span className={`ml-2 flex items-center text-xs font-medium ${item.change >= 0 ? "text-green-600" : "text-red-600"}`}>{item.change >= 0 ? "+" : "-"}{Math.abs(item.change)}%</span></div><div className="mt-1 flex items-center gap-2"><div className="h-2 flex-1 overflow-hidden rounded-full bg-muted"><div className="h-full bg-primary transition-all" style={{ width: `${Math.min(100, (item.value / maxValue) * 100)}%` }} /></div><span className="text-xs text-muted-foreground">{formatTrafficRankValue(item.value)}</span></div><div className="mt-1 grid grid-cols-2 gap-2 text-[11px] text-muted-foreground"><span>{t("trafficRank.currentTraffic")}: {formatTrafficRankValue(item.value)}</span><span>{t("trafficRank.previousTraffic")}: {formatTrafficRankValue(item.previousValue)}</span></div></div></div>)}</div></div> : <div className="flex h-[400px] items-center justify-center text-sm text-muted-foreground">{t("common:table.noData", t("common:loading"))}</div>}</div></div>;
+    return <div className="rounded-xl border bg-card text-card-foreground shadow"><div className="flex flex-col space-y-1.5 p-6 flex-none pb-2"><div className="flex flex-wrap items-center justify-between gap-2"><h3 className="tracking-tight flex items-center text-base font-medium"><Icon name={icon} className="mr-2 h-4 w-4" />{title}</h3><div className="flex min-w-0 flex-wrap items-center gap-1"><RangeSelect value={range} onChange={onRangeChange} options={TRAFFIC_RANGE_OPTIONS} t={t} ariaLabel={t("trafficRank.selectTimeRange")} />{range === "custom" && <DateRangePicker value={customDateRange} onChange={onCustomDateRangeChange} placeholder={t("trafficRank.selectDateRange")} />}<Icon name="activity" className="h-4 w-4 flex-shrink-0 text-muted-foreground" /></div></div></div><div className="p-6 pt-0 flex-1">{items === null ? <div className="flex h-[400px] items-center justify-center"><div className="animate-pulse">{t("common:loading")}</div></div> : rows.length ? <div className="h-[400px] overflow-auto pr-4"><div className="space-y-3">{rows.map((item) => <div key={item.id} className="flex items-center justify-between space-x-2 rounded-lg bg-muted/50 p-2 transition-colors hover:bg-muted/70"><div className="min-w-0 flex-1"><div className="flex items-center justify-between"><span className="truncate text-sm font-medium">{item.name}</span><span className={`ml-2 flex items-center text-xs font-medium ${item.change >= 0 ? "text-green-600" : "text-red-600"}`}>{item.change >= 0 ? "+" : "-"}{Math.abs(item.change)}%</span></div><div className="mt-1 flex items-center gap-2"><div className="h-2 flex-1 overflow-hidden rounded-full bg-muted"><div className="h-full bg-primary transition-all" style={{ width: `${Math.min(100, (item.value / maxValue) * 100)}%` }} /></div><span className="text-xs text-muted-foreground">{formatTrafficRankValue(item.value)}</span></div><div className="mt-1 grid grid-cols-2 gap-2 text-[11px] text-muted-foreground"><span>{t("trafficRank.currentTraffic")}: {formatTrafficRankValue(item.value)}</span><span>{t("trafficRank.previousTraffic")}: {formatTrafficRankValue(item.previousValue)}</span></div></div></div>)}</div></div> : <div className="flex h-[400px] items-center justify-center text-sm text-muted-foreground">{t("common:table.noData", t("common:loading"))}</div>}</div></div>;
 }
 
 function QueueStatus({ stats, onRefresh, t }) {
@@ -352,7 +430,7 @@ function HeaderControls({ auth }) {
         </div>, document.body)}
         <button className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground h-9 w-9 rounded-full" onClick={() => setDark((value) => !value)} aria-label={dark ? tCommon("theme.light") : tCommon("theme.dark")}><Icon name={dark ? "sun" : "moon"} size={20} /></button>
         <div className="relative"><button className="inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground rounded-md text-xs h-8 px-2 gap-1" type="button" onClick={() => setLanguageOpen((value) => !value)}><LanguageFlag code={language} /><span className="text-sm font-medium">{languages.find((item) => item.code === language)?.shortName || "VN"}</span></button>{languageOpen && <div className="absolute right-0 top-10 z-[60] w-40 rounded-md border bg-popover p-1 text-popover-foreground shadow-md">{languages.map((item) => <button key={item.code} className="flex w-full items-center justify-between rounded-sm px-3 py-2 text-sm hover:bg-accent" onClick={() => { changeLanguage(item.code); setLanguageOpen(false); }}><span className="flex items-center gap-2"><LanguageFlag code={item.code} />{item.name}</span><span className="text-muted-foreground">{item.shortName}</span></button>)}</div>}</div>
-        <div className="relative"><button className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground px-4 py-2 relative h-8 w-8 rounded-full" type="button" onClick={() => setAvatarOpen((value) => !value)}><span className="relative flex shrink-0 overflow-hidden rounded-full h-8 w-8"><img className="aspect-square h-full w-full" alt={user.email || "admin"} src="https://cdn.v2ex.com/gravatar/e4fe42b0d0ef68938bd143a3be16bafa?s=64&d=identicon" /></span></button>{avatarOpen && <div className="absolute right-0 top-10 z-[60] w-80 rounded-md border bg-popover text-popover-foreground shadow-md"><div className="px-4 py-3"><div className="text-base font-medium">{user.name || "admin"}</div><div className="text-sm text-muted-foreground">{user.email || "admin@cc.com"}</div></div><button className="flex w-full items-center justify-between border-t px-4 py-3 text-left text-sm hover:bg-accent" onClick={() => { setAvatarOpen(false); navigate("/settings"); }}><span>{tCommon("settings")}</span><span className="text-muted-foreground">⌘S</span></button><button className="flex w-full items-center justify-between border-t px-4 py-3 text-left text-sm hover:bg-accent" onClick={() => { clearAuthSession(); navigate("/sign-in", { replace: true }); }}><span>{tCommon("logout")}</span><span className="text-muted-foreground">⇧⌘Q</span></button></div>}</div>
+        <div className="relative"><button className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring hover:bg-accent hover:text-accent-foreground px-4 py-2 relative h-8 w-8 rounded-full" type="button" onClick={() => setAvatarOpen((value) => !value)}><span className="relative flex shrink-0 overflow-hidden rounded-full h-8 w-8"><img className="aspect-square h-full w-full" alt={user.email || "admin"} src="https://cdn.v2ex.com/gravatar/e4fe42b0d0ef68938bd143a3be16bafa?s=64&d=identicon" /></span></button>{avatarOpen && <div className="absolute right-0 top-10 z-[60] w-80 rounded-md border bg-popover text-popover-foreground shadow-md"><div className="px-4 py-3"><div className="text-base font-medium">{user.name || "admin"}</div><div className="text-sm text-muted-foreground">{user.email || "admin@cc.com"}</div></div><button className="flex w-full items-center justify-between border-t px-4 py-3 text-left text-sm hover:bg-accent" onClick={() => { setAvatarOpen(false); navigate("/config/system"); }}><span>{tCommon("settings")}</span><span className="text-muted-foreground">⌘S</span></button><button className="flex w-full items-center justify-between border-t px-4 py-3 text-left text-sm hover:bg-accent" onClick={() => { clearAuthSession(); navigate("/sign-in", { replace: true }); }}><span>{tCommon("logout")}</span><span className="text-muted-foreground">⇧⌘Q</span></button></div>}</div>
     </div>;
 }
 
@@ -361,10 +439,13 @@ export function DashboardView() {
     const { t } = useTranslation("dashboard");
     const [dashboardStats, setDashboardStats] = useState({});
     const [orderRange, setOrderRange] = useState("30d");
+    const [orderCustomRange, setOrderCustomRange] = useState(getDefaultCustomRange);
     const [orderMode, setOrderMode] = useState("amount");
     const [orderStats, setOrderStats] = useState(null);
     const [nodeRange, setNodeRange] = useState("today");
+    const [nodeCustomRange, setNodeCustomRange] = useState(getDefaultCustomRange);
     const [userRange, setUserRange] = useState("today");
+    const [userCustomRange, setUserCustomRange] = useState(getDefaultCustomRange);
     const [nodeTrafficRank, setNodeTrafficRank] = useState(null);
     const [userTrafficRank, setUserTrafficRank] = useState(null);
     const [queueStats, setQueueStats] = useState(null);
@@ -381,7 +462,7 @@ export function DashboardView() {
 
     useEffect(() => {
         let active = true;
-        const params = getOrderRange(orderRange);
+        const params = getOrderRange(orderRange, orderCustomRange);
         const load = () => fetchOrderStats(params, auth.token)
             .then((response) => active && setOrderStats(unwrapPayload(response)))
             .catch(() => active && setOrderStats({}));
@@ -393,11 +474,11 @@ export function DashboardView() {
             active = false;
             window.clearInterval(timer);
         };
-    }, [auth.token, orderRange]);
+    }, [auth.token, orderRange, orderCustomRange]);
 
     useEffect(() => {
         let active = true;
-        const params = { type: "node", ...getTrafficRange(nodeRange) };
+        const params = { type: "node", ...getTrafficRange(nodeRange, nodeCustomRange) };
         const load = () => fetchTrafficRank(params, auth.token)
             .then((response) => active && setNodeTrafficRank(normalizeTrafficRankList(unwrapPayload(response))))
             .catch(() => active && setNodeTrafficRank([]));
@@ -409,11 +490,11 @@ export function DashboardView() {
             active = false;
             window.clearInterval(timer);
         };
-    }, [auth.token, nodeRange]);
+    }, [auth.token, nodeRange, nodeCustomRange]);
 
     useEffect(() => {
         let active = true;
-        const params = { type: "user", ...getTrafficRange(userRange) };
+        const params = { type: "user", ...getTrafficRange(userRange, userCustomRange) };
         const load = () => fetchTrafficRank(params, auth.token)
             .then((response) => active && setUserTrafficRank(normalizeTrafficRankList(unwrapPayload(response))))
             .catch(() => active && setUserTrafficRank([]));
@@ -425,7 +506,7 @@ export function DashboardView() {
             active = false;
             window.clearInterval(timer);
         };
-    }, [auth.token, userRange]);
+    }, [auth.token, userRange, userCustomRange]);
 
     useEffect(() => {
         let active = true;
@@ -447,5 +528,5 @@ export function DashboardView() {
         .then((response) => setQueueStats(unwrapPayload(response)))
         .catch(() => setQueueStats({}));
 
-    return <div className="relative flex h-full w-full flex-col"><div className="flex h-[var(--header-height)] flex-none items-center gap-4 bg-background p-4 md:px-8"><div className="flex items-center"><h1 className="text-2xl font-bold tracking-tight md:text-3xl">{t("title")}</h1></div><HeaderControls auth={auth} /></div><div className="flex-1 overflow-hidden px-4 py-6 md:px-8"><div className="space-y-6"><div className="grid gap-6"><div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">{metricCards.map((item) => <MetricCard item={item} key={item[0]} />)}</div><RevenueOverview t={t} stats={orderStats} range={orderRange} onRangeChange={setOrderRange} mode={orderMode} onModeChange={setOrderMode} /><div className="grid gap-4 md:grid-cols-2"><TrafficRankCard title={t("trafficRank.nodeTrafficRank")} icon="network" t={t} items={nodeTrafficRank} range={nodeRange} onRangeChange={setNodeRange} /><TrafficRankCard title={t("trafficRank.userTrafficRank")} icon="users" t={t} items={userTrafficRank} range={userRange} onRangeChange={setUserRange} /></div><QueueStatus stats={queueStats || {}} onRefresh={refreshQueueStats} t={t} /></div></div></div></div>;
+    return <div className="relative flex h-full w-full flex-col"><div className="flex h-[var(--header-height)] flex-none items-center gap-4 bg-background p-4 md:px-8"><div className="flex items-center"><h1 className="text-2xl font-bold tracking-tight md:text-3xl">{t("title")}</h1></div><HeaderControls auth={auth} /></div><div className="flex-1 overflow-hidden px-4 py-6 md:px-8"><div className="space-y-6"><div className="grid gap-6"><div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">{metricCards.map((item) => <MetricCard item={item} key={item[0]} />)}</div><RevenueOverview t={t} stats={orderStats} range={orderRange} onRangeChange={setOrderRange} customDateRange={orderCustomRange} onCustomDateRangeChange={setOrderCustomRange} mode={orderMode} onModeChange={setOrderMode} /><div className="grid gap-4 md:grid-cols-2"><TrafficRankCard title={t("trafficRank.nodeTrafficRank")} icon="network" t={t} items={nodeTrafficRank} range={nodeRange} onRangeChange={setNodeRange} customDateRange={nodeCustomRange} onCustomDateRangeChange={setNodeCustomRange} /><TrafficRankCard title={t("trafficRank.userTrafficRank")} icon="users" t={t} items={userTrafficRank} range={userRange} onRangeChange={setUserRange} customDateRange={userCustomRange} onCustomDateRangeChange={setUserCustomRange} /></div><QueueStatus stats={queueStats || {}} onRefresh={refreshQueueStats} t={t} /></div></div></div></div>;
 }

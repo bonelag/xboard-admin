@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { buildHashHref } from "../utils/query.js";
 import { useHashLocation } from "../composables/useHashLocation.js";
 import { classNames } from "../utils/classNames.js";
@@ -79,18 +79,104 @@ function NavLink({ item, currentPath, onNavigate }) {
     );
 }
 
-function NavGroup({ group, currentPath, onNavigate }) {
+function CollapsedNavLink({ item, currentPath, onNavigate }) {
+    const active = currentPath === item.path;
+
+    return (
+        <div className="admin-sidebar-collapsed-item">
+            <a className={classNames("admin-sidebar-collapsed-trigger inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-12 w-12", active ? "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80" : "hover:bg-accent hover:text-accent-foreground")} href={buildHashHref(item.path)} aria-current={active ? "page" : undefined} onClick={onNavigate}>
+                <Icon name={item.icon} />
+                <span className="sr-only">{item.title}</span>
+            </a>
+            <div className="admin-sidebar-collapsed-tooltip" role="tooltip">
+                <span>{item.title}</span>
+            </div>
+        </div>
+    );
+}
+
+function CollapsedNavGroup({ group, currentPath, onNavigate }) {
+    const [open, setOpen] = useState(false);
+    const rootRef = useRef(null);
+    const active = group.items.some((item) => item.path === currentPath);
+
+    useEffect(() => {
+        if (!open) {
+            return undefined;
+        }
+
+        const handlePointerDown = (event) => {
+            if (!rootRef.current?.contains(event.target)) {
+                setOpen(false);
+            }
+        };
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                setOpen(false);
+            }
+        };
+
+        document.addEventListener("pointerdown", handlePointerDown);
+        document.addEventListener("keydown", handleKeyDown);
+        return () => {
+            document.removeEventListener("pointerdown", handlePointerDown);
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [open]);
+
+    const handleNavigate = () => {
+        setOpen(false);
+        onNavigate?.();
+    };
+
+    return (
+        <div ref={rootRef} className={classNames("admin-sidebar-collapsed-item", open && "admin-sidebar-collapsed-item-open")}>
+            <button type="button" className={classNames("admin-sidebar-collapsed-trigger inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-12 w-12", active ? "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80" : "hover:bg-accent hover:text-accent-foreground")} aria-haspopup="menu" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
+                <Icon name={group.icon} />
+                <span className="sr-only">{group.title}</span>
+            </button>
+            <div className="admin-sidebar-collapsed-tooltip" role="tooltip">
+                <span>{group.title}</span>
+                <Icon name="chevron" size={18} strokeWidth={1} className="admin-sidebar-collapsed-tooltip-chevron" />
+            </div>
+            {open && (
+                <div className="admin-sidebar-collapsed-menu" role="menu">
+                    <div className="admin-sidebar-collapsed-menu-label">{group.title}</div>
+                    <div className="admin-sidebar-collapsed-menu-separator" />
+                    {group.items.map((item) => {
+                        const itemActive = currentPath === item.path;
+                        return (
+                            <a className={classNames("admin-sidebar-collapsed-menu-item", itemActive && "bg-secondary")} href={buildHashHref(item.path)} role="menuitem" aria-current={itemActive ? "page" : undefined} onClick={handleNavigate} key={item.path}>
+                                <Icon name={item.icon} />
+                                <span className="ml-2 max-w-52 text-wrap">{item.title}</span>
+                            </a>
+                        );
+                    })}
+                </div>
+            )}
+        </div>
+    );
+}
+
+function NavGroup({ group, currentPath, onNavigate, collapsed }) {
     const [open, setOpen] = useState(true);
     const active = group.items.some((item) => item.path === currentPath);
 
     if (!group.title) {
         const item = group.items[0];
+        if (collapsed) {
+            return <CollapsedNavLink item={item} currentPath={currentPath} onNavigate={onNavigate} />;
+        }
         return (
             <a className={classNames("inline-flex items-center whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-xs h-12 justify-start text-wrap rounded-none px-6", currentPath === item.path ? "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80" : "hover:bg-accent hover:text-accent-foreground")} href={buildHashHref(item.path)} aria-current={currentPath === item.path ? "page" : undefined} onClick={onNavigate}>
                 <div className="mr-2"><Icon name={item.icon} /></div>
                 <span className="admin-sidebar-label">{item.title}</span>
             </a>
         );
+    }
+
+    if (collapsed) {
+        return <CollapsedNavGroup group={group} currentPath={currentPath} onNavigate={onNavigate} />;
     }
 
     return (
@@ -135,7 +221,7 @@ export function Sidebar({ collapsed = false, onToggleCollapsed, onMobileOpenChan
             <div className="relative w-full flex flex-col h-[var(--header-height)] md:h-full bg-background">
                 <div className="flex h-[var(--header-height)] flex-none items-center gap-4 bg-background p-4 sticky top-0 justify-between px-4 py-3 shadow md:px-4">
                     <div className="flex items-center gap-2">
-                        <Icon name="logo" className="transition-all h-8 w-8" />
+                        <Icon name="logo" className="admin-sidebar-logo transition-all h-8 w-8" />
                         <span className="sr-only">Website Name</span>
                         <div className="admin-sidebar-label flex flex-col justify-end truncate visible w-auto"><span className="font-medium">XBoard</span></div>
                     </div>
@@ -145,7 +231,7 @@ export function Sidebar({ collapsed = false, onToggleCollapsed, onMobileOpenChan
                 </div>
                 <div data-collapsed={collapsed} className="group border-b bg-background py-2 transition-[max-height,padding] duration-500 data-[collapsed=true]:py-2 md:border-none flex-1 overflow-auto overscroll-contain block md:py-2" id="sidebar-menu">
                     <nav className="grid gap-1 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
-                        {navGroups.map((group, index) => <NavGroup group={group} currentPath={location.pathname} onNavigate={() => setMobileOpen(false)} key={group.id || index} />)}
+                        {navGroups.map((group, index) => <NavGroup group={group} currentPath={location.pathname} onNavigate={() => setMobileOpen(false)} collapsed={collapsed} key={group.id || index} />)}
                     </nav>
                 </div>
                 <div className="admin-sidebar-footer border-t border-border/50 bg-background px-4 py-2.5 text-xs text-muted-foreground block text-left">

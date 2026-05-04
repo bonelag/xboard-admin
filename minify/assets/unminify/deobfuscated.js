@@ -226942,7 +226942,7 @@ let Y0e = class {
     if (!this._client) {
       this._worker = RQe({
         moduleId: "vs/language/css/cssWorker",
-        createWorker: () => new Worker(new URL("" + new URL("css.worker-Bx7Y3X-c.js", import.meta.url).href, import.meta.url), {
+        createWorker: () => new Worker(new URL("" + new URL("css.worker.js", import.meta.url).href, import.meta.url), {
           type: "module"
         }),
         label: this._defaults.languageId,
@@ -228887,7 +228887,7 @@ let t4e = class {
     if (!this._client) {
       this._worker = RQe({
         moduleId: "vs/language/html/htmlWorker",
-        createWorker: () => new Worker(new URL("" + new URL("html.worker-C4RoLUfz.js", import.meta.url).href, import.meta.url), {
+        createWorker: () => new Worker(new URL("" + new URL("html.worker.js", import.meta.url).href, import.meta.url), {
           type: "module"
         }),
         createData: {
@@ -229047,7 +229047,7 @@ let o4e = class {
     if (!this._client) {
       this._worker = RQe({
         moduleId: "vs/language/json/jsonWorker",
-        createWorker: () => new Worker(new URL("" + new URL("json.worker-qCj-lAKT.js", import.meta.url).href, import.meta.url), {
+        createWorker: () => new Worker(new URL("" + new URL("json.worker.js", import.meta.url).href, import.meta.url), {
           type: "module"
         }),
         label: this._defaults.languageId,
@@ -229879,7 +229879,7 @@ class j4e {
     this._client ||= (async () => {
       this._worker = RQe({
         moduleId: "vs/language/typescript/tsWorker",
-        createWorker: () => new Worker(new URL("" + new URL("ts.worker-sc26f_2L.js", import.meta.url).href, import.meta.url), {
+        createWorker: () => new Worker(new URL("" + new URL("ts.worker.js", import.meta.url).href, import.meta.url), {
           type: "module"
         }),
         label: this._modeId,
