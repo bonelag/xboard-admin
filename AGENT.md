@@ -49,7 +49,7 @@ Vite config in `source/vite.config.js` uses `base: './'`, emits to `../dist`, wr
 
 For new screens/routes:
 
-1. Inspect `minify/` first, especially unminified assets when available.
+1. Inspect `index.unminify/` first, especially unminified assets when available.
 2. Use `api.md` to identify the target route/API coverage.
 3. Add source under the existing structure: shared UI in `source/components/`, hooks in `source/composables/`, API wrappers in `source/api/`, pages in `source/views/`.
 4. Wire routes through the custom router/App flow; do not add a routing library unless explicitly requested.
