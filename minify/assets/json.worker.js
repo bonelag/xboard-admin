@@ -80,7 +80,7 @@
     }
     function u(e, t) {
         let n = 0;
-        for (; n < e.length - 1; ) {
+        for (; n < e.length - 1;) {
             if (!t(e[n], e[n + 1])) return !1;
             n++;
         }
@@ -182,10 +182,10 @@
             (e.slice = function* (e, t, n = e.length) {
                 for (
                     t < -e.length && (t = 0),
-                        t < 0 && (t += e.length),
-                        n < 0
-                            ? (n += e.length)
-                            : n > e.length && (n = e.length);
+                    t < 0 && (t += e.length),
+                    n < 0
+                        ? (n += e.length)
+                        : n > e.length && (n = e.length);
                     t < n;
                     t++
                 )
@@ -267,7 +267,7 @@
     }
     class p {
         static {
-            this.None = Object.freeze({ dispose() {} });
+            this.None = Object.freeze({ dispose() { } });
         }
         constructor() {
             ((this._store = new g()), this._store);
@@ -305,7 +305,7 @@
         }
         clear() {
             let e = this._first;
-            for (; e !== b.Undefined; ) {
+            for (; e !== b.Undefined;) {
                 const t = e.next;
                 ((e.prev = b.Undefined), (e.next = b.Undefined), (e = t));
             }
@@ -356,16 +356,16 @@
                 e.prev === b.Undefined && e.next === b.Undefined
                     ? ((this._first = b.Undefined), (this._last = b.Undefined))
                     : e.next === b.Undefined
-                      ? ((this._last = this._last.prev),
-                        (this._last.next = b.Undefined))
-                      : e.prev === b.Undefined &&
+                        ? ((this._last = this._last.prev),
+                            (this._last.next = b.Undefined))
+                        : e.prev === b.Undefined &&
                         ((this._first = this._first.next),
-                        (this._first.prev = b.Undefined));
+                            (this._first.prev = b.Undefined));
             this._size -= 1;
         }
         *[Symbol.iterator]() {
             let e = this._first;
-            for (; e !== b.Undefined; ) (yield e.element, (e = e.next));
+            for (; e !== b.Undefined;) (yield e.element, (e = e.next));
         }
     }
     const v = globalThis.performance.now.bind(globalThis.performance);
@@ -457,7 +457,7 @@
                             "number" == typeof n
                                 ? (u && clearTimeout(u), (u = setTimeout(c, n)))
                                 : void 0 === u &&
-                                  ((u = null), queueMicrotask(c)));
+                                ((u = null), queueMicrotask(c)));
                     });
                 },
                 onWillRemoveListener() {
@@ -471,7 +471,7 @@
         }
         ((e.None = () => p.None),
             (e.defer = function (e, t) {
-                return s(e, () => {}, 0, void 0, !0, void 0, t);
+                return s(e, () => { }, 0, void 0, !0, void 0, t);
             }),
             (e.once = t),
             (e.onceIf = function (t, n) {
@@ -544,8 +544,8 @@
                     });
                 r && r.add(s);
                 const o = () => {
-                        (i?.forEach((e) => a.fire(e)), (i = null));
-                    },
+                    (i?.forEach((e) => a.fire(e)), (i = null));
+                },
                     a = new A({
                         onWillAddFirstListener() {
                             s || ((s = e((e) => a.fire(e))), r && r.add(s));
@@ -655,16 +655,16 @@
             beginUpdate(e) {
                 this._counter++;
             }
-            handlePossibleChange(e) {}
+            handlePossibleChange(e) { }
             handleChange(e, t) {
                 this._hasChanged = !0;
             }
             endUpdate(e) {
                 (this._counter--,
                     0 === this._counter &&
-                        (this._observable.reportChanges(),
+                    (this._observable.reportChanges(),
                         this._hasChanged &&
-                            ((this._hasChanged = !1),
+                        ((this._hasChanged = !1),
                             this.emitter.fire(this._observable.get()))));
             }
         }
@@ -682,10 +682,10 @@
                         endUpdate() {
                             (i--,
                                 0 === i &&
-                                    (e.reportChanges(),
+                                (e.reportChanges(),
                                     s && ((s = !1), t.call(n))));
                         },
-                        handlePossibleChange() {},
+                        handlePossibleChange() { },
                         handleChange() {
                             s = !0;
                         },
@@ -753,8 +753,8 @@
             const r = this._stacks.get(e.value) || 0;
             if (
                 (this._stacks.set(e.value, r + 1),
-                (this._warnCountdown -= 1),
-                this._warnCountdown <= 0)
+                    (this._warnCountdown -= 1),
+                    this._warnCountdown <= 0)
             ) {
                 this._warnCountdown = 0.5 * n;
                 const [e, r] = this.getMostFrequentStack(),
@@ -784,7 +784,7 @@
         constructor(e) {
             this.value = e;
         }
-        print() {}
+        print() { }
     }
     class N extends Error {
         constructor(e, t) {
@@ -807,9 +807,9 @@
                 (this._options = e),
                 (this._leakageMon = this._options?.leakWarningThreshold
                     ? new L(
-                          e?.onListenerError ?? t,
-                          this._options?.leakWarningThreshold ?? -1,
-                      )
+                        e?.onListenerError ?? t,
+                        this._options?.leakWarningThreshold ?? -1,
+                    )
                     : void 0),
                 (this._perfMon = this._options?._profName
                     ? new _(this._options._profName)
@@ -819,12 +819,12 @@
         dispose() {
             this._disposed ||
                 ((this._disposed = !0),
-                this._deliveryQueue?.current === this &&
+                    this._deliveryQueue?.current === this &&
                     this._deliveryQueue.reset(),
-                this._listeners &&
+                    this._listeners &&
                     ((this._listeners = void 0), (this._size = 0)),
-                this._options?.onDidRemoveLastListener?.(),
-                this._leakageMon?.dispose());
+                    this._options?.onDidRemoveLastListener?.(),
+                    this._leakageMon?.dispose());
         }
         get event() {
             return (
@@ -853,17 +853,17 @@
                     let s;
                     (this._leakageMon &&
                         this._size >=
-                            Math.ceil(0.2 * this._leakageMon.threshold) &&
+                        Math.ceil(0.2 * this._leakageMon.threshold) &&
                         ((i.stack = S.create()),
-                        (s = this._leakageMon.check(i.stack, this._size + 1))),
+                            (s = this._leakageMon.check(i.stack, this._size + 1))),
                         this._listeners
                             ? this._listeners instanceof E
                                 ? ((this._deliveryQueue ??= new k()),
-                                  (this._listeners = [this._listeners, i]))
+                                    (this._listeners = [this._listeners, i]))
                                 : this._listeners.push(i)
                             : (this._options?.onWillAddFirstListener?.(this),
-                              (this._listeners = i),
-                              this._options?.onDidAddFirstListener?.(this)),
+                                (this._listeners = i),
+                                this._options?.onDidAddFirstListener?.(this)),
                         this._options?.onDidAddListener?.(this),
                         this._size++);
                     const o = m(() => {
@@ -900,9 +900,9 @@
                     t[n]
                         ? (t[e++] = t[n])
                         : r &&
-                          e < this._deliveryQueue.end &&
-                          (this._deliveryQueue.end--,
-                          e < this._deliveryQueue.i && this._deliveryQueue.i--);
+                        e < this._deliveryQueue.end &&
+                        (this._deliveryQueue.end--,
+                            e < this._deliveryQueue.i && this._deliveryQueue.i--);
                 t.length = e;
             }
         }
@@ -919,16 +919,16 @@
         }
         _deliverQueue(e) {
             const t = e.current._listeners;
-            for (; e.i < e.end; ) this._deliver(t[e.i++], e.value);
+            for (; e.i < e.end;) this._deliver(t[e.i++], e.value);
             e.reset();
         }
         fire(e) {
             if (
                 (this._deliveryQueue?.current &&
                     (this._deliverQueue(this._deliveryQueue),
-                    this._perfMon?.stop()),
-                this._perfMon?.start(this._size),
-                this._listeners)
+                        this._perfMon?.stop()),
+                    this._perfMon?.start(this._size),
+                    this._listeners)
             )
                 if (this._listeners instanceof E)
                     this._deliver(this._listeners, e);
@@ -976,19 +976,19 @@
                 0 === t.length
                     ? e
                     : e.replace(/\{(\d+)\}/g, (e, n) => {
-                          const r = n[0],
-                              i = t[r];
-                          let s = e;
-                          return (
-                              "string" == typeof i
-                                  ? (s = i)
-                                  : ("number" != typeof i &&
-                                        "boolean" != typeof i &&
-                                        null != i) ||
-                                    (s = String(i)),
-                              s
-                          );
-                      })),
+                        const r = n[0],
+                            i = t[r];
+                        let s = e;
+                        return (
+                            "string" == typeof i
+                                ? (s = i)
+                                : ("number" != typeof i &&
+                                    "boolean" != typeof i &&
+                                    null != i) ||
+                                (s = String(i)),
+                            s
+                        );
+                    })),
             T && (n = "［" + n.replace(/[aouei]/g, "$&$&") + "］"),
             n
         );
@@ -997,13 +997,13 @@
         return M(
             "number" == typeof e
                 ? (function (e, t) {
-                      const n = globalThis._VSCODE_NLS_MESSAGES?.[e];
-                      if ("string" != typeof n) {
-                          if ("string" == typeof t) return t;
-                          throw new Error(`!!! NLS MISSING: ${e} !!!`);
-                      }
-                      return n;
-                  })(e, t)
+                    const n = globalThis._VSCODE_NLS_MESSAGES?.[e];
+                    if ("string" != typeof n) {
+                        if ("string" == typeof t) return t;
+                        throw new Error(`!!! NLS MISSING: ${e} !!!`);
+                    }
+                    return n;
+                })(e, t)
                 : t,
             n,
         );
@@ -1022,8 +1022,8 @@
     void 0 !== U.vscode && void 0 !== U.vscode.process
         ? (j = U.vscode.process)
         : "undefined" != typeof process &&
-          "string" == typeof process?.versions?.node &&
-          (j = process);
+        "string" == typeof process?.versions?.node &&
+        (j = process);
     const W =
         "string" == typeof j?.versions?.electron && "renderer" === j?.type;
     if ("object" == typeof j) {
@@ -1032,8 +1032,8 @@
             (K = "linux" === j.platform),
             K && j.env.SNAP && j.env.SNAP_REVISION,
             j.env.CI ||
-                j.env.BUILD_ARTIFACTSTAGINGDIRECTORY ||
-                j.env.GITHUB_WORKSPACE,
+            j.env.BUILD_ARTIFACTSTAGINGDIRECTORY ||
+            j.env.GITHUB_WORKSPACE,
             (P = I),
             ($ = I));
         const e = j.env.VSCODE_NLS_CONFIG;
@@ -1044,23 +1044,23 @@
                     (B = t.osLocale),
                     ($ = t.resolvedLanguage || I),
                     (F = t.languagePack?.translationsConfigFile));
-            } catch (Pl) {}
+            } catch (Pl) { }
     } else
         "object" != typeof navigator ||
             W ||
             ((V = navigator.userAgent),
-            (D = V.indexOf("Windows") >= 0),
-            (q = V.indexOf("Macintosh") >= 0),
-            (V.indexOf("Macintosh") >= 0 ||
-                V.indexOf("iPad") >= 0 ||
-                V.indexOf("iPhone") >= 0) &&
+                (D = V.indexOf("Windows") >= 0),
+                (q = V.indexOf("Macintosh") >= 0),
+                (V.indexOf("Macintosh") >= 0 ||
+                    V.indexOf("iPad") >= 0 ||
+                    V.indexOf("iPhone") >= 0) &&
                 navigator.maxTouchPoints &&
                 navigator.maxTouchPoints,
-            (K = V.indexOf("Linux") >= 0),
-            V?.indexOf("Mobi"),
-            ($ = R() || I),
-            (P = navigator.language.toLowerCase()),
-            (B = P));
+                (K = V.indexOf("Linux") >= 0),
+                V?.indexOf("Mobi"),
+                ($ = R() || I),
+                (P = navigator.language.toLowerCase()),
+                (B = P));
     const z = D,
         H = q,
         G = V,
@@ -1104,7 +1104,7 @@
             const t = this._computeKey(e);
             return (
                 this.lastArgKey !== t &&
-                    ((this.lastArgKey = t), (this.lastCache = this._fn(e))),
+                ((this.lastArgKey = t), (this.lastCache = this._fn(e))),
                 this.lastCache
             );
         }
@@ -1239,9 +1239,9 @@
         static getData() {
             return (
                 this._data ||
-                    (this._data = new Set(
-                        [...Object.values(ae.getRawData())].flat(),
-                    )),
+                (this._data = new Set(
+                    [...Object.values(ae.getRawData())].flat(),
+                )),
                 this._data
             );
         }
@@ -1340,16 +1340,16 @@
             const n = {
                 get: (n, r) => (
                     "string" != typeof r ||
-                        n[r] ||
-                        (pe(r)
-                            ? (n[r] = (t) => this.listen(e, r, t))
-                            : ge(r)
-                              ? (n[r] = this.listen(e, r, void 0))
-                              : 36 === r.charCodeAt(0) &&
-                                (n[r] = async (...n) => (
-                                    await t?.(),
-                                    this.sendMessage(e, r, n)
-                                ))),
+                    n[r] ||
+                    (pe(r)
+                        ? (n[r] = (t) => this.listen(e, r, t))
+                        : ge(r)
+                            ? (n[r] = this.listen(e, r, void 0))
+                            : 36 === r.charCodeAt(0) &&
+                            (n[r] = async (...n) => (
+                                await t?.(),
+                                this.sendMessage(e, r, n)
+                            ))),
                     n[r]
                 ),
             };
@@ -1415,7 +1415,7 @@
         _handleUnsubscribeEventMessage(e) {
             this._pendingEvents.has(e.req) &&
                 (this._pendingEvents.get(e.req).dispose(),
-                this._pendingEvents.delete(e.req));
+                    this._pendingEvents.delete(e.req));
         }
         _send(e) {
             const t = [];
@@ -1594,14 +1594,14 @@
         getChanges() {
             return (
                 (this.m_originalCount > 0 || this.m_modifiedCount > 0) &&
-                    this.MarkNextChange(),
+                this.MarkNextChange(),
                 this.m_changes
             );
         }
         getReverseChanges() {
             return (
                 (this.m_originalCount > 0 || this.m_modifiedCount > 0) &&
-                    this.MarkNextChange(),
+                this.MarkNextChange(),
                 this.m_changes.reverse(),
                 this.m_changes
             );
@@ -1639,10 +1639,10 @@
         ElementsAreEqual(e, t) {
             return (
                 this._originalElementsOrHash[e] ===
-                    this._modifiedElementsOrHash[t] &&
+                this._modifiedElementsOrHash[t] &&
                 (!this._hasStrings ||
                     this._originalStringElements[e] ===
-                        this._modifiedStringElements[t])
+                    this._modifiedStringElements[t])
             );
         }
         ElementsAreStrictEqual(e, t) {
@@ -1660,19 +1660,19 @@
         OriginalElementsAreEqual(e, t) {
             return (
                 this._originalElementsOrHash[e] ===
-                    this._originalElementsOrHash[t] &&
+                this._originalElementsOrHash[t] &&
                 (!this._hasStrings ||
                     this._originalStringElements[e] ===
-                        this._originalStringElements[t])
+                    this._originalStringElements[t])
             );
         }
         ModifiedElementsAreEqual(e, t) {
             return (
                 this._modifiedElementsOrHash[e] ===
-                    this._modifiedElementsOrHash[t] &&
+                this._modifiedElementsOrHash[t] &&
                 (!this._hasStrings ||
                     this._modifiedStringElements[e] ===
-                        this._modifiedStringElements[t])
+                    this._modifiedStringElements[t])
             );
         }
         ComputeDiff(e) {
@@ -1693,34 +1693,34 @@
             );
         }
         ComputeDiffRecursive(e, t, n, r, i) {
-            for (i[0] = !1; e <= t && n <= r && this.ElementsAreEqual(e, n); )
+            for (i[0] = !1; e <= t && n <= r && this.ElementsAreEqual(e, n);)
                 (e++, n++);
-            for (; t >= e && r >= n && this.ElementsAreEqual(t, r); )
+            for (; t >= e && r >= n && this.ElementsAreEqual(t, r);)
                 (t--, r--);
             if (e > t || n > r) {
                 let i;
                 return (
                     n <= r
                         ? (Se.Assert(
-                              e === t + 1,
-                              "originalStart should only be one more than originalEnd",
-                          ),
-                          (i = [new ve(e, 0, n, r - n + 1)]))
+                            e === t + 1,
+                            "originalStart should only be one more than originalEnd",
+                        ),
+                            (i = [new ve(e, 0, n, r - n + 1)]))
                         : e <= t
-                          ? (Se.Assert(
+                            ? (Se.Assert(
                                 n === r + 1,
                                 "modifiedStart should only be one more than modifiedEnd",
                             ),
-                            (i = [new ve(e, t - e + 1, n, 0)]))
-                          : (Se.Assert(
+                                (i = [new ve(e, t - e + 1, n, 0)]))
+                            : (Se.Assert(
                                 e === t + 1,
                                 "originalStart should only be one more than originalEnd",
                             ),
-                            Se.Assert(
-                                n === r + 1,
-                                "modifiedStart should only be one more than modifiedEnd",
-                            ),
-                            (i = [])),
+                                Se.Assert(
+                                    n === r + 1,
+                                    "modifiedStart should only be one more than modifiedEnd",
+                                ),
+                                (i = [])),
                     i
                 );
             }
@@ -1736,13 +1736,13 @@
                 return (
                     (o = i[0]
                         ? [
-                              new ve(
-                                  l + 1,
-                                  t - (l + 1) + 1,
-                                  u + 1,
-                                  r - (u + 1) + 1,
-                              ),
-                          ]
+                            new ve(
+                                l + 1,
+                                t - (l + 1) + 1,
+                                u + 1,
+                                r - (u + 1) + 1,
+                            ),
+                        ]
                         : this.ComputeDiffRecursive(l + 1, t, u + 1, r, i)),
                     this.ConcatenateChanges(s, o)
                 );
@@ -1762,17 +1762,17 @@
                 const t = L + e;
                 (t === C || (t < _ && l[t - 1] < l[t + 1])
                     ? ((f = (c = l[t + 1]) - L - r),
-                      c < S && w.MarkNextChange(),
-                      (S = c),
-                      w.AddModifiedElement(c + 1, f),
-                      (L = t + 1 - e))
+                        c < S && w.MarkNextChange(),
+                        (S = c),
+                        w.AddModifiedElement(c + 1, f),
+                        (L = t + 1 - e))
                     : ((f = (c = l[t - 1] + 1) - L - r),
-                      c < S && w.MarkNextChange(),
-                      (S = c - 1),
-                      w.AddOriginalElement(c, f + 1),
-                      (L = t - 1 - e)),
+                        c < S && w.MarkNextChange(),
+                        (S = c - 1),
+                        w.AddOriginalElement(c, f + 1),
+                        (L = t - 1 - e)),
                     N >= 0 &&
-                        ((e = (l = this.m_forwardHistory[N])[0]),
+                    ((e = (l = this.m_forwardHistory[N])[0]),
                         (C = 1),
                         (_ = l.length - 1)));
             } while (--N >= -1);
@@ -1798,17 +1798,17 @@
                     const e = L + i;
                     (e === C || (e < _ && u[e - 1] >= u[e + 1])
                         ? ((f = (c = u[e + 1] - 1) - L - a),
-                          c > S && w.MarkNextChange(),
-                          (S = c + 1),
-                          w.AddOriginalElement(c + 1, f + 1),
-                          (L = e + 1 - i))
+                            c > S && w.MarkNextChange(),
+                            (S = c + 1),
+                            w.AddOriginalElement(c + 1, f + 1),
+                            (L = e + 1 - i))
                         : ((f = (c = u[e - 1]) - L - a),
-                          c > S && w.MarkNextChange(),
-                          (S = c),
-                          w.AddModifiedElement(c + 1, f + 1),
-                          (L = e - 1 - i)),
+                            c > S && w.MarkNextChange(),
+                            (S = c),
+                            w.AddModifiedElement(c + 1, f + 1),
+                            (L = e - 1 - i)),
                         N >= 0 &&
-                            ((i = (u = this.m_reverseHistory[N])[0]),
+                        ((i = (u = this.m_reverseHistory[N])[0]),
                             (C = 1),
                             (_ = u.length - 1)));
                 } while (--N >= -1);
@@ -1858,33 +1858,33 @@
                         (a++, l++);
                     if (
                         ((g[e] = a),
-                        a + l > f + L && ((f = a), (L = l)),
-                        !C && Math.abs(e - y) <= _ - 1 && a >= p[e])
+                            a + l > f + L && ((f = a), (L = l)),
+                            !C && Math.abs(e - y) <= _ - 1 && a >= p[e])
                     )
                         return (
                             (i[0] = a),
                             (s[0] = l),
                             n <= p[e] && _ <= 1448
                                 ? this.WALKTRACE(
-                                      b,
-                                      u,
-                                      c,
-                                      v,
-                                      y,
-                                      h,
-                                      d,
-                                      w,
-                                      g,
-                                      p,
-                                      a,
-                                      t,
-                                      i,
-                                      l,
-                                      r,
-                                      s,
-                                      C,
-                                      o,
-                                  )
+                                    b,
+                                    u,
+                                    c,
+                                    v,
+                                    y,
+                                    h,
+                                    d,
+                                    w,
+                                    g,
+                                    p,
+                                    a,
+                                    t,
+                                    i,
+                                    l,
+                                    r,
+                                    s,
+                                    C,
+                                    o,
+                                )
                                 : null
                         );
                 }
@@ -1899,25 +1899,25 @@
                         (s[0] = L),
                         S > 0 && _ <= 1448
                             ? this.WALKTRACE(
-                                  b,
-                                  u,
-                                  c,
-                                  v,
-                                  y,
-                                  h,
-                                  d,
-                                  w,
-                                  g,
-                                  p,
-                                  a,
-                                  t,
-                                  i,
-                                  l,
-                                  r,
-                                  s,
-                                  C,
-                                  o,
-                              )
+                                b,
+                                u,
+                                c,
+                                v,
+                                y,
+                                h,
+                                d,
+                                w,
+                                g,
+                                p,
+                                a,
+                                t,
+                                i,
+                                l,
+                                r,
+                                s,
+                                C,
+                                o,
+                            )
                             : (e++, n++, [new ve(e, t - e + 1, n, r - n + 1)])
                     );
                 ((h = this.ClipDiagonalBound(y - _, _, y, m)),
@@ -1929,7 +1929,7 @@
                             : p[m - 1]),
                         (l = a - (m - y) - w));
                     const f = a;
-                    for (; a > e && l > n && this.ElementsAreEqual(a, l); )
+                    for (; a > e && l > n && this.ElementsAreEqual(a, l);)
                         (a--, l--);
                     if (((p[m] = a), C && Math.abs(m - b) <= _ && a <= g[m]))
                         return (
@@ -1937,25 +1937,25 @@
                             (s[0] = l),
                             f >= g[m] && _ <= 1448
                                 ? this.WALKTRACE(
-                                      b,
-                                      u,
-                                      c,
-                                      v,
-                                      y,
-                                      h,
-                                      d,
-                                      w,
-                                      g,
-                                      p,
-                                      a,
-                                      t,
-                                      i,
-                                      l,
-                                      r,
-                                      s,
-                                      C,
-                                      o,
-                                  )
+                                    b,
+                                    u,
+                                    c,
+                                    v,
+                                    y,
+                                    h,
+                                    d,
+                                    w,
+                                    g,
+                                    p,
+                                    a,
+                                    t,
+                                    i,
+                                    l,
+                                    r,
+                                    s,
+                                    C,
+                                    o,
+                                )
                                 : null
                         );
                 }
@@ -2113,11 +2113,11 @@
                             (t === n.originalStart + n.originalLength &&
                                 s === n.modifiedStart + n.modifiedLength) ||
                                 ((n.originalLength = t - n.originalStart),
-                                (n.modifiedLength = s - n.modifiedStart),
-                                (r.originalStart = t + i),
-                                (r.modifiedStart = s + i),
-                                (r.originalLength = o - r.originalStart),
-                                (r.modifiedLength = u - r.modifiedStart));
+                                    (n.modifiedLength = s - n.modifiedStart),
+                                    (r.originalStart = t + i),
+                                    (r.modifiedStart = s + i),
+                                    (r.originalLength = o - r.originalStart),
+                                    (r.modifiedLength = u - r.modifiedStart));
                         }
                     }
                 }
@@ -2220,11 +2220,11 @@
                     e.originalStart <= t.originalStart,
                     "Left change is not less than or equal to right change",
                 ),
-                Se.Assert(
-                    e.modifiedStart <= t.modifiedStart,
-                    "Left change is not less than or equal to right change",
-                ),
-                e.originalStart + e.originalLength >= t.originalStart ||
+                    Se.Assert(
+                        e.modifiedStart <= t.modifiedStart,
+                        "Left change is not less than or equal to right change",
+                    ),
+                    e.originalStart + e.originalLength >= t.originalStart ||
                     e.modifiedStart + e.modifiedLength >= t.modifiedStart)
             ) {
                 const r = e.originalStart;
@@ -2233,15 +2233,15 @@
                 let o = e.modifiedLength;
                 return (
                     e.originalStart + e.originalLength >= t.originalStart &&
-                        (i =
-                            t.originalStart +
-                            t.originalLength -
-                            e.originalStart),
+                    (i =
+                        t.originalStart +
+                        t.originalLength -
+                        e.originalStart),
                     e.modifiedStart + e.modifiedLength >= t.modifiedStart &&
-                        (o =
-                            t.modifiedStart +
-                            t.modifiedLength -
-                            e.modifiedStart),
+                    (o =
+                        t.modifiedStart +
+                        t.modifiedLength -
+                        e.modifiedStart),
                     (n[0] = new ve(r, i, s, o)),
                     !0
                 );
@@ -2258,89 +2258,89 @@
         }
     }
     let Ae = class e {
-            constructor(e, t) {
-                ((this.lineNumber = e), (this.column = t));
+        constructor(e, t) {
+            ((this.lineNumber = e), (this.column = t));
+        }
+        with(t = this.lineNumber, n = this.column) {
+            return t === this.lineNumber && n === this.column
+                ? this
+                : new e(t, n);
+        }
+        delta(e = 0, t = 0) {
+            return this.with(
+                Math.max(1, this.lineNumber + e),
+                Math.max(1, this.column + t),
+            );
+        }
+        equals(t) {
+            return e.equals(this, t);
+        }
+        static equals(e, t) {
+            return (
+                (!e && !t) ||
+                (!!e &&
+                    !!t &&
+                    e.lineNumber === t.lineNumber &&
+                    e.column === t.column)
+            );
+        }
+        isBefore(t) {
+            return e.isBefore(this, t);
+        }
+        static isBefore(e, t) {
+            return (
+                e.lineNumber < t.lineNumber ||
+                (!(t.lineNumber < e.lineNumber) && e.column < t.column)
+            );
+        }
+        isBeforeOrEqual(t) {
+            return e.isBeforeOrEqual(this, t);
+        }
+        static isBeforeOrEqual(e, t) {
+            return (
+                e.lineNumber < t.lineNumber ||
+                (!(t.lineNumber < e.lineNumber) && e.column <= t.column)
+            );
+        }
+        static compare(e, t) {
+            const n = 0 | e.lineNumber,
+                r = 0 | t.lineNumber;
+            if (n === r) {
+                return (0 | e.column) - (0 | t.column);
             }
-            with(t = this.lineNumber, n = this.column) {
-                return t === this.lineNumber && n === this.column
-                    ? this
-                    : new e(t, n);
-            }
-            delta(e = 0, t = 0) {
-                return this.with(
-                    Math.max(1, this.lineNumber + e),
-                    Math.max(1, this.column + t),
-                );
-            }
-            equals(t) {
-                return e.equals(this, t);
-            }
-            static equals(e, t) {
-                return (
-                    (!e && !t) ||
-                    (!!e &&
-                        !!t &&
-                        e.lineNumber === t.lineNumber &&
-                        e.column === t.column)
-                );
-            }
-            isBefore(t) {
-                return e.isBefore(this, t);
-            }
-            static isBefore(e, t) {
-                return (
-                    e.lineNumber < t.lineNumber ||
-                    (!(t.lineNumber < e.lineNumber) && e.column < t.column)
-                );
-            }
-            isBeforeOrEqual(t) {
-                return e.isBeforeOrEqual(this, t);
-            }
-            static isBeforeOrEqual(e, t) {
-                return (
-                    e.lineNumber < t.lineNumber ||
-                    (!(t.lineNumber < e.lineNumber) && e.column <= t.column)
-                );
-            }
-            static compare(e, t) {
-                const n = 0 | e.lineNumber,
-                    r = 0 | t.lineNumber;
-                if (n === r) {
-                    return (0 | e.column) - (0 | t.column);
-                }
-                return n - r;
-            }
-            clone() {
-                return new e(this.lineNumber, this.column);
-            }
-            toString() {
-                return "(" + this.lineNumber + "," + this.column + ")";
-            }
-            static lift(t) {
-                return new e(t.lineNumber, t.column);
-            }
-            static isIPosition(e) {
-                return (
-                    !!e &&
-                    "number" == typeof e.lineNumber &&
-                    "number" == typeof e.column
-                );
-            }
-            toJSON() {
-                return { lineNumber: this.lineNumber, column: this.column };
-            }
-        },
+            return n - r;
+        }
+        clone() {
+            return new e(this.lineNumber, this.column);
+        }
+        toString() {
+            return "(" + this.lineNumber + "," + this.column + ")";
+        }
+        static lift(t) {
+            return new e(t.lineNumber, t.column);
+        }
+        static isIPosition(e) {
+            return (
+                !!e &&
+                "number" == typeof e.lineNumber &&
+                "number" == typeof e.column
+            );
+        }
+        toJSON() {
+            return { lineNumber: this.lineNumber, column: this.column };
+        }
+    },
         ke = class e {
             constructor(e, t, n, r) {
                 e > n || (e === n && t > r)
                     ? ((this.startLineNumber = n),
-                      (this.startColumn = r),
-                      (this.endLineNumber = e),
-                      (this.endColumn = t))
+                        (this.startColumn = r),
+                        (this.endLineNumber = e),
+                        (this.endColumn = t))
                     : ((this.startLineNumber = e),
-                      (this.startColumn = t),
-                      (this.endLineNumber = n),
-                      (this.endColumn = r));
+                        (this.startColumn = t),
+                        (this.endLineNumber = n),
+                        (this.endColumn = r));
             }
             isEmpty() {
                 return e.isEmpty(this);
@@ -2441,15 +2441,15 @@
                     n.startLineNumber < t.startLineNumber
                         ? ((r = n.startLineNumber), (i = n.startColumn))
                         : n.startLineNumber === t.startLineNumber
-                          ? ((r = n.startLineNumber),
-                            (i = Math.min(n.startColumn, t.startColumn)))
-                          : ((r = t.startLineNumber), (i = t.startColumn)),
+                            ? ((r = n.startLineNumber),
+                                (i = Math.min(n.startColumn, t.startColumn)))
+                            : ((r = t.startLineNumber), (i = t.startColumn)),
                     n.endLineNumber > t.endLineNumber
                         ? ((s = n.endLineNumber), (o = n.endColumn))
                         : n.endLineNumber === t.endLineNumber
-                          ? ((s = n.endLineNumber),
-                            (o = Math.max(n.endColumn, t.endColumn)))
-                          : ((s = t.endLineNumber), (o = t.endColumn)),
+                            ? ((s = n.endLineNumber),
+                                (o = Math.max(n.endColumn, t.endColumn)))
+                            : ((s = t.endLineNumber), (o = t.endColumn)),
                     new e(r, i, s, o)
                 );
             }
@@ -2559,11 +2559,11 @@
             static lift(t) {
                 return t
                     ? new e(
-                          t.startLineNumber,
-                          t.startColumn,
-                          t.endLineNumber,
-                          t.endColumn,
-                      )
+                        t.startLineNumber,
+                        t.startColumn,
+                        t.endLineNumber,
+                        t.endColumn,
+                    )
                     : null;
             }
             static isIRange(e) {
@@ -2750,47 +2750,47 @@
             t = (function () {
                 return (
                     null === Pe &&
-                        (Pe = new Ie([
-                            [1, 104, 2],
-                            [1, 72, 2],
-                            [1, 102, 6],
-                            [1, 70, 6],
-                            [2, 116, 3],
-                            [2, 84, 3],
-                            [3, 116, 4],
-                            [3, 84, 4],
-                            [4, 112, 5],
-                            [4, 80, 5],
-                            [5, 115, 9],
-                            [5, 83, 9],
-                            [5, 58, 10],
-                            [6, 105, 7],
-                            [6, 73, 7],
-                            [7, 108, 8],
-                            [7, 76, 8],
-                            [8, 101, 9],
-                            [8, 69, 9],
-                            [9, 58, 10],
-                            [10, 47, 11],
-                            [11, 47, 12],
-                        ])),
+                    (Pe = new Ie([
+                        [1, 104, 2],
+                        [1, 72, 2],
+                        [1, 102, 6],
+                        [1, 70, 6],
+                        [2, 116, 3],
+                        [2, 84, 3],
+                        [3, 116, 4],
+                        [3, 84, 4],
+                        [4, 112, 5],
+                        [4, 80, 5],
+                        [5, 115, 9],
+                        [5, 83, 9],
+                        [5, 58, 10],
+                        [6, 105, 7],
+                        [6, 73, 7],
+                        [7, 108, 8],
+                        [7, 76, 8],
+                        [8, 101, 9],
+                        [8, 69, 9],
+                        [9, 58, 10],
+                        [10, 47, 11],
+                        [11, 47, 12],
+                    ])),
                     Pe
                 );
             })(),
         ) {
             const n = (function () {
-                    if (null === Fe) {
-                        Fe = new Me(0);
-                        const e =
-                            " \t<>'\"、。｡､，．：；‘〈「『〔（［｛｢｣｝］）〕』」〉’｀～…|";
-                        for (let n = 0; n < e.length; n++)
-                            Fe.set(e.charCodeAt(n), 1);
-                        const t = ".,;:";
-                        for (let n = 0; n < t.length; n++)
-                            Fe.set(t.charCodeAt(n), 2);
-                    }
-                    return Fe;
-                })(),
+                if (null === Fe) {
+                    Fe = new Me(0);
+                    const e =
+                        " \t<>'\"、。｡､，．：；‘〈「『〔（［｛｢｣｝］）〕』」〉’｀～…|";
+                    for (let n = 0; n < e.length; n++)
+                        Fe.set(e.charCodeAt(n), 1);
+                    const t = ".,;:";
+                    for (let n = 0; n < t.length; n++)
+                        Fe.set(t.charCodeAt(n), 2);
+                }
+                return Fe;
+            })(),
                 r = [];
             for (let i = 1, s = e.getLineCount(); i <= s; i++) {
                 const s = e.getLineContent(i),
@@ -2803,7 +2803,7 @@
                     d = !1,
                     f = !1,
                     m = !1;
-                for (; a < o; ) {
+                for (; a < o;) {
                     let e = !1;
                     const o = s.charCodeAt(a);
                     if (13 === c) {
@@ -2834,8 +2834,8 @@
                                     u === o
                                         ? 1
                                         : 39 === u || 34 === u || 96 === u
-                                          ? 0
-                                          : 1;
+                                            ? 0
+                                            : 1;
                                 break;
                             case 42:
                                 t = 42 === u ? 1 : 0;
@@ -2855,11 +2855,11 @@
                     } else ((c = t.nextState(c, o)), 0 === c && (e = !0));
                     (e &&
                         ((c = 1),
-                        (h = !1),
-                        (d = !1),
-                        (m = !1),
-                        (l = a + 1),
-                        (u = o)),
+                            (h = !1),
+                            (d = !1),
+                            (m = !1),
+                            (l = a + 1),
+                            (u = o)),
                         a++);
                 }
                 13 === c && r.push(Ve._createLink(n, s, i, l, o));
@@ -2909,8 +2909,8 @@
             return isNaN(r) || isNaN(i) || r !== i
                 ? null
                 : 0 !== r || t
-                  ? ((r = Math.floor(r * n)), (r += t ? n : -n), String(r / n))
-                  : null;
+                    ? ((r = Math.floor(r * n)), (r += t ? n : -n), String(r / n))
+                    : null;
         }
         textReplace(e, t) {
             return this.valueSetsReplace(this._defaultValueSet, e, t);
@@ -2925,8 +2925,8 @@
             let r = e.indexOf(t);
             return r >= 0
                 ? ((r += n ? 1 : -1),
-                  r < 0 ? (r = e.length - 1) : (r %= e.length),
-                  e[r])
+                    r < 0 ? (r = e.length - 1) : (r %= e.length),
+                    e[r])
                 : null;
         }
     }
@@ -2966,7 +2966,7 @@
         cancel() {
             this._isCancelled ||
                 ((this._isCancelled = !0),
-                this._emitter && (this._emitter.fire(void 0), this.dispose()));
+                    this._emitter && (this._emitter.fire(void 0), this.dispose()));
         }
         get isCancellationRequested() {
             return this._isCancelled;
@@ -2975,7 +2975,7 @@
             return this._isCancelled
                 ? qe
                 : (this._emitter || (this._emitter = new A()),
-                  this._emitter.event);
+                    this._emitter.event);
         }
         dispose() {
             this._emitter && (this._emitter.dispose(), (this._emitter = null));
@@ -3516,7 +3516,7 @@
             const [e, t, s, o, a, l, u, c, h] = i;
             if (
                 (r[t] || ((r[t] = !0), (Ge[s] = t), (Je[s.toLowerCase()] = t)),
-                !n[o])
+                    !n[o])
             ) {
                 if (((n[o] = !0), !a))
                     throw new Error(
@@ -3580,29 +3580,29 @@
     } else
         Ze =
             "undefined" != typeof process &&
-            "string" == typeof process?.versions?.node
+                "string" == typeof process?.versions?.node
                 ? {
-                      get platform() {
-                          return process.platform;
-                      },
-                      get arch() {
-                          return process.arch;
-                      },
-                      get env() {
-                          return Qe;
-                      },
-                      cwd: () => Qe.VSCODE_CWD || process.cwd(),
-                  }
+                    get platform() {
+                        return process.platform;
+                    },
+                    get arch() {
+                        return process.arch;
+                    },
+                    get env() {
+                        return Qe;
+                    },
+                    cwd: () => Qe.VSCODE_CWD || process.cwd(),
+                }
                 : {
-                      get platform() {
-                          return z ? "win32" : H ? "darwin" : "linux";
-                      },
-                      get arch() {},
-                      get env() {
-                          return {};
-                      },
-                      cwd: () => "/",
-                  };
+                    get platform() {
+                        return z ? "win32" : H ? "darwin" : "linux";
+                    },
+                    get arch() { },
+                    get env() {
+                        return {};
+                    },
+                    cwd: () => "/",
+                };
     const et = Ze.cwd,
         tt = Ze.env,
         nt = Ze.platform,
@@ -3662,7 +3662,7 @@
                             (-1 === e
                                 ? ((i = ""), (s = 0))
                                 : ((i = i.slice(0, e)),
-                                  (s = i.length - 1 - i.lastIndexOf(n))),
+                                    (s = i.length - 1 - i.lastIndexOf(n))),
                                 (o = u),
                                 (a = 0));
                             continue;
@@ -3696,452 +3696,452 @@
         return n ? (n === t.root ? `${n}${r}` : `${n}${e}${r}`) : r;
     }
     const gt = {
-            resolve(...e) {
-                let t = "",
-                    n = "",
-                    r = !1;
-                for (let i = e.length - 1; i >= -1; i--) {
-                    let s;
-                    if (i >= 0) {
-                        if (((s = e[i]), lt(s, `paths[${i}]`), 0 === s.length))
-                            continue;
-                    } else
-                        0 === t.length
-                            ? (s = et())
-                            : ((s = tt[`=${t}`] || et()),
-                              (void 0 === s ||
-                                  (s.slice(0, 2).toLowerCase() !==
-                                      t.toLowerCase() &&
-                                      s.charCodeAt(2) === st)) &&
-                                  (s = `${t}\\`));
-                    const o = s.length;
-                    let a = 0,
-                        l = "",
-                        u = !1;
-                    const c = s.charCodeAt(0);
-                    if (1 === o) ct(c) && ((a = 1), (u = !0));
-                    else if (ct(c))
-                        if (((u = !0), ct(s.charCodeAt(1)))) {
-                            let e = 2,
-                                t = e;
-                            for (; e < o && !ct(s.charCodeAt(e)); ) e++;
+        resolve(...e) {
+            let t = "",
+                n = "",
+                r = !1;
+            for (let i = e.length - 1; i >= -1; i--) {
+                let s;
+                if (i >= 0) {
+                    if (((s = e[i]), lt(s, `paths[${i}]`), 0 === s.length))
+                        continue;
+                } else
+                    0 === t.length
+                        ? (s = et())
+                        : ((s = tt[`=${t}`] || et()),
+                            (void 0 === s ||
+                                (s.slice(0, 2).toLowerCase() !==
+                                    t.toLowerCase() &&
+                                    s.charCodeAt(2) === st)) &&
+                            (s = `${t}\\`));
+                const o = s.length;
+                let a = 0,
+                    l = "",
+                    u = !1;
+                const c = s.charCodeAt(0);
+                if (1 === o) ct(c) && ((a = 1), (u = !0));
+                else if (ct(c))
+                    if (((u = !0), ct(s.charCodeAt(1)))) {
+                        let e = 2,
+                            t = e;
+                        for (; e < o && !ct(s.charCodeAt(e));) e++;
+                        if (e < o && e !== t) {
+                            const n = s.slice(t, e);
+                            for (t = e; e < o && ct(s.charCodeAt(e));) e++;
                             if (e < o && e !== t) {
-                                const n = s.slice(t, e);
-                                for (t = e; e < o && ct(s.charCodeAt(e)); ) e++;
-                                if (e < o && e !== t) {
-                                    for (t = e; e < o && !ct(s.charCodeAt(e)); )
-                                        e++;
-                                    (e !== o && e === t) ||
-                                        ((l = `\\\\${n}\\${s.slice(t, e)}`),
+                                for (t = e; e < o && !ct(s.charCodeAt(e));)
+                                    e++;
+                                (e !== o && e === t) ||
+                                    ((l = `\\\\${n}\\${s.slice(t, e)}`),
                                         (a = e));
-                                }
                             }
-                        } else a = 1;
-                    else
-                        dt(c) &&
-                            s.charCodeAt(1) === ot &&
-                            ((l = s.slice(0, 2)),
+                        }
+                    } else a = 1;
+                else
+                    dt(c) &&
+                        s.charCodeAt(1) === ot &&
+                        ((l = s.slice(0, 2)),
                             (a = 2),
                             o > 2 &&
-                                ct(s.charCodeAt(2)) &&
-                                ((u = !0), (a = 3)));
-                    if (l.length > 0)
-                        if (t.length > 0) {
-                            if (l.toLowerCase() !== t.toLowerCase()) continue;
-                        } else t = l;
-                    if (r) {
-                        if (t.length > 0) break;
-                    } else if (
-                        ((n = `${s.slice(a)}\\${n}`),
+                            ct(s.charCodeAt(2)) &&
+                            ((u = !0), (a = 3)));
+                if (l.length > 0)
+                    if (t.length > 0) {
+                        if (l.toLowerCase() !== t.toLowerCase()) continue;
+                    } else t = l;
+                if (r) {
+                    if (t.length > 0) break;
+                } else if (
+                    ((n = `${s.slice(a)}\\${n}`),
                         (r = u),
                         u && t.length > 0)
-                    )
-                        break;
-                }
-                return (
-                    (n = ft(n, !r, "\\", ct)),
-                    r ? `${t}\\${n}` : `${t}${n}` || "."
-                );
-            },
-            normalize(e) {
-                lt(e, "path");
-                const t = e.length;
-                if (0 === t) return ".";
-                let n,
-                    r = 0,
-                    i = !1;
-                const s = e.charCodeAt(0);
-                if (1 === t) return ht(s) ? "\\" : e;
-                if (ct(s))
-                    if (((i = !0), ct(e.charCodeAt(1)))) {
-                        let i = 2,
-                            s = i;
-                        for (; i < t && !ct(e.charCodeAt(i)); ) i++;
+                )
+                    break;
+            }
+            return (
+                (n = ft(n, !r, "\\", ct)),
+                r ? `${t}\\${n}` : `${t}${n}` || "."
+            );
+        },
+        normalize(e) {
+            lt(e, "path");
+            const t = e.length;
+            if (0 === t) return ".";
+            let n,
+                r = 0,
+                i = !1;
+            const s = e.charCodeAt(0);
+            if (1 === t) return ht(s) ? "\\" : e;
+            if (ct(s))
+                if (((i = !0), ct(e.charCodeAt(1)))) {
+                    let i = 2,
+                        s = i;
+                    for (; i < t && !ct(e.charCodeAt(i));) i++;
+                    if (i < t && i !== s) {
+                        const o = e.slice(s, i);
+                        for (s = i; i < t && ct(e.charCodeAt(i));) i++;
                         if (i < t && i !== s) {
-                            const o = e.slice(s, i);
-                            for (s = i; i < t && ct(e.charCodeAt(i)); ) i++;
-                            if (i < t && i !== s) {
-                                for (s = i; i < t && !ct(e.charCodeAt(i)); )
-                                    i++;
-                                if (i === t) return `\\\\${o}\\${e.slice(s)}\\`;
-                                i !== s &&
-                                    ((n = `\\\\${o}\\${e.slice(s, i)}`),
+                            for (s = i; i < t && !ct(e.charCodeAt(i));)
+                                i++;
+                            if (i === t) return `\\\\${o}\\${e.slice(s)}\\`;
+                            i !== s &&
+                                ((n = `\\\\${o}\\${e.slice(s, i)}`),
                                     (r = i));
-                            }
                         }
-                    } else r = 1;
-                else
-                    dt(s) &&
-                        e.charCodeAt(1) === ot &&
-                        ((n = e.slice(0, 2)),
+                    }
+                } else r = 1;
+            else
+                dt(s) &&
+                    e.charCodeAt(1) === ot &&
+                    ((n = e.slice(0, 2)),
                         (r = 2),
                         t > 2 && ct(e.charCodeAt(2)) && ((i = !0), (r = 3)));
-                let o = r < t ? ft(e.slice(r), !i, "\\", ct) : "";
-                if (
-                    (0 !== o.length || i || (o = "."),
+            let o = r < t ? ft(e.slice(r), !i, "\\", ct) : "";
+            if (
+                (0 !== o.length || i || (o = "."),
                     o.length > 0 && ct(e.charCodeAt(t - 1)) && (o += "\\"),
                     !i && void 0 === n && e.includes(":"))
-                ) {
-                    if (
-                        o.length >= 2 &&
-                        dt(o.charCodeAt(0)) &&
-                        o.charCodeAt(1) === ot
-                    )
+            ) {
+                if (
+                    o.length >= 2 &&
+                    dt(o.charCodeAt(0)) &&
+                    o.charCodeAt(1) === ot
+                )
+                    return `.\\${o}`;
+                let n = e.indexOf(":");
+                do {
+                    if (n === t - 1 || ct(e.charCodeAt(n + 1)))
                         return `.\\${o}`;
-                    let n = e.indexOf(":");
-                    do {
-                        if (n === t - 1 || ct(e.charCodeAt(n + 1)))
-                            return `.\\${o}`;
-                    } while (-1 !== (n = e.indexOf(":", n + 1)));
-                }
-                return void 0 === n
-                    ? i
-                        ? `\\${o}`
-                        : o
-                    : i
-                      ? `${n}\\${o}`
-                      : `${n}${o}`;
-            },
-            isAbsolute(e) {
-                lt(e, "path");
-                const t = e.length;
-                if (0 === t) return !1;
-                const n = e.charCodeAt(0);
-                return (
-                    ct(n) ||
-                    (t > 2 &&
-                        dt(n) &&
-                        e.charCodeAt(1) === ot &&
-                        ct(e.charCodeAt(2)))
+                } while (-1 !== (n = e.indexOf(":", n + 1)));
+            }
+            return void 0 === n
+                ? i
+                    ? `\\${o}`
+                    : o
+                : i
+                    ? `${n}\\${o}`
+                    : `${n}${o}`;
+        },
+        isAbsolute(e) {
+            lt(e, "path");
+            const t = e.length;
+            if (0 === t) return !1;
+            const n = e.charCodeAt(0);
+            return (
+                ct(n) ||
+                (t > 2 &&
+                    dt(n) &&
+                    e.charCodeAt(1) === ot &&
+                    ct(e.charCodeAt(2)))
+            );
+        },
+        join(...e) {
+            if (0 === e.length) return ".";
+            let t, n;
+            for (let s = 0; s < e.length; ++s) {
+                const r = e[s];
+                (lt(r, "path"),
+                    r.length > 0 &&
+                    (void 0 === t ? (t = n = r) : (t += `\\${r}`)));
+            }
+            if (void 0 === t) return ".";
+            let r = !0,
+                i = 0;
+            if ("string" == typeof n && ct(n.charCodeAt(0))) {
+                ++i;
+                const e = n.length;
+                e > 1 &&
+                    ct(n.charCodeAt(1)) &&
+                    (++i, e > 2 && (ct(n.charCodeAt(2)) ? ++i : (r = !1)));
+            }
+            if (r) {
+                for (; i < t.length && ct(t.charCodeAt(i));) i++;
+                i >= 2 && (t = `\\${t.slice(i)}`);
+            }
+            return gt.normalize(t);
+        },
+        relative(e, t) {
+            if ((lt(e, "from"), lt(t, "to"), e === t)) return "";
+            const n = gt.resolve(e),
+                r = gt.resolve(t);
+            if (n === r) return "";
+            if ((e = n.toLowerCase()) === (t = r.toLowerCase())) return "";
+            if (n.length !== e.length || r.length !== t.length) {
+                const e = n.split("\\"),
+                    t = r.split("\\");
+                ("" === e[e.length - 1] && e.pop(),
+                    "" === t[t.length - 1] && t.pop());
+                const i = e.length,
+                    s = t.length,
+                    o = i < s ? i : s;
+                let a;
+                for (
+                    a = 0;
+                    a < o && e[a].toLowerCase() === t[a].toLowerCase();
+                    a++
                 );
-            },
-            join(...e) {
-                if (0 === e.length) return ".";
-                let t, n;
-                for (let s = 0; s < e.length; ++s) {
-                    const r = e[s];
-                    (lt(r, "path"),
-                        r.length > 0 &&
-                            (void 0 === t ? (t = n = r) : (t += `\\${r}`)));
-                }
-                if (void 0 === t) return ".";
-                let r = !0,
-                    i = 0;
-                if ("string" == typeof n && ct(n.charCodeAt(0))) {
-                    ++i;
-                    const e = n.length;
-                    e > 1 &&
-                        ct(n.charCodeAt(1)) &&
-                        (++i, e > 2 && (ct(n.charCodeAt(2)) ? ++i : (r = !1)));
-                }
-                if (r) {
-                    for (; i < t.length && ct(t.charCodeAt(i)); ) i++;
-                    i >= 2 && (t = `\\${t.slice(i)}`);
-                }
-                return gt.normalize(t);
-            },
-            relative(e, t) {
-                if ((lt(e, "from"), lt(t, "to"), e === t)) return "";
-                const n = gt.resolve(e),
-                    r = gt.resolve(t);
-                if (n === r) return "";
-                if ((e = n.toLowerCase()) === (t = r.toLowerCase())) return "";
-                if (n.length !== e.length || r.length !== t.length) {
-                    const e = n.split("\\"),
-                        t = r.split("\\");
-                    ("" === e[e.length - 1] && e.pop(),
-                        "" === t[t.length - 1] && t.pop());
-                    const i = e.length,
-                        s = t.length,
-                        o = i < s ? i : s;
-                    let a;
-                    for (
-                        a = 0;
-                        a < o && e[a].toLowerCase() === t[a].toLowerCase();
-                        a++
-                    );
-                    return 0 === a
-                        ? r
-                        : a === o
-                          ? s > o
-                              ? t.slice(a).join("\\")
-                              : i > o
+                return 0 === a
+                    ? r
+                    : a === o
+                        ? s > o
+                            ? t.slice(a).join("\\")
+                            : i > o
                                 ? "..\\".repeat(i - 1 - a) + ".."
                                 : ""
-                          : "..\\".repeat(i - a) + t.slice(a).join("\\");
+                        : "..\\".repeat(i - a) + t.slice(a).join("\\");
+            }
+            let i = 0;
+            for (; i < e.length && e.charCodeAt(i) === st;) i++;
+            let s = e.length;
+            for (; s - 1 > i && e.charCodeAt(s - 1) === st;) s--;
+            const o = s - i;
+            let a = 0;
+            for (; a < t.length && t.charCodeAt(a) === st;) a++;
+            let l = t.length;
+            for (; l - 1 > a && t.charCodeAt(l - 1) === st;) l--;
+            const u = l - a,
+                c = o < u ? o : u;
+            let h = -1,
+                d = 0;
+            for (; d < c; d++) {
+                const n = e.charCodeAt(i + d);
+                if (n !== t.charCodeAt(a + d)) break;
+                n === st && (h = d);
+            }
+            if (d !== c) {
+                if (-1 === h) return r;
+            } else {
+                if (u > c) {
+                    if (t.charCodeAt(a + d) === st)
+                        return r.slice(a + d + 1);
+                    if (2 === d) return r.slice(a + d);
                 }
-                let i = 0;
-                for (; i < e.length && e.charCodeAt(i) === st; ) i++;
-                let s = e.length;
-                for (; s - 1 > i && e.charCodeAt(s - 1) === st; ) s--;
-                const o = s - i;
-                let a = 0;
-                for (; a < t.length && t.charCodeAt(a) === st; ) a++;
-                let l = t.length;
-                for (; l - 1 > a && t.charCodeAt(l - 1) === st; ) l--;
-                const u = l - a,
-                    c = o < u ? o : u;
-                let h = -1,
-                    d = 0;
-                for (; d < c; d++) {
-                    const n = e.charCodeAt(i + d);
-                    if (n !== t.charCodeAt(a + d)) break;
-                    n === st && (h = d);
+                (o > c &&
+                    (e.charCodeAt(i + d) === st
+                        ? (h = d)
+                        : 2 === d && (h = 3)),
+                    -1 === h && (h = 0));
+            }
+            let f = "";
+            for (d = i + h + 1; d <= s; ++d)
+                (d !== s && e.charCodeAt(d) !== st) ||
+                    (f += 0 === f.length ? ".." : "\\..");
+            return (
+                (a += h),
+                f.length > 0
+                    ? `${f}${r.slice(a, l)}`
+                    : (r.charCodeAt(a) === st && ++a, r.slice(a, l))
+            );
+        },
+        toNamespacedPath(e) {
+            if ("string" != typeof e || 0 === e.length) return e;
+            const t = gt.resolve(e);
+            if (t.length <= 2) return e;
+            if (t.charCodeAt(0) === st) {
+                if (t.charCodeAt(1) === st) {
+                    const e = t.charCodeAt(2);
+                    if (63 !== e && e !== rt)
+                        return `\\\\?\\UNC\\${t.slice(2)}`;
                 }
-                if (d !== c) {
-                    if (-1 === h) return r;
-                } else {
-                    if (u > c) {
-                        if (t.charCodeAt(a + d) === st)
-                            return r.slice(a + d + 1);
-                        if (2 === d) return r.slice(a + d);
-                    }
-                    (o > c &&
-                        (e.charCodeAt(i + d) === st
-                            ? (h = d)
-                            : 2 === d && (h = 3)),
-                        -1 === h && (h = 0));
-                }
-                let f = "";
-                for (d = i + h + 1; d <= s; ++d)
-                    (d !== s && e.charCodeAt(d) !== st) ||
-                        (f += 0 === f.length ? ".." : "\\..");
-                return (
-                    (a += h),
-                    f.length > 0
-                        ? `${f}${r.slice(a, l)}`
-                        : (r.charCodeAt(a) === st && ++a, r.slice(a, l))
-                );
-            },
-            toNamespacedPath(e) {
-                if ("string" != typeof e || 0 === e.length) return e;
-                const t = gt.resolve(e);
-                if (t.length <= 2) return e;
-                if (t.charCodeAt(0) === st) {
-                    if (t.charCodeAt(1) === st) {
-                        const e = t.charCodeAt(2);
-                        if (63 !== e && e !== rt)
-                            return `\\\\?\\UNC\\${t.slice(2)}`;
-                    }
-                } else if (
-                    dt(t.charCodeAt(0)) &&
-                    t.charCodeAt(1) === ot &&
-                    t.charCodeAt(2) === st
-                )
-                    return `\\\\?\\${t}`;
-                return t;
-            },
-            dirname(e) {
-                lt(e, "path");
-                const t = e.length;
-                if (0 === t) return ".";
-                let n = -1,
-                    r = 0;
-                const i = e.charCodeAt(0);
-                if (1 === t) return ct(i) ? e : ".";
-                if (ct(i)) {
-                    if (((n = r = 1), ct(e.charCodeAt(1)))) {
-                        let i = 2,
-                            s = i;
-                        for (; i < t && !ct(e.charCodeAt(i)); ) i++;
+            } else if (
+                dt(t.charCodeAt(0)) &&
+                t.charCodeAt(1) === ot &&
+                t.charCodeAt(2) === st
+            )
+                return `\\\\?\\${t}`;
+            return t;
+        },
+        dirname(e) {
+            lt(e, "path");
+            const t = e.length;
+            if (0 === t) return ".";
+            let n = -1,
+                r = 0;
+            const i = e.charCodeAt(0);
+            if (1 === t) return ct(i) ? e : ".";
+            if (ct(i)) {
+                if (((n = r = 1), ct(e.charCodeAt(1)))) {
+                    let i = 2,
+                        s = i;
+                    for (; i < t && !ct(e.charCodeAt(i));) i++;
+                    if (i < t && i !== s) {
+                        for (s = i; i < t && ct(e.charCodeAt(i));) i++;
                         if (i < t && i !== s) {
-                            for (s = i; i < t && ct(e.charCodeAt(i)); ) i++;
-                            if (i < t && i !== s) {
-                                for (s = i; i < t && !ct(e.charCodeAt(i)); )
-                                    i++;
-                                if (i === t) return e;
-                                i !== s && (n = r = i + 1);
-                            }
+                            for (s = i; i < t && !ct(e.charCodeAt(i));)
+                                i++;
+                            if (i === t) return e;
+                            i !== s && (n = r = i + 1);
                         }
                     }
-                } else
-                    dt(i) &&
-                        e.charCodeAt(1) === ot &&
-                        ((n = t > 2 && ct(e.charCodeAt(2)) ? 3 : 2), (r = n));
-                let s = -1,
-                    o = !0;
-                for (let a = t - 1; a >= r; --a)
-                    if (ct(e.charCodeAt(a))) {
-                        if (!o) {
-                            s = a;
-                            break;
-                        }
-                    } else o = !1;
-                if (-1 === s) {
-                    if (-1 === n) return ".";
-                    s = n;
                 }
-                return e.slice(0, s);
-            },
-            basename(e, t) {
-                (void 0 !== t && lt(t, "suffix"), lt(e, "path"));
-                let n,
-                    r = 0,
-                    i = -1,
-                    s = !0;
-                if (
-                    (e.length >= 2 &&
-                        dt(e.charCodeAt(0)) &&
-                        e.charCodeAt(1) === ot &&
-                        (r = 2),
+            } else
+                dt(i) &&
+                    e.charCodeAt(1) === ot &&
+                    ((n = t > 2 && ct(e.charCodeAt(2)) ? 3 : 2), (r = n));
+            let s = -1,
+                o = !0;
+            for (let a = t - 1; a >= r; --a)
+                if (ct(e.charCodeAt(a))) {
+                    if (!o) {
+                        s = a;
+                        break;
+                    }
+                } else o = !1;
+            if (-1 === s) {
+                if (-1 === n) return ".";
+                s = n;
+            }
+            return e.slice(0, s);
+        },
+        basename(e, t) {
+            (void 0 !== t && lt(t, "suffix"), lt(e, "path"));
+            let n,
+                r = 0,
+                i = -1,
+                s = !0;
+            if (
+                (e.length >= 2 &&
+                    dt(e.charCodeAt(0)) &&
+                    e.charCodeAt(1) === ot &&
+                    (r = 2),
                     void 0 !== t && t.length > 0 && t.length <= e.length)
-                ) {
-                    if (t === e) return "";
-                    let o = t.length - 1,
-                        a = -1;
-                    for (n = e.length - 1; n >= r; --n) {
-                        const l = e.charCodeAt(n);
-                        if (ct(l)) {
-                            if (!s) {
-                                r = n + 1;
-                                break;
-                            }
-                        } else
-                            (-1 === a && ((s = !1), (a = n + 1)),
-                                o >= 0 &&
-                                    (l === t.charCodeAt(o)
-                                        ? -1 === --o && (i = n)
-                                        : ((o = -1), (i = a))));
-                    }
-                    return (
-                        r === i ? (i = a) : -1 === i && (i = e.length),
-                        e.slice(r, i)
-                    );
-                }
-                for (n = e.length - 1; n >= r; --n)
-                    if (ct(e.charCodeAt(n))) {
+            ) {
+                if (t === e) return "";
+                let o = t.length - 1,
+                    a = -1;
+                for (n = e.length - 1; n >= r; --n) {
+                    const l = e.charCodeAt(n);
+                    if (ct(l)) {
                         if (!s) {
                             r = n + 1;
                             break;
                         }
-                    } else -1 === i && ((s = !1), (i = n + 1));
-                return -1 === i ? "" : e.slice(r, i);
-            },
-            extname(e) {
-                lt(e, "path");
-                let t = 0,
-                    n = -1,
-                    r = 0,
-                    i = -1,
-                    s = !0,
-                    o = 0;
-                e.length >= 2 &&
-                    e.charCodeAt(1) === ot &&
-                    dt(e.charCodeAt(0)) &&
-                    (t = r = 2);
-                for (let a = e.length - 1; a >= t; --a) {
-                    const t = e.charCodeAt(a);
-                    if (ct(t)) {
-                        if (!s) {
-                            r = a + 1;
-                            break;
-                        }
                     } else
-                        (-1 === i && ((s = !1), (i = a + 1)),
-                            t === rt
-                                ? -1 === n
-                                    ? (n = a)
-                                    : 1 !== o && (o = 1)
-                                : -1 !== n && (o = -1));
+                        (-1 === a && ((s = !1), (a = n + 1)),
+                            o >= 0 &&
+                            (l === t.charCodeAt(o)
+                                ? -1 === --o && (i = n)
+                                : ((o = -1), (i = a))));
                 }
-                return -1 === n ||
-                    -1 === i ||
-                    0 === o ||
-                    (1 === o && n === i - 1 && n === r + 1)
-                    ? ""
-                    : e.slice(n, i);
-            },
-            format: mt.bind(null, "\\"),
-            parse(e) {
-                lt(e, "path");
-                const t = { root: "", dir: "", base: "", ext: "", name: "" };
-                if (0 === e.length) return t;
-                const n = e.length;
-                let r = 0,
-                    i = e.charCodeAt(0);
-                if (1 === n)
-                    return ct(i)
-                        ? ((t.root = t.dir = e), t)
-                        : ((t.base = t.name = e), t);
-                if (ct(i)) {
-                    if (((r = 1), ct(e.charCodeAt(1)))) {
-                        let t = 2,
-                            i = t;
-                        for (; t < n && !ct(e.charCodeAt(t)); ) t++;
-                        if (t < n && t !== i) {
-                            for (i = t; t < n && ct(e.charCodeAt(t)); ) t++;
-                            if (t < n && t !== i) {
-                                for (i = t; t < n && !ct(e.charCodeAt(t)); )
-                                    t++;
-                                t === n ? (r = t) : t !== i && (r = t + 1);
-                            }
-                        }
-                    }
-                } else if (dt(i) && e.charCodeAt(1) === ot) {
-                    if (n <= 2) return ((t.root = t.dir = e), t);
-                    if (((r = 2), ct(e.charCodeAt(2)))) {
-                        if (3 === n) return ((t.root = t.dir = e), t);
-                        r = 3;
-                    }
-                }
-                r > 0 && (t.root = e.slice(0, r));
-                let s = -1,
-                    o = r,
-                    a = -1,
-                    l = !0,
-                    u = e.length - 1,
-                    c = 0;
-                for (; u >= r; --u)
-                    if (((i = e.charCodeAt(u)), ct(i))) {
-                        if (!l) {
-                            o = u + 1;
-                            break;
-                        }
-                    } else
-                        (-1 === a && ((l = !1), (a = u + 1)),
-                            i === rt
-                                ? -1 === s
-                                    ? (s = u)
-                                    : 1 !== c && (c = 1)
-                                : -1 !== s && (c = -1));
                 return (
-                    -1 !== a &&
-                        (-1 === s ||
-                        0 === c ||
-                        (1 === c && s === a - 1 && s === o + 1)
-                            ? (t.base = t.name = e.slice(o, a))
-                            : ((t.name = e.slice(o, s)),
-                              (t.base = e.slice(o, a)),
-                              (t.ext = e.slice(s, a)))),
-                    (t.dir = o > 0 && o !== r ? e.slice(0, o - 1) : t.root),
-                    t
+                    r === i ? (i = a) : -1 === i && (i = e.length),
+                    e.slice(r, i)
                 );
-            },
-            sep: "\\",
-            delimiter: ";",
-            win32: null,
-            posix: null,
+            }
+            for (n = e.length - 1; n >= r; --n)
+                if (ct(e.charCodeAt(n))) {
+                    if (!s) {
+                        r = n + 1;
+                        break;
+                    }
+                } else -1 === i && ((s = !1), (i = n + 1));
+            return -1 === i ? "" : e.slice(r, i);
         },
+        extname(e) {
+            lt(e, "path");
+            let t = 0,
+                n = -1,
+                r = 0,
+                i = -1,
+                s = !0,
+                o = 0;
+            e.length >= 2 &&
+                e.charCodeAt(1) === ot &&
+                dt(e.charCodeAt(0)) &&
+                (t = r = 2);
+            for (let a = e.length - 1; a >= t; --a) {
+                const t = e.charCodeAt(a);
+                if (ct(t)) {
+                    if (!s) {
+                        r = a + 1;
+                        break;
+                    }
+                } else
+                    (-1 === i && ((s = !1), (i = a + 1)),
+                        t === rt
+                            ? -1 === n
+                                ? (n = a)
+                                : 1 !== o && (o = 1)
+                            : -1 !== n && (o = -1));
+            }
+            return -1 === n ||
+                -1 === i ||
+                0 === o ||
+                (1 === o && n === i - 1 && n === r + 1)
+                ? ""
+                : e.slice(n, i);
+        },
+        format: mt.bind(null, "\\"),
+        parse(e) {
+            lt(e, "path");
+            const t = { root: "", dir: "", base: "", ext: "", name: "" };
+            if (0 === e.length) return t;
+            const n = e.length;
+            let r = 0,
+                i = e.charCodeAt(0);
+            if (1 === n)
+                return ct(i)
+                    ? ((t.root = t.dir = e), t)
+                    : ((t.base = t.name = e), t);
+            if (ct(i)) {
+                if (((r = 1), ct(e.charCodeAt(1)))) {
+                    let t = 2,
+                        i = t;
+                    for (; t < n && !ct(e.charCodeAt(t));) t++;
+                    if (t < n && t !== i) {
+                        for (i = t; t < n && ct(e.charCodeAt(t));) t++;
+                        if (t < n && t !== i) {
+                            for (i = t; t < n && !ct(e.charCodeAt(t));)
+                                t++;
+                            t === n ? (r = t) : t !== i && (r = t + 1);
+                        }
+                    }
+                }
+            } else if (dt(i) && e.charCodeAt(1) === ot) {
+                if (n <= 2) return ((t.root = t.dir = e), t);
+                if (((r = 2), ct(e.charCodeAt(2)))) {
+                    if (3 === n) return ((t.root = t.dir = e), t);
+                    r = 3;
+                }
+            }
+            r > 0 && (t.root = e.slice(0, r));
+            let s = -1,
+                o = r,
+                a = -1,
+                l = !0,
+                u = e.length - 1,
+                c = 0;
+            for (; u >= r; --u)
+                if (((i = e.charCodeAt(u)), ct(i))) {
+                    if (!l) {
+                        o = u + 1;
+                        break;
+                    }
+                } else
+                    (-1 === a && ((l = !1), (a = u + 1)),
+                        i === rt
+                            ? -1 === s
+                                ? (s = u)
+                                : 1 !== c && (c = 1)
+                            : -1 !== s && (c = -1));
+            return (
+                -1 !== a &&
+                (-1 === s ||
+                    0 === c ||
+                    (1 === c && s === a - 1 && s === o + 1)
+                    ? (t.base = t.name = e.slice(o, a))
+                    : ((t.name = e.slice(o, s)),
+                        (t.base = e.slice(o, a)),
+                        (t.ext = e.slice(s, a)))),
+                (t.dir = o > 0 && o !== r ? e.slice(0, o - 1) : t.root),
+                t
+            );
+        },
+        sep: "\\",
+        delimiter: ";",
+        win32: null,
+        posix: null,
+    },
         pt = (() => {
             if (ut) {
                 const e = /\\/g;
@@ -4160,7 +4160,7 @@
                     const i = e[r];
                     (lt(i, `paths[${r}]`),
                         0 !== i.length &&
-                            ((t = `${i}/${t}`), (n = i.charCodeAt(0) === it)));
+                        ((t = `${i}/${t}`), (n = i.charCodeAt(0) === it)));
                 }
                 if (!n) {
                     const e = pt();
@@ -4179,8 +4179,8 @@
                     ? t
                         ? "/"
                         : n
-                          ? "./"
-                          : "."
+                            ? "./"
+                            : "."
                     : (n && (e += "/"), t ? `/${e}` : e);
             },
             isAbsolute: (e) => (
@@ -4244,8 +4244,8 @@
                         ? "/"
                         : "."
                     : t && 1 === n
-                      ? "//"
-                      : e.slice(0, n);
+                        ? "//"
+                        : e.slice(0, n);
             },
             basename(e, t) {
                 (void 0 !== t && lt(t, "suffix"), lt(e, "path"));
@@ -4267,9 +4267,9 @@
                         } else
                             (-1 === a && ((s = !1), (a = n + 1)),
                                 o >= 0 &&
-                                    (l === t.charCodeAt(o)
-                                        ? -1 === --o && (i = n)
-                                        : ((o = -1), (i = a))));
+                                (l === t.charCodeAt(o)
+                                    ? -1 === --o && (i = n)
+                                    : ((o = -1), (i = a))));
                     }
                     return (
                         r === i ? (i = a) : -1 === i && (i = e.length),
@@ -4344,12 +4344,12 @@
                 if (-1 !== o) {
                     const r = 0 === s && n ? 1 : s;
                     -1 === i ||
-                    0 === u ||
-                    (1 === u && i === o - 1 && i === s + 1)
+                        0 === u ||
+                        (1 === u && i === o - 1 && i === s + 1)
                         ? (t.base = t.name = e.slice(r, o))
                         : ((t.name = e.slice(r, i)),
-                          (t.base = e.slice(r, o)),
-                          (t.ext = e.slice(i, o)));
+                            (t.base = e.slice(r, o)),
+                            (t.ext = e.slice(i, o)));
                 }
                 return (
                     s > 0 ? (t.dir = e.slice(0, s - 1)) : n && (t.dir = "/"),
@@ -4394,45 +4394,45 @@
         constructor(e, t, n, r, i, s = !1) {
             "object" == typeof e
                 ? ((this.scheme = e.scheme || Ct),
-                  (this.authority = e.authority || Ct),
-                  (this.path = e.path || Ct),
-                  (this.query = e.query || Ct),
-                  (this.fragment = e.fragment || Ct))
+                    (this.authority = e.authority || Ct),
+                    (this.path = e.path || Ct),
+                    (this.query = e.query || Ct),
+                    (this.fragment = e.fragment || Ct))
                 : ((this.scheme = (function (e, t) {
-                      return e || t ? e : "file";
-                  })(e, s)),
-                  (this.authority = t || Ct),
-                  (this.path = (function (e, t) {
-                      switch (e) {
-                          case "https":
-                          case "http":
-                          case "file":
-                              t ? t[0] !== _t && (t = _t + t) : (t = _t);
-                      }
-                      return t;
-                  })(this.scheme, n || Ct)),
-                  (this.query = r || Ct),
-                  (this.fragment = i || Ct),
-                  (function (e, t) {
-                      if (!e.scheme && t)
-                          throw new Error(
-                              `[UriError]: Scheme is missing: {scheme: "", authority: "${e.authority}", path: "${e.path}", query: "${e.query}", fragment: "${e.fragment}"}`,
-                          );
-                      if (e.scheme && !yt.test(e.scheme))
-                          throw new Error(
-                              "[UriError]: Scheme contains illegal characters.",
-                          );
-                      if (e.path)
-                          if (e.authority) {
-                              if (!vt.test(e.path))
-                                  throw new Error(
-                                      '[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash ("/") character',
-                                  );
-                          } else if (wt.test(e.path))
-                              throw new Error(
-                                  '[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters ("//")',
-                              );
-                  })(this, s));
+                    return e || t ? e : "file";
+                })(e, s)),
+                    (this.authority = t || Ct),
+                    (this.path = (function (e, t) {
+                        switch (e) {
+                            case "https":
+                            case "http":
+                            case "file":
+                                t ? t[0] !== _t && (t = _t + t) : (t = _t);
+                        }
+                        return t;
+                    })(this.scheme, n || Ct)),
+                    (this.query = r || Ct),
+                    (this.fragment = i || Ct),
+                    (function (e, t) {
+                        if (!e.scheme && t)
+                            throw new Error(
+                                `[UriError]: Scheme is missing: {scheme: "", authority: "${e.authority}", path: "${e.path}", query: "${e.query}", fragment: "${e.fragment}"}`,
+                            );
+                        if (e.scheme && !yt.test(e.scheme))
+                            throw new Error(
+                                "[UriError]: Scheme contains illegal characters.",
+                            );
+                        if (e.path)
+                            if (e.authority) {
+                                if (!vt.test(e.path))
+                                    throw new Error(
+                                        '[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash ("/") character',
+                                    );
+                            } else if (wt.test(e.path))
+                                throw new Error(
+                                    '[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters ("//")',
+                                );
+                    })(this, s));
         }
         get fsPath() {
             return Rt(this, !1);
@@ -4447,10 +4447,10 @@
                 void 0 === i ? (i = this.query) : null === i && (i = Ct),
                 void 0 === s ? (s = this.fragment) : null === s && (s = Ct),
                 t === this.scheme &&
-                n === this.authority &&
-                r === this.path &&
-                i === this.query &&
-                s === this.fragment
+                    n === this.authority &&
+                    r === this.path &&
+                    i === this.query &&
+                    s === this.fragment
                     ? this
                     : new xt(t, n, r, i, s)
             );
@@ -4459,13 +4459,13 @@
             const n = Lt.exec(e);
             return n
                 ? new xt(
-                      n[2] || Ct,
-                      It(n[4] || Ct),
-                      It(n[5] || Ct),
-                      It(n[7] || Ct),
-                      It(n[9] || Ct),
-                      t,
-                  )
+                    n[2] || Ct,
+                    It(n[4] || Ct),
+                    It(n[5] || Ct),
+                    It(n[7] || Ct),
+                    It(n[9] || Ct),
+                    t,
+                )
                 : new xt(Ct, Ct, Ct, Ct, Ct);
         }
         static file(e) {
@@ -4540,7 +4540,7 @@
             return e
                 ? Tt(this, !0)
                 : (this._formatted || (this._formatted = Tt(this, !1)),
-                  this._formatted);
+                    this._formatted);
         }
         toJSON() {
             const e = { $mid: 1 };
@@ -4603,9 +4603,9 @@
                 const t = Et[o];
                 void 0 !== t
                     ? (-1 !== i &&
-                          ((r += encodeURIComponent(e.substring(i, s))),
-                          (i = -1)),
-                      (r += t))
+                        ((r += encodeURIComponent(e.substring(i, s))),
+                            (i = -1)),
+                        (r += t))
                     : -1 === i && (i = s);
             }
         }
@@ -4636,10 +4636,10 @@
                             (e.path.charCodeAt(1) >= 97 &&
                                 e.path.charCodeAt(1) <= 122)) &&
                         58 === e.path.charCodeAt(2)
-                      ? t
-                          ? e.path.substr(1)
-                          : e.path[1].toLowerCase() + e.path.substr(2)
-                      : e.path),
+                        ? t
+                            ? e.path.substr(1)
+                            : e.path[1].toLowerCase() + e.path.substr(2)
+                        : e.path),
             z && (n = n.replace(/\//g, "\\")),
             n
         );
@@ -4650,8 +4650,8 @@
             { scheme: i, authority: s, path: o, query: a, fragment: l } = e;
         if (
             (i && ((r += i), (r += ":")),
-            (s || "file" === i) && ((r += _t), (r += _t)),
-            s)
+                (s || "file" === i) && ((r += _t), (r += _t)),
+                s)
         ) {
             let e = s.indexOf("@");
             if (-1 !== e) {
@@ -4661,8 +4661,8 @@
                     -1 === e
                         ? (r += n(t, !1, !1))
                         : ((r += n(t.substr(0, e), !1, !1)),
-                          (r += ":"),
-                          (r += n(t.substr(e + 1), !1, !0))),
+                            (r += ":"),
+                            (r += n(t.substr(e + 1), !1, !0))),
                     (r += "@"));
             }
             ((s = s.toLowerCase()),
@@ -4769,17 +4769,17 @@
         static fromRange(e, t) {
             return 0 === t
                 ? new Pt(
-                      e.startLineNumber,
-                      e.startColumn,
-                      e.endLineNumber,
-                      e.endColumn,
-                  )
+                    e.startLineNumber,
+                    e.startColumn,
+                    e.endLineNumber,
+                    e.endColumn,
+                )
                 : new Pt(
-                      e.endLineNumber,
-                      e.endColumn,
-                      e.startLineNumber,
-                      e.startColumn,
-                  );
+                    e.endLineNumber,
+                    e.endColumn,
+                    e.startLineNumber,
+                    e.startColumn,
+                );
         }
         static liftSelection(e) {
             return new Pt(
@@ -5551,10 +5551,10 @@
             const e = await this._factory.tokenizationSupport;
             ((this._isResolved = !0),
                 e &&
-                    !this._isDisposed &&
-                    this._register(
-                        this._registry.register(this._languageId, e),
-                    ));
+                !this._isDisposed &&
+                this._register(
+                    this._registry.register(this._languageId, e),
+                ));
         }
     }
     class Kt {
@@ -5948,7 +5948,7 @@
                     m(() => {
                         this._tokenizationSupports.get(e) === t &&
                             (this._tokenizationSupports.delete(e),
-                            this.handleChange([e]));
+                                this.handleChange([e]));
                     })
                 );
             }
@@ -6697,7 +6697,7 @@
             if (r) ((r.value = t), 0 !== n && this.touch(r, n));
             else {
                 switch (
-                    ((r = { key: e, value: t, next: void 0, previous: void 0 }),
+                ((r = { key: e, value: t, next: void 0, previous: void 0 }),
                     n)
                 ) {
                     case 0:
@@ -6739,12 +6739,12 @@
         forEach(e, t) {
             const n = this._state;
             let r = this._head;
-            for (; r; ) {
+            for (; r;) {
                 if (
                     (t
                         ? e.bind(t)(r.value, r.key, this)
                         : e(r.value, r.key, this),
-                    this._state !== n)
+                        this._state !== n)
                 )
                     throw new Error("LinkedMap got modified during iteration.");
                 r = r.next;
@@ -6818,7 +6818,7 @@
             if (0 === e) return void this.clear();
             let t = this._head,
                 n = this.size;
-            for (; t && n > e; ) (this._map.delete(t.key), (t = t.next), n--);
+            for (; t && n > e;) (this._map.delete(t.key), (t = t.next), n--);
             ((this._head = t),
                 (this._size = n),
                 t && (t.previous = void 0),
@@ -6829,7 +6829,7 @@
             if (0 === e) return void this.clear();
             let t = this._tail,
                 n = this.size;
-            for (; t && n > e; )
+            for (; t && n > e;)
                 (this._map.delete(t.key), (t = t.previous), n--);
             ((this._tail = t),
                 (this._size = n),
@@ -7045,8 +7045,8 @@
                 }
                 if (
                     ((this._prevMatchStartIndex = r),
-                    (this._prevMatchLength = i),
-                    !this._wordSeparators ||
+                        (this._prevMatchLength = i),
+                        !this._wordSeparators ||
                         ir(this._wordSeparators, e, t, r, i))
                 )
                     return n;
@@ -7106,7 +7106,7 @@
     }
     function cr(e, t, n, r) {
         let i;
-        for (; (i = e.exec(t)); ) {
+        for (; (i = e.exec(t));) {
             const t = i.index || 0;
             if (t <= n && e.lastIndex >= n) return i;
             if (r > 0 && t > r) return null;
@@ -7126,11 +7126,11 @@
                 "allNonBasicAscii" === o
                     ? new RegExp("[^\\t\\n\\r\\x20-\\x7E]", "g")
                     : new RegExp(
-                          "" +
-                              ((u = Array.from(o)),
-                              `[${((c = u.map((e) => String.fromCodePoint(e)).join("")), c.replace(/[\\\{\}\*\+\?\|\^\$\.\[\]\(\)]/g, "\\$&"))}]`),
-                          "g",
-                      );
+                        "" +
+                        ((u = Array.from(o)),
+                            `[${((c = u.map((e) => String.fromCodePoint(e)).join("")), c.replace(/[\\\{\}\*\+\?\|\^\$\.\[\]\(\)]/g, "\\$&"))}]`),
+                        "g",
+                    );
             const h = new sr(null, l),
                 d = [];
             let f,
@@ -7242,20 +7242,20 @@
                         t = se(s);
                     ((r = r || t),
                         t ||
-                            this.ambiguousCharacters.isAmbiguous(e) ||
-                            ae.isInvisibleCharacter(e) ||
-                            (i = !0));
+                        this.ambiguousCharacters.isAmbiguous(e) ||
+                        ae.isInvisibleCharacter(e) ||
+                        (i = !0));
                 }
             return !r && i
                 ? 0
                 : this.options.invisibleCharacters &&
                     !fr(e) &&
                     ae.isInvisibleCharacter(n)
-                  ? 2
-                  : this.options.ambiguousCharacters &&
-                      this.ambiguousCharacters.isAmbiguous(n)
-                    ? 3
-                    : 0;
+                    ? 2
+                    : this.options.ambiguousCharacters &&
+                        this.ambiguousCharacters.isAmbiguous(n)
+                        ? 3
+                        : 0;
         }
     }
     function fr(e) {
@@ -7295,7 +7295,7 @@
     const yr = (e, t) => e - t;
     class vr {
         static {
-            this.empty = new vr((e) => {});
+            this.empty = new vr((e) => { });
         }
         constructor(e) {
             this.iterate = e;
@@ -7334,9 +7334,9 @@
         }
         static addRange(e, t) {
             let n = 0;
-            for (; n < t.length && t[n].endExclusive < e.start; ) n++;
+            for (; n < t.length && t[n].endExclusive < e.start;) n++;
             let r = n;
-            for (; r < t.length && t[r].start <= e.endExclusive; ) r++;
+            for (; r < t.length && t[r].start <= e.endExclusive;) r++;
             if (n === r) t.splice(n, 0, e);
             else {
                 const i = Math.min(e.start, t[n].start),
@@ -7437,8 +7437,8 @@
             return e < this.start
                 ? this.endExclusive - ((this.start - e) % this.length)
                 : e >= this.endExclusive
-                  ? this.start + ((e - this.start) % this.length)
-                  : e;
+                    ? this.start + ((e - this.start) % this.length)
+                    : e;
         }
         forEach(e) {
             for (let t = this.start; t < this.endExclusive; t++) e(t);
@@ -7458,7 +7458,7 @@
     function _r(e, t, n = 0, r = e.length) {
         let i = n,
             s = r;
-        for (; i < s; ) {
+        for (; i < s;) {
             const n = Math.floor((i + s) / 2);
             t(e[n]) ? (i = n + 1) : (s = n);
         }
@@ -7467,7 +7467,7 @@
     function Lr(e, t, n = 0, r = e.length) {
         let i = n,
             s = r;
-        for (; i < s; ) {
+        for (; i < s;) {
             const n = Math.floor((i + s) / 2);
             t(e[n]) ? (s = n) : (i = n + 1);
         }
@@ -7596,11 +7596,11 @@
             return this.isEmpty
                 ? null
                 : new ke(
-                      this.startLineNumber,
-                      1,
-                      this.endLineNumberExclusive - 1,
-                      Number.MAX_SAFE_INTEGER,
-                  );
+                    this.startLineNumber,
+                    1,
+                    this.endLineNumberExclusive - 1,
+                    Number.MAX_SAFE_INTEGER,
+                );
         }
         toExclusiveRange() {
             return new ke(
@@ -7654,9 +7654,9 @@
         addRange(e) {
             if (0 === e.length) return;
             const t = Lr(
-                    this._normalizedRanges,
-                    (t) => t.endLineNumberExclusive >= e.startLineNumber,
-                ),
+                this._normalizedRanges,
+                (t) => t.endLineNumberExclusive >= e.startLineNumber,
+            ),
                 n =
                     _r(
                         this._normalizedRanges,
@@ -7713,22 +7713,22 @@
                 null === i
                     ? (i = s)
                     : i.endLineNumberExclusive >= s.startLineNumber
-                      ? (i = new Nr(
+                        ? (i = new Nr(
                             i.startLineNumber,
                             Math.max(
                                 i.endLineNumberExclusive,
                                 s.endLineNumberExclusive,
                             ),
                         ))
-                      : (t.push(i), (i = s));
+                        : (t.push(i), (i = s));
             }
             return (null !== i && t.push(i), new xr(t));
         }
         subtractFrom(e) {
             const t = Lr(
-                    this._normalizedRanges,
-                    (t) => t.endLineNumberExclusive >= e.startLineNumber,
-                ),
+                this._normalizedRanges,
+                (t) => t.endLineNumberExclusive >= e.startLineNumber,
+            ),
                 n =
                     _r(
                         this._normalizedRanges,
@@ -7744,7 +7744,7 @@
             }
             return (
                 i < e.endLineNumberExclusive &&
-                    r.push(new Nr(i, e.endLineNumberExclusive)),
+                r.push(new Nr(i, e.endLineNumberExclusive)),
                 new xr(r)
             );
         }
@@ -7814,17 +7814,17 @@
         createRange(e) {
             return 0 === this.lineCount
                 ? new ke(
-                      e.lineNumber,
-                      e.column,
-                      e.lineNumber,
-                      e.column + this.columnCount,
-                  )
+                    e.lineNumber,
+                    e.column,
+                    e.lineNumber,
+                    e.column + this.columnCount,
+                )
                 : new ke(
-                      e.lineNumber,
-                      e.column,
-                      e.lineNumber + this.lineCount,
-                      this.columnCount + 1,
-                  );
+                    e.lineNumber,
+                    e.column,
+                    e.lineNumber + this.lineCount,
+                    this.columnCount + 1,
+                );
         }
         toRange() {
             return new ke(1, 1, this.lineCount + 1, this.columnCount + 1);
@@ -7893,9 +7893,9 @@
             for (let t = 0; t < e.length; t++)
                 "\n" === e.charAt(t) &&
                     (this.lineStartOffsetByLineIdx.push(t + 1),
-                    t > 0 && "\r" === e.charAt(t - 1)
-                        ? this.lineEndOffsetByLineIdx.push(t - 1)
-                        : this.lineEndOffsetByLineIdx.push(t));
+                        t > 0 && "\r" === e.charAt(t - 1)
+                            ? this.lineEndOffsetByLineIdx.push(t - 1)
+                            : this.lineEndOffsetByLineIdx.push(t));
             this.lineEndOffsetByLineIdx.push(e.length);
         }
         getOffset(e) {
@@ -7959,7 +7959,7 @@
         getTransformer() {
             return (
                 this._transformer ||
-                    (this._transformer = new Rr(this.getValue())),
+                (this._transformer = new Rr(this.getValue())),
                 this._transformer
             );
         }
@@ -8282,8 +8282,8 @@
     class Dr extends Pr {
         static fromRangeMappings(e) {
             const t = Nr.join(
-                    e.map((e) => Nr.fromRangeInclusive(e.originalRange)),
-                ),
+                e.map((e) => Nr.fromRangeInclusive(e.originalRange)),
+            ),
                 n = Nr.join(
                     e.map((e) => Nr.fromRangeInclusive(e.modifiedRange)),
                 );
@@ -8357,23 +8357,23 @@
                     1 === e.modifiedRange.endColumn &&
                         1 === e.originalRange.endColumn &&
                         e.originalRange.startLineNumber + r <=
-                            e.originalRange.endLineNumber &&
+                        e.originalRange.endLineNumber &&
                         e.modifiedRange.startLineNumber + r <=
-                            e.modifiedRange.endLineNumber &&
+                        e.modifiedRange.endLineNumber &&
                         (i = -1);
                     e.modifiedRange.startColumn - 1 >=
                         n.getLineLength(e.modifiedRange.startLineNumber) &&
                         e.originalRange.startColumn - 1 >=
-                            t.getLineLength(e.originalRange.startLineNumber) &&
+                        t.getLineLength(e.originalRange.startLineNumber) &&
                         e.originalRange.startLineNumber <=
-                            e.originalRange.endLineNumber + i &&
+                        e.originalRange.endLineNumber + i &&
                         e.modifiedRange.startLineNumber <=
-                            e.modifiedRange.endLineNumber + i &&
+                        e.modifiedRange.endLineNumber + i &&
                         (r = 1);
                     const s = new Nr(
-                            e.originalRange.startLineNumber + r,
-                            e.originalRange.endLineNumber + 1 + i,
-                        ),
+                        e.originalRange.startLineNumber + r,
+                        e.originalRange.endLineNumber + 1 + i,
+                    ),
                         o = new Nr(
                             e.modifiedRange.startLineNumber + r,
                             e.modifiedRange.endLineNumber + 1 + i,
@@ -8405,9 +8405,9 @@
                         return !1;
                     if (
                         n.length.lineCount -
-                            i[i.length - 1].modified.endLineNumberExclusive !==
+                        i[i.length - 1].modified.endLineNumberExclusive !==
                         t.length.lineCount -
-                            i[i.length - 1].original.endLineNumberExclusive
+                        i[i.length - 1].original.endLineNumberExclusive
                     )
                         return !1;
                 }
@@ -8415,13 +8415,13 @@
                     i,
                     (e, t) =>
                         t.original.startLineNumber -
-                            e.original.endLineNumberExclusive ===
-                            t.modified.startLineNumber -
-                                e.modified.endLineNumberExclusive &&
+                        e.original.endLineNumberExclusive ===
+                        t.modified.startLineNumber -
+                        e.modified.endLineNumberExclusive &&
                         e.original.endLineNumberExclusive <
-                            t.original.startLineNumber &&
+                        t.original.startLineNumber &&
                         e.modified.endLineNumberExclusive <
-                            t.modified.startLineNumber,
+                        t.modified.startLineNumber,
                 );
             }),
             i
@@ -8430,12 +8430,12 @@
     class $r {
         computeDiff(e, t, n) {
             const r = new Hr(e, t, {
-                    maxComputationTime: n.maxComputationTimeMs,
-                    shouldIgnoreTrimWhitespace: n.ignoreTrimWhitespace,
-                    shouldComputeCharChanges: !0,
-                    shouldMakePrettyDiff: !0,
-                    shouldPostProcessCharChanges: !0,
-                }).computeDiff(),
+                maxComputationTime: n.maxComputationTimeMs,
+                shouldIgnoreTrimWhitespace: n.ignoreTrimWhitespace,
+                shouldComputeCharChanges: !0,
+                shouldMakePrettyDiff: !0,
+                shouldPostProcessCharChanges: !0,
+            }).computeDiff(),
                 i = [];
             let s = null;
             for (const o of r.changes) {
@@ -8443,23 +8443,23 @@
                 ((e =
                     0 === o.originalEndLineNumber
                         ? new Nr(
-                              o.originalStartLineNumber + 1,
-                              o.originalStartLineNumber + 1,
-                          )
+                            o.originalStartLineNumber + 1,
+                            o.originalStartLineNumber + 1,
+                        )
                         : new Nr(
-                              o.originalStartLineNumber,
-                              o.originalEndLineNumber + 1,
-                          )),
+                            o.originalStartLineNumber,
+                            o.originalEndLineNumber + 1,
+                        )),
                     (t =
                         0 === o.modifiedEndLineNumber
                             ? new Nr(
-                                  o.modifiedStartLineNumber + 1,
-                                  o.modifiedStartLineNumber + 1,
-                              )
+                                o.modifiedStartLineNumber + 1,
+                                o.modifiedStartLineNumber + 1,
+                            )
                             : new Nr(
-                                  o.modifiedStartLineNumber,
-                                  o.modifiedEndLineNumber + 1,
-                              )));
+                                o.modifiedStartLineNumber,
+                                o.modifiedEndLineNumber + 1,
+                            )));
                 let n = new Dr(
                     e,
                     t,
@@ -8485,7 +8485,7 @@
                     ((s.modified.endLineNumberExclusive !==
                         n.modified.startLineNumber &&
                         s.original.endLineNumberExclusive !==
-                            n.original.startLineNumber) ||
+                        n.original.startLineNumber) ||
                         ((n = new Dr(
                             s.original.join(n.original),
                             s.modified.join(n.modified),
@@ -8493,7 +8493,7 @@
                                 ? s.innerChanges.concat(n.innerChanges)
                                 : void 0,
                         )),
-                        i.pop())),
+                            i.pop())),
                     i.push(n),
                     (s = n));
             }
@@ -8503,13 +8503,13 @@
                         i,
                         (e, t) =>
                             t.original.startLineNumber -
-                                e.original.endLineNumberExclusive ===
-                                t.modified.startLineNumber -
-                                    e.modified.endLineNumberExclusive &&
+                            e.original.endLineNumberExclusive ===
+                            t.modified.startLineNumber -
+                            e.modified.endLineNumberExclusive &&
                             e.original.endLineNumberExclusive <
-                                t.original.startLineNumber &&
+                            t.original.startLineNumber &&
                             e.modified.endLineNumberExclusive <
-                                t.modified.startLineNumber,
+                            t.modified.startLineNumber,
                     ),
                 ),
                 new mr(i, [], r.quitEarly)
@@ -8597,15 +8597,15 @@
             return e > 0 && e === this._lineNumbers.length
                 ? this.getEndLineNumber(e - 1)
                 : (this._assertIndex(e, this._lineNumbers),
-                  this._lineNumbers[e]);
+                    this._lineNumbers[e]);
         }
         getEndLineNumber(e) {
             return -1 === e
                 ? this.getStartLineNumber(e + 1)
                 : (this._assertIndex(e, this._lineNumbers),
-                  10 === this._charCodes[e]
-                      ? this._lineNumbers[e] + 1
-                      : this._lineNumbers[e]);
+                    10 === this._charCodes[e]
+                        ? this._lineNumbers[e] + 1
+                        : this._lineNumbers[e]);
         }
         getStartColumn(e) {
             return e > 0 && e === this._columns.length
@@ -8616,7 +8616,7 @@
             return -1 === e
                 ? this.getStartColumn(e + 1)
                 : (this._assertIndex(e, this._columns),
-                  10 === this._charCodes[e] ? 1 : this._columns[e] + 1);
+                    10 === this._charCodes[e] ? 1 : this._columns[e] + 1);
         }
     }
     class Wr {
@@ -8656,16 +8656,16 @@
                 (0 === t.originalLength
                     ? ((a = n.getStartLineNumber(t.originalStart) - 1), (l = 0))
                     : ((a = n.getStartLineNumber(t.originalStart)),
-                      (l = n.getEndLineNumber(
-                          t.originalStart + t.originalLength - 1,
-                      ))),
-                0 === t.modifiedLength
-                    ? ((u = r.getStartLineNumber(t.modifiedStart) - 1), (c = 0))
-                    : ((u = r.getStartLineNumber(t.modifiedStart)),
-                      (c = r.getEndLineNumber(
-                          t.modifiedStart + t.modifiedLength - 1,
-                      ))),
-                s &&
+                        (l = n.getEndLineNumber(
+                            t.originalStart + t.originalLength - 1,
+                        ))),
+                    0 === t.modifiedLength
+                        ? ((u = r.getStartLineNumber(t.modifiedStart) - 1), (c = 0))
+                        : ((u = r.getStartLineNumber(t.modifiedStart)),
+                            (c = r.getEndLineNumber(
+                                t.modifiedStart + t.modifiedLength - 1,
+                            ))),
+                    s &&
                     t.originalLength > 0 &&
                     t.originalLength < 20 &&
                     t.modifiedLength > 0 &&
@@ -8673,10 +8673,10 @@
                     i())
             ) {
                 const s = n.createCharSequence(
-                        e,
-                        t.originalStart,
-                        t.originalStart + t.originalLength - 1,
-                    ),
+                    e,
+                    t.originalStart,
+                    t.originalStart + t.originalLength - 1,
+                ),
                     a = r.createCharSequence(
                         e,
                         t.modifiedStart,
@@ -8699,13 +8699,13 @@
                                         (n.modifiedStart + n.modifiedLength);
                                 Math.min(s, o) < 3
                                     ? ((n.originalLength =
-                                          i.originalStart +
-                                          i.originalLength -
-                                          n.originalStart),
-                                      (n.modifiedLength =
-                                          i.modifiedStart +
-                                          i.modifiedLength -
-                                          n.modifiedStart))
+                                        i.originalStart +
+                                        i.originalLength -
+                                        n.originalStart),
+                                        (n.modifiedLength =
+                                            i.modifiedStart +
+                                            i.modifiedLength -
+                                            n.modifiedStart))
                                     : (t.push(i), (n = i));
                             }
                             return t;
@@ -8746,18 +8746,18 @@
                     0 === this.modified.lines[0].length
                     ? { quitEarly: !1, changes: [] }
                     : {
-                          quitEarly: !1,
-                          changes: [
-                              {
-                                  originalStartLineNumber: 1,
-                                  originalEndLineNumber: 1,
-                                  modifiedStartLineNumber: 1,
-                                  modifiedEndLineNumber:
-                                      this.modified.lines.length,
-                                  charChanges: void 0,
-                              },
-                          ],
-                      };
+                        quitEarly: !1,
+                        changes: [
+                            {
+                                originalStartLineNumber: 1,
+                                originalEndLineNumber: 1,
+                                modifiedStartLineNumber: 1,
+                                modifiedEndLineNumber:
+                                    this.modified.lines.length,
+                                charChanges: void 0,
+                            },
+                        ],
+                    };
             if (
                 1 === this.modified.lines.length &&
                 0 === this.modified.lines[0].length
@@ -8775,11 +8775,11 @@
                     ],
                 };
             const e = Br(
-                    this.original,
-                    this.modified,
-                    this.continueLineDiff,
-                    this.shouldMakePrettyDiff,
-                ),
+                this.original,
+                this.modified,
+                this.continueLineDiff,
+                this.shouldMakePrettyDiff,
+            ),
                 t = e.changes,
                 n = e.quitEarly;
             if (this.shouldIgnoreTrimWhitespace) {
@@ -8805,14 +8805,14 @@
                 const e = o + 1 < a ? t[o + 1] : null,
                     n = e ? e.originalStart : this.originalLines.length,
                     l = e ? e.modifiedStart : this.modifiedLines.length;
-                for (; i < n && s < l; ) {
+                for (; i < n && s < l;) {
                     const e = this.originalLines[i],
                         t = this.modifiedLines[s];
                     if (e !== t) {
                         {
                             let n = Gr(e, 1),
                                 o = Gr(t, 1);
-                            for (; n > 1 && o > 1; ) {
+                            for (; n > 1 && o > 1;) {
                                 if (e.charCodeAt(n - 2) !== t.charCodeAt(o - 2))
                                     break;
                                 (n--, o--);
@@ -8833,7 +8833,7 @@
                                 o = Jr(t, 1);
                             const a = e.length + 1,
                                 l = t.length + 1;
-                            for (; n < a && o < l; ) {
+                            for (; n < a && o < l;) {
                                 if (e.charCodeAt(n - 1) !== e.charCodeAt(o - 1))
                                     break;
                                 (n++, o++);
@@ -8864,8 +8864,8 @@
                             this.shouldPostProcessCharChanges,
                         ),
                     ),
-                    (i += e.originalLength),
-                    (s += e.modifiedLength));
+                        (i += e.originalLength),
+                        (s += e.modifiedLength));
             }
             return { quitEarly: n, changes: r };
         }
@@ -8886,17 +8886,17 @@
                 0 !== l.modifiedEndLineNumber &&
                 (l.originalEndLineNumber === t && l.modifiedEndLineNumber === i
                     ? (this.shouldComputeCharChanges &&
-                          l.charChanges &&
-                          l.charChanges.push(new Wr(t, n, t, r, i, s, i, o)),
-                      !0)
+                        l.charChanges &&
+                        l.charChanges.push(new Wr(t, n, t, r, i, s, i, o)),
+                        !0)
                     : l.originalEndLineNumber + 1 === t &&
-                      l.modifiedEndLineNumber + 1 === i &&
-                      ((l.originalEndLineNumber = t),
-                      (l.modifiedEndLineNumber = i),
-                      this.shouldComputeCharChanges &&
-                          l.charChanges &&
-                          l.charChanges.push(new Wr(t, n, t, r, i, s, i, o)),
-                      !0))
+                    l.modifiedEndLineNumber + 1 === i &&
+                    ((l.originalEndLineNumber = t),
+                        (l.modifiedEndLineNumber = i),
+                        this.shouldComputeCharChanges &&
+                        l.charChanges &&
+                        l.charChanges.push(new Wr(t, n, t, r, i, s, i, o)),
+                        !0))
             );
         }
     }
@@ -8959,12 +8959,12 @@
                             r
                                 ? r.getStarts()
                                 : new Yr(
-                                      t,
-                                      (e
-                                          ? e.seq2Range.endExclusive -
-                                            e.seq1Range.endExclusive
-                                          : 0) + t,
-                                  ),
+                                    t,
+                                    (e
+                                        ? e.seq2Range.endExclusive -
+                                        e.seq1Range.endExclusive
+                                        : 0) + t,
+                                ),
                         ),
                     );
                 }),
@@ -9015,17 +9015,17 @@
             return 0 === e
                 ? this
                 : new Zr(
-                      this.seq1Range.deltaStart(e),
-                      this.seq2Range.deltaStart(e),
-                  );
+                    this.seq1Range.deltaStart(e),
+                    this.seq2Range.deltaStart(e),
+                );
         }
         deltaEnd(e) {
             return 0 === e
                 ? this
                 : new Zr(
-                      this.seq1Range.deltaEnd(e),
-                      this.seq2Range.deltaEnd(e),
-                  );
+                    this.seq1Range.deltaEnd(e),
+                    this.seq2Range.deltaEnd(e),
+                );
         }
         intersect(e) {
             const t = this.seq1Range.intersect(e.seq1Range),
@@ -9074,17 +9074,17 @@
         constructor(e) {
             if (
                 ((this.timeout = e),
-                (this.startTime = Date.now()),
-                (this.valid = !0),
-                e <= 0)
+                    (this.startTime = Date.now()),
+                    (this.valid = !0),
+                    e <= 0)
             )
                 throw new o("timeout must be positive");
         }
         isValid() {
             return (
                 !(Date.now() - this.startTime < this.timeout) &&
-                    this.valid &&
-                    (this.valid = !1),
+                this.valid &&
+                (this.valid = !1),
                 this.valid
             );
         }
@@ -9114,7 +9114,7 @@
             let t = this.chrKeys.get(e);
             return (
                 void 0 === t &&
-                    ((t = this.chrKeys.size), this.chrKeys.set(e, t)),
+                ((t = this.chrKeys.size), this.chrKeys.set(e, t)),
                 t
             );
         }
@@ -9164,11 +9164,11 @@
                     let c;
                     e.getElement(f) === t.getElement(a)
                         ? ((c = 0 === f || 0 === a ? 0 : i.get(f - 1, a - 1)),
-                          f > 0 &&
-                              a > 0 &&
-                              3 === s.get(f - 1, a - 1) &&
-                              (c += o.get(f - 1, a - 1)),
-                          (c += r ? r(f, a) : 1))
+                            f > 0 &&
+                            a > 0 &&
+                            3 === s.get(f - 1, a - 1) &&
+                            (c += o.get(f - 1, a - 1)),
+                            (c += r ? r(f, a) : 1))
                         : (c = -1);
                     const h = Math.max(l, u, c);
                     if (h === c) {
@@ -9191,12 +9191,12 @@
             }
             let h = e.length - 1,
                 d = t.length - 1;
-            for (; h >= 0 && d >= 0; )
+            for (; h >= 0 && d >= 0;)
                 3 === s.get(h, d)
                     ? (c(h, d), h--, d--)
                     : 1 === s.get(h, d)
-                      ? h--
-                      : d--;
+                        ? h--
+                        : d--;
             return (c(-1, -1), a.reverse(), new Qr(a, !1));
         }
     }
@@ -9221,7 +9221,7 @@
             const l = new ui();
             l.set(0, 0 === a.get(0) ? null : new ai(null, 0, 0, a.get(0)));
             let u = 0;
-            e: for (;;) {
+            e: for (; ;) {
                 if ((o++, !n.isValid())) return Qr.trivialTimedOut(r, i);
                 const e = -Math.min(o, i.length + (o % 2)),
                     t = Math.min(o, r.length + (o % 2));
@@ -9236,7 +9236,7 @@
                     const f = c === n ? l.get(u + 1) : l.get(u - 1);
                     if (
                         (l.set(u, d !== c ? new ai(f, c, h, d - c) : f),
-                        a.get(u) === r.length && a.get(u) - u === i.length)
+                            a.get(u) === r.length && a.get(u) - u === i.length)
                     )
                         break e;
                 }
@@ -9245,13 +9245,13 @@
             const h = [];
             let d = r.length,
                 f = i.length;
-            for (;;) {
+            for (; ;) {
                 const e = c ? c.x + c.length : 0,
                     t = c ? c.y + c.length : 0;
                 if (
                     ((e === d && t === f) ||
                         h.push(new Zr(new wr(e, d), new wr(t, f))),
-                    !c)
+                        !c)
                 )
                     break;
                 ((d = c.x), (f = c.y), (c = c.prev));
@@ -9341,9 +9341,9 @@
                 for (let e = 0; e < o; e++) this.elements.push(t.charCodeAt(e));
                 r < this.range.endLineNumber &&
                     (this.elements.push("\n".charCodeAt(0)),
-                    this.firstElementOffsetByLineIdx.push(
-                        this.elements.length,
-                    ));
+                        this.firstElementOffsetByLineIdx.push(
+                            this.elements.length,
+                        ));
             }
         }
         toString() {
@@ -9383,11 +9383,11 @@
             return new Ae(
                 this.range.startLineNumber + n,
                 1 +
-                    this.lineStartOffsets[n] +
-                    r +
-                    (0 === r && "left" === t
-                        ? 0
-                        : this.trimmedWsLengthsByLineIdx[n]),
+                this.lineStartOffsets[n] +
+                r +
+                (0 === r && "left" === t
+                    ? 0
+                    : this.trimmedWsLengthsByLineIdx[n]),
             );
         }
         translateRange(e) {
@@ -9401,16 +9401,16 @@
             if (e < 0 || e >= this.elements.length) return;
             if (!hi(this.elements[e])) return;
             let t = e;
-            for (; t > 0 && hi(this.elements[t - 1]); ) t--;
+            for (; t > 0 && hi(this.elements[t - 1]);) t--;
             let n = e;
-            for (; n < this.elements.length && hi(this.elements[n]); ) n++;
+            for (; n < this.elements.length && hi(this.elements[n]);) n++;
             return new wr(t, n);
         }
         findSubWordContaining(e) {
             if (e < 0 || e >= this.elements.length) return;
             if (!hi(this.elements[e])) return;
             let t = e;
-            for (; t > 0 && hi(this.elements[t - 1]) && !di(this.elements[t]); )
+            for (; t > 0 && hi(this.elements[t - 1]) && !di(this.elements[t]);)
                 t--;
             let n = e;
             for (
@@ -9433,8 +9433,8 @@
         }
         extendToFullLines(e) {
             const t =
-                    Cr(this.firstElementOffsetByLineIdx, (t) => t <= e.start) ??
-                    0,
+                Cr(this.firstElementOffsetByLineIdx, (t) => t <= e.start) ??
+                0,
                 n =
                     (function (e, t) {
                         const n = Lr(e, t);
@@ -9464,20 +9464,20 @@
         return 10 === e
             ? 8
             : 13 === e
-              ? 7
-              : ri(e)
-                ? 6
-                : e >= 97 && e <= 122
-                  ? 0
-                  : e >= 65 && e <= 90
-                    ? 1
-                    : e >= 48 && e <= 57
-                      ? 2
-                      : -1 === e
-                        ? 3
-                        : 44 === e || 59 === e
-                          ? 5
-                          : 4;
+                ? 7
+                : ri(e)
+                    ? 6
+                    : e >= 97 && e <= 122
+                        ? 0
+                        : e >= 65 && e <= 90
+                            ? 1
+                            : e >= 48 && e <= 57
+                                ? 2
+                                : -1 === e
+                                    ? 3
+                                    : 44 === e || 59 === e
+                                        ? 5
+                                        : 4;
     }
     function pi(e, t, n, r, i, s) {
         let { moves: o, excludedChanges: a } = (function (e, t, n, r) {
@@ -9504,10 +9504,10 @@
                     (t > 0.9 &&
                         e &&
                         (o.delete(e),
-                        i.push(new Pr(l.range, e.range)),
-                        a.add(l.source),
-                        a.add(e.source)),
-                    !r.isValid())
+                            i.push(new Pr(l.range, e.range)),
+                            a.add(l.source),
+                            a.add(e.source)),
+                        !r.isValid())
                 )
                     return { moves: i, excludedChanges: a };
             }
@@ -9542,11 +9542,11 @@
                         for (const r of e)
                             if (
                                 r.originalLineRange.endLineNumberExclusive +
-                                    1 ===
-                                    t.endLineNumberExclusive &&
+                                1 ===
+                                t.endLineNumberExclusive &&
                                 r.modifiedLineRange.endLineNumberExclusive +
-                                    1 ===
-                                    i.endLineNumberExclusive
+                                1 ===
+                                i.endLineNumberExclusive
                             )
                                 return (
                                     (r.originalLineRange = new Nr(
@@ -9571,15 +9571,15 @@
             }
             l.sort(
                 ((u = br((e) => e.modifiedLineRange.length, yr)),
-                (e, t) => -u(e, t)),
+                    (e, t) => -u(e, t)),
             );
             var u;
             const c = new xr(),
                 h = new xr();
             for (const f of l) {
                 const e =
-                        f.modifiedLineRange.startLineNumber -
-                        f.originalLineRange.startLineNumber,
+                    f.modifiedLineRange.startLineNumber -
+                    f.originalLineRange.startLineNumber,
                     t = c.subtractFrom(f.modifiedLineRange),
                     n = h.subtractFrom(f.originalLineRange).getWithDelta(e),
                     r = t.getIntersection(n);
@@ -9622,9 +9622,9 @@
                     ),
                     g = Math.max(
                         u.original.endLineNumberExclusive -
-                            t.original.endLineNumberExclusive,
+                        t.original.endLineNumberExclusive,
                         m.modified.endLineNumberExclusive -
-                            t.modified.endLineNumberExclusive,
+                        t.modified.endLineNumberExclusive,
                     );
                 let p, b;
                 for (p = 0; p < l; p++) {
@@ -9636,19 +9636,19 @@
                 }
                 for (
                     p > 0 &&
-                        (h.addRange(
-                            new Nr(
-                                t.original.startLineNumber - p,
-                                t.original.startLineNumber,
-                            ),
+                    (h.addRange(
+                        new Nr(
+                            t.original.startLineNumber - p,
+                            t.original.startLineNumber,
                         ),
+                    ),
                         c.addRange(
                             new Nr(
                                 t.modified.startLineNumber - p,
                                 t.modified.startLineNumber,
                             ),
                         )),
-                        b = 0;
+                    b = 0;
                     b < g;
                     b++
                 ) {
@@ -9665,23 +9665,23 @@
                             t.original.endLineNumberExclusive + b,
                         ),
                     ),
-                    c.addRange(
-                        new Nr(
-                            t.modified.endLineNumberExclusive,
-                            t.modified.endLineNumberExclusive + b,
-                        ),
-                    )),
-                    (p > 0 || b > 0) &&
-                        (o[f] = new Pr(
+                        c.addRange(
                             new Nr(
-                                t.original.startLineNumber - p,
-                                t.original.endLineNumberExclusive + b,
-                            ),
-                            new Nr(
-                                t.modified.startLineNumber - p,
+                                t.modified.endLineNumberExclusive,
                                 t.modified.endLineNumberExclusive + b,
                             ),
-                        )));
+                        )),
+                    (p > 0 || b > 0) &&
+                    (o[f] = new Pr(
+                        new Nr(
+                            t.original.startLineNumber - p,
+                            t.original.endLineNumberExclusive + b,
+                        ),
+                        new Nr(
+                            t.modified.startLineNumber - p,
+                            t.modified.endLineNumberExclusive + b,
+                        ),
+                    )));
             }
             return o;
         })(
@@ -9795,7 +9795,7 @@
                     s.seq1Range.isEmpty
                         ? (n[r] = wi(s, e, t, a, l))
                         : s.seq2Range.isEmpty &&
-                          (n[r] = wi(s.swap(), t, e, l, a).swap());
+                        (n[r] = wi(s.swap(), t, e, l, a).swap());
                 }
                 return n;
             })(e, t, r)),
@@ -9816,9 +9816,9 @@
                     s = 1;
                     s <= n &&
                     e.getElement(o.seq1Range.start - s) ===
-                        e.getElement(o.seq1Range.endExclusive - s) &&
+                    e.getElement(o.seq1Range.endExclusive - s) &&
                     t.getElement(o.seq2Range.start - s) ===
-                        t.getElement(o.seq2Range.endExclusive - s);
+                    t.getElement(o.seq2Range.endExclusive - s);
                     s++
                 );
                 if ((s--, s === n)) {
@@ -9919,7 +9919,7 @@
             const d = h.intersect(l);
             let f = d.seq1Range.length,
                 m = d.seq2Range.length;
-            for (; s.length > 0; ) {
+            for (; s.length > 0;) {
                 const n = s[0];
                 if (
                     !(
@@ -9934,9 +9934,9 @@
                     l = a.intersect(n);
                 if (
                     ((f += l.seq1Range.length),
-                    (m += l.seq2Range.length),
-                    (h = h.join(a)),
-                    !(h.seq1Range.endExclusive >= n.seq1Range.endExclusive))
+                        (m += l.seq2Range.length),
+                        (h = h.join(a)),
+                        !(h.seq1Range.endExclusive >= n.seq1Range.endExclusive))
                 )
                     break;
                 s.shift();
@@ -9946,14 +9946,14 @@
                 o.push(h),
                 (a = h.getEndExclusives()));
         }
-        for (; s.length > 0; ) {
+        for (; s.length > 0;) {
             const e = s.shift();
             e.seq1Range.isEmpty ||
                 (l(e.getStarts(), e), l(e.getEndExclusives().delta(-1), e));
         }
         return (function (e, t) {
             const n = [];
-            for (; e.length > 0 || t.length > 0; ) {
+            for (; e.length > 0 || t.length > 0;) {
                 const r = e[0],
                     i = t[0];
                 let s;
@@ -9962,7 +9962,7 @@
                         ? e.shift()
                         : t.shift()),
                     n.length > 0 &&
-                    n[n.length - 1].seq1Range.endExclusive >= s.seq1Range.start
+                        n[n.length - 1].seq1Range.endExclusive >= s.seq1Range.start
                         ? (n[n.length - 1] = n[n.length - 1].join(s))
                         : n.push(s));
             }
@@ -10051,9 +10051,9 @@
                     !1,
                 );
             const r =
-                    0 === n.maxComputationTimeMs
-                        ? ei.instance
-                        : new ti(n.maxComputationTimeMs),
+                0 === n.maxComputationTimeMs
+                    ? ei.instance
+                    : new ti(n.maxComputationTimeMs),
                 i = !n.ignoreTrimWhitespace,
                 s = new Map();
             function o(e) {
@@ -10067,16 +10067,16 @@
                 d = (() =>
                     c.length + h.length < 1700
                         ? this.dynamicProgrammingDiffing.compute(
-                              c,
-                              h,
-                              r,
-                              (n, r) =>
-                                  e[n] === t[r]
-                                      ? 0 === t[r].length
-                                          ? 0.1
-                                          : 1 + Math.log(1 + t[r].length)
-                                      : 0.99,
-                          )
+                            c,
+                            h,
+                            r,
+                            (n, r) =>
+                                e[n] === t[r]
+                                    ? 0 === t[r].length
+                                        ? 0.1
+                                        : 1 + Math.log(1 + t[r].length)
+                                    : 0.99,
+                        )
                         : this.myersDiffingAlgorithm.compute(c, h, r))();
             let f = d.diffs,
                 m = d.hitTimeout;
@@ -10099,17 +10099,17 @@
                                 );
                                 return (
                                     e.getText(r).replace(/\s/g, "").length <=
-                                        4 &&
+                                    4 &&
                                     (t.seq1Range.length + t.seq2Range.length >
                                         5 ||
                                         n.seq1Range.length +
-                                            n.seq2Range.length >
-                                            5)
+                                        n.seq2Range.length >
+                                        5)
                                 );
                             }
                             c(u, l)
                                 ? ((i = !0),
-                                  (o[o.length - 1] = o[o.length - 1].join(l)))
+                                    (o[o.length - 1] = o[o.length - 1].join(l)))
                                 : o.push(l);
                         }
                         r = o;
@@ -10154,7 +10154,7 @@
             let _ = [];
             return (
                 n.computeMoves &&
-                    (_ = this.computeMoves(C, e, t, a, u, r, i, n)),
+                (_ = this.computeMoves(C, e, t, a, u, r, i, n)),
                 l(() => {
                     function n(e, t) {
                         if (e.lineNumber < 1 || e.lineNumber > t.length)
@@ -10218,12 +10218,12 @@
         refineDiff(e, t, n, r, i, s) {
             var o;
             const a = new Pr(
-                    new Nr(
-                        (o = n).seq1Range.start + 1,
-                        o.seq1Range.endExclusive + 1,
-                    ),
-                    new Nr(o.seq2Range.start + 1, o.seq2Range.endExclusive + 1),
-                ).toRangeMapping2(e, t),
+                new Nr(
+                    (o = n).seq1Range.start + 1,
+                    o.seq1Range.endExclusive + 1,
+                ),
+                new Nr(o.seq2Range.start + 1, o.seq2Range.endExclusive + 1),
+            ).toRangeMapping2(e, t),
                 l = new ci(e, a.originalRange, i),
                 u = new ci(t, a.modifiedRange, i),
                 c =
@@ -10234,18 +10234,18 @@
             ((h = yi(l, u, h)),
                 (h = Ci(l, u, h, (e, t) => e.findWordContaining(t))),
                 s.extendToSubwords &&
-                    (h = Ci(l, u, h, (e, t) => e.findSubWordContaining(t), !0)),
+                (h = Ci(l, u, h, (e, t) => e.findSubWordContaining(t), !0)),
                 (h = (function (e, t, n) {
                     const r = [];
                     for (const i of n) {
                         const e = r[r.length - 1];
                         e &&
-                        (i.seq1Range.start - e.seq1Range.endExclusive <= 2 ||
-                            i.seq2Range.start - e.seq2Range.endExclusive <= 2)
+                            (i.seq1Range.start - e.seq1Range.endExclusive <= 2 ||
+                                i.seq2Range.start - e.seq2Range.endExclusive <= 2)
                             ? (r[r.length - 1] = new Zr(
-                                  e.seq1Range.join(i.seq1Range),
-                                  e.seq2Range.join(i.seq2Range),
-                              ))
+                                e.seq1Range.join(i.seq1Range),
+                                e.seq2Range.join(i.seq2Range),
+                            ))
                             : r.push(i);
                     }
                     return r;
@@ -10288,20 +10288,20 @@
                                 return (
                                     Math.pow(
                                         Math.pow(p(40 * o + a), 1.5) +
-                                            Math.pow(p(40 * l + h), 1.5),
+                                        Math.pow(p(40 * l + h), 1.5),
                                         1.5,
                                     ) +
-                                        Math.pow(
-                                            Math.pow(p(40 * d + f), 1.5) +
-                                                Math.pow(p(40 * m + g), 1.5),
-                                            1.5,
-                                        ) >
+                                    Math.pow(
+                                        Math.pow(p(40 * d + f), 1.5) +
+                                        Math.pow(p(40 * m + g), 1.5),
+                                        1.5,
+                                    ) >
                                     74184.96480721243
                                 );
                             }
                             h(c, u)
                                 ? ((i = !0),
-                                  (a[a.length - 1] = a[a.length - 1].join(u)))
+                                    (a[a.length - 1] = a[a.length - 1].join(u)))
                                 : a.push(u);
                         }
                         r = a;
@@ -10322,7 +10322,7 @@
                                     e.length > 0 &&
                                     e.trim().length <= 3 &&
                                     n.seq1Range.length + n.seq2Range.length >
-                                        100
+                                    100
                                 );
                             }
                             const a = e.extendToFullLines(n.seq1Range),
@@ -10338,14 +10338,14 @@
                             );
                             s(u) && (i = i.deltaEnd(u.length));
                             const c = Zr.fromOffsetPairs(
-                                    t ? t.getEndExclusives() : Yr.zero,
-                                    r ? r.getStarts() : Yr.max,
-                                ),
+                                t ? t.getEndExclusives() : Yr.zero,
+                                r ? r.getStarts() : Yr.max,
+                            ),
                                 h = i.intersect(c);
                             o.length > 0 &&
-                            h
-                                .getStarts()
-                                .equals(o[o.length - 1].getEndExclusives())
+                                h
+                                    .getStarts()
+                                    .equals(o[o.length - 1].getEndExclusives())
                                 ? (o[o.length - 1] = o[o.length - 1].join(h))
                                 : o.push(h);
                         }),
@@ -10406,10 +10406,10 @@
                 c = s - o;
             if (c > 0) {
                 switch (
-                    ((l = Math.min(
-                        u <= 0.5 ? c / (2 * u) : c / (2 - 2 * u),
-                        1,
-                    )),
+                ((l = Math.min(
+                    u <= 0.5 ? c / (2 * u) : c / (2 - 2 * u),
+                    1,
+                )),
                     s)
                 ) {
                     case t:
@@ -10432,10 +10432,10 @@
                 n < 1 / 6
                     ? e + 6 * (t - e) * n
                     : n < 0.5
-                      ? t
-                      : n < 2 / 3
-                        ? e + (t - e) * (2 / 3 - n) * 6
-                        : e
+                        ? t
+                        : n < 2 / 3
+                            ? e + (t - e) * (2 / 3 - n) * 6
+                            : e
             );
         }
         static toRGBA(e) {
@@ -10482,10 +10482,10 @@
                     0 === s
                         ? 0
                         : i === t
-                          ? ((((n - r) / s) % 6) + 6) % 6
-                          : i === n
-                            ? (r - t) / s + 2
-                            : (t - n) / s + 4),
+                            ? ((((n - r) / s) % 6) + 6) % 6
+                            : i === n
+                                ? (r - t) / s + 2
+                                : (t - n) / s + 4),
                 new Ri(Math.round(60 * a), o, i, e.a)
             );
         }
@@ -10499,14 +10499,14 @@
                 t < 60
                     ? ((l = s), (u = o))
                     : t < 120
-                      ? ((l = o), (u = s))
-                      : t < 180
-                        ? ((u = s), (c = o))
-                        : t < 240
-                          ? ((u = o), (c = s))
-                          : t < 300
-                            ? ((l = o), (c = s))
-                            : t <= 360 && ((l = s), (c = o)),
+                        ? ((l = o), (u = s))
+                        : t < 180
+                            ? ((u = s), (c = o))
+                            : t < 240
+                                ? ((u = o), (c = s))
+                                : t < 300
+                                    ? ((l = o), (c = s))
+                                    : t <= 360 && ((l = s), (c = o)),
                 (l = Math.round(255 * (l + a))),
                 (u = Math.round(255 * (u + a))),
                 (c = Math.round(255 * (c + a))),
@@ -10549,8 +10549,8 @@
         getRelativeLuminance() {
             return Ei(
                 0.2126 * e._relativeLuminanceForComponent(this.rgba.r) +
-                    0.7152 * e._relativeLuminanceForComponent(this.rgba.g) +
-                    0.0722 * e._relativeLuminanceForComponent(this.rgba.b),
+                0.7152 * e._relativeLuminanceForComponent(this.rgba.g) +
+                0.0722 * e._relativeLuminanceForComponent(this.rgba.b),
                 4,
             );
         }
@@ -10563,7 +10563,7 @@
         isLighter() {
             return (
                 (299 * this.rgba.r + 587 * this.rgba.g + 114 * this.rgba.b) /
-                    1e3 >=
+                1e3 >=
                 128
             );
         }
@@ -10644,12 +10644,12 @@
         toNumber32Bit() {
             return (
                 this._toNumber32Bit ||
-                    (this._toNumber32Bit =
-                        ((this.rgba.r << 24) |
-                            (this.rgba.g << 16) |
-                            (this.rgba.b << 8) |
-                            (255 * this.rgba.a)) >>>
-                        0),
+                (this._toNumber32Bit =
+                    ((this.rgba.r << 24) |
+                        (this.rgba.g << 16) |
+                        (this.rgba.b << 8) |
+                        (255 * this.rgba.a)) >>>
+                    0),
                 this._toNumber32Bit
             );
         }
@@ -10743,39 +10743,39 @@
             "function" == typeof e.getValue &&
             "function" == typeof e.positionAt
             ? (function (e) {
-                  const t = [],
-                      n = Di(
-                          e,
-                          /\b(rgb|rgba|hsl|hsla)(\([0-9\s,.\%]*\))|^(#)([A-Fa-f0-9]{3})\b|^(#)([A-Fa-f0-9]{4})\b|^(#)([A-Fa-f0-9]{6})\b|^(#)([A-Fa-f0-9]{8})\b|(?<=['"\s])(#)([A-Fa-f0-9]{3})\b|(?<=['"\s])(#)([A-Fa-f0-9]{4})\b|(?<=['"\s])(#)([A-Fa-f0-9]{6})\b|(?<=['"\s])(#)([A-Fa-f0-9]{8})\b/gm,
-                      );
-                  if (n.length > 0)
-                      for (const r of n) {
-                          const n = r.filter((e) => void 0 !== e),
-                              i = n[1],
-                              s = n[2];
-                          if (!s) continue;
-                          let o;
-                          if ("rgb" === i) {
-                              const t =
-                                  /^\(\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*\)$/gm;
-                              o = Fi(Ii(e, r), Di(s, t), !1);
-                          } else if ("rgba" === i) {
-                              const t =
-                                  /^\(\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(0[.][0-9]+|[.][0-9]+|[01][.]|[01])\s*\)$/gm;
-                              o = Fi(Ii(e, r), Di(s, t), !0);
-                          } else if ("hsl" === i) {
-                              const t =
-                                  /^\(\s*((?:360(?:\.0+)?|(?:36[0]|3[0-5][0-9]|[12][0-9][0-9]|[1-9]?[0-9])(?:\.\d+)?))\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*\)$/gm;
-                              o = Vi(Ii(e, r), Di(s, t), !1);
-                          } else if ("hsla" === i) {
-                              const t =
-                                  /^\(\s*((?:360(?:\.0+)?|(?:36[0]|3[0-5][0-9]|[12][0-9][0-9]|[1-9]?[0-9])(?:\.\d+)?))\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(0[.][0-9]+|[.][0-9]+|[01][.]0*|[01])\s*\)$/gm;
-                              o = Vi(Ii(e, r), Di(s, t), !0);
-                          } else "#" === i && (o = Pi(Ii(e, r), i + s));
-                          o && t.push(o);
-                      }
-                  return t;
-              })(e)
+                const t = [],
+                    n = Di(
+                        e,
+                        /\b(rgb|rgba|hsl|hsla)(\([0-9\s,.\%]*\))|^(#)([A-Fa-f0-9]{3})\b|^(#)([A-Fa-f0-9]{4})\b|^(#)([A-Fa-f0-9]{6})\b|^(#)([A-Fa-f0-9]{8})\b|(?<=['"\s])(#)([A-Fa-f0-9]{3})\b|(?<=['"\s])(#)([A-Fa-f0-9]{4})\b|(?<=['"\s])(#)([A-Fa-f0-9]{6})\b|(?<=['"\s])(#)([A-Fa-f0-9]{8})\b/gm,
+                    );
+                if (n.length > 0)
+                    for (const r of n) {
+                        const n = r.filter((e) => void 0 !== e),
+                            i = n[1],
+                            s = n[2];
+                        if (!s) continue;
+                        let o;
+                        if ("rgb" === i) {
+                            const t =
+                                /^\(\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*\)$/gm;
+                            o = Fi(Ii(e, r), Di(s, t), !1);
+                        } else if ("rgba" === i) {
+                            const t =
+                                /^\(\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(0[.][0-9]+|[.][0-9]+|[01][.]|[01])\s*\)$/gm;
+                            o = Fi(Ii(e, r), Di(s, t), !0);
+                        } else if ("hsl" === i) {
+                            const t =
+                                /^\(\s*((?:360(?:\.0+)?|(?:36[0]|3[0-5][0-9]|[12][0-9][0-9]|[1-9]?[0-9])(?:\.\d+)?))\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*\)$/gm;
+                            o = Vi(Ii(e, r), Di(s, t), !1);
+                        } else if ("hsla" === i) {
+                            const t =
+                                /^\(\s*((?:360(?:\.0+)?|(?:36[0]|3[0-5][0-9]|[12][0-9][0-9]|[1-9]?[0-9])(?:\.\d+)?))\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(0[.][0-9]+|[.][0-9]+|[01][.]0*|[01])\s*\)$/gm;
+                            o = Vi(Ii(e, r), Di(s, t), !0);
+                        } else "#" === i && (o = Pi(Ii(e, r), i + s));
+                        o && t.push(o);
+                    }
+                return t;
+            })(e)
             : [];
     }
     !(function (e) {
@@ -11259,26 +11259,26 @@
                 )
                     return n;
                 const i = (function (e) {
-                        if (!e || 0 === e.length) return !1;
-                        for (let t = 0, n = e.length; t < n; t++) {
+                    if (!e || 0 === e.length) return !1;
+                    for (let t = 0, n = e.length; t < n; t++) {
+                        const r = e.charCodeAt(t);
+                        if (10 === r) return !0;
+                        if (92 === r) {
+                            if ((t++, t >= n)) break;
                             const r = e.charCodeAt(t);
-                            if (10 === r) return !0;
-                            if (92 === r) {
-                                if ((t++, t >= n)) break;
-                                const r = e.charCodeAt(t);
-                                if (110 === r || 114 === r || 87 === r)
-                                    return !0;
-                            }
+                            if (110 === r || 114 === r || 87 === r)
+                                return !0;
                         }
-                        return !1;
-                    })(t.markSectionHeaderRegex),
+                    }
+                    return !1;
+                })(t.markSectionHeaderRegex),
                     s = new RegExp(
                         t.markSectionHeaderRegex,
                         "gdm" + (i ? "s" : ""),
                     );
                 if (
                     ((o = s),
-                    "^" !== o.source &&
+                        "^" !== o.source &&
                         "^$" !== o.source &&
                         "$" !== o.source &&
                         "^\\s*$" !== o.source &&
@@ -11293,7 +11293,7 @@
                     for (let n = a; n <= t; n++) i.push(e.getLineContent(n));
                     const o = i.join("\n");
                     let l;
-                    for (s.lastIndex = 0; null !== (l = s.exec(o)); ) {
+                    for (s.lastIndex = 0; null !== (l = s.exec(o));) {
                         const e = o.substring(0, l.index),
                             t = a + (e.match(/\n/g) || []).length,
                             r = l[0].split("\n"),
@@ -11320,7 +11320,7 @@
                         ((f.text || f.hasSeparatorLine) &&
                             (0 === n.length ||
                                 n[n.length - 1].range.endLineNumber <
-                                    f.range.startLineNumber) &&
+                                f.range.startLineNumber) &&
                             n.push(f),
                             (s.lastIndex = l.index + l[0].length));
                     }
@@ -11351,19 +11351,19 @@
             return this.isSettled
                 ? Promise.resolve()
                 : new Promise((t) => {
-                      (this.completeCallback(e),
-                          (this.outcome = { outcome: 0, value: e }),
-                          t());
-                  });
+                    (this.completeCallback(e),
+                        (this.outcome = { outcome: 0, value: e }),
+                        t());
+                });
         }
         error(e) {
             return this.isSettled
                 ? Promise.resolve()
                 : new Promise((t) => {
-                      (this.errorCallback(e),
-                          (this.outcome = { outcome: 1, value: e }),
-                          t());
-                  });
+                    (this.errorCallback(e),
+                        (this.outcome = { outcome: 1, value: e }),
+                        t());
+                });
         }
         cancel() {
             return this.error(new i());
@@ -11406,7 +11406,7 @@
         produce(e) {
             if (
                 (this._ensureNoFinalValue(),
-                this._unsatisfiedConsumers.length > 0)
+                    this._unsatisfiedConsumers.length > 0)
             ) {
                 const t = this._unsatisfiedConsumers.shift();
                 this._resolveOrRejectDeferred(t, e);
@@ -11561,17 +11561,17 @@
             return (
                 0 !== i &&
                 ((this.values = new Uint32Array(n.length + i)),
-                this.values.set(n.subarray(0, e), 0),
-                this.values.set(n.subarray(e), e + i),
-                this.values.set(t, e),
-                e - 1 < this.prefixSumValidIndex[0] &&
+                    this.values.set(n.subarray(0, e), 0),
+                    this.values.set(n.subarray(e), e + i),
+                    this.values.set(t, e),
+                    e - 1 < this.prefixSumValidIndex[0] &&
                     (this.prefixSumValidIndex[0] = e - 1),
-                (this.prefixSum = new Uint32Array(this.values.length)),
-                this.prefixSumValidIndex[0] >= 0 &&
+                    (this.prefixSum = new Uint32Array(this.values.length)),
+                    this.prefixSumValidIndex[0] >= 0 &&
                     this.prefixSum.set(
                         r.subarray(0, this.prefixSumValidIndex[0] + 1),
                     ),
-                !0)
+                    !0)
             );
         }
         setValue(e, t) {
@@ -11579,9 +11579,9 @@
                 (e = Te(e)),
                 (t = Te(t)),
                 this.values[e] !== t &&
-                    ((this.values[e] = t),
+                ((this.values[e] = t),
                     e - 1 < this.prefixSumValidIndex[0] &&
-                        (this.prefixSumValidIndex[0] = e - 1),
+                    (this.prefixSumValidIndex[0] = e - 1),
                     !0)
             );
         }
@@ -11594,16 +11594,16 @@
             return (
                 t >= i && (t = i),
                 0 !== t &&
-                    ((this.values = new Uint32Array(n.length - t)),
+                ((this.values = new Uint32Array(n.length - t)),
                     this.values.set(n.subarray(0, e), 0),
                     this.values.set(n.subarray(e + t), e),
                     (this.prefixSum = new Uint32Array(this.values.length)),
                     e - 1 < this.prefixSumValidIndex[0] &&
-                        (this.prefixSumValidIndex[0] = e - 1),
+                    (this.prefixSumValidIndex[0] = e - 1),
                     this.prefixSumValidIndex[0] >= 0 &&
-                        this.prefixSum.set(
-                            r.subarray(0, this.prefixSumValidIndex[0] + 1),
-                        ),
+                    this.prefixSum.set(
+                        r.subarray(0, this.prefixSumValidIndex[0] + 1),
+                    ),
                     !0)
             );
         }
@@ -11637,12 +11637,12 @@
                 r = 0,
                 i = 0,
                 s = 0;
-            for (; t <= n; )
+            for (; t <= n;)
                 if (
                     ((r = (t + (n - t) / 2) | 0),
-                    (i = this.prefixSum[r]),
-                    (s = i - this.values[r]),
-                    e < s)
+                        (i = this.prefixSum[r]),
+                        (s = i - this.values[r]),
+                        e < s)
                 )
                     n = r - 1;
                 else {
@@ -11679,7 +11679,7 @@
         getText() {
             return (
                 null === this._cachedTextValue &&
-                    (this._cachedTextValue = this._lines.join(this._eol)),
+                (this._cachedTextValue = this._lines.join(this._eol)),
                 this._cachedTextValue
             );
         }
@@ -11708,10 +11708,10 @@
         _setLineText(e, t) {
             ((this._lines[e] = t),
                 this._lineStarts &&
-                    this._lineStarts.setValue(
-                        e,
-                        this._lines[e].length + this._eol.length,
-                    ));
+                this._lineStarts.setValue(
+                    e,
+                    this._lines[e].length + this._eol.length,
+                ));
         }
         _acceptDeleteRange(e) {
             if (e.startLineNumber !== e.endLineNumber)
@@ -11721,19 +11721,19 @@
                         0,
                         e.startColumn - 1,
                     ) +
-                        this._lines[e.endLineNumber - 1].substring(
-                            e.endColumn - 1,
-                        ),
+                    this._lines[e.endLineNumber - 1].substring(
+                        e.endColumn - 1,
+                    ),
                 ),
                     this._lines.splice(
                         e.startLineNumber,
                         e.endLineNumber - e.startLineNumber,
                     ),
                     this._lineStarts &&
-                        this._lineStarts.removeValues(
-                            e.startLineNumber,
-                            e.endLineNumber - e.startLineNumber,
-                        ));
+                    this._lineStarts.removeValues(
+                        e.startLineNumber,
+                        e.endLineNumber - e.startLineNumber,
+                    ));
             else {
                 if (e.startColumn === e.endColumn) return;
                 this._setLineText(
@@ -11742,9 +11742,9 @@
                         0,
                         e.startColumn - 1,
                     ) +
-                        this._lines[e.startLineNumber - 1].substring(
-                            e.endColumn - 1,
-                        ),
+                    this._lines[e.startLineNumber - 1].substring(
+                        e.endColumn - 1,
+                    ),
                 );
             }
         }
@@ -11755,8 +11755,8 @@
                 return void this._setLineText(
                     e.lineNumber - 1,
                     this._lines[e.lineNumber - 1].substring(0, e.column - 1) +
-                        n[0] +
-                        this._lines[e.lineNumber - 1].substring(e.column - 1),
+                    n[0] +
+                    this._lines[e.lineNumber - 1].substring(e.column - 1),
                 );
             ((n[n.length - 1] += this._lines[e.lineNumber - 1].substring(
                 e.column - 1,
@@ -11764,7 +11764,7 @@
                 this._setLineText(
                     e.lineNumber - 1,
                     this._lines[e.lineNumber - 1].substring(0, e.column - 1) +
-                        n[0],
+                    n[0],
                 ));
             const r = new Uint32Array(n.length - 1);
             for (let i = 1; i < n.length; i++)
@@ -11851,7 +11851,7 @@
                 o = [];
             return {
                 *[Symbol.iterator]() {
-                    for (;;)
+                    for (; ;)
                         if (s < o.length) {
                             const e = i.substring(o[s].start, o[s].end);
                             ((s += 1), yield e);
@@ -11877,7 +11877,7 @@
         _wordenize(e, t) {
             const n = [];
             let r;
-            for (t.lastIndex = 0; (r = t.exec(e)) && 0 !== r[0].length; )
+            for (t.lastIndex = 0; (r = t.exec(e)) && 0 !== r[0].length;)
                 n.push({ start: r.index, end: r.index + r[0].length });
             return n;
         }
@@ -11920,9 +11920,9 @@
         }
         _validateRange(e) {
             const t = this._validatePosition({
-                    lineNumber: e.startLineNumber,
-                    column: e.startColumn,
-                }),
+                lineNumber: e.startLineNumber,
+                column: e.startColumn,
+            }),
                 n = this._validatePosition({
                     lineNumber: e.endLineNumber,
                     column: e.endColumn,
@@ -11932,11 +11932,11 @@
                 n.lineNumber !== e.endLineNumber ||
                 n.column !== e.endColumn
                 ? {
-                      startLineNumber: t.lineNumber,
-                      startColumn: t.column,
-                      endLineNumber: n.lineNumber,
-                      endColumn: n.column,
-                  }
+                    startLineNumber: t.lineNumber,
+                    startColumn: t.column,
+                    endLineNumber: n.lineNumber,
+                    endColumn: n.column,
+                }
                 : e;
         }
         _validatePosition(e) {
@@ -11961,7 +11961,7 @@
                 (this._requestHandlerBrand = void 0),
                 (this._workerTextModelSyncServer = new Zi()));
         }
-        dispose() {}
+        dispose() { }
         async $ping() {
             return "pong";
         }
@@ -11985,12 +11985,12 @@
             return r
                 ? hr.computeUnicodeHighlights(r, t, n)
                 : {
-                      ranges: [],
-                      hasMore: !1,
-                      ambiguousCharacterCount: 0,
-                      invisibleCharacterCount: 0,
-                      nonBasicAsciiCharacterCount: 0,
-                  };
+                    ranges: [],
+                    hasMore: !1,
+                    ambiguousCharacterCount: 0,
+                    invisibleCharacterCount: 0,
+                    nonBasicAsciiCharacterCount: 0,
+                };
         }
         async $findSectionHeaders(e, t) {
             const n = this._getModel(e);
@@ -12066,10 +12066,10 @@
                     .getEndPosition(t[o].range)
                     .equals(ke.getStartPosition(t[a].range))
                     ? ((t[o].range = ke.fromPositions(
-                          ke.getStartPosition(t[o].range),
-                          ke.getEndPosition(t[a].range),
-                      )),
-                      (t[o].text += t[a].text))
+                        ke.getStartPosition(t[o].range),
+                        ke.getEndPosition(t[a].range),
+                    )),
+                        (t[o].text += t[a].text))
                     : (o++, (t[o] = t[a]));
             t.length = o + 1;
             for (let { range: a, text: l, eol: u } of t) {
@@ -12102,16 +12102,16 @@
             }
             return (
                 "number" == typeof s &&
-                    i.push({
-                        eol: s,
-                        text: "",
-                        range: {
-                            startLineNumber: 0,
-                            startColumn: 0,
-                            endLineNumber: 0,
-                            endColumn: 0,
-                        },
-                    }),
+                i.push({
+                    eol: s,
+                    text: "",
+                    range: {
+                        startLineNumber: 0,
+                        startColumn: 0,
+                        endLineNumber: 0,
+                        endColumn: 0,
+                    },
+                }),
                 i
             );
         }
@@ -12119,12 +12119,12 @@
             const t = this._getModel(e);
             return t
                 ? (function (e) {
-                      return e &&
-                          "function" == typeof e.getLineCount &&
-                          "function" == typeof e.getLineContent
-                          ? Ve.computeLinks(e)
-                          : [];
-                  })(t)
+                    return e &&
+                        "function" == typeof e.getLineCount &&
+                        "function" == typeof e.getLineContent
+                        ? Ve.computeLinks(e)
+                        : [];
+                })(t)
                 : null;
         }
         async $computeDefaultDocumentColors(e) {
@@ -12290,7 +12290,7 @@
         function d(t, n) {
             let i = 0,
                 s = 0;
-            for (; i < t; ) {
+            for (; i < t;) {
                 let t = e.charCodeAt(r);
                 if (t >= 48 && t <= 57) s = 16 * s + t - 48;
                 else if (t >= 65 && t <= 70) s = 16 * s + t - 65 + 10;
@@ -12340,7 +12340,7 @@
                         (i = (function () {
                             let t = "",
                                 i = r;
-                            for (;;) {
+                            for (; ;) {
                                 if (r >= n) {
                                     ((t += e.substring(i, r)), (h = 2));
                                     break;
@@ -12410,14 +12410,14 @@
                 case 47:
                     const l = r - 1;
                     if (47 === e.charCodeAt(r + 1)) {
-                        for (r += 2; r < n && !ss(e.charCodeAt(r)); ) r++;
+                        for (r += 2; r < n && !ss(e.charCodeAt(r));) r++;
                         return ((i = e.substring(l, r)), (o = 12));
                     }
                     if (42 === e.charCodeAt(r + 1)) {
                         r += 2;
                         const t = n - 1;
                         let s = !1;
-                        for (; r < t; ) {
+                        for (; r < t;) {
                             const t = e.charCodeAt(r);
                             if (42 === t && 47 === e.charCodeAt(r + 1)) {
                                 ((r += 2), (s = !0));
@@ -12425,7 +12425,7 @@
                             }
                             (r++,
                                 ss(t) &&
-                                    (13 === t && 10 === e.charCodeAt(r) && r++,
+                                (13 === t && 10 === e.charCodeAt(r) && r++,
                                     a++,
                                     (u = r)));
                         }
@@ -12439,8 +12439,8 @@
                 case 45:
                     if (
                         ((i += String.fromCharCode(t)),
-                        r++,
-                        r === n || !os(e.charCodeAt(r)))
+                            r++,
+                            r === n || !os(e.charCodeAt(r)))
                     )
                         return (o = 16);
                 case 48:
@@ -12458,15 +12458,15 @@
                             let t = r;
                             if (48 === e.charCodeAt(r)) r++;
                             else
-                                for (r++; r < e.length && os(e.charCodeAt(r)); )
+                                for (r++; r < e.length && os(e.charCodeAt(r));)
                                     r++;
                             if (r < e.length && 46 === e.charCodeAt(r)) {
                                 if (
                                     (r++,
-                                    !(r < e.length && os(e.charCodeAt(r))))
+                                        !(r < e.length && os(e.charCodeAt(r))))
                                 )
                                     return ((h = 3), e.substring(t, r));
-                                for (r++; r < e.length && os(e.charCodeAt(r)); )
+                                for (r++; r < e.length && os(e.charCodeAt(r));)
                                     r++;
                             }
                             let n = r;
@@ -12477,10 +12477,10 @@
                             )
                                 if (
                                     (r++,
-                                    ((r < e.length && 43 === e.charCodeAt(r)) ||
-                                        45 === e.charCodeAt(r)) &&
+                                        ((r < e.length && 43 === e.charCodeAt(r)) ||
+                                            45 === e.charCodeAt(r)) &&
                                         r++,
-                                    r < e.length && os(e.charCodeAt(r)))
+                                        r < e.length && os(e.charCodeAt(r)))
                                 ) {
                                     for (
                                         r++;
@@ -12494,7 +12494,7 @@
                         (o = 11)
                     );
                 default:
-                    for (; r < n && m(t); ) (r++, (t = e.charCodeAt(r)));
+                    for (; r < n && m(t);) (r++, (t = e.charCodeAt(r)));
                     if (s !== r) {
                         switch (((i = e.substring(s, r)), i)) {
                             case "true":
@@ -12531,12 +12531,12 @@
             getPosition: () => r,
             scan: t
                 ? function () {
-                      let e;
-                      do {
-                          e = f();
-                      } while (e >= 12 && e <= 15);
-                      return e;
-                  }
+                    let e;
+                    do {
+                        e = f();
+                    } while (e >= 12 && e <= 15);
+                    return e;
+                }
                 : f,
             getToken: () => o,
             getTokenValue: () => i,
@@ -12670,13 +12670,13 @@
             )
                 s--;
             let l = a;
-            for (; l < e.length && !fs(e, l); ) l++;
+            for (; l < e.length && !fs(e, l);) l++;
             ((i = e.substring(s, l)),
                 (r = (function (e, t) {
                     let n = 0,
                         r = 0;
                     const i = t.tabSize || 4;
-                    for (; n < e.length; ) {
+                    for (; n < e.length;) {
                         let t = e.charAt(n);
                         if (t === as[1]) r++;
                         else {
@@ -12689,16 +12689,16 @@
                 })(i, n)));
         } else ((i = e), (r = 0), (s = 0), (o = 0), (a = e.length));
         const l = (function (e, t) {
-                for (let n = 0; n < t.length; n++) {
-                    const e = t.charAt(n);
-                    if ("\r" === e)
-                        return n + 1 < t.length && "\n" === t.charAt(n + 1)
-                            ? "\r\n"
-                            : "\r";
-                    if ("\n" === e) return "\n";
-                }
-                return (e && e.eol) || "\n";
-            })(n, e),
+            for (let n = 0; n < t.length; n++) {
+                const e = t.charAt(n);
+                if ("\r" === e)
+                    return n + 1 < t.length && "\n" === t.charAt(n + 1)
+                        ? "\r\n"
+                        : "\r";
+                if ("\n" === e) return "\n";
+            }
+            return (e && e.eol) || "\n";
+        })(n, e),
             u = cs.includes(l);
         let c,
             h = 0,
@@ -12715,12 +12715,12 @@
             return !u || e > us[f][l].length
                 ? l + ds(c, r + d)
                 : e <= 0
-                  ? l
-                  : us[f][l][e];
+                    ? l
+                    : us[f][l][e];
         }
         function b() {
             let e = m.scan();
-            for (h = 0; 15 === e || 14 === e; )
+            for (h = 0; 15 === e || 14 === e;)
                 (14 === e && n.keepLines ? (h += 1) : 14 === e && (h = 1),
                     (e = m.scan()));
             return ((g = 16 === e || 0 !== m.getTokenError()), e);
@@ -12743,12 +12743,12 @@
                 e,
             );
         }
-        for (; 17 !== w; ) {
+        for (; 17 !== w;) {
             let e = m.getTokenOffset() + m.getTokenLength() + s,
                 t = b(),
                 r = "",
                 i = !1;
-            for (; 0 === h && (12 === t || 13 === t); ) {
+            for (; 0 === h && (12 === t || 13 === t);) {
                 let n = m.getTokenOffset() + s;
                 (v(as[1], e, n),
                     (e = m.getTokenOffset() + m.getTokenLength() + s),
@@ -12805,8 +12805,8 @@
                         n.keepLines && h > 0
                             ? (r = p())
                             : (12 !== t && 13 !== t) || i
-                              ? 5 !== t && 17 !== t && (g = !0)
-                              : (r = as[1]);
+                                ? 5 !== t && 17 !== t && (g = !0)
+                                : (r = as[1]);
                         break;
                     case 16:
                         g = !0;
@@ -12863,253 +12863,253 @@
                 (e[(e.EOF = 17)] = "EOF"));
         })(bs || (bs = {})));
     const ys = function (e, t = [], n = ms.DEFAULT) {
-            let r = null,
-                i = [];
-            const s = [];
-            function o(e) {
-                Array.isArray(i) ? i.push(e) : null !== r && (i[r] = e);
-            }
-            return (
-                (function (e, t, n = ms.DEFAULT) {
-                    const r = rs(e, !1),
-                        i = [];
-                    function s(e) {
-                        return e
-                            ? () =>
-                                  e(
-                                      r.getTokenOffset(),
-                                      r.getTokenLength(),
-                                      r.getTokenStartLine(),
-                                      r.getTokenStartCharacter(),
-                                  )
-                            : () => !0;
-                    }
-                    function o(e) {
-                        return e
-                            ? () =>
-                                  e(
-                                      r.getTokenOffset(),
-                                      r.getTokenLength(),
-                                      r.getTokenStartLine(),
-                                      r.getTokenStartCharacter(),
-                                      () => i.slice(),
-                                  )
-                            : () => !0;
-                    }
-                    function a(e) {
-                        return e
-                            ? (t) =>
-                                  e(
-                                      t,
-                                      r.getTokenOffset(),
-                                      r.getTokenLength(),
-                                      r.getTokenStartLine(),
-                                      r.getTokenStartCharacter(),
-                                  )
-                            : () => !0;
-                    }
-                    function l(e) {
-                        return e
-                            ? (t) =>
-                                  e(
-                                      t,
-                                      r.getTokenOffset(),
-                                      r.getTokenLength(),
-                                      r.getTokenStartLine(),
-                                      r.getTokenStartCharacter(),
-                                      () => i.slice(),
-                                  )
-                            : () => !0;
-                    }
-                    const u = o(t.onObjectBegin),
-                        c = l(t.onObjectProperty),
-                        h = s(t.onObjectEnd),
-                        d = o(t.onArrayBegin),
-                        f = s(t.onArrayEnd),
-                        m = l(t.onLiteralValue),
-                        g = a(t.onSeparator),
-                        p = s(t.onComment),
-                        b = a(t.onError),
-                        y = n && n.disallowComments,
-                        v = n && n.allowTrailingComma;
-                    function w() {
-                        for (;;) {
-                            const e = r.scan();
-                            switch (r.getTokenError()) {
-                                case 4:
-                                    C(14);
-                                    break;
-                                case 5:
-                                    C(15);
-                                    break;
-                                case 3:
-                                    C(13);
-                                    break;
-                                case 1:
-                                    y || C(11);
-                                    break;
-                                case 2:
-                                    C(12);
-                                    break;
-                                case 6:
-                                    C(16);
-                            }
-                            switch (e) {
-                                case 12:
-                                case 13:
-                                    y ? C(10) : p();
-                                    break;
-                                case 16:
-                                    C(1);
-                                    break;
-                                case 15:
-                                case 14:
-                                    break;
-                                default:
-                                    return e;
-                            }
+        let r = null,
+            i = [];
+        const s = [];
+        function o(e) {
+            Array.isArray(i) ? i.push(e) : null !== r && (i[r] = e);
+        }
+        return (
+            (function (e, t, n = ms.DEFAULT) {
+                const r = rs(e, !1),
+                    i = [];
+                function s(e) {
+                    return e
+                        ? () =>
+                            e(
+                                r.getTokenOffset(),
+                                r.getTokenLength(),
+                                r.getTokenStartLine(),
+                                r.getTokenStartCharacter(),
+                            )
+                        : () => !0;
+                }
+                function o(e) {
+                    return e
+                        ? () =>
+                            e(
+                                r.getTokenOffset(),
+                                r.getTokenLength(),
+                                r.getTokenStartLine(),
+                                r.getTokenStartCharacter(),
+                                () => i.slice(),
+                            )
+                        : () => !0;
+                }
+                function a(e) {
+                    return e
+                        ? (t) =>
+                            e(
+                                t,
+                                r.getTokenOffset(),
+                                r.getTokenLength(),
+                                r.getTokenStartLine(),
+                                r.getTokenStartCharacter(),
+                            )
+                        : () => !0;
+                }
+                function l(e) {
+                    return e
+                        ? (t) =>
+                            e(
+                                t,
+                                r.getTokenOffset(),
+                                r.getTokenLength(),
+                                r.getTokenStartLine(),
+                                r.getTokenStartCharacter(),
+                                () => i.slice(),
+                            )
+                        : () => !0;
+                }
+                const u = o(t.onObjectBegin),
+                    c = l(t.onObjectProperty),
+                    h = s(t.onObjectEnd),
+                    d = o(t.onArrayBegin),
+                    f = s(t.onArrayEnd),
+                    m = l(t.onLiteralValue),
+                    g = a(t.onSeparator),
+                    p = s(t.onComment),
+                    b = a(t.onError),
+                    y = n && n.disallowComments,
+                    v = n && n.allowTrailingComma;
+                function w() {
+                    for (; ;) {
+                        const e = r.scan();
+                        switch (r.getTokenError()) {
+                            case 4:
+                                C(14);
+                                break;
+                            case 5:
+                                C(15);
+                                break;
+                            case 3:
+                                C(13);
+                                break;
+                            case 1:
+                                y || C(11);
+                                break;
+                            case 2:
+                                C(12);
+                                break;
+                            case 6:
+                                C(16);
                         }
-                    }
-                    function C(e, t = [], n = []) {
-                        if ((b(e), t.length + n.length > 0)) {
-                            let e = r.getToken();
-                            for (; 17 !== e; ) {
-                                if (-1 !== t.indexOf(e)) {
-                                    w();
-                                    break;
-                                }
-                                if (-1 !== n.indexOf(e)) break;
-                                e = w();
-                            }
-                        }
-                    }
-                    function _(e) {
-                        const t = r.getTokenValue();
-                        return (e ? m(t) : (c(t), i.push(t)), w(), !0);
-                    }
-                    function L() {
-                        switch (r.getToken()) {
-                            case 11:
-                                const e = r.getTokenValue();
-                                let t = Number(e);
-                                (isNaN(t) && (C(2), (t = 0)), m(t));
+                        switch (e) {
+                            case 12:
+                            case 13:
+                                y ? C(10) : p();
                                 break;
-                            case 7:
-                                m(null);
+                            case 16:
+                                C(1);
                                 break;
-                            case 8:
-                                m(!0);
-                                break;
-                            case 9:
-                                m(!1);
+                            case 15:
+                            case 14:
                                 break;
                             default:
-                                return !1;
+                                return e;
                         }
-                        return (w(), !0);
                     }
-                    function S() {
-                        return 10 !== r.getToken()
-                            ? (C(3, [], [2, 5]), !1)
-                            : (_(!1),
-                              6 === r.getToken()
-                                  ? (g(":"), w(), E() || C(4, [], [2, 5]))
-                                  : C(5, [], [2, 5]),
-                              i.pop(),
-                              !0);
+                }
+                function C(e, t = [], n = []) {
+                    if ((b(e), t.length + n.length > 0)) {
+                        let e = r.getToken();
+                        for (; 17 !== e;) {
+                            if (-1 !== t.indexOf(e)) {
+                                w();
+                                break;
+                            }
+                            if (-1 !== n.indexOf(e)) break;
+                            e = w();
+                        }
                     }
-                    function N() {
-                        (u(), w());
-                        let e = !1;
-                        for (; 2 !== r.getToken() && 17 !== r.getToken(); ) {
-                            if (5 === r.getToken()) {
-                                if (
-                                    (e || C(4, [], []),
+                }
+                function _(e) {
+                    const t = r.getTokenValue();
+                    return (e ? m(t) : (c(t), i.push(t)), w(), !0);
+                }
+                function L() {
+                    switch (r.getToken()) {
+                        case 11:
+                            const e = r.getTokenValue();
+                            let t = Number(e);
+                            (isNaN(t) && (C(2), (t = 0)), m(t));
+                            break;
+                        case 7:
+                            m(null);
+                            break;
+                        case 8:
+                            m(!0);
+                            break;
+                        case 9:
+                            m(!1);
+                            break;
+                        default:
+                            return !1;
+                    }
+                    return (w(), !0);
+                }
+                function S() {
+                    return 10 !== r.getToken()
+                        ? (C(3, [], [2, 5]), !1)
+                        : (_(!1),
+                            6 === r.getToken()
+                                ? (g(":"), w(), E() || C(4, [], [2, 5]))
+                                : C(5, [], [2, 5]),
+                            i.pop(),
+                            !0);
+                }
+                function N() {
+                    (u(), w());
+                    let e = !1;
+                    for (; 2 !== r.getToken() && 17 !== r.getToken();) {
+                        if (5 === r.getToken()) {
+                            if (
+                                (e || C(4, [], []),
                                     g(","),
                                     w(),
                                     2 === r.getToken() && v)
-                                )
-                                    break;
-                            } else e && C(6, [], []);
-                            (S() || C(4, [], [2, 5]), (e = !0));
-                        }
-                        return (
-                            h(),
-                            2 !== r.getToken() ? C(7, [2], []) : w(),
-                            !0
-                        );
+                            )
+                                break;
+                        } else e && C(6, [], []);
+                        (S() || C(4, [], [2, 5]), (e = !0));
                     }
-                    function x() {
-                        (d(), w());
-                        let e = !0,
-                            t = !1;
-                        for (; 4 !== r.getToken() && 17 !== r.getToken(); ) {
-                            if (5 === r.getToken()) {
-                                if (
-                                    (t || C(4, [], []),
+                    return (
+                        h(),
+                        2 !== r.getToken() ? C(7, [2], []) : w(),
+                        !0
+                    );
+                }
+                function x() {
+                    (d(), w());
+                    let e = !0,
+                        t = !1;
+                    for (; 4 !== r.getToken() && 17 !== r.getToken();) {
+                        if (5 === r.getToken()) {
+                            if (
+                                (t || C(4, [], []),
                                     g(","),
                                     w(),
                                     4 === r.getToken() && v)
-                                )
-                                    break;
-                            } else t && C(6, [], []);
-                            (e ? (i.push(0), (e = !1)) : i[i.length - 1]++,
-                                E() || C(4, [], [4, 5]),
-                                (t = !0));
-                        }
-                        return (
-                            f(),
-                            e || i.pop(),
-                            4 !== r.getToken() ? C(8, [4], []) : w(),
-                            !0
-                        );
+                            )
+                                break;
+                        } else t && C(6, [], []);
+                        (e ? (i.push(0), (e = !1)) : i[i.length - 1]++,
+                            E() || C(4, [], [4, 5]),
+                            (t = !0));
                     }
-                    function E() {
-                        switch (r.getToken()) {
-                            case 3:
-                                return x();
-                            case 1:
-                                return N();
-                            case 10:
-                                return _(!0);
-                            default:
-                                return L();
-                        }
+                    return (
+                        f(),
+                        e || i.pop(),
+                        4 !== r.getToken() ? C(8, [4], []) : w(),
+                        !0
+                    );
+                }
+                function E() {
+                    switch (r.getToken()) {
+                        case 3:
+                            return x();
+                        case 1:
+                            return N();
+                        case 10:
+                            return _(!0);
+                        default:
+                            return L();
                     }
-                    if ((w(), 17 === r.getToken()))
-                        return !!n.allowEmptyContent || (C(4, [], []), !1);
-                    if (!E()) return (C(4, [], []), !1);
-                    17 !== r.getToken() && C(9, [], []);
-                })(
-                    e,
-                    {
-                        onObjectBegin: () => {
-                            const e = {};
-                            (o(e), s.push(i), (i = e), (r = null));
-                        },
-                        onObjectProperty: (e) => {
-                            r = e;
-                        },
-                        onObjectEnd: () => {
-                            i = s.pop();
-                        },
-                        onArrayBegin: () => {
-                            const e = [];
-                            (o(e), s.push(i), (i = e), (r = null));
-                        },
-                        onArrayEnd: () => {
-                            i = s.pop();
-                        },
-                        onLiteralValue: o,
-                        onError: (e, n, r) => {
-                            t.push({ error: e, offset: n, length: r });
-                        },
+                }
+                if ((w(), 17 === r.getToken()))
+                    return !!n.allowEmptyContent || (C(4, [], []), !1);
+                if (!E()) return (C(4, [], []), !1);
+                17 !== r.getToken() && C(9, [], []);
+            })(
+                e,
+                {
+                    onObjectBegin: () => {
+                        const e = {};
+                        (o(e), s.push(i), (i = e), (r = null));
                     },
-                    n,
-                ),
-                i[0]
-            );
-        },
+                    onObjectProperty: (e) => {
+                        r = e;
+                    },
+                    onObjectEnd: () => {
+                        i = s.pop();
+                    },
+                    onArrayBegin: () => {
+                        const e = [];
+                        (o(e), s.push(i), (i = e), (r = null));
+                    },
+                    onArrayEnd: () => {
+                        i = s.pop();
+                    },
+                    onLiteralValue: o,
+                    onError: (e, n, r) => {
+                        t.push({ error: e, offset: n, length: r });
+                    },
+                },
+                n,
+            ),
+            i[0]
+        );
+    },
         vs = function e(t, n, r = !1) {
             if (
                 (function (e, t, n = !1) {
@@ -13657,9 +13657,9 @@
                 let r = { kind: "create", uri: e };
                 return (
                     void 0 === t ||
-                        (void 0 === t.overwrite &&
-                            void 0 === t.ignoreIfExists) ||
-                        (r.options = t),
+                    (void 0 === t.overwrite &&
+                        void 0 === t.ignoreIfExists) ||
+                    (r.options = t),
                     void 0 !== n && (r.annotationId = n),
                     r
                 );
@@ -13684,9 +13684,9 @@
                 let i = { kind: "rename", oldUri: e, newUri: t };
                 return (
                     void 0 === n ||
-                        (void 0 === n.overwrite &&
-                            void 0 === n.ignoreIfExists) ||
-                        (i.options = n),
+                    (void 0 === n.overwrite &&
+                        void 0 === n.ignoreIfExists) ||
+                    (i.options = n),
                     void 0 !== r && (i.annotationId = r),
                     i
                 );
@@ -13712,9 +13712,9 @@
                 let r = { kind: "delete", uri: e };
                 return (
                     void 0 === t ||
-                        (void 0 === t.recursive &&
-                            void 0 === t.ignoreIfNotExists) ||
-                        (r.options = t),
+                    (void 0 === t.recursive &&
+                        void 0 === t.ignoreIfNotExists) ||
+                    (r.options = t),
                     void 0 !== n && (r.annotationId = n),
                     r
                 );
@@ -14052,8 +14052,8 @@
                     "string" == typeof t
                         ? ((i = !1), (r.kind = t))
                         : $s.is(t)
-                          ? (r.command = t)
-                          : (r.edit = t),
+                            ? (r.command = t)
+                            : (r.edit = t),
                     i && void 0 !== n && (r.kind = n),
                     r
                 );
@@ -14312,12 +14312,12 @@
                 let o = 0,
                     a = 0,
                     l = 0;
-                for (; o < i.length && a < s.length; ) {
+                for (; o < i.length && a < s.length;) {
                     let t = n(i[o], s[a]);
                     e[l++] = t <= 0 ? i[o++] : s[a++];
                 }
-                for (; o < i.length; ) e[l++] = i[o++];
-                for (; a < s.length; ) e[l++] = s[a++];
+                for (; o < i.length;) e[l++] = i[o++];
+                for (; a < s.length;) e[l++] = s[a++];
                 return e;
             }
             ((e.create = function (e, t, n, r) {
@@ -14342,7 +14342,7 @@
                             let n = e.range.start.line - t.range.start.line;
                             return 0 === n
                                 ? e.range.start.character -
-                                      t.range.start.character
+                                t.range.start.character
                                 : n;
                         }),
                         s = r.length;
@@ -14400,9 +14400,9 @@
                     let i = t.charAt(r);
                     ((n = "\r" === i || "\n" === i),
                         "\r" === i &&
-                            r + 1 < t.length &&
-                            "\n" === t.charAt(r + 1) &&
-                            r++);
+                        r + 1 < t.length &&
+                        "\n" === t.charAt(r + 1) &&
+                        r++);
                 }
                 (n && t.length > 0 && e.push(t.length),
                     (this._lineOffsets = e));
@@ -14415,7 +14415,7 @@
                 n = 0,
                 r = t.length;
             if (0 === r) return Es.create(0, e);
-            for (; n < r; ) {
+            for (; n < r;) {
                 let i = Math.floor((n + r) / 2);
                 t[i] > e ? (r = i) : (n = i + 1);
             }
@@ -14526,7 +14526,7 @@
                         a.length < 1e4
                             ? o.splice(i + 1, s - i, ...a)
                             : (this._lineOffsets = o =
-                                  o.slice(0, i + 1).concat(a, o.slice(s + 1)));
+                                o.slice(0, i + 1).concat(a, o.slice(s + 1)));
                     const l = n.text.length - (r - t);
                     if (0 !== l)
                         for (let n = i + 1 + a.length, u = o.length; n < u; n++)
@@ -14541,7 +14541,7 @@
         getLineOffsets() {
             return (
                 void 0 === this._lineOffsets &&
-                    (this._lineOffsets = da(this._content, !0)),
+                (this._lineOffsets = da(this._content, !0)),
                 this._lineOffsets
             );
         }
@@ -14551,7 +14551,7 @@
                 n = 0,
                 r = t.length;
             if (0 === r) return { line: 0, character: e };
-            for (; n < r; ) {
+            for (; n < r;) {
                 let i = Math.floor((n + r) / 2);
                 t[i] > e ? (r = i) : (n = i + 1);
             }
@@ -14600,12 +14600,12 @@
         let s = 0,
             o = 0,
             a = 0;
-        for (; s < r.length && o < i.length; ) {
+        for (; s < r.length && o < i.length;) {
             let n = t(r[s], i[o]);
             e[a++] = n <= 0 ? r[s++] : i[o++];
         }
-        for (; s < r.length; ) e[a++] = r[s++];
-        for (; o < i.length; ) e[a++] = i[o++];
+        for (; s < r.length;) e[a++] = r[s++];
+        for (; o < i.length;) e[a++] = i[o++];
         return e;
     }
     function da(e, t, n = 0) {
@@ -14617,7 +14617,7 @@
                     i + 1 < e.length &&
                     10 === e.charCodeAt(i + 1) &&
                     i++,
-                r.push(n + i + 1));
+                    r.push(n + i + 1));
         }
         return r;
     }
@@ -14655,8 +14655,8 @@
             ((r = t.message),
                 (n = r),
                 t.comment &&
-                    t.comment.length > 0 &&
-                    (n += `/${Array.isArray(t.comment) ? t.comment.join("") : t.comment}`),
+                t.comment.length > 0 &&
+                (n += `/${Array.isArray(t.comment) ? t.comment.join("") : t.comment}`),
                 (i = t.args ?? {}));
         }
         return (function (e, t) {
@@ -14900,12 +14900,12 @@
         }
     }
     class Ta {
-        constructor() {}
+        constructor() { }
         get schemas() {
             return [];
         }
-        add(e) {}
-        merge(e) {}
+        add(e) { }
+        merge(e) { }
         include(e) {
             return !0;
         }
@@ -14956,11 +14956,11 @@
                 this.propertiesMatches++,
                 (e.enumValueMatch ||
                     (!e.hasProblems() && e.propertiesMatches)) &&
-                    this.propertiesValueMatches++,
+                this.propertiesValueMatches++,
                 e.enumValueMatch &&
-                    e.enumValues &&
-                    1 === e.enumValues.length &&
-                    this.primaryValueMatches++);
+                e.enumValues &&
+                1 === e.enumValues.length &&
+                this.primaryValueMatches++);
         }
         mergeProcessedProperties(e) {
             e.processedProperties.forEach((e) =>
@@ -14974,14 +14974,14 @@
                     ? -1
                     : 1
                 : this.enumValueMatch !== e.enumValueMatch
-                  ? e.enumValueMatch
-                      ? -1
-                      : 1
-                  : this.primaryValueMatches !== e.primaryValueMatches
-                    ? this.primaryValueMatches - e.primaryValueMatches
-                    : this.propertiesValueMatches !== e.propertiesValueMatches
-                      ? this.propertiesValueMatches - e.propertiesValueMatches
-                      : this.propertiesMatches - e.propertiesMatches;
+                    ? e.enumValueMatch
+                        ? -1
+                        : 1
+                    : this.primaryValueMatches !== e.primaryValueMatches
+                        ? this.primaryValueMatches - e.primaryValueMatches
+                        : this.propertiesValueMatches !== e.propertiesValueMatches
+                            ? this.propertiesValueMatches - e.propertiesValueMatches
+                            : this.propertiesMatches - e.propertiesMatches;
         }
     }
     function Oa(e) {
@@ -15049,185 +15049,185 @@
         if ("property" === e.type) return Da(e.valueNode, t, n, r, i);
         const s = e;
         switch (
-            ((function () {
-                function e(e) {
-                    return (
-                        s.type === e ||
-                        ("integer" === e && "number" === s.type && s.isInteger)
-                    );
-                }
-                Array.isArray(t.type)
-                    ? t.type.some(e) ||
-                      n.problems.push({
-                          location: { offset: s.offset, length: s.length },
-                          message:
-                              t.errorMessage ||
-                              ga(
-                                  "Incorrect type. Expected one of {0}.",
-                                  t.type.join(", "),
-                              ),
-                      })
-                    : t.type &&
-                      (e(t.type) ||
-                          n.problems.push({
-                              location: { offset: s.offset, length: s.length },
-                              message:
-                                  t.errorMessage ||
-                                  ga('Incorrect type. Expected "{0}".', t.type),
-                          }));
-                if (Array.isArray(t.allOf))
-                    for (const h of t.allOf) {
-                        const e = new Ma(),
-                            t = r.newSub();
-                        (Da(s, xa(h), e, t, i), n.merge(e), r.merge(t));
-                    }
-                const o = xa(t.not);
-                if (o) {
-                    const e = new Ma(),
-                        a = r.newSub();
-                    (Da(s, o, e, a, i),
-                        e.hasProblems() ||
-                            n.problems.push({
-                                location: {
-                                    offset: s.offset,
-                                    length: s.length,
-                                },
-                                message:
-                                    t.errorMessage ||
-                                    ga("Matches a schema that is not allowed."),
-                            }));
-                    for (const t of a.schemas)
-                        ((t.inverted = !t.inverted), r.add(t));
-                }
-                const a = (e, t) => {
-                    const o = [];
-                    let a;
-                    for (const n of e) {
-                        const e = xa(n),
-                            l = new Ma(),
-                            u = r.newSub();
-                        if (
-                            (Da(s, e, l, u, i), l.hasProblems() || o.push(e), a)
-                        )
-                            if (
-                                t ||
-                                l.hasProblems() ||
-                                a.validationResult.hasProblems()
-                            ) {
-                                const t = l.compare(a.validationResult);
-                                t > 0
-                                    ? (a = {
-                                          schema: e,
-                                          validationResult: l,
-                                          matchingSchemas: u,
-                                      })
-                                    : 0 === t &&
-                                      (a.matchingSchemas.merge(u),
-                                      a.validationResult.mergeEnumValues(l));
-                            } else
-                                (a.matchingSchemas.merge(u),
-                                    (a.validationResult.propertiesMatches +=
-                                        l.propertiesMatches),
-                                    (a.validationResult.propertiesValueMatches +=
-                                        l.propertiesValueMatches),
-                                    a.validationResult.mergeProcessedProperties(
-                                        l,
-                                    ));
-                        else
-                            a = {
-                                schema: e,
-                                validationResult: l,
-                                matchingSchemas: u,
-                            };
-                    }
-                    return (
-                        o.length > 1 &&
-                            t &&
-                            n.problems.push({
-                                location: { offset: s.offset, length: 1 },
-                                message: ga(
-                                    "Matches multiple schemas when only one must validate.",
-                                ),
-                            }),
-                        a &&
-                            (n.merge(a.validationResult),
-                            r.merge(a.matchingSchemas)),
-                        o.length
-                    );
-                };
-                Array.isArray(t.anyOf) && a(t.anyOf, !1);
-                Array.isArray(t.oneOf) && a(t.oneOf, !0);
-                const l = (e) => {
-                        const t = new Ma(),
-                            o = r.newSub();
-                        (Da(s, xa(e), t, o, i), n.merge(t), r.merge(o));
-                    },
-                    u = xa(t.if);
-                u &&
-                    ((e, t, o) => {
-                        const a = xa(e),
-                            u = new Ma(),
-                            c = r.newSub();
-                        (Da(s, a, u, c, i),
-                            r.merge(c),
-                            n.mergeProcessedProperties(u),
-                            u.hasProblems() ? o && l(o) : t && l(t));
-                    })(u, xa(t.then), xa(t.else));
-                if (Array.isArray(t.enum)) {
-                    const e = Oa(s);
-                    let r = !1;
-                    for (const n of t.enum)
-                        if (Jo(e, n)) {
-                            r = !0;
-                            break;
-                        }
-                    ((n.enumValues = t.enum),
-                        (n.enumValueMatch = r),
-                        r ||
-                            n.problems.push({
-                                location: {
-                                    offset: s.offset,
-                                    length: s.length,
-                                },
-                                code: aa.EnumValueMismatch,
-                                message:
-                                    t.errorMessage ||
-                                    ga(
-                                        "Value is not accepted. Valid values: {0}.",
-                                        t.enum
-                                            .map((e) => JSON.stringify(e))
-                                            .join(", "),
-                                    ),
-                            }));
-                }
-                if (Qo(t.const)) {
-                    (Jo(Oa(s), t.const)
-                        ? (n.enumValueMatch = !0)
-                        : (n.problems.push({
-                              location: { offset: s.offset, length: s.length },
-                              code: aa.EnumValueMismatch,
-                              message:
-                                  t.errorMessage ||
-                                  ga(
-                                      "Value must be {0}.",
-                                      JSON.stringify(t.const),
-                                  ),
-                          }),
-                          (n.enumValueMatch = !1)),
-                        (n.enumValues = [t.const]));
-                }
-                let c = t.deprecationMessage;
-                if (c || t.deprecated) {
-                    c = c || ga("Value is deprecated");
-                    let e = "property" === s.parent?.type ? s.parent : s;
+        ((function () {
+            function e(e) {
+                return (
+                    s.type === e ||
+                    ("integer" === e && "number" === s.type && s.isInteger)
+                );
+            }
+            Array.isArray(t.type)
+                ? t.type.some(e) ||
+                n.problems.push({
+                    location: { offset: s.offset, length: s.length },
+                    message:
+                        t.errorMessage ||
+                        ga(
+                            "Incorrect type. Expected one of {0}.",
+                            t.type.join(", "),
+                        ),
+                })
+                : t.type &&
+                (e(t.type) ||
                     n.problems.push({
-                        location: { offset: e.offset, length: e.length },
-                        severity: Vs.Warning,
-                        message: c,
-                        code: aa.Deprecated,
-                    });
+                        location: { offset: s.offset, length: s.length },
+                        message:
+                            t.errorMessage ||
+                            ga('Incorrect type. Expected "{0}".', t.type),
+                    }));
+            if (Array.isArray(t.allOf))
+                for (const h of t.allOf) {
+                    const e = new Ma(),
+                        t = r.newSub();
+                    (Da(s, xa(h), e, t, i), n.merge(e), r.merge(t));
                 }
-            })(),
+            const o = xa(t.not);
+            if (o) {
+                const e = new Ma(),
+                    a = r.newSub();
+                (Da(s, o, e, a, i),
+                    e.hasProblems() ||
+                    n.problems.push({
+                        location: {
+                            offset: s.offset,
+                            length: s.length,
+                        },
+                        message:
+                            t.errorMessage ||
+                            ga("Matches a schema that is not allowed."),
+                    }));
+                for (const t of a.schemas)
+                    ((t.inverted = !t.inverted), r.add(t));
+            }
+            const a = (e, t) => {
+                const o = [];
+                let a;
+                for (const n of e) {
+                    const e = xa(n),
+                        l = new Ma(),
+                        u = r.newSub();
+                    if (
+                        (Da(s, e, l, u, i), l.hasProblems() || o.push(e), a)
+                    )
+                        if (
+                            t ||
+                            l.hasProblems() ||
+                            a.validationResult.hasProblems()
+                        ) {
+                            const t = l.compare(a.validationResult);
+                            t > 0
+                                ? (a = {
+                                    schema: e,
+                                    validationResult: l,
+                                    matchingSchemas: u,
+                                })
+                                : 0 === t &&
+                                (a.matchingSchemas.merge(u),
+                                    a.validationResult.mergeEnumValues(l));
+                        } else
+                            (a.matchingSchemas.merge(u),
+                                (a.validationResult.propertiesMatches +=
+                                    l.propertiesMatches),
+                                (a.validationResult.propertiesValueMatches +=
+                                    l.propertiesValueMatches),
+                                a.validationResult.mergeProcessedProperties(
+                                    l,
+                                ));
+                    else
+                        a = {
+                            schema: e,
+                            validationResult: l,
+                            matchingSchemas: u,
+                        };
+                }
+                return (
+                    o.length > 1 &&
+                    t &&
+                    n.problems.push({
+                        location: { offset: s.offset, length: 1 },
+                        message: ga(
+                            "Matches multiple schemas when only one must validate.",
+                        ),
+                    }),
+                    a &&
+                    (n.merge(a.validationResult),
+                        r.merge(a.matchingSchemas)),
+                    o.length
+                );
+            };
+            Array.isArray(t.anyOf) && a(t.anyOf, !1);
+            Array.isArray(t.oneOf) && a(t.oneOf, !0);
+            const l = (e) => {
+                const t = new Ma(),
+                    o = r.newSub();
+                (Da(s, xa(e), t, o, i), n.merge(t), r.merge(o));
+            },
+                u = xa(t.if);
+            u &&
+                ((e, t, o) => {
+                    const a = xa(e),
+                        u = new Ma(),
+                        c = r.newSub();
+                    (Da(s, a, u, c, i),
+                        r.merge(c),
+                        n.mergeProcessedProperties(u),
+                        u.hasProblems() ? o && l(o) : t && l(t));
+                })(u, xa(t.then), xa(t.else));
+            if (Array.isArray(t.enum)) {
+                const e = Oa(s);
+                let r = !1;
+                for (const n of t.enum)
+                    if (Jo(e, n)) {
+                        r = !0;
+                        break;
+                    }
+                ((n.enumValues = t.enum),
+                    (n.enumValueMatch = r),
+                    r ||
+                    n.problems.push({
+                        location: {
+                            offset: s.offset,
+                            length: s.length,
+                        },
+                        code: aa.EnumValueMismatch,
+                        message:
+                            t.errorMessage ||
+                            ga(
+                                "Value is not accepted. Valid values: {0}.",
+                                t.enum
+                                    .map((e) => JSON.stringify(e))
+                                    .join(", "),
+                            ),
+                    }));
+            }
+            if (Qo(t.const)) {
+                (Jo(Oa(s), t.const)
+                    ? (n.enumValueMatch = !0)
+                    : (n.problems.push({
+                        location: { offset: s.offset, length: s.length },
+                        code: aa.EnumValueMismatch,
+                        message:
+                            t.errorMessage ||
+                            ga(
+                                "Value must be {0}.",
+                                JSON.stringify(t.const),
+                            ),
+                    }),
+                        (n.enumValueMatch = !1)),
+                    (n.enumValues = [t.const]));
+            }
+            let c = t.deprecationMessage;
+            if (c || t.deprecated) {
+                c = c || ga("Value is deprecated");
+                let e = "property" === s.parent?.type ? s.parent : s;
+                n.problems.push({
+                    location: { offset: e.offset, length: e.length },
+                    severity: Vs.Warning,
+                    message: c,
+                    code: aa.Deprecated,
+                });
+            }
+        })(),
             s.type)
         ) {
             case "object":
@@ -15242,9 +15242,9 @@
                         for (const r of t.required)
                             if (!s[r]) {
                                 const t =
-                                        e.parent &&
-                                        "property" === e.parent.type &&
-                                        e.parent.keyNode,
+                                    e.parent &&
+                                    "property" === e.parent.type &&
+                                    e.parent.keyNode,
                                     i = t
                                         ? { offset: t.offset, length: t.length }
                                         : { offset: e.offset, length: 1 };
@@ -15431,16 +15431,16 @@
                                 s[r]
                                     ? n.propertiesValueMatches++
                                     : n.problems.push({
-                                          location: {
-                                              offset: e.offset,
-                                              length: e.length,
-                                          },
-                                          message: ga(
-                                              "Object is missing property {0} required by property {1}.",
-                                              r,
-                                              t,
-                                          ),
-                                      });
+                                        location: {
+                                            offset: e.offset,
+                                            length: e.length,
+                                        },
+                                        message: ga(
+                                            "Object is missing property {0} required by property {1}.",
+                                            r,
+                                            t,
+                                        ),
+                                    });
                         else {
                             const t = xa(o);
                             if (t) {
@@ -15456,11 +15456,11 @@
                     let s, o;
                     i.schemaDraft >= la.v2020_12
                         ? ((s = t.prefixItems),
-                          (o = Array.isArray(t.items) ? void 0 : t.items))
+                            (o = Array.isArray(t.items) ? void 0 : t.items))
                         : ((s = Array.isArray(t.items) ? t.items : void 0),
-                          (o = Array.isArray(t.items)
-                              ? t.additionalItems
-                              : t.items));
+                            (o = Array.isArray(t.items)
+                                ? t.additionalItems
+                                : t.items));
                     let a = 0;
                     if (void 0 !== s) {
                         const c = Math.min(s.length, e.items.length);
@@ -15506,9 +15506,9 @@
                                 y = new Ma();
                             (Da(b, l, y, Ta.instance, i),
                                 y.hasProblems() ||
-                                    (g++,
+                                (g++,
                                     i.schemaDraft >= la.v2020_12 &&
-                                        n.processedProperties.add(String(p))));
+                                    n.processedProperties.add(String(p))));
                         }
                         (0 !== g ||
                             Xo(t.minContains) ||
@@ -15522,33 +15522,33 @@
                                     ga("Array does not contain required item."),
                             }),
                             Xo(t.minContains) &&
-                                g < t.minContains &&
-                                n.problems.push({
-                                    location: {
-                                        offset: e.offset,
-                                        length: e.length,
-                                    },
-                                    message:
-                                        t.errorMessage ||
-                                        ga(
-                                            "Array has too few items that match the contains contraint. Expected {0} or more.",
-                                            t.minContains,
-                                        ),
-                                }),
+                            g < t.minContains &&
+                            n.problems.push({
+                                location: {
+                                    offset: e.offset,
+                                    length: e.length,
+                                },
+                                message:
+                                    t.errorMessage ||
+                                    ga(
+                                        "Array has too few items that match the contains contraint. Expected {0} or more.",
+                                        t.minContains,
+                                    ),
+                            }),
                             Xo(t.maxContains) &&
-                                g > t.maxContains &&
-                                n.problems.push({
-                                    location: {
-                                        offset: e.offset,
-                                        length: e.length,
-                                    },
-                                    message:
-                                        t.errorMessage ||
-                                        ga(
-                                            "Array has too many items that match the contains contraint. Expected {0} or less.",
-                                            t.maxContains,
-                                        ),
-                                }));
+                            g > t.maxContains &&
+                            n.problems.push({
+                                location: {
+                                    offset: e.offset,
+                                    length: e.length,
+                                },
+                                message:
+                                    t.errorMessage ||
+                                    ga(
+                                        "Array has too many items that match the contains contraint. Expected {0} or less.",
+                                        t.maxContains,
+                                    ),
+                            }));
                     }
                     const u = t.unevaluatedItems;
                     if (void 0 !== u)
@@ -15667,10 +15667,10 @@
                                             );
                                         n
                                             ? n[2] ||
-                                              "uri" !== t.format ||
-                                              (r = ga(
-                                                  "URI with a scheme is expected.",
-                                              ))
+                                            "uri" !== t.format ||
+                                            (r = ga(
+                                                "URI with a scheme is expected.",
+                                            ))
                                             : (r = ga("URI is expected."));
                                     } else r = ga("URI expected.");
                                     r &&
@@ -15812,7 +15812,7 @@
             s = gs(i, !1),
             o = t && t.collectComments ? [] : void 0;
         function a() {
-            for (;;) {
+            for (; ;) {
                 const t = s.scan();
                 switch ((c(), t)) {
                     case 12:
@@ -15845,12 +15845,12 @@
             let u = s.getTokenOffset(),
                 c = s.getTokenOffset() + s.getTokenLength();
             if (u === c && u > 0) {
-                for (u--; u > 0 && /\s/.test(i.charAt(u)); ) u--;
+                for (u--; u > 0 && /\s/.test(i.charAt(u));) u--;
                 c = u + 1;
             }
             if ((l(e, t, u, c), n && h(n, !1), r.length + o.length > 0)) {
                 let e = s.getToken();
-                for (; 17 !== e; ) {
+                for (; 17 !== e;) {
                     if (-1 !== r.indexOf(e)) {
                         a();
                         break;
@@ -15942,36 +15942,36 @@
                 const e = n[i.value];
                 e
                     ? (l(
-                          ga("Duplicate object key"),
-                          aa.DuplicateKey,
-                          r.keyNode.offset,
-                          r.keyNode.offset + r.keyNode.length,
-                          Vs.Warning,
-                      ),
-                      ea(e) &&
-                          l(
-                              ga("Duplicate object key"),
-                              aa.DuplicateKey,
-                              e.keyNode.offset,
-                              e.keyNode.offset + e.keyNode.length,
-                              Vs.Warning,
-                          ),
-                      (n[i.value] = !0))
+                        ga("Duplicate object key"),
+                        aa.DuplicateKey,
+                        r.keyNode.offset,
+                        r.keyNode.offset + r.keyNode.length,
+                        Vs.Warning,
+                    ),
+                        ea(e) &&
+                        l(
+                            ga("Duplicate object key"),
+                            aa.DuplicateKey,
+                            e.keyNode.offset,
+                            e.keyNode.offset + e.keyNode.length,
+                            Vs.Warning,
+                        ),
+                        (n[i.value] = !0))
                     : (n[i.value] = r);
             }
             if (6 === s.getToken()) ((r.colonOffset = s.getTokenOffset()), a());
             else if (
                 (u(ga("Colon expected"), aa.ColonExpected),
-                10 === s.getToken() &&
+                    10 === s.getToken() &&
                     e.positionAt(i.offset + i.length).line <
-                        e.positionAt(s.getTokenOffset()).line)
+                    e.positionAt(s.getTokenOffset()).line)
             )
                 return ((r.length = i.length), r);
             const o = g(r);
             return o
                 ? ((r.valueNode = o),
-                  (r.length = o.offset + o.length - r.offset),
-                  r)
+                    (r.length = o.offset + o.length - r.offset),
+                    r)
                 : u(ga("Value expected"), aa.ValueExpected, r, [], [2, 5]);
         }
         function m(e) {
@@ -15986,7 +15986,7 @@
                     const t = new Ca(e, s.getTokenOffset());
                     a();
                     let n = !1;
-                    for (; 4 !== s.getToken() && 17 !== s.getToken(); ) {
+                    for (; 4 !== s.getToken() && 17 !== s.getToken();) {
                         if (5 === s.getToken()) {
                             n || u(ga("Value expected"), aa.ValueExpected);
                             const e = s.getTokenOffset();
@@ -16005,20 +16005,20 @@
                         (e
                             ? t.items.push(e)
                             : u(
-                                  ga("Value expected"),
-                                  aa.ValueExpected,
-                                  void 0,
-                                  [],
-                                  [4, 5],
-                              ),
+                                ga("Value expected"),
+                                aa.ValueExpected,
+                                void 0,
+                                [],
+                                [4, 5],
+                            ),
                             (n = !0));
                     }
                     return 4 !== s.getToken()
                         ? u(
-                              ga("Expected comma or closing bracket"),
-                              aa.CommaOrCloseBacketExpected,
-                              t,
-                          )
+                            ga("Expected comma or closing bracket"),
+                            aa.CommaOrCloseBacketExpected,
+                            t,
+                        )
                         : h(t, !0);
                 })(e) ||
                 (function (e) {
@@ -16027,7 +16027,7 @@
                         n = Object.create(null);
                     a();
                     let r = !1;
-                    for (; 2 !== s.getToken() && 17 !== s.getToken(); ) {
+                    for (; 2 !== s.getToken() && 17 !== s.getToken();) {
                         if (5 === s.getToken()) {
                             r ||
                                 u(ga("Property expected"), aa.PropertyExpected);
@@ -16047,20 +16047,20 @@
                         (e
                             ? t.properties.push(e)
                             : u(
-                                  ga("Property expected"),
-                                  aa.PropertyExpected,
-                                  void 0,
-                                  [],
-                                  [2, 5],
-                              ),
+                                ga("Property expected"),
+                                aa.PropertyExpected,
+                                void 0,
+                                [],
+                                [2, 5],
+                            ),
                             (r = !0));
                     }
                     return 2 !== s.getToken()
                         ? u(
-                              ga("Expected comma or closing brace"),
-                              aa.CommaOrCloseBraceExpected,
-                              t,
-                          )
+                            ga("Expected comma or closing brace"),
+                            aa.CommaOrCloseBraceExpected,
+                            t,
+                        )
                         : h(t, !0);
                 })(e) ||
                 m(e) ||
@@ -16106,14 +16106,14 @@
         let p;
         return (
             17 !== a() &&
-                ((p = g(p)),
+            ((p = g(p)),
                 p
                     ? 17 !== s.getToken() &&
-                      u(ga("End of file expected."), aa.Undefined)
+                    u(ga("End of file expected."), aa.Undefined)
                     : u(
-                          ga("Expected a JSON object, array or literal."),
-                          aa.Undefined,
-                      )),
+                        ga("Expected a JSON object, array or literal."),
+                        aa.Undefined,
+                    )),
             new Fa(p, n, o)
         );
     }
@@ -16201,7 +16201,7 @@
                                 (n.documentation = e.documentation),
                                 n.detail || (n.detail = e.detail),
                                 n.labelDetails ||
-                                    (n.labelDetails = e.labelDetails));
+                                (n.labelDetails = e.labelDetails));
                         else {
                             if (
                                 ((t = t.replace(/[\n]/g, "↵")), t.length > 60)
@@ -16218,7 +16218,7 @@
                     setAsIncomplete: () => {
                         r.isIncomplete = !0;
                     },
-                    error: (e) => {},
+                    error: (e) => { },
                     getNumberOfProposals: () => r.items.length,
                 };
             return this.schemaService
@@ -16234,9 +16234,9 @@
                             "property" === e.type &&
                             e.keyNode === o &&
                             ((f = !e.valueNode),
-                            (d = e),
-                            (m = i.substr(o.offset + 1, o.length - 2)),
-                            e && (o = e.parent));
+                                (d = e),
+                                (m = i.substr(o.offset + 1, o.length - 2)),
+                                e && (o = e.parent));
                     }
                     if (o && "object" === o.type) {
                         if (o.offset === s) return r;
@@ -16253,11 +16253,11 @@
                             t
                                 ? this.getPropertyCompletions(t, n, o, f, g, c)
                                 : this.getSchemaLessPropertyCompletions(
-                                      n,
-                                      o,
-                                      m,
-                                      c,
-                                  ));
+                                    n,
+                                    o,
+                                    m,
+                                    c,
+                                ));
                         const p = Ia(o);
                         (this.contributions.forEach((t) => {
                             const n = t.collectPropertyCompletions(
@@ -16271,20 +16271,20 @@
                             n && h.push(n);
                         }),
                             !t &&
-                                a.length > 0 &&
-                                '"' !== i.charAt(s - a.length - 1) &&
-                                (c.add({
-                                    kind: ro.Property,
-                                    label: this.getLabelForValue(a),
-                                    insertText: this.getInsertTextForProperty(
-                                        a,
-                                        void 0,
-                                        !1,
-                                        g,
-                                    ),
-                                    insertTextFormat: io.Snippet,
-                                    documentation: "",
-                                }),
+                            a.length > 0 &&
+                            '"' !== i.charAt(s - a.length - 1) &&
+                            (c.add({
+                                kind: ro.Property,
+                                label: this.getLabelForValue(a),
+                                insertText: this.getInsertTextForProperty(
+                                    a,
+                                    void 0,
+                                    !1,
+                                    g,
+                                ),
+                                insertTextFormat: io.Snippet,
+                                documentation: "",
+                            }),
                                 c.setAsIncomplete()));
                     }
                     const g = {};
@@ -16293,14 +16293,14 @@
                             ? this.getValueCompletions(t, n, o, s, e, c, g)
                             : this.getSchemaLessValueCompletions(n, o, s, e, c),
                         this.contributions.length > 0 &&
-                            this.getContributedValueCompletions(
-                                n,
-                                o,
-                                s,
-                                e,
-                                c,
-                                h,
-                            ),
+                        this.getContributedValueCompletions(
+                            n,
+                            o,
+                            s,
+                            e,
+                            c,
+                            h,
+                        ),
                         this.promiseConstructor.all(h).then(() => {
                             if (0 === c.getNumberOfProposals()) {
                                 let t = s;
@@ -16351,12 +16351,12 @@
                                 (void 0 !== n.suggestSortText &&
                                     (t.sortText = n.suggestSortText),
                                     t.insertText &&
-                                        ta(t.insertText, `$1${i}`) &&
-                                        (t.command = {
-                                            title: "Suggest",
-                                            command:
-                                                "editor.action.triggerSuggest",
-                                        }),
+                                    ta(t.insertText, `$1${i}`) &&
+                                    (t.command = {
+                                        title: "Suggest",
+                                        command:
+                                            "editor.action.triggerSuggest",
+                                    }),
                                     s.add(t));
                             }
                         });
@@ -16387,24 +16387,24 @@
                             (void 0 !== n.suggestSortText &&
                                 (o.sortText = n.suggestSortText),
                                 o.insertText &&
-                                    ta(o.insertText, `$1${i}`) &&
-                                    (o.command = {
-                                        title: "Suggest",
-                                        command: "editor.action.triggerSuggest",
-                                    }),
+                                ta(o.insertText, `$1${i}`) &&
+                                (o.command = {
+                                    title: "Suggest",
+                                    command: "editor.action.triggerSuggest",
+                                }),
                                 s.add(o));
                         };
                         if (n.enum)
                             for (let t = 0; t < n.enum.length; t++) {
                                 let r;
                                 (n.markdownEnumDescriptions &&
-                                t < n.markdownEnumDescriptions.length
+                                    t < n.markdownEnumDescriptions.length
                                     ? (r = this.fromMarkup(
-                                          n.markdownEnumDescriptions[t],
-                                      ))
+                                        n.markdownEnumDescriptions[t],
+                                    ))
                                     : n.enumDescriptions &&
-                                      t < n.enumDescriptions.length &&
-                                      (r = n.enumDescriptions[t]),
+                                    t < n.enumDescriptions.length &&
+                                    (r = n.enumDescriptions[t]),
                                     e(n.enum[t], r));
                             }
                         n.const && e(n.const);
@@ -16432,11 +16432,11 @@
                     e.visit(
                         (e) => (
                             "property" === e.type &&
-                                e !== t.parent &&
-                                e.keyNode.value === n &&
-                                e.valueNode &&
-                                "object" === e.valueNode.type &&
-                                i(e.valueNode),
+                            e !== t.parent &&
+                            e.keyNode.value === n &&
+                            e.valueNode &&
+                            "object" === e.valueNode.type &&
+                            i(e.valueNode),
                             !0
                         ),
                     );
@@ -16470,7 +16470,7 @@
                         "boolean" !== t.type &&
                         "null" !== t.type) ||
                     ((s = t.offset + t.length), (t = t.parent)),
-                !t)
+                    !t)
             )
                 return (
                     i.add({
@@ -16504,7 +16504,7 @@
                             documentation: "",
                         }),
                         "boolean" === e.type &&
-                            this.addBooleanValueCompletion(!e.value, o, i));
+                        this.addBooleanValueCompletion(!e.value, o, i));
                 };
             if ("property" === t.type && n > (t.colonOffset || 0)) {
                 const r = t.valueNode;
@@ -16519,16 +16519,16 @@
                 (e.visit(
                     (e) => (
                         "property" === e.type &&
-                            e.keyNode.value === s &&
-                            e.valueNode &&
-                            a(e.valueNode),
+                        e.keyNode.value === s &&
+                        e.valueNode &&
+                        a(e.valueNode),
                         !0
                     ),
                 ),
                     "$schema" === s &&
-                        t.parent &&
-                        !t.parent.parent &&
-                        this.addDollarSchemaCompletions(o, i));
+                    t.parent &&
+                    !t.parent.parent &&
+                    this.addDollarSchemaCompletions(o, i));
             }
             if ("array" === t.type)
                 if (t.parent && "property" === t.parent.type) {
@@ -16536,10 +16536,10 @@
                     e.visit(
                         (e) => (
                             "property" === e.type &&
-                                e.keyNode.value === n &&
-                                e.valueNode &&
-                                "array" === e.valueNode.type &&
-                                e.valueNode.items.forEach(a),
+                            e.keyNode.value === n &&
+                            e.valueNode &&
+                            "array" === e.valueNode.type &&
+                            e.valueNode.items.forEach(a),
                             !0
                         ),
                     );
@@ -16556,7 +16556,7 @@
                         "boolean" !== n.type &&
                         "null" !== n.type) ||
                     ((u = n.offset + n.length), (l = n), (n = n.parent)),
-                n)
+                    n)
             ) {
                 if ("property" === n.type && r > (n.colonOffset || 0)) {
                     const e = n.valueNode;
@@ -16607,12 +16607,12 @@
                                     const n = e.schema.properties[a];
                                     n &&
                                         ((t = !0),
-                                        this.addSchemaValueCompletions(
-                                            n,
-                                            c,
-                                            s,
-                                            o,
-                                        ));
+                                            this.addSchemaValueCompletions(
+                                                n,
+                                                c,
+                                                s,
+                                                o,
+                                            ));
                                 }
                                 if (e.schema.patternProperties && !t)
                                     for (const n of Object.keys(
@@ -16641,7 +16641,7 @@
                         n.parent ||
                         this.addDollarSchemaCompletions(c, s),
                         o.boolean &&
-                            (this.addBooleanValueCompletion(!0, c, s),
+                        (this.addBooleanValueCompletion(!0, c, s),
                             this.addBooleanValueCompletion(!1, c, s)),
                         o.null && this.addNullValueCompletion(c, s));
                 }
@@ -16655,7 +16655,7 @@
                         "boolean" !== t.type &&
                         "null" !== t.type) ||
                         (t = t.parent),
-                    t && "property" === t.type && n > (t.colonOffset || 0))
+                        t && "property" === t.type && n > (t.colonOffset || 0))
                 ) {
                     const e = t.keyNode.value,
                         o = t.valueNode;
@@ -16676,17 +16676,17 @@
         addSchemaValueCompletions(e, t, n, r) {
             "object" == typeof e &&
                 (this.addEnumValueCompletions(e, t, n),
-                this.addDefaultValueCompletions(e, t, n),
-                this.collectTypes(e, r),
-                Array.isArray(e.allOf) &&
+                    this.addDefaultValueCompletions(e, t, n),
+                    this.collectTypes(e, r),
+                    Array.isArray(e.allOf) &&
                     e.allOf.forEach((e) =>
                         this.addSchemaValueCompletions(e, t, n, r),
                     ),
-                Array.isArray(e.anyOf) &&
+                    Array.isArray(e.anyOf) &&
                     e.anyOf.forEach((e) =>
                         this.addSchemaValueCompletions(e, t, n, r),
                     ),
-                Array.isArray(e.oneOf) &&
+                    Array.isArray(e.oneOf) &&
                     e.oneOf.forEach((e) =>
                         this.addSchemaValueCompletions(e, t, n, r),
                     ));
@@ -16723,56 +16723,56 @@
                         (i = !0));
                 }),
                 Array.isArray(e.defaultSnippets) &&
-                    e.defaultSnippets.forEach((s) => {
-                        let o,
-                            a,
-                            l = e.type,
-                            u = s.body,
-                            c = s.label;
-                        if (Qo(u)) {
-                            e.type;
-                            for (let e = r; e > 0; e--) u = [u];
-                            ((o = this.getInsertTextForSnippetValue(u, t)),
-                                (a = this.getFilterTextForSnippetValue(u)),
-                                (c = c || this.getLabelForSnippetValue(u)));
-                        } else {
-                            if ("string" != typeof s.bodyText) return;
-                            {
-                                let e = "",
-                                    n = "",
-                                    i = "";
-                                for (let t = r; t > 0; t--)
-                                    ((e = e + i + "[\n"),
-                                        (n = n + "\n" + i + "]"),
-                                        (i += "\t"),
-                                        (l = "array"));
-                                ((o =
-                                    e +
-                                    i +
-                                    s.bodyText.split("\n").join("\n" + i) +
-                                    n +
-                                    t),
-                                    (c = c || o),
-                                    (a = o.replace(/[\n]/g, "")));
-                            }
+                e.defaultSnippets.forEach((s) => {
+                    let o,
+                        a,
+                        l = e.type,
+                        u = s.body,
+                        c = s.label;
+                    if (Qo(u)) {
+                        e.type;
+                        for (let e = r; e > 0; e--) u = [u];
+                        ((o = this.getInsertTextForSnippetValue(u, t)),
+                            (a = this.getFilterTextForSnippetValue(u)),
+                            (c = c || this.getLabelForSnippetValue(u)));
+                    } else {
+                        if ("string" != typeof s.bodyText) return;
+                        {
+                            let e = "",
+                                n = "",
+                                i = "";
+                            for (let t = r; t > 0; t--)
+                                ((e = e + i + "[\n"),
+                                    (n = n + "\n" + i + "]"),
+                                    (i += "\t"),
+                                    (l = "array"));
+                            ((o =
+                                e +
+                                i +
+                                s.bodyText.split("\n").join("\n" + i) +
+                                n +
+                                t),
+                                (c = c || o),
+                                (a = o.replace(/[\n]/g, "")));
                         }
-                        (n.add({
-                            kind: this.getSuggestionKind(l),
-                            label: c,
-                            documentation:
-                                this.fromMarkup(s.markdownDescription) ||
-                                s.description,
-                            insertText: o,
-                            insertTextFormat: io.Snippet,
-                            filterText: a,
-                        }),
-                            (i = !0));
+                    }
+                    (n.add({
+                        kind: this.getSuggestionKind(l),
+                        label: c,
+                        documentation:
+                            this.fromMarkup(s.markdownDescription) ||
+                            s.description,
+                        insertText: o,
+                        insertTextFormat: io.Snippet,
+                        filterText: a,
                     }),
+                        (i = !0));
+                }),
                 !i &&
-                    "object" == typeof e.items &&
-                    !Array.isArray(e.items) &&
-                    r < 5 &&
-                    this.addDefaultValueCompletions(e.items, t, n, r + 1));
+                "object" == typeof e.items &&
+                !Array.isArray(e.items) &&
+                r < 5 &&
+                this.addDefaultValueCompletions(e.items, t, n, r + 1));
         }
         addEnumValueCompletions(e, t, n) {
             if (
@@ -16786,19 +16786,19 @@
                             this.fromMarkup(e.markdownDescription) ||
                             e.description,
                     }),
-                Array.isArray(e.enum))
+                    Array.isArray(e.enum))
             )
                 for (let r = 0, i = e.enum.length; r < i; r++) {
                     const i = e.enum[r];
                     let s =
                         this.fromMarkup(e.markdownDescription) || e.description;
                     (e.markdownEnumDescriptions &&
-                    r < e.markdownEnumDescriptions.length &&
-                    this.doesSupportMarkdown()
+                        r < e.markdownEnumDescriptions.length &&
+                        this.doesSupportMarkdown()
                         ? (s = this.fromMarkup(e.markdownEnumDescriptions[r]))
                         : e.enumDescriptions &&
-                          r < e.enumDescriptions.length &&
-                          (s = e.enumDescriptions[r]),
+                        r < e.enumDescriptions.length &&
+                        (s = e.enumDescriptions[r]),
                         n.add({
                             kind: this.getSuggestionKind(e.type),
                             label: this.getLabelForValue(i),
@@ -16824,14 +16824,14 @@
                     documentation: "",
                 }),
                 e.array &&
-                    n.add({
-                        kind: this.getSuggestionKind("array"),
-                        label: "[]",
-                        insertText: this.getInsertTextForGuessedValue([], t),
-                        insertTextFormat: io.Snippet,
-                        detail: ga("New array"),
-                        documentation: "",
-                    }));
+                n.add({
+                    kind: this.getSuggestionKind("array"),
+                    label: "[]",
+                    insertText: this.getInsertTextForGuessedValue([], t),
+                    insertTextFormat: io.Snippet,
+                    detail: ga("New array"),
+                    documentation: "",
+                }));
         }
         addBooleanValueCompletion(e, t, n) {
             n.add({
@@ -16890,8 +16890,8 @@
             return "{}" === n
                 ? "{$1}" + t
                 : "[]" === n
-                  ? "[$1]" + t
-                  : this.getInsertTextForPlainText(n + t);
+                    ? "[$1]" + t
+                    : this.getInsertTextForPlainText(n + t);
         }
         getInsertTextForSnippetValue(e, t) {
             return (
@@ -16980,37 +16980,37 @@
                                 t.enum[0],
                                 "",
                             )),
-                        (a += t.enum.length)),
-                    Qo(t.const) &&
+                            (a += t.enum.length)),
+                        Qo(t.const) &&
                         (o ||
                             (o = this.getInsertTextForGuessedValue(
                                 t.const,
                                 "",
                             )),
-                        a++),
-                    Qo(t.default) &&
+                            a++),
+                        Qo(t.default) &&
                         (o ||
                             (o = this.getInsertTextForGuessedValue(
                                 t.default,
                                 "",
                             )),
-                        a++),
-                    Array.isArray(t.examples) &&
+                            a++),
+                        Array.isArray(t.examples) &&
                         t.examples.length &&
                         (o ||
                             (o = this.getInsertTextForGuessedValue(
                                 t.examples[0],
                                 "",
                             )),
-                        (a += t.examples.length)),
-                    0 === a)
+                            (a += t.examples.length)),
+                        0 === a)
                 ) {
                     let e = Array.isArray(t.type) ? t.type[0] : t.type;
                     switch (
-                        (e ||
-                            (t.properties
-                                ? (e = "object")
-                                : t.items && (e = "array")),
+                    (e ||
+                        (t.properties
+                            ? (e = "object")
+                            : t.items && (e = "array")),
                         e)
                     ) {
                         case "boolean":
@@ -17042,7 +17042,7 @@
         getCurrentWord(e, t) {
             let n = t - 1;
             const r = e.getText();
-            for (; n >= 0 && -1 === ' \t\n\r\v":{[,]}'.indexOf(r.charAt(n)); )
+            for (; n >= 0 && -1 === ' \t\n\r\v":{[,]}'.indexOf(r.charAt(n));)
                 n--;
             return r.substring(n + 1, t);
         }
@@ -17079,7 +17079,7 @@
             const r = gs(e.getText(), !1);
             r.setPosition(t);
             let i = r.scan();
-            for (; 17 !== i && r.getTokenOffset() + r.getTokenLength() < n; )
+            for (; 17 !== i && r.getTokenOffset() + r.getTokenLength() < n;)
                 i = r.scan();
             return (12 === i || 13 === i) && r.getTokenOffset() <= n;
         }
@@ -17100,16 +17100,16 @@
         doesSupportsCommitCharacters() {
             return (
                 Qo(this.supportsCommitCharacters) ||
-                    (this.labelDetailsSupport =
-                        this.clientCapabilities.textDocument?.completion?.completionItem?.commitCharactersSupport),
+                (this.labelDetailsSupport =
+                    this.clientCapabilities.textDocument?.completion?.completionItem?.commitCharactersSupport),
                 this.supportsCommitCharacters
             );
         }
         doesSupportsLabelDetails() {
             return (
                 Qo(this.labelDetailsSupport) ||
-                    (this.labelDetailsSupport =
-                        this.clientCapabilities.textDocument?.completion?.completionItem?.labelDetailsSupport),
+                (this.labelDetailsSupport =
+                    this.clientCapabilities.textDocument?.completion?.completionItem?.labelDetailsSupport),
                 this.labelDetailsSupport
             );
         }
@@ -17142,9 +17142,9 @@
                     return this.promise.resolve(null);
             }
             const o = As.create(
-                    e.positionAt(s.offset),
-                    e.positionAt(s.offset + s.length),
-                ),
+                e.positionAt(s.offset),
+                e.positionAt(s.offset + s.length),
+            ),
                 a = (e) => ({ contents: e, range: o }),
                 l = Ia(i);
             for (let u = this.contributions.length - 1; u >= 0; u--) {
@@ -17162,21 +17162,21 @@
                                 !e.inverted &&
                                 e.schema &&
                                 ((t = t || e.schema.title),
-                                (r =
-                                    r ||
-                                    e.schema.markdownDescription ||
-                                    Ua(e.schema.description)),
-                                e.schema.enum)
+                                    (r =
+                                        r ||
+                                        e.schema.markdownDescription ||
+                                        Ua(e.schema.description)),
+                                    e.schema.enum)
                             ) {
                                 const t = e.schema.enum.indexOf(Oa(i));
                                 (e.schema.markdownEnumDescriptions
                                     ? (s = e.schema.markdownEnumDescriptions[t])
                                     : e.schema.enumDescriptions &&
-                                      (s = Ua(e.schema.enumDescriptions[t])),
+                                    (s = Ua(e.schema.enumDescriptions[t])),
                                     s &&
-                                        ((o = e.schema.enum[t]),
+                                    ((o = e.schema.enum[t]),
                                         "string" != typeof o &&
-                                            (o = JSON.stringify(o))));
+                                        (o = JSON.stringify(o))));
                             }
                             return !0;
                         });
@@ -17185,7 +17185,7 @@
                             t && (l = Ua(t)),
                             r && (l.length > 0 && (l += "\n\n"), (l += r)),
                             s &&
-                                (l.length > 0 && (l += "\n\n"),
+                            (l.length > 0 && (l += "\n\n"),
                                 (l += `\`${(function (e) {
                                     if (-1 !== e.indexOf("`"))
                                         return "`` " + e + " ``";
@@ -17214,7 +17214,7 @@
         configure(e) {
             e &&
                 ((this.validationEnabled = !1 !== e.validate),
-                (this.commentSeverity = e.allowComments ? void 0 : Vs.Error));
+                    (this.commentSeverity = e.allowComments ? void 0 : Vs.Error));
         }
         doValidation(e, t, n, r) {
             if (!this.validationEnabled) return this.promise.resolve([]);
@@ -17348,8 +17348,8 @@
         return e < 48
             ? 0
             : e <= 57
-              ? e - 48
-              : (e < 97 && (e += 32), e >= 97 && e <= 102 ? e - 97 + 10 : 0);
+                ? e - 48
+                : (e < 97 && (e += 32), e >= 97 && e <= 102 ? e - 97 + 10 : 0);
     }
     function Xa(e) {
         if ("#" === e[0])
@@ -17424,13 +17424,13 @@
                                         kind: yo.Function,
                                         location: a,
                                     }),
-                                    i--,
-                                    i <= 0)
+                                        i--,
+                                        i <= 0)
                                 )
                                     return (
                                         n &&
-                                            n.onResultLimitExceeded &&
-                                            n.onResultLimitExceeded(s),
+                                        n.onResultLimitExceeded &&
+                                        n.onResultLimitExceeded(s),
                                         t
                                     );
                             }
@@ -17443,32 +17443,32 @@
                 c = (t, n) => {
                     "array" === t.type
                         ? t.items.forEach((e) => {
-                              e && o.push({ node: e, containerName: n });
-                          })
+                            e && o.push({ node: e, containerName: n });
+                        })
                         : "object" === t.type &&
-                          t.properties.forEach((t) => {
-                              const r = t.valueNode;
-                              if (r)
-                                  if (i > 0) {
-                                      i--;
-                                      const s = ks.create(e.uri, Za(e, t)),
-                                          a = n
-                                              ? n + "." + t.keyNode.value
-                                              : t.keyNode.value;
-                                      (u.push({
-                                          name: this.getKeyLabel(t),
-                                          kind: this.getSymbolKind(r.type),
-                                          location: s,
-                                          containerName: n,
-                                      }),
-                                          o.push({
-                                              node: r,
-                                              containerName: a,
-                                          }));
-                                  } else l = !0;
-                          });
+                        t.properties.forEach((t) => {
+                            const r = t.valueNode;
+                            if (r)
+                                if (i > 0) {
+                                    i--;
+                                    const s = ks.create(e.uri, Za(e, t)),
+                                        a = n
+                                            ? n + "." + t.keyNode.value
+                                            : t.keyNode.value;
+                                    (u.push({
+                                        name: this.getKeyLabel(t),
+                                        kind: this.getSymbolKind(r.type),
+                                        location: s,
+                                        containerName: n,
+                                    }),
+                                        o.push({
+                                            node: r,
+                                            containerName: a,
+                                        }));
+                                } else l = !0;
+                        });
                 };
-            for (; a < o.length; ) {
+            for (; a < o.length;) {
                 const e = o[a++];
                 c(e.node, e.containerName);
             }
@@ -17501,13 +17501,13 @@
                                         range: a,
                                         selectionRange: l,
                                     }),
-                                    i--,
-                                    i <= 0)
+                                        i--,
+                                        i <= 0)
                                 )
                                     return (
                                         n &&
-                                            n.onResultLimitExceeded &&
-                                            n.onResultLimitExceeded(s),
+                                        n.onResultLimitExceeded &&
+                                        n.onResultLimitExceeded(s),
                                         t
                                     );
                             }
@@ -17520,44 +17520,44 @@
             const c = (t, n) => {
                 "array" === t.type
                     ? t.items.forEach((t, r) => {
-                          if (t)
-                              if (i > 0) {
-                                  i--;
-                                  const s = Za(e, t),
-                                      o = s,
-                                      l = {
-                                          name: String(r),
-                                          kind: this.getSymbolKind(t.type),
-                                          range: s,
-                                          selectionRange: o,
-                                          children: [],
-                                      };
-                                  (n.push(l),
-                                      a.push({ result: l.children, node: t }));
-                              } else u = !0;
-                      })
+                        if (t)
+                            if (i > 0) {
+                                i--;
+                                const s = Za(e, t),
+                                    o = s,
+                                    l = {
+                                        name: String(r),
+                                        kind: this.getSymbolKind(t.type),
+                                        range: s,
+                                        selectionRange: o,
+                                        children: [],
+                                    };
+                                (n.push(l),
+                                    a.push({ result: l.children, node: t }));
+                            } else u = !0;
+                    })
                     : "object" === t.type &&
-                      t.properties.forEach((t) => {
-                          const r = t.valueNode;
-                          if (r)
-                              if (i > 0) {
-                                  i--;
-                                  const s = Za(e, t),
-                                      o = Za(e, t.keyNode),
-                                      l = [],
-                                      u = {
-                                          name: this.getKeyLabel(t),
-                                          kind: this.getSymbolKind(r.type),
-                                          range: s,
-                                          selectionRange: o,
-                                          children: l,
-                                          detail: this.getDetail(r),
-                                      };
-                                  (n.push(u), a.push({ result: l, node: r }));
-                              } else u = !0;
-                      });
+                    t.properties.forEach((t) => {
+                        const r = t.valueNode;
+                        if (r)
+                            if (i > 0) {
+                                i--;
+                                const s = Za(e, t),
+                                    o = Za(e, t.keyNode),
+                                    l = [],
+                                    u = {
+                                        name: this.getKeyLabel(t),
+                                        kind: this.getSymbolKind(r.type),
+                                        range: s,
+                                        selectionRange: o,
+                                        children: l,
+                                        detail: this.getDetail(r),
+                                    };
+                                (n.push(u), a.push({ result: l, node: r }));
+                            } else u = !0;
+                    });
             };
-            for (; l < a.length; ) {
+            for (; l < a.length;) {
                 const e = a[l++];
                 c(e.node, e.result);
             }
@@ -17597,14 +17597,14 @@
                     "string" === e.type
                     ? String(e.value)
                     : "array" === e.type
-                      ? e.children.length
-                          ? void 0
-                          : "[]"
-                      : "object" === e.type
                         ? e.children.length
                             ? void 0
-                            : "{}"
-                        : void 0;
+                            : "[]"
+                        : "object" === e.type
+                            ? e.children.length
+                                ? void 0
+                                : "{}"
+                            : void 0;
         }
         findDocumentColors(e, t, n) {
             return this.schemaService
@@ -17637,8 +17637,8 @@
                                     if (((a[r] = !0), s--, s <= 0))
                                         return (
                                             n &&
-                                                n.onResultLimitExceeded &&
-                                                n.onResultLimitExceeded(e.uri),
+                                            n.onResultLimitExceeded &&
+                                            n.onResultLimitExceeded(e.uri),
                                             i
                                         );
                                 }
@@ -17680,316 +17680,316 @@
         return Oa(e) || ga("<empty>");
     }
     const el = {
-            schemaAssociations: [],
-            schemas: {
-                "http://json-schema.org/draft-04/schema#": {
-                    $schema: "http://json-schema.org/draft-04/schema#",
-                    definitions: {
-                        schemaArray: {
-                            type: "array",
-                            minItems: 1,
-                            items: { $ref: "#" },
-                        },
-                        positiveInteger: { type: "integer", minimum: 0 },
-                        positiveIntegerDefault0: {
-                            allOf: [
-                                { $ref: "#/definitions/positiveInteger" },
-                                { default: 0 },
-                            ],
-                        },
-                        simpleTypes: {
-                            type: "string",
-                            enum: [
-                                "array",
-                                "boolean",
-                                "integer",
-                                "null",
-                                "number",
-                                "object",
-                                "string",
-                            ],
-                        },
-                        stringArray: {
-                            type: "array",
-                            items: { type: "string" },
-                            minItems: 1,
-                            uniqueItems: !0,
-                        },
+        schemaAssociations: [],
+        schemas: {
+            "http://json-schema.org/draft-04/schema#": {
+                $schema: "http://json-schema.org/draft-04/schema#",
+                definitions: {
+                    schemaArray: {
+                        type: "array",
+                        minItems: 1,
+                        items: { $ref: "#" },
                     },
-                    type: "object",
-                    properties: {
-                        id: { type: "string", format: "uri" },
-                        $schema: { type: "string", format: "uri" },
-                        title: { type: "string" },
-                        description: { type: "string" },
-                        default: {},
-                        multipleOf: {
-                            type: "number",
-                            minimum: 0,
-                            exclusiveMinimum: !0,
-                        },
-                        maximum: { type: "number" },
-                        exclusiveMaximum: { type: "boolean", default: !1 },
-                        minimum: { type: "number" },
-                        exclusiveMinimum: { type: "boolean", default: !1 },
-                        maxLength: {
-                            allOf: [{ $ref: "#/definitions/positiveInteger" }],
-                        },
-                        minLength: {
-                            allOf: [
-                                {
-                                    $ref: "#/definitions/positiveIntegerDefault0",
-                                },
-                            ],
-                        },
-                        pattern: { type: "string", format: "regex" },
-                        additionalItems: {
-                            anyOf: [{ type: "boolean" }, { $ref: "#" }],
-                            default: {},
-                        },
-                        items: {
-                            anyOf: [
-                                { $ref: "#" },
-                                { $ref: "#/definitions/schemaArray" },
-                            ],
-                            default: {},
-                        },
-                        maxItems: {
-                            allOf: [{ $ref: "#/definitions/positiveInteger" }],
-                        },
-                        minItems: {
-                            allOf: [
-                                {
-                                    $ref: "#/definitions/positiveIntegerDefault0",
-                                },
-                            ],
-                        },
-                        uniqueItems: { type: "boolean", default: !1 },
-                        maxProperties: {
-                            allOf: [{ $ref: "#/definitions/positiveInteger" }],
-                        },
-                        minProperties: {
-                            allOf: [
-                                {
-                                    $ref: "#/definitions/positiveIntegerDefault0",
-                                },
-                            ],
-                        },
-                        required: {
-                            allOf: [{ $ref: "#/definitions/stringArray" }],
-                        },
-                        additionalProperties: {
-                            anyOf: [{ type: "boolean" }, { $ref: "#" }],
-                            default: {},
-                        },
-                        definitions: {
-                            type: "object",
-                            additionalProperties: { $ref: "#" },
-                            default: {},
-                        },
-                        properties: {
-                            type: "object",
-                            additionalProperties: { $ref: "#" },
-                            default: {},
-                        },
-                        patternProperties: {
-                            type: "object",
-                            additionalProperties: { $ref: "#" },
-                            default: {},
-                        },
-                        dependencies: {
-                            type: "object",
-                            additionalProperties: {
-                                anyOf: [
-                                    { $ref: "#" },
-                                    { $ref: "#/definitions/stringArray" },
-                                ],
+                    positiveInteger: { type: "integer", minimum: 0 },
+                    positiveIntegerDefault0: {
+                        allOf: [
+                            { $ref: "#/definitions/positiveInteger" },
+                            { default: 0 },
+                        ],
+                    },
+                    simpleTypes: {
+                        type: "string",
+                        enum: [
+                            "array",
+                            "boolean",
+                            "integer",
+                            "null",
+                            "number",
+                            "object",
+                            "string",
+                        ],
+                    },
+                    stringArray: {
+                        type: "array",
+                        items: { type: "string" },
+                        minItems: 1,
+                        uniqueItems: !0,
+                    },
+                },
+                type: "object",
+                properties: {
+                    id: { type: "string", format: "uri" },
+                    $schema: { type: "string", format: "uri" },
+                    title: { type: "string" },
+                    description: { type: "string" },
+                    default: {},
+                    multipleOf: {
+                        type: "number",
+                        minimum: 0,
+                        exclusiveMinimum: !0,
+                    },
+                    maximum: { type: "number" },
+                    exclusiveMaximum: { type: "boolean", default: !1 },
+                    minimum: { type: "number" },
+                    exclusiveMinimum: { type: "boolean", default: !1 },
+                    maxLength: {
+                        allOf: [{ $ref: "#/definitions/positiveInteger" }],
+                    },
+                    minLength: {
+                        allOf: [
+                            {
+                                $ref: "#/definitions/positiveIntegerDefault0",
                             },
-                        },
-                        enum: { type: "array", minItems: 1, uniqueItems: !0 },
-                        type: {
-                            anyOf: [
-                                { $ref: "#/definitions/simpleTypes" },
-                                {
-                                    type: "array",
-                                    items: {
-                                        $ref: "#/definitions/simpleTypes",
-                                    },
-                                    minItems: 1,
-                                    uniqueItems: !0,
-                                },
-                            ],
-                        },
-                        format: {
-                            anyOf: [
-                                {
-                                    type: "string",
-                                    enum: [
-                                        "date-time",
-                                        "uri",
-                                        "email",
-                                        "hostname",
-                                        "ipv4",
-                                        "ipv6",
-                                        "regex",
-                                    ],
-                                },
-                                { type: "string" },
-                            ],
-                        },
-                        allOf: {
-                            allOf: [{ $ref: "#/definitions/schemaArray" }],
-                        },
-                        anyOf: {
-                            allOf: [{ $ref: "#/definitions/schemaArray" }],
-                        },
-                        oneOf: {
-                            allOf: [{ $ref: "#/definitions/schemaArray" }],
-                        },
-                        not: { allOf: [{ $ref: "#" }] },
+                        ],
+                    },
+                    pattern: { type: "string", format: "regex" },
+                    additionalItems: {
+                        anyOf: [{ type: "boolean" }, { $ref: "#" }],
+                        default: {},
+                    },
+                    items: {
+                        anyOf: [
+                            { $ref: "#" },
+                            { $ref: "#/definitions/schemaArray" },
+                        ],
+                        default: {},
+                    },
+                    maxItems: {
+                        allOf: [{ $ref: "#/definitions/positiveInteger" }],
+                    },
+                    minItems: {
+                        allOf: [
+                            {
+                                $ref: "#/definitions/positiveIntegerDefault0",
+                            },
+                        ],
+                    },
+                    uniqueItems: { type: "boolean", default: !1 },
+                    maxProperties: {
+                        allOf: [{ $ref: "#/definitions/positiveInteger" }],
+                    },
+                    minProperties: {
+                        allOf: [
+                            {
+                                $ref: "#/definitions/positiveIntegerDefault0",
+                            },
+                        ],
+                    },
+                    required: {
+                        allOf: [{ $ref: "#/definitions/stringArray" }],
+                    },
+                    additionalProperties: {
+                        anyOf: [{ type: "boolean" }, { $ref: "#" }],
+                        default: {},
+                    },
+                    definitions: {
+                        type: "object",
+                        additionalProperties: { $ref: "#" },
+                        default: {},
+                    },
+                    properties: {
+                        type: "object",
+                        additionalProperties: { $ref: "#" },
+                        default: {},
+                    },
+                    patternProperties: {
+                        type: "object",
+                        additionalProperties: { $ref: "#" },
+                        default: {},
                     },
                     dependencies: {
-                        exclusiveMaximum: ["maximum"],
-                        exclusiveMinimum: ["minimum"],
-                    },
-                    default: {},
-                },
-                "http://json-schema.org/draft-07/schema#": {
-                    definitions: {
-                        schemaArray: {
-                            type: "array",
-                            minItems: 1,
-                            items: { $ref: "#" },
-                        },
-                        nonNegativeInteger: { type: "integer", minimum: 0 },
-                        nonNegativeIntegerDefault0: {
-                            allOf: [
-                                { $ref: "#/definitions/nonNegativeInteger" },
-                                { default: 0 },
-                            ],
-                        },
-                        simpleTypes: {
-                            enum: [
-                                "array",
-                                "boolean",
-                                "integer",
-                                "null",
-                                "number",
-                                "object",
-                                "string",
-                            ],
-                        },
-                        stringArray: {
-                            type: "array",
-                            items: { type: "string" },
-                            uniqueItems: !0,
-                            default: [],
-                        },
-                    },
-                    type: ["object", "boolean"],
-                    properties: {
-                        $id: { type: "string", format: "uri-reference" },
-                        $schema: { type: "string", format: "uri" },
-                        $ref: { type: "string", format: "uri-reference" },
-                        $comment: { type: "string" },
-                        title: { type: "string" },
-                        description: { type: "string" },
-                        default: !0,
-                        readOnly: { type: "boolean", default: !1 },
-                        examples: { type: "array", items: !0 },
-                        multipleOf: { type: "number", exclusiveMinimum: 0 },
-                        maximum: { type: "number" },
-                        exclusiveMaximum: { type: "number" },
-                        minimum: { type: "number" },
-                        exclusiveMinimum: { type: "number" },
-                        maxLength: { $ref: "#/definitions/nonNegativeInteger" },
-                        minLength: {
-                            $ref: "#/definitions/nonNegativeIntegerDefault0",
-                        },
-                        pattern: { type: "string", format: "regex" },
-                        additionalItems: { $ref: "#" },
-                        items: {
+                        type: "object",
+                        additionalProperties: {
                             anyOf: [
                                 { $ref: "#" },
-                                { $ref: "#/definitions/schemaArray" },
+                                { $ref: "#/definitions/stringArray" },
                             ],
-                            default: !0,
                         },
-                        maxItems: { $ref: "#/definitions/nonNegativeInteger" },
-                        minItems: {
-                            $ref: "#/definitions/nonNegativeIntegerDefault0",
-                        },
-                        uniqueItems: { type: "boolean", default: !1 },
-                        contains: { $ref: "#" },
-                        maxProperties: {
-                            $ref: "#/definitions/nonNegativeInteger",
-                        },
-                        minProperties: {
-                            $ref: "#/definitions/nonNegativeIntegerDefault0",
-                        },
-                        required: { $ref: "#/definitions/stringArray" },
-                        additionalProperties: { $ref: "#" },
-                        definitions: {
-                            type: "object",
-                            additionalProperties: { $ref: "#" },
-                            default: {},
-                        },
-                        properties: {
-                            type: "object",
-                            additionalProperties: { $ref: "#" },
-                            default: {},
-                        },
-                        patternProperties: {
-                            type: "object",
-                            additionalProperties: { $ref: "#" },
-                            propertyNames: { format: "regex" },
-                            default: {},
-                        },
-                        dependencies: {
-                            type: "object",
-                            additionalProperties: {
-                                anyOf: [
-                                    { $ref: "#" },
-                                    { $ref: "#/definitions/stringArray" },
+                    },
+                    enum: { type: "array", minItems: 1, uniqueItems: !0 },
+                    type: {
+                        anyOf: [
+                            { $ref: "#/definitions/simpleTypes" },
+                            {
+                                type: "array",
+                                items: {
+                                    $ref: "#/definitions/simpleTypes",
+                                },
+                                minItems: 1,
+                                uniqueItems: !0,
+                            },
+                        ],
+                    },
+                    format: {
+                        anyOf: [
+                            {
+                                type: "string",
+                                enum: [
+                                    "date-time",
+                                    "uri",
+                                    "email",
+                                    "hostname",
+                                    "ipv4",
+                                    "ipv6",
+                                    "regex",
                                 ],
                             },
-                        },
-                        propertyNames: { $ref: "#" },
-                        const: !0,
-                        enum: {
-                            type: "array",
-                            items: !0,
-                            minItems: 1,
-                            uniqueItems: !0,
-                        },
-                        type: {
+                            { type: "string" },
+                        ],
+                    },
+                    allOf: {
+                        allOf: [{ $ref: "#/definitions/schemaArray" }],
+                    },
+                    anyOf: {
+                        allOf: [{ $ref: "#/definitions/schemaArray" }],
+                    },
+                    oneOf: {
+                        allOf: [{ $ref: "#/definitions/schemaArray" }],
+                    },
+                    not: { allOf: [{ $ref: "#" }] },
+                },
+                dependencies: {
+                    exclusiveMaximum: ["maximum"],
+                    exclusiveMinimum: ["minimum"],
+                },
+                default: {},
+            },
+            "http://json-schema.org/draft-07/schema#": {
+                definitions: {
+                    schemaArray: {
+                        type: "array",
+                        minItems: 1,
+                        items: { $ref: "#" },
+                    },
+                    nonNegativeInteger: { type: "integer", minimum: 0 },
+                    nonNegativeIntegerDefault0: {
+                        allOf: [
+                            { $ref: "#/definitions/nonNegativeInteger" },
+                            { default: 0 },
+                        ],
+                    },
+                    simpleTypes: {
+                        enum: [
+                            "array",
+                            "boolean",
+                            "integer",
+                            "null",
+                            "number",
+                            "object",
+                            "string",
+                        ],
+                    },
+                    stringArray: {
+                        type: "array",
+                        items: { type: "string" },
+                        uniqueItems: !0,
+                        default: [],
+                    },
+                },
+                type: ["object", "boolean"],
+                properties: {
+                    $id: { type: "string", format: "uri-reference" },
+                    $schema: { type: "string", format: "uri" },
+                    $ref: { type: "string", format: "uri-reference" },
+                    $comment: { type: "string" },
+                    title: { type: "string" },
+                    description: { type: "string" },
+                    default: !0,
+                    readOnly: { type: "boolean", default: !1 },
+                    examples: { type: "array", items: !0 },
+                    multipleOf: { type: "number", exclusiveMinimum: 0 },
+                    maximum: { type: "number" },
+                    exclusiveMaximum: { type: "number" },
+                    minimum: { type: "number" },
+                    exclusiveMinimum: { type: "number" },
+                    maxLength: { $ref: "#/definitions/nonNegativeInteger" },
+                    minLength: {
+                        $ref: "#/definitions/nonNegativeIntegerDefault0",
+                    },
+                    pattern: { type: "string", format: "regex" },
+                    additionalItems: { $ref: "#" },
+                    items: {
+                        anyOf: [
+                            { $ref: "#" },
+                            { $ref: "#/definitions/schemaArray" },
+                        ],
+                        default: !0,
+                    },
+                    maxItems: { $ref: "#/definitions/nonNegativeInteger" },
+                    minItems: {
+                        $ref: "#/definitions/nonNegativeIntegerDefault0",
+                    },
+                    uniqueItems: { type: "boolean", default: !1 },
+                    contains: { $ref: "#" },
+                    maxProperties: {
+                        $ref: "#/definitions/nonNegativeInteger",
+                    },
+                    minProperties: {
+                        $ref: "#/definitions/nonNegativeIntegerDefault0",
+                    },
+                    required: { $ref: "#/definitions/stringArray" },
+                    additionalProperties: { $ref: "#" },
+                    definitions: {
+                        type: "object",
+                        additionalProperties: { $ref: "#" },
+                        default: {},
+                    },
+                    properties: {
+                        type: "object",
+                        additionalProperties: { $ref: "#" },
+                        default: {},
+                    },
+                    patternProperties: {
+                        type: "object",
+                        additionalProperties: { $ref: "#" },
+                        propertyNames: { format: "regex" },
+                        default: {},
+                    },
+                    dependencies: {
+                        type: "object",
+                        additionalProperties: {
                             anyOf: [
-                                { $ref: "#/definitions/simpleTypes" },
-                                {
-                                    type: "array",
-                                    items: {
-                                        $ref: "#/definitions/simpleTypes",
-                                    },
-                                    minItems: 1,
-                                    uniqueItems: !0,
-                                },
+                                { $ref: "#" },
+                                { $ref: "#/definitions/stringArray" },
                             ],
                         },
-                        format: { type: "string" },
-                        contentMediaType: { type: "string" },
-                        contentEncoding: { type: "string" },
-                        if: { $ref: "#" },
-                        then: { $ref: "#" },
-                        else: { $ref: "#" },
-                        allOf: { $ref: "#/definitions/schemaArray" },
-                        anyOf: { $ref: "#/definitions/schemaArray" },
-                        oneOf: { $ref: "#/definitions/schemaArray" },
-                        not: { $ref: "#" },
                     },
-                    default: !0,
+                    propertyNames: { $ref: "#" },
+                    const: !0,
+                    enum: {
+                        type: "array",
+                        items: !0,
+                        minItems: 1,
+                        uniqueItems: !0,
+                    },
+                    type: {
+                        anyOf: [
+                            { $ref: "#/definitions/simpleTypes" },
+                            {
+                                type: "array",
+                                items: {
+                                    $ref: "#/definitions/simpleTypes",
+                                },
+                                minItems: 1,
+                                uniqueItems: !0,
+                            },
+                        ],
+                    },
+                    format: { type: "string" },
+                    contentMediaType: { type: "string" },
+                    contentEncoding: { type: "string" },
+                    if: { $ref: "#" },
+                    then: { $ref: "#" },
+                    else: { $ref: "#" },
+                    allOf: { $ref: "#/definitions/schemaArray" },
+                    anyOf: { $ref: "#/definitions/schemaArray" },
+                    oneOf: { $ref: "#/definitions/schemaArray" },
+                    not: { $ref: "#" },
                 },
+                default: !0,
             },
         },
+    },
         tl = {
             id: ga("A unique identifier for the schema."),
             $schema: ga("The schema to verify this document against."),
@@ -18106,370 +18106,370 @@
     var nl;
     (() => {
         var e = {
-                470: (e) => {
-                    function t(e) {
-                        if ("string" != typeof e)
-                            throw new TypeError(
-                                "Path must be a string. Received " +
-                                    JSON.stringify(e),
-                            );
-                    }
-                    function n(e, t) {
-                        for (
-                            var n, r = "", i = 0, s = -1, o = 0, a = 0;
-                            a <= e.length;
-                            ++a
-                        ) {
-                            if (a < e.length) n = e.charCodeAt(a);
-                            else {
-                                if (47 === n) break;
-                                n = 47;
-                            }
-                            if (47 === n) {
-                                if (s === a - 1 || 1 === o);
-                                else if (s !== a - 1 && 2 === o) {
-                                    if (
-                                        r.length < 2 ||
-                                        2 !== i ||
-                                        46 !== r.charCodeAt(r.length - 1) ||
-                                        46 !== r.charCodeAt(r.length - 2)
-                                    )
-                                        if (r.length > 2) {
-                                            var l = r.lastIndexOf("/");
-                                            if (l !== r.length - 1) {
-                                                (-1 === l
-                                                    ? ((r = ""), (i = 0))
-                                                    : (i =
-                                                          (r = r.slice(0, l))
-                                                              .length -
-                                                          1 -
-                                                          r.lastIndexOf("/")),
-                                                    (s = a),
-                                                    (o = 0));
-                                                continue;
-                                            }
-                                        } else if (
-                                            2 === r.length ||
-                                            1 === r.length
-                                        ) {
-                                            ((r = ""),
-                                                (i = 0),
+            470: (e) => {
+                function t(e) {
+                    if ("string" != typeof e)
+                        throw new TypeError(
+                            "Path must be a string. Received " +
+                            JSON.stringify(e),
+                        );
+                }
+                function n(e, t) {
+                    for (
+                        var n, r = "", i = 0, s = -1, o = 0, a = 0;
+                        a <= e.length;
+                        ++a
+                    ) {
+                        if (a < e.length) n = e.charCodeAt(a);
+                        else {
+                            if (47 === n) break;
+                            n = 47;
+                        }
+                        if (47 === n) {
+                            if (s === a - 1 || 1 === o);
+                            else if (s !== a - 1 && 2 === o) {
+                                if (
+                                    r.length < 2 ||
+                                    2 !== i ||
+                                    46 !== r.charCodeAt(r.length - 1) ||
+                                    46 !== r.charCodeAt(r.length - 2)
+                                )
+                                    if (r.length > 2) {
+                                        var l = r.lastIndexOf("/");
+                                        if (l !== r.length - 1) {
+                                            (-1 === l
+                                                ? ((r = ""), (i = 0))
+                                                : (i =
+                                                    (r = r.slice(0, l))
+                                                        .length -
+                                                    1 -
+                                                    r.lastIndexOf("/")),
                                                 (s = a),
                                                 (o = 0));
                                             continue;
                                         }
-                                    t &&
-                                        (r.length > 0
-                                            ? (r += "/..")
-                                            : (r = ".."),
-                                        (i = 2));
-                                } else
+                                    } else if (
+                                        2 === r.length ||
+                                        1 === r.length
+                                    ) {
+                                        ((r = ""),
+                                            (i = 0),
+                                            (s = a),
+                                            (o = 0));
+                                        continue;
+                                    }
+                                t &&
                                     (r.length > 0
-                                        ? (r += "/" + e.slice(s + 1, a))
-                                        : (r = e.slice(s + 1, a)),
-                                        (i = a - s - 1));
-                                ((s = a), (o = 0));
-                            } else 46 === n && -1 !== o ? ++o : (o = -1);
-                        }
-                        return r;
+                                        ? (r += "/..")
+                                        : (r = ".."),
+                                        (i = 2));
+                            } else
+                                (r.length > 0
+                                    ? (r += "/" + e.slice(s + 1, a))
+                                    : (r = e.slice(s + 1, a)),
+                                    (i = a - s - 1));
+                            ((s = a), (o = 0));
+                        } else 46 === n && -1 !== o ? ++o : (o = -1);
                     }
-                    var r = {
-                        resolve: function () {
-                            for (
-                                var e, r = "", i = !1, s = arguments.length - 1;
-                                s >= -1 && !i;
-                                s--
-                            ) {
-                                var o;
-                                (s >= 0
-                                    ? (o = arguments[s])
-                                    : (void 0 === e && (e = process.cwd()),
-                                      (o = e)),
-                                    t(o),
-                                    0 !== o.length &&
-                                        ((r = o + "/" + r),
-                                        (i = 47 === o.charCodeAt(0))));
+                    return r;
+                }
+                var r = {
+                    resolve: function () {
+                        for (
+                            var e, r = "", i = !1, s = arguments.length - 1;
+                            s >= -1 && !i;
+                            s--
+                        ) {
+                            var o;
+                            (s >= 0
+                                ? (o = arguments[s])
+                                : (void 0 === e && (e = process.cwd()),
+                                    (o = e)),
+                                t(o),
+                                0 !== o.length &&
+                                ((r = o + "/" + r),
+                                    (i = 47 === o.charCodeAt(0))));
+                        }
+                        return (
+                            (r = n(r, !i)),
+                            i
+                                ? r.length > 0
+                                    ? "/" + r
+                                    : "/"
+                                : r.length > 0
+                                    ? r
+                                    : "."
+                        );
+                    },
+                    normalize: function (e) {
+                        if ((t(e), 0 === e.length)) return ".";
+                        var r = 47 === e.charCodeAt(0),
+                            i = 47 === e.charCodeAt(e.length - 1);
+                        return (
+                            0 !== (e = n(e, !r)).length || r || (e = "."),
+                            e.length > 0 && i && (e += "/"),
+                            r ? "/" + e : e
+                        );
+                    },
+                    isAbsolute: function (e) {
+                        return (
+                            t(e),
+                            e.length > 0 && 47 === e.charCodeAt(0)
+                        );
+                    },
+                    join: function () {
+                        if (0 === arguments.length) return ".";
+                        for (var e, n = 0; n < arguments.length; ++n) {
+                            var i = arguments[n];
+                            (t(i),
+                                i.length > 0 &&
+                                (void 0 === e
+                                    ? (e = i)
+                                    : (e += "/" + i)));
+                        }
+                        return void 0 === e ? "." : r.normalize(e);
+                    },
+                    relative: function (e, n) {
+                        if ((t(e), t(n), e === n)) return "";
+                        if ((e = r.resolve(e)) === (n = r.resolve(n)))
+                            return "";
+                        for (
+                            var i = 1;
+                            i < e.length && 47 === e.charCodeAt(i);
+                            ++i
+                        );
+                        for (
+                            var s = e.length, o = s - i, a = 1;
+                            a < n.length && 47 === n.charCodeAt(a);
+                            ++a
+                        );
+                        for (
+                            var l = n.length - a,
+                            u = o < l ? o : l,
+                            c = -1,
+                            h = 0;
+                            h <= u;
+                            ++h
+                        ) {
+                            if (h === u) {
+                                if (l > u) {
+                                    if (47 === n.charCodeAt(a + h))
+                                        return n.slice(a + h + 1);
+                                    if (0 === h) return n.slice(a + h);
+                                } else
+                                    o > u &&
+                                        (47 === e.charCodeAt(i + h)
+                                            ? (c = h)
+                                            : 0 === h && (c = 0));
+                                break;
                             }
-                            return (
-                                (r = n(r, !i)),
-                                i
-                                    ? r.length > 0
-                                        ? "/" + r
-                                        : "/"
-                                    : r.length > 0
-                                      ? r
-                                      : "."
-                            );
-                        },
-                        normalize: function (e) {
-                            if ((t(e), 0 === e.length)) return ".";
-                            var r = 47 === e.charCodeAt(0),
-                                i = 47 === e.charCodeAt(e.length - 1);
-                            return (
-                                0 !== (e = n(e, !r)).length || r || (e = "."),
-                                e.length > 0 && i && (e += "/"),
-                                r ? "/" + e : e
-                            );
-                        },
-                        isAbsolute: function (e) {
-                            return (
-                                t(e),
-                                e.length > 0 && 47 === e.charCodeAt(0)
-                            );
-                        },
-                        join: function () {
-                            if (0 === arguments.length) return ".";
-                            for (var e, n = 0; n < arguments.length; ++n) {
-                                var i = arguments[n];
-                                (t(i),
-                                    i.length > 0 &&
-                                        (void 0 === e
-                                            ? (e = i)
-                                            : (e += "/" + i)));
-                            }
-                            return void 0 === e ? "." : r.normalize(e);
-                        },
-                        relative: function (e, n) {
-                            if ((t(e), t(n), e === n)) return "";
-                            if ((e = r.resolve(e)) === (n = r.resolve(n)))
-                                return "";
-                            for (
-                                var i = 1;
-                                i < e.length && 47 === e.charCodeAt(i);
-                                ++i
-                            );
-                            for (
-                                var s = e.length, o = s - i, a = 1;
-                                a < n.length && 47 === n.charCodeAt(a);
-                                ++a
-                            );
-                            for (
-                                var l = n.length - a,
-                                    u = o < l ? o : l,
-                                    c = -1,
-                                    h = 0;
-                                h <= u;
-                                ++h
-                            ) {
-                                if (h === u) {
-                                    if (l > u) {
-                                        if (47 === n.charCodeAt(a + h))
-                                            return n.slice(a + h + 1);
-                                        if (0 === h) return n.slice(a + h);
-                                    } else
-                                        o > u &&
-                                            (47 === e.charCodeAt(i + h)
-                                                ? (c = h)
-                                                : 0 === h && (c = 0));
+                            var d = e.charCodeAt(i + h);
+                            if (d !== n.charCodeAt(a + h)) break;
+                            47 === d && (c = h);
+                        }
+                        var f = "";
+                        for (h = i + c + 1; h <= s; ++h)
+                            (h !== s && 47 !== e.charCodeAt(h)) ||
+                                (0 === f.length
+                                    ? (f += "..")
+                                    : (f += "/.."));
+                        return f.length > 0
+                            ? f + n.slice(a + c)
+                            : ((a += c),
+                                47 === n.charCodeAt(a) && ++a,
+                                n.slice(a));
+                    },
+                    _makeLong: function (e) {
+                        return e;
+                    },
+                    dirname: function (e) {
+                        if ((t(e), 0 === e.length)) return ".";
+                        for (
+                            var n = e.charCodeAt(0),
+                            r = 47 === n,
+                            i = -1,
+                            s = !0,
+                            o = e.length - 1;
+                            o >= 1;
+                            --o
+                        )
+                            if (47 === (n = e.charCodeAt(o))) {
+                                if (!s) {
+                                    i = o;
                                     break;
                                 }
-                                var d = e.charCodeAt(i + h);
-                                if (d !== n.charCodeAt(a + h)) break;
-                                47 === d && (c = h);
-                            }
-                            var f = "";
-                            for (h = i + c + 1; h <= s; ++h)
-                                (h !== s && 47 !== e.charCodeAt(h)) ||
-                                    (0 === f.length
-                                        ? (f += "..")
-                                        : (f += "/.."));
-                            return f.length > 0
-                                ? f + n.slice(a + c)
-                                : ((a += c),
-                                  47 === n.charCodeAt(a) && ++a,
-                                  n.slice(a));
-                        },
-                        _makeLong: function (e) {
-                            return e;
-                        },
-                        dirname: function (e) {
-                            if ((t(e), 0 === e.length)) return ".";
-                            for (
-                                var n = e.charCodeAt(0),
-                                    r = 47 === n,
-                                    i = -1,
-                                    s = !0,
-                                    o = e.length - 1;
-                                o >= 1;
-                                --o
-                            )
-                                if (47 === (n = e.charCodeAt(o))) {
-                                    if (!s) {
-                                        i = o;
-                                        break;
-                                    }
-                                } else s = !1;
-                            return -1 === i
-                                ? r
-                                    ? "/"
-                                    : "."
-                                : r && 1 === i
-                                  ? "//"
-                                  : e.slice(0, i);
-                        },
-                        basename: function (e, n) {
-                            if (void 0 !== n && "string" != typeof n)
-                                throw new TypeError(
-                                    '"ext" argument must be a string',
-                                );
-                            t(e);
-                            var r,
-                                i = 0,
-                                s = -1,
-                                o = !0;
-                            if (
-                                void 0 !== n &&
-                                n.length > 0 &&
-                                n.length <= e.length
-                            ) {
-                                if (n.length === e.length && n === e) return "";
-                                var a = n.length - 1,
-                                    l = -1;
-                                for (r = e.length - 1; r >= 0; --r) {
-                                    var u = e.charCodeAt(r);
-                                    if (47 === u) {
-                                        if (!o) {
-                                            i = r + 1;
-                                            break;
-                                        }
-                                    } else
-                                        (-1 === l && ((o = !1), (l = r + 1)),
-                                            a >= 0 &&
-                                                (u === n.charCodeAt(a)
-                                                    ? -1 == --a && (s = r)
-                                                    : ((a = -1), (s = l))));
-                                }
-                                return (
-                                    i === s
-                                        ? (s = l)
-                                        : -1 === s && (s = e.length),
-                                    e.slice(i, s)
-                                );
-                            }
-                            for (r = e.length - 1; r >= 0; --r)
-                                if (47 === e.charCodeAt(r)) {
+                            } else s = !1;
+                        return -1 === i
+                            ? r
+                                ? "/"
+                                : "."
+                            : r && 1 === i
+                                ? "//"
+                                : e.slice(0, i);
+                    },
+                    basename: function (e, n) {
+                        if (void 0 !== n && "string" != typeof n)
+                            throw new TypeError(
+                                '"ext" argument must be a string',
+                            );
+                        t(e);
+                        var r,
+                            i = 0,
+                            s = -1,
+                            o = !0;
+                        if (
+                            void 0 !== n &&
+                            n.length > 0 &&
+                            n.length <= e.length
+                        ) {
+                            if (n.length === e.length && n === e) return "";
+                            var a = n.length - 1,
+                                l = -1;
+                            for (r = e.length - 1; r >= 0; --r) {
+                                var u = e.charCodeAt(r);
+                                if (47 === u) {
                                     if (!o) {
                                         i = r + 1;
                                         break;
                                     }
-                                } else -1 === s && ((o = !1), (s = r + 1));
-                            return -1 === s ? "" : e.slice(i, s);
-                        },
-                        extname: function (e) {
-                            t(e);
-                            for (
-                                var n = -1,
-                                    r = 0,
-                                    i = -1,
-                                    s = !0,
-                                    o = 0,
-                                    a = e.length - 1;
-                                a >= 0;
-                                --a
-                            ) {
-                                var l = e.charCodeAt(a);
-                                if (47 !== l)
-                                    (-1 === i && ((s = !1), (i = a + 1)),
-                                        46 === l
-                                            ? -1 === n
-                                                ? (n = a)
-                                                : 1 !== o && (o = 1)
-                                            : -1 !== n && (o = -1));
-                                else if (!s) {
-                                    r = a + 1;
-                                    break;
-                                }
+                                } else
+                                    (-1 === l && ((o = !1), (l = r + 1)),
+                                        a >= 0 &&
+                                        (u === n.charCodeAt(a)
+                                            ? -1 == --a && (s = r)
+                                            : ((a = -1), (s = l))));
                             }
-                            return -1 === n ||
-                                -1 === i ||
-                                0 === o ||
-                                (1 === o && n === i - 1 && n === r + 1)
-                                ? ""
-                                : e.slice(n, i);
-                        },
-                        format: function (e) {
-                            if (null === e || "object" != typeof e)
-                                throw new TypeError(
-                                    'The "pathObject" argument must be of type Object. Received type ' +
-                                        typeof e,
-                                );
-                            return (function (e, t) {
-                                var n = t.dir || t.root,
-                                    r =
-                                        t.base ||
-                                        (t.name || "") + (t.ext || "");
-                                return n
-                                    ? n === t.root
-                                        ? n + r
-                                        : n + "/" + r
-                                    : r;
-                            })(0, e);
-                        },
-                        parse: function (e) {
-                            t(e);
-                            var n = {
-                                root: "",
-                                dir: "",
-                                base: "",
-                                ext: "",
-                                name: "",
-                            };
-                            if (0 === e.length) return n;
-                            var r,
-                                i = e.charCodeAt(0),
-                                s = 47 === i;
-                            s ? ((n.root = "/"), (r = 1)) : (r = 0);
-                            for (
-                                var o = -1,
-                                    a = 0,
-                                    l = -1,
-                                    u = !0,
-                                    c = e.length - 1,
-                                    h = 0;
-                                c >= r;
-                                --c
-                            )
-                                if (47 !== (i = e.charCodeAt(c)))
-                                    (-1 === l && ((u = !1), (l = c + 1)),
-                                        46 === i
-                                            ? -1 === o
-                                                ? (o = c)
-                                                : 1 !== h && (h = 1)
-                                            : -1 !== o && (h = -1));
-                                else if (!u) {
-                                    a = c + 1;
+                            return (
+                                i === s
+                                    ? (s = l)
+                                    : -1 === s && (s = e.length),
+                                e.slice(i, s)
+                            );
+                        }
+                        for (r = e.length - 1; r >= 0; --r)
+                            if (47 === e.charCodeAt(r)) {
+                                if (!o) {
+                                    i = r + 1;
                                     break;
                                 }
-                            return (
-                                -1 === o ||
+                            } else -1 === s && ((o = !1), (s = r + 1));
+                        return -1 === s ? "" : e.slice(i, s);
+                    },
+                    extname: function (e) {
+                        t(e);
+                        for (
+                            var n = -1,
+                            r = 0,
+                            i = -1,
+                            s = !0,
+                            o = 0,
+                            a = e.length - 1;
+                            a >= 0;
+                            --a
+                        ) {
+                            var l = e.charCodeAt(a);
+                            if (47 !== l)
+                                (-1 === i && ((s = !1), (i = a + 1)),
+                                    46 === l
+                                        ? -1 === n
+                                            ? (n = a)
+                                            : 1 !== o && (o = 1)
+                                        : -1 !== n && (o = -1));
+                            else if (!s) {
+                                r = a + 1;
+                                break;
+                            }
+                        }
+                        return -1 === n ||
+                            -1 === i ||
+                            0 === o ||
+                            (1 === o && n === i - 1 && n === r + 1)
+                            ? ""
+                            : e.slice(n, i);
+                    },
+                    format: function (e) {
+                        if (null === e || "object" != typeof e)
+                            throw new TypeError(
+                                'The "pathObject" argument must be of type Object. Received type ' +
+                                typeof e,
+                            );
+                        return (function (e, t) {
+                            var n = t.dir || t.root,
+                                r =
+                                    t.base ||
+                                    (t.name || "") + (t.ext || "");
+                            return n
+                                ? n === t.root
+                                    ? n + r
+                                    : n + "/" + r
+                                : r;
+                        })(0, e);
+                    },
+                    parse: function (e) {
+                        t(e);
+                        var n = {
+                            root: "",
+                            dir: "",
+                            base: "",
+                            ext: "",
+                            name: "",
+                        };
+                        if (0 === e.length) return n;
+                        var r,
+                            i = e.charCodeAt(0),
+                            s = 47 === i;
+                        s ? ((n.root = "/"), (r = 1)) : (r = 0);
+                        for (
+                            var o = -1,
+                            a = 0,
+                            l = -1,
+                            u = !0,
+                            c = e.length - 1,
+                            h = 0;
+                            c >= r;
+                            --c
+                        )
+                            if (47 !== (i = e.charCodeAt(c)))
+                                (-1 === l && ((u = !1), (l = c + 1)),
+                                    46 === i
+                                        ? -1 === o
+                                            ? (o = c)
+                                            : 1 !== h && (h = 1)
+                                        : -1 !== o && (h = -1));
+                            else if (!u) {
+                                a = c + 1;
+                                break;
+                            }
+                        return (
+                            -1 === o ||
                                 -1 === l ||
                                 0 === h ||
                                 (1 === h && o === l - 1 && o === a + 1)
-                                    ? -1 !== l &&
-                                      (n.base = n.name =
-                                          0 === a && s
-                                              ? e.slice(1, l)
-                                              : e.slice(a, l))
-                                    : (0 === a && s
-                                          ? ((n.name = e.slice(1, o)),
-                                            (n.base = e.slice(1, l)))
-                                          : ((n.name = e.slice(a, o)),
-                                            (n.base = e.slice(a, l))),
-                                      (n.ext = e.slice(o, l))),
-                                a > 0
-                                    ? (n.dir = e.slice(0, a - 1))
-                                    : s && (n.dir = "/"),
-                                n
-                            );
-                        },
-                        sep: "/",
-                        delimiter: ":",
-                        win32: null,
-                        posix: null,
-                    };
-                    ((r.posix = r), (e.exports = r));
-                },
+                                ? -1 !== l &&
+                                (n.base = n.name =
+                                    0 === a && s
+                                        ? e.slice(1, l)
+                                        : e.slice(a, l))
+                                : (0 === a && s
+                                    ? ((n.name = e.slice(1, o)),
+                                        (n.base = e.slice(1, l)))
+                                    : ((n.name = e.slice(a, o)),
+                                        (n.base = e.slice(a, l))),
+                                    (n.ext = e.slice(o, l))),
+                            a > 0
+                                ? (n.dir = e.slice(0, a - 1))
+                                : s && (n.dir = "/"),
+                            n
+                        );
+                    },
+                    sep: "/",
+                    delimiter: ":",
+                    win32: null,
+                    posix: null,
+                };
+                ((r.posix = r), (e.exports = r));
             },
+        },
             t = {};
         function n(r) {
             var i = t[r];
@@ -18497,8 +18497,8 @@
             let e;
             if (
                 (n.r(r),
-                n.d(r, { URI: () => c, Utils: () => S }),
-                "object" == typeof process)
+                    n.d(r, { URI: () => c, Utils: () => S }),
+                    "object" == typeof process)
             )
                 e = "win32" === process.platform;
             else if ("object" == typeof navigator) {
@@ -18555,26 +18555,26 @@
                 constructor(e, t, n, r, i, s = !1) {
                     "object" == typeof e
                         ? ((this.scheme = e.scheme || a),
-                          (this.authority = e.authority || a),
-                          (this.path = e.path || a),
-                          (this.query = e.query || a),
-                          (this.fragment = e.fragment || a))
+                            (this.authority = e.authority || a),
+                            (this.path = e.path || a),
+                            (this.query = e.query || a),
+                            (this.fragment = e.fragment || a))
                         : ((this.scheme = (function (e, t) {
-                              return e || t ? e : "file";
-                          })(e, s)),
-                          (this.authority = t || a),
-                          (this.path = (function (e, t) {
-                              switch (e) {
-                                  case "https":
-                                  case "http":
-                                  case "file":
-                                      t ? t[0] !== l && (t = l + t) : (t = l);
-                              }
-                              return t;
-                          })(this.scheme, n || a)),
-                          (this.query = r || a),
-                          (this.fragment = i || a),
-                          o(this, s));
+                            return e || t ? e : "file";
+                        })(e, s)),
+                            (this.authority = t || a),
+                            (this.path = (function (e, t) {
+                                switch (e) {
+                                    case "https":
+                                    case "http":
+                                    case "file":
+                                        t ? t[0] !== l && (t = l + t) : (t = l);
+                                }
+                                return t;
+                            })(this.scheme, n || a)),
+                            (this.query = r || a),
+                            (this.fragment = i || a),
+                            o(this, s));
                 }
                 get fsPath() {
                     return p(this);
@@ -18601,10 +18601,10 @@
                             ? (s = this.fragment)
                             : null === s && (s = a),
                         t === this.scheme &&
-                        n === this.authority &&
-                        r === this.path &&
-                        i === this.query &&
-                        s === this.fragment
+                            n === this.authority &&
+                            r === this.path &&
+                            i === this.query &&
+                            s === this.fragment
                             ? this
                             : new d(t, n, r, i, s)
                     );
@@ -18613,26 +18613,26 @@
                     const n = u.exec(e);
                     return n
                         ? new d(
-                              n[2] || a,
-                              w(n[4] || a),
-                              w(n[5] || a),
-                              w(n[7] || a),
-                              w(n[9] || a),
-                              t,
-                          )
+                            n[2] || a,
+                            w(n[4] || a),
+                            w(n[5] || a),
+                            w(n[7] || a),
+                            w(n[9] || a),
+                            t,
+                        )
                         : new d(a, a, a, a, a);
                 }
                 static file(t) {
                     let n = a;
                     if (
                         (e && (t = t.replace(/\\/g, l)),
-                        t[0] === l && t[1] === l)
+                            t[0] === l && t[1] === l)
                     ) {
                         const e = t.indexOf(l, 2);
                         -1 === e
                             ? ((n = t.substring(2)), (t = l))
                             : ((n = t.substring(2, e)),
-                              (t = t.substring(e) || l));
+                                (t = t.substring(e) || l));
                     }
                     return new d("file", n, t, a, a);
                 }
@@ -18681,13 +18681,13 @@
                     return e
                         ? b(this, !0)
                         : (this._formatted || (this._formatted = b(this, !1)),
-                          this._formatted);
+                            this._formatted);
                 }
                 toJSON() {
                     const e = { $mid: 1 };
                     return (
                         this._fsPath &&
-                            ((e.fsPath = this._fsPath), (e._sep = h)),
+                        ((e.fsPath = this._fsPath), (e._sep = h)),
                         this._formatted && (e.external = this._formatted),
                         this.path && (e.path = this.path),
                         this.scheme && (e.scheme = this.scheme),
@@ -18739,16 +18739,16 @@
                     )
                         (-1 !== i &&
                             ((r += encodeURIComponent(e.substring(i, s))),
-                            (i = -1)),
+                                (i = -1)),
                             void 0 !== r && (r += e.charAt(s)));
                     else {
                         void 0 === r && (r = e.substr(0, s));
                         const t = f[o];
                         void 0 !== t
                             ? (-1 !== i &&
-                                  ((r += encodeURIComponent(e.substring(i, s))),
-                                  (i = -1)),
-                              (r += t))
+                                ((r += encodeURIComponent(e.substring(i, s))),
+                                    (i = -1)),
+                                (r += t))
                             : -1 === i && (i = s);
                     }
                 }
@@ -18779,8 +18779,8 @@
                                     (t.path.charCodeAt(1) >= 97 &&
                                         t.path.charCodeAt(1) <= 122)) &&
                                 58 === t.path.charCodeAt(2)
-                              ? t.path[1].toLowerCase() + t.path.substr(2)
-                              : t.path),
+                                ? t.path[1].toLowerCase() + t.path.substr(2)
+                                : t.path),
                     e && (r = r.replace(/\//g, "\\")),
                     r
                 );
@@ -18797,8 +18797,8 @@
                     } = e;
                 if (
                     (i && ((r += i), (r += ":")),
-                    (s || "file" === i) && ((r += l), (r += l)),
-                    s)
+                        (s || "file" === i) && ((r += l), (r += l)),
+                        s)
                 ) {
                     let e = s.indexOf("@");
                     if (-1 !== e) {
@@ -18808,8 +18808,8 @@
                             -1 === e
                                 ? (r += n(t, !1, !1))
                                 : ((r += n(t.substr(0, e), !1, !1)),
-                                  (r += ":"),
-                                  (r += n(t.substr(e + 1), !1, !0))),
+                                    (r += ":"),
+                                    (r += n(t.substr(e + 1), !1, !0))),
                             (r += "@"));
                     }
                     ((s = s.toLowerCase()),
@@ -18817,7 +18817,7 @@
                         -1 === e
                             ? (r += n(s, !1, !0))
                             : ((r += n(s.substr(0, e), !1, !0)),
-                              (r += s.substr(e))));
+                                (r += s.substr(e))));
                 }
                 if (o) {
                     if (
@@ -18869,9 +18869,9 @@
                         let i = _.resolve(n, ...t);
                         return (
                             r &&
-                                i[0] === L &&
-                                !e.authority &&
-                                (i = i.substring(1)),
+                            i[0] === L &&
+                            !e.authority &&
+                            (i = i.substring(1)),
                             e.with({ path: i })
                         );
                     }),
@@ -18880,8 +18880,8 @@
                         let t = _.dirname(e.path);
                         return (
                             1 === t.length &&
-                                46 === t.charCodeAt(0) &&
-                                (t = ""),
+                            46 === t.charCodeAt(0) &&
+                            (t = ""),
                             e.with({ path: t })
                         );
                     }),
@@ -18950,18 +18950,18 @@
                 case "*":
                     const e = n[u - 1];
                     let t = 1;
-                    for (; "*" === n[u + 1]; ) (t++, u++);
+                    for (; "*" === n[u + 1];) (t++, u++);
                     const a = n[u + 1];
                     if (s) {
                         t > 1 &&
-                        ("/" === e || void 0 === e || "{" === e || "," === e) &&
-                        ("/" === a || void 0 === a || "," === a || "}" === a)
+                            ("/" === e || void 0 === e || "{" === e || "," === e) &&
+                            ("/" === a || void 0 === a || "," === a || "}" === a)
                             ? ("/" === a
-                                  ? u++
-                                  : "/" === e &&
-                                    r.endsWith("\\/") &&
-                                    (r = r.substr(0, r.length - 2)),
-                              (r += "((?:[^/]*(?:/|$))*)"))
+                                ? u++
+                                : "/" === e &&
+                                r.endsWith("\\/") &&
+                                (r = r.substr(0, r.length - 2)),
+                                (r += "((?:[^/]*(?:/|$))*)"))
                             : (r += "([^/]*)");
                     } else r += ".*";
                     break;
@@ -18981,7 +18981,7 @@
                     const e = "!" !== t[0];
                     (e || (t = t.substring(1)),
                         t.length > 0 &&
-                            ("/" === t[0] && (t = t.substring(1)),
+                        ("/" === t[0] && (t = t.substring(1)),
                             this.globWrappers.push({
                                 regexp: sl("**/" + t, {
                                     extended: !0,
@@ -18992,7 +18992,7 @@
                 }
                 t &&
                     ((t = fl(t)).endsWith("/") || (t += "/"),
-                    (this.folderUri = t));
+                        (this.folderUri = t));
             } catch (Pl) {
                 ((this.globWrappers.length = 0), (this.uris = []));
             }
@@ -19015,23 +19015,23 @@
                 (this.dependencies = new Set()),
                 (this.anchors = void 0),
                 n &&
-                    (this.unresolvedSchema = this.service.promise.resolve(
-                        new ll(n),
-                    )));
+                (this.unresolvedSchema = this.service.promise.resolve(
+                    new ll(n),
+                )));
         }
         getUnresolvedSchema() {
             return (
                 this.unresolvedSchema ||
-                    (this.unresolvedSchema = this.service.loadSchema(this.uri)),
+                (this.unresolvedSchema = this.service.loadSchema(this.uri)),
                 this.unresolvedSchema
             );
         }
         getResolvedSchema() {
             return (
                 this.resolvedSchema ||
-                    (this.resolvedSchema = this.getUnresolvedSchema().then(
-                        (e) => this.service.resolveSchemaContent(e, this),
-                    )),
+                (this.resolvedSchema = this.getUnresolvedSchema().then(
+                    (e) => this.service.resolveSchemaContent(e, this),
+                )),
                 this.resolvedSchema
             );
         }
@@ -19111,7 +19111,7 @@
             return this.promiseConstructor;
         }
         dispose() {
-            for (; this.callOnDispose.length > 0; ) this.callOnDispose.pop()();
+            for (; this.callOnDispose.length > 0;) this.callOnDispose.pop()();
         }
         onResourceChange(e) {
             this.cachedSchemaForResource = void 0;
@@ -19120,15 +19120,15 @@
                 r = Object.keys(this.schemasById).map(
                     (e) => this.schemasById[e],
                 );
-            for (; n.length; ) {
+            for (; n.length;) {
                 const e = n.pop();
                 for (let i = 0; i < r.length; i++) {
                     const s = r[i];
                     s &&
                         (s.uri === e || s.dependencies.has(e)) &&
                         (s.uri !== e && n.push(s.uri),
-                        s.clearSchema() && (t = !0),
-                        (r[i] = void 0));
+                            s.clearSchema() && (t = !0),
+                            (r[i] = void 0));
                 }
             }
             return t;
@@ -19171,10 +19171,10 @@
                 (this.registeredSchemasIds[t] = !0),
                 (this.cachedSchemaForResource = void 0),
                 e.fileMatch &&
-                    e.fileMatch.length &&
-                    this.addFilePatternAssociation(e.fileMatch, e.folderUri, [
-                        t,
-                    ]),
+                e.fileMatch.length &&
+                this.addFilePatternAssociation(e.fileMatch, e.folderUri, [
+                    t,
+                ]),
                 e.schema
                     ? this.addSchemaHandle(t, e.schema)
                     : this.getOrAddSchemaHandle(t)
@@ -19206,7 +19206,7 @@
             }
             return (
                 e.startsWith("http://json-schema.org/") &&
-                    (e = "https" + e.substring(4)),
+                (e = "https" + e.substring(4)),
                 this.requestService(e).then(
                     (t) => {
                         if (!t) {
@@ -19224,19 +19224,19 @@
                                     ml(e),
                                 ),
                             ),
-                            (t = t.trimStart()));
+                                (t = t.trimStart()));
                         let r = {};
                         const i = [];
                         return (
                             (r = ys(t, i)),
                             i.length &&
-                                n.push(
-                                    ga(
-                                        "Unable to parse content from '{0}': Parse error at offset {1}.",
-                                        ml(e),
-                                        i[0].offset,
-                                    ),
+                            n.push(
+                                ga(
+                                    "Unable to parse content from '{0}': Parse error at offset {1}.",
+                                    ml(e),
+                                    i[0].offset,
                                 ),
+                            ),
                             new ll(r, n)
                         );
                     },
@@ -19279,7 +19279,7 @@
                         void 0 === i || 0 === i.length
                             ? t
                             : "/" === i.charAt(0)
-                              ? ((e, t) => {
+                                ? ((e, t) => {
                                     t = decodeURIComponent(t);
                                     let n = e;
                                     return (
@@ -19298,25 +19298,25 @@
                                         n
                                     );
                                 })(t, i)
-                              : ((e, t, n) => (
+                                : ((e, t, n) => (
                                     t.anchors || (t.anchors = c(e)),
                                     t.anchors.get(n)
                                 ))(t, r, i)),
                         s
                             ? ((e, t) => {
-                                  for (const n in t)
-                                      t.hasOwnProperty(n) &&
-                                          "id" !== n &&
-                                          "$id" !== n &&
-                                          (e[n] = t[n]);
-                              })(e, s)
+                                for (const n in t)
+                                    t.hasOwnProperty(n) &&
+                                        "id" !== n &&
+                                        "$id" !== n &&
+                                        (e[n] = t[n]);
+                            })(e, s)
                             : n.push(
-                                  ga(
-                                      "$ref '{0}' in '{1}' can not be resolved.",
-                                      i || "",
-                                      r.uri,
-                                  ),
-                              ));
+                                ga(
+                                    "$ref '{0}' in '{1}' can not be resolved.",
+                                    i || "",
+                                    r.uri,
+                                ),
+                            ));
                 },
                 l = (e, t, r, i) => {
                     (o &&
@@ -19343,7 +19343,7 @@
                     return (
                         this.traverseNodes(e, (e) => {
                             const i = new Set();
-                            for (; e.$ref; ) {
+                            for (; e.$ref;) {
                                 const s = e.$ref,
                                     o = s.split("#", 2);
                                 if ((delete e.$ref, o[0].length > 0))
@@ -19371,11 +19371,11 @@
                             (i &&
                                 (t.has(i)
                                     ? n.push(
-                                          ga(
-                                              "Duplicate anchor declaration: '{0}'",
-                                              i,
-                                          ),
-                                      )
+                                        ga(
+                                            "Duplicate anchor declaration: '{0}'",
+                                            i,
+                                        ),
+                                    )
                                     : t.set(i, e)),
                                 e.$recursiveAnchor && s.add("$recursiveAnchor"),
                                 e.$dynamicAnchor && s.add("$dynamicAnchor"));
@@ -19387,12 +19387,12 @@
                 let t = [];
                 return (
                     s.size &&
-                        t.push(
-                            ga(
-                                "The schema uses meta-schema features ({0}) that are not yet supported by the validator.",
-                                Array.from(s.keys()).join(", "),
-                            ),
+                    t.push(
+                        ga(
+                            "The schema uses meta-schema features ({0}) that are not yet supported by the validator.",
+                            Array.from(s.keys()).join(", "),
                         ),
+                    ),
                     new ul(r, n, t, i)
                 );
             });
@@ -19422,32 +19422,32 @@
                 },
                 a = [e];
             let l = a.pop();
-            for (; l; )
+            for (; l;)
                 (n.has(l) ||
                     (n.add(l),
-                    t(l),
-                    r(
-                        l.additionalItems,
-                        l.additionalProperties,
-                        l.not,
-                        l.contains,
-                        l.propertyNames,
-                        l.if,
-                        l.then,
-                        l.else,
-                        l.unevaluatedItems,
-                        l.unevaluatedProperties,
-                    ),
-                    i(
-                        l.definitions,
-                        l.$defs,
-                        l.properties,
-                        l.patternProperties,
-                        l.dependencies,
-                        l.dependentSchemas,
-                    ),
-                    s(l.anyOf, l.allOf, l.oneOf, l.prefixItems),
-                    o(l.items)),
+                        t(l),
+                        r(
+                            l.additionalItems,
+                            l.additionalProperties,
+                            l.not,
+                            l.contains,
+                            l.propertyNames,
+                            l.if,
+                            l.then,
+                            l.else,
+                            l.unevaluatedItems,
+                            l.unevaluatedProperties,
+                        ),
+                        i(
+                            l.definitions,
+                            l.$defs,
+                            l.properties,
+                            l.patternProperties,
+                            l.dependencies,
+                            l.dependentSchemas,
+                        ),
+                        s(l.anyOf, l.allOf, l.oneOf, l.prefixItems),
+                        o(l.items)),
                     (l = a.pop()));
         }
         getSchemaFromProperty(e, t) {
@@ -19460,11 +19460,11 @@
                         let t = n.valueNode.value;
                         return (
                             this.contextService &&
-                                !/^\w[\w\d+.-]*:/.test(t) &&
-                                (t = this.contextService.resolveRelativePath(
-                                    t,
-                                    e,
-                                )),
+                            !/^\w[\w\d+.-]*:/.test(t) &&
+                            (t = this.contextService.resolveRelativePath(
+                                t,
+                                e,
+                            )),
                             t
                         );
                     }
@@ -19513,8 +19513,8 @@
             if (1 === t.length) return this.getOrAddSchemaHandle(t[0]);
             {
                 const n =
-                        "schemaservice://combinedSchema/" +
-                        encodeURIComponent(e),
+                    "schemaservice://combinedSchema/" +
+                    encodeURIComponent(e),
                     r = { allOf: t.map((e) => ({ $ref: e })) };
                 return this.addSchemaHandle(n, r);
             }
@@ -19560,7 +19560,7 @@
         try {
             const t = rl.parse(e);
             if ("file" === t.scheme) return t.fsPath;
-        } catch (Pl) {}
+        } catch (Pl) { }
         return e;
     }
     function gl(e, t) {
@@ -19573,7 +19573,7 @@
         function l(e) {
             (n.push(e), r.push(i.length));
         }
-        for (; 17 !== a; ) {
+        for (; 17 !== a;) {
             switch (a) {
                 case 1:
                 case 3: {
@@ -19607,8 +19607,8 @@
                     1 === o.getTokenError() && t + 1 < e.lineCount
                         ? o.setPosition(e.offsetAt(Es.create(t + 1, 0)))
                         : t < n &&
-                          (l({ startLine: t, endLine: n, kind: Is.Comment }),
-                          (s = t));
+                        (l({ startLine: t, endLine: n, kind: Is.Comment }),
+                            (s = t));
                     break;
                 }
                 case 12: {
@@ -19627,13 +19627,13 @@
                             i.push(e);
                         } else {
                             let e = i.length - 1;
-                            for (; e >= 0 && i[e].kind !== Is.Region; ) e--;
+                            for (; e >= 0 && i[e].kind !== Is.Region;) e--;
                             if (e >= 0) {
                                 const t = i[e];
                                 ((i.length = e),
                                     n > t.startLine &&
-                                        s !== t.startLine &&
-                                        ((t.endLine = n),
+                                    s !== t.startLine &&
+                                    ((t.endLine = n),
                                         l(t),
                                         (s = t.startLine)));
                             }
@@ -19685,7 +19685,7 @@
             let i = e.offsetAt(t),
                 o = n.getNodeFromOffset(i, !0);
             const a = [];
-            for (; o; ) {
+            for (; o;) {
                 switch (o.type) {
                     case "string":
                     case "object":
@@ -19758,24 +19758,24 @@
                 ((t = e.noKeyName
                     ? this.childrenProperties.length
                     : (function (e, t, n) {
-                          const r = t.propertyName.toLowerCase(),
-                              i = e[0].propertyName.toLowerCase(),
-                              s = e[e.length - 1].propertyName.toLowerCase();
-                          if (r < i) return 0;
-                          if (r > s) return e.length;
-                          let o = 0,
-                              a = e.length - 1;
-                          for (; o <= a; ) {
-                              let r = (a + o) >> 1,
-                                  i = n(t, e[r]);
-                              if (i > 0) o = r + 1;
-                              else {
-                                  if (!(i < 0)) return r;
-                                  a = r - 1;
-                              }
-                          }
-                          return -o - 1;
-                      })(this.childrenProperties, e, wl)),
+                        const r = t.propertyName.toLowerCase(),
+                            i = e[0].propertyName.toLowerCase(),
+                            s = e[e.length - 1].propertyName.toLowerCase();
+                        if (r < i) return 0;
+                        if (r > s) return e.length;
+                        let o = 0,
+                            a = e.length - 1;
+                        for (; o <= a;) {
+                            let r = (a + o) >> 1,
+                                i = n(t, e[r]);
+                            if (i > 0) o = r + 1;
+                            else {
+                                if (!(i < 0)) return r;
+                                a = r - 1;
+                            }
+                        }
+                        return -o - 1;
+                    })(this.childrenProperties, e, wl)),
                     t < 0 && (t = -1 * t - 1),
                     this.childrenProperties.splice(t, 0, e));
             } else this.childrenProperties.push(e);
@@ -19796,7 +19796,7 @@
                 const n = oa.create("test://test.json", "json", 0, e.getText()),
                     r = [];
                 _l(r, t, t.beginningLineNumber);
-                for (; r.length > 0; ) {
+                for (; r.length > 0;) {
                     const t = r.shift(),
                         i = t.propertyTreeArray;
                     let s = t.beginningLineNumber;
@@ -19810,8 +19810,8 @@
                             u = oa.create("test://test.json", "json", 0, l);
                         if (!0 === t.lastProperty && o !== i.length - 1) {
                             const e =
-                                    t.lineWhereToAddComma -
-                                    t.beginningLineNumber,
+                                t.lineWhereToAddComma -
+                                t.beginningLineNumber,
                                 n = t.indexWhereToAddComa,
                                 r = {
                                     range: As.create(
@@ -19869,7 +19869,7 @@
                         p = [],
                         b = !1,
                         y = !1;
-                    for (; 17 !== (r = n.scan()); ) {
+                    for (; 17 !== (r = n.scan());) {
                         if (
                             !0 === b &&
                             14 !== r &&
@@ -19892,7 +19892,7 @@
                                 12 !== r &&
                                 13 !== r &&
                                 ((m = n.getTokenStartLine()), (y = !1)),
-                            n.getTokenStartLine() !== c)
+                                n.getTokenStartLine() !== c)
                         ) {
                             for (let t = c; t < n.getTokenStartLine(); t++) {
                                 h += e.getText(
@@ -19920,7 +19920,7 @@
                                     (void 0 === o.beginningLineNumber &&
                                         (o.beginningLineNumber =
                                             n.getTokenStartLine()),
-                                    p[p.length - 1] === yl.Object)
+                                        p[p.length - 1] === yl.Object)
                                 )
                                     a = l;
                                 else if (p[p.length - 1] === yl.Array) {
@@ -19955,8 +19955,8 @@
                                 ((g = n.getTokenStartLine()),
                                     p.pop(),
                                     void 0 !== l.endLineNumber ||
-                                        (2 !== i && 4 !== i) ||
-                                        ((l.endLineNumber = g - 1),
+                                    (2 !== i && 4 !== i) ||
+                                    ((l.endLineNumber = g - 1),
                                         (l.lastProperty = !0),
                                         (l.lineWhereToAddComma = d),
                                         (l.indexWhereToAddComa = f),
@@ -19970,8 +19970,8 @@
                                 ((g = n.getTokenStartLine()),
                                     p.pop(),
                                     1 !== i &&
-                                        (void 0 === l.endLineNumber &&
-                                            ((l.endLineNumber = g - 1),
+                                    (void 0 === l.endLineNumber &&
+                                        ((l.endLineNumber = g - 1),
                                             (l.lastProperty = !0),
                                             (l.lineWhereToAddComma = d),
                                             (l.indexWhereToAddComa = f)),
@@ -19984,14 +19984,14 @@
                             case 5:
                                 ((g = n.getTokenStartLine()),
                                     void 0 !== l.endLineNumber ||
-                                        (p[p.length - 1] !== yl.Object &&
-                                            (p[p.length - 1] !== yl.Array ||
-                                                (2 !== i && 4 !== i))) ||
-                                        ((l.endLineNumber = g),
+                                    (p[p.length - 1] !== yl.Object &&
+                                        (p[p.length - 1] !== yl.Array ||
+                                            (2 !== i && 4 !== i))) ||
+                                    ((l.endLineNumber = g),
                                         (l.commaIndex = n.getTokenOffset() - h),
                                         (l.commaLine = g)),
                                     (2 !== i && 4 !== i) ||
-                                        ((u = l),
+                                    ((u = l),
                                         (l = l ? l.parent : void 0),
                                         (a = l)),
                                     (m = g + 1));
@@ -20007,17 +20007,17 @@
                                         p[p.length - 1] !== yl.Object) ||
                                     ((l.endLineNumber = void 0), (b = !0)),
                                     (1 !== i && 3 !== i) ||
-                                        d !== n.getTokenStartLine() ||
-                                        (y = !0));
+                                    d !== n.getTokenStartLine() ||
+                                    (y = !0));
                         }
                         14 !== r &&
                             13 !== r &&
                             12 !== r &&
                             15 !== r &&
                             ((s = i),
-                            (i = r),
-                            (d = n.getTokenStartLine()),
-                            (f = n.getTokenOffset() + n.getTokenLength() - h));
+                                (i = r),
+                                (d = n.getTokenStartLine()),
+                                (f = n.getTokenOffset() + n.getTokenLength() - h));
                     }
                     return o;
                 })(i),
@@ -20299,8 +20299,8 @@
             0 === r.length ||
                 (1 === r.length && r.charCodeAt(0) === Ol) ||
                 (2 === r.length &&
-                r.charCodeAt(0) === Ol &&
-                r.charCodeAt(1) === Ol
+                    r.charCodeAt(0) === Ol &&
+                    r.charCodeAt(1) === Ol
                     ? t.pop()
                     : t.push(r));
         e.length > 1 && 0 === e[e.length - 1].length && t.push("");

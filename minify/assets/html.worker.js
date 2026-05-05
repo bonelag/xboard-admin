@@ -80,7 +80,7 @@
     }
     function c(e, t) {
         let n = 0;
-        for (; n < e.length - 1; ) {
+        for (; n < e.length - 1;) {
             if (!t(e[n], e[n + 1])) return !1;
             n++;
         }
@@ -182,10 +182,10 @@
             (e.slice = function* (e, t, n = e.length) {
                 for (
                     t < -e.length && (t = 0),
-                        t < 0 && (t += e.length),
-                        n < 0
-                            ? (n += e.length)
-                            : n > e.length && (n = e.length);
+                    t < 0 && (t += e.length),
+                    n < 0
+                        ? (n += e.length)
+                        : n > e.length && (n = e.length);
                     t < n;
                     t++
                 )
@@ -267,7 +267,7 @@
     }
     class f {
         static {
-            this.None = Object.freeze({ dispose() {} });
+            this.None = Object.freeze({ dispose() { } });
         }
         constructor() {
             ((this._store = new g()), this._store);
@@ -305,7 +305,7 @@
         }
         clear() {
             let e = this._first;
-            for (; e !== b.Undefined; ) {
+            for (; e !== b.Undefined;) {
                 const t = e.next;
                 ((e.prev = b.Undefined), (e.next = b.Undefined), (e = t));
             }
@@ -356,16 +356,16 @@
                 e.prev === b.Undefined && e.next === b.Undefined
                     ? ((this._first = b.Undefined), (this._last = b.Undefined))
                     : e.next === b.Undefined
-                      ? ((this._last = this._last.prev),
-                        (this._last.next = b.Undefined))
-                      : e.prev === b.Undefined &&
+                        ? ((this._last = this._last.prev),
+                            (this._last.next = b.Undefined))
+                        : e.prev === b.Undefined &&
                         ((this._first = this._first.next),
-                        (this._first.prev = b.Undefined));
+                            (this._first.prev = b.Undefined));
             this._size -= 1;
         }
         *[Symbol.iterator]() {
             let e = this._first;
-            for (; e !== b.Undefined; ) (yield e.element, (e = e.next));
+            for (; e !== b.Undefined;) (yield e.element, (e = e.next));
         }
     }
     const w = globalThis.performance.now.bind(globalThis.performance);
@@ -457,7 +457,7 @@
                             "number" == typeof n
                                 ? (c && clearTimeout(c), (c = setTimeout(h, n)))
                                 : void 0 === c &&
-                                  ((c = null), queueMicrotask(h)));
+                                ((c = null), queueMicrotask(h)));
                     });
                 },
                 onWillRemoveListener() {
@@ -471,7 +471,7 @@
         }
         ((e.None = () => f.None),
             (e.defer = function (e, t) {
-                return o(e, () => {}, 0, void 0, !0, void 0, t);
+                return o(e, () => { }, 0, void 0, !0, void 0, t);
             }),
             (e.once = t),
             (e.onceIf = function (t, n) {
@@ -544,8 +544,8 @@
                     });
                 i && i.add(o);
                 const a = () => {
-                        (r?.forEach((e) => s.fire(e)), (r = null));
-                    },
+                    (r?.forEach((e) => s.fire(e)), (r = null));
+                },
                     s = new E({
                         onWillAddFirstListener() {
                             o || ((o = e((e) => s.fire(e))), i && i.add(o));
@@ -655,16 +655,16 @@
             beginUpdate(e) {
                 this._counter++;
             }
-            handlePossibleChange(e) {}
+            handlePossibleChange(e) { }
             handleChange(e, t) {
                 this._hasChanged = !0;
             }
             endUpdate(e) {
                 (this._counter--,
                     0 === this._counter &&
-                        (this._observable.reportChanges(),
+                    (this._observable.reportChanges(),
                         this._hasChanged &&
-                            ((this._hasChanged = !1),
+                        ((this._hasChanged = !1),
                             this.emitter.fire(this._observable.get()))));
             }
         }
@@ -682,10 +682,10 @@
                         endUpdate() {
                             (r--,
                                 0 === r &&
-                                    (e.reportChanges(),
+                                (e.reportChanges(),
                                     o && ((o = !1), t.call(n))));
                         },
-                        handlePossibleChange() {},
+                        handlePossibleChange() { },
                         handleChange() {
                             o = !0;
                         },
@@ -753,8 +753,8 @@
             const i = this._stacks.get(e.value) || 0;
             if (
                 (this._stacks.set(e.value, i + 1),
-                (this._warnCountdown -= 1),
-                this._warnCountdown <= 0)
+                    (this._warnCountdown -= 1),
+                    this._warnCountdown <= 0)
             ) {
                 this._warnCountdown = 0.5 * n;
                 const [e, i] = this.getMostFrequentStack(),
@@ -784,7 +784,7 @@
         constructor(e) {
             this.value = e;
         }
-        print() {}
+        print() { }
     }
     class L extends Error {
         constructor(e, t) {
@@ -807,9 +807,9 @@
                 (this._options = e),
                 (this._leakageMon = this._options?.leakWarningThreshold
                     ? new k(
-                          e?.onListenerError ?? t,
-                          this._options?.leakWarningThreshold ?? -1,
-                      )
+                        e?.onListenerError ?? t,
+                        this._options?.leakWarningThreshold ?? -1,
+                    )
                     : void 0),
                 (this._perfMon = this._options?._profName
                     ? new T(this._options._profName)
@@ -819,12 +819,12 @@
         dispose() {
             this._disposed ||
                 ((this._disposed = !0),
-                this._deliveryQueue?.current === this &&
+                    this._deliveryQueue?.current === this &&
                     this._deliveryQueue.reset(),
-                this._listeners &&
+                    this._listeners &&
                     ((this._listeners = void 0), (this._size = 0)),
-                this._options?.onDidRemoveLastListener?.(),
-                this._leakageMon?.dispose());
+                    this._options?.onDidRemoveLastListener?.(),
+                    this._leakageMon?.dispose());
         }
         get event() {
             return (
@@ -853,17 +853,17 @@
                     let o;
                     (this._leakageMon &&
                         this._size >=
-                            Math.ceil(0.2 * this._leakageMon.threshold) &&
+                        Math.ceil(0.2 * this._leakageMon.threshold) &&
                         ((r.stack = S.create()),
-                        (o = this._leakageMon.check(r.stack, this._size + 1))),
+                            (o = this._leakageMon.check(r.stack, this._size + 1))),
                         this._listeners
                             ? this._listeners instanceof C
                                 ? ((this._deliveryQueue ??= new A()),
-                                  (this._listeners = [this._listeners, r]))
+                                    (this._listeners = [this._listeners, r]))
                                 : this._listeners.push(r)
                             : (this._options?.onWillAddFirstListener?.(this),
-                              (this._listeners = r),
-                              this._options?.onDidAddFirstListener?.(this)),
+                                (this._listeners = r),
+                                this._options?.onDidAddFirstListener?.(this)),
                         this._options?.onDidAddListener?.(this),
                         this._size++);
                     const a = p(() => {
@@ -900,9 +900,9 @@
                     t[n]
                         ? (t[e++] = t[n])
                         : i &&
-                          e < this._deliveryQueue.end &&
-                          (this._deliveryQueue.end--,
-                          e < this._deliveryQueue.i && this._deliveryQueue.i--);
+                        e < this._deliveryQueue.end &&
+                        (this._deliveryQueue.end--,
+                            e < this._deliveryQueue.i && this._deliveryQueue.i--);
                 t.length = e;
             }
         }
@@ -919,16 +919,16 @@
         }
         _deliverQueue(e) {
             const t = e.current._listeners;
-            for (; e.i < e.end; ) this._deliver(t[e.i++], e.value);
+            for (; e.i < e.end;) this._deliver(t[e.i++], e.value);
             e.reset();
         }
         fire(e) {
             if (
                 (this._deliveryQueue?.current &&
                     (this._deliverQueue(this._deliveryQueue),
-                    this._perfMon?.stop()),
-                this._perfMon?.start(this._size),
-                this._listeners)
+                        this._perfMon?.stop()),
+                    this._perfMon?.start(this._size),
+                    this._listeners)
             )
                 if (this._listeners instanceof C)
                     this._deliver(this._listeners, e);
@@ -976,19 +976,19 @@
                 0 === t.length
                     ? e
                     : e.replace(/\{(\d+)\}/g, (e, n) => {
-                          const i = n[0],
-                              r = t[i];
-                          let o = e;
-                          return (
-                              "string" == typeof r
-                                  ? (o = r)
-                                  : ("number" != typeof r &&
-                                        "boolean" != typeof r &&
-                                        null != r) ||
-                                    (o = String(r)),
-                              o
-                          );
-                      })),
+                        const i = n[0],
+                            r = t[i];
+                        let o = e;
+                        return (
+                            "string" == typeof r
+                                ? (o = r)
+                                : ("number" != typeof r &&
+                                    "boolean" != typeof r &&
+                                    null != r) ||
+                                (o = String(r)),
+                            o
+                        );
+                    })),
             M && (n = "［" + n.replace(/[aouei]/g, "$&$&") + "］"),
             n
         );
@@ -997,13 +997,13 @@
         return N(
             "number" == typeof e
                 ? (function (e, t) {
-                      const n = globalThis._VSCODE_NLS_MESSAGES?.[e];
-                      if ("string" != typeof n) {
-                          if ("string" == typeof t) return t;
-                          throw new Error(`!!! NLS MISSING: ${e} !!!`);
-                      }
-                      return n;
-                  })(e, t)
+                    const n = globalThis._VSCODE_NLS_MESSAGES?.[e];
+                    if ("string" != typeof n) {
+                        if ("string" == typeof t) return t;
+                        throw new Error(`!!! NLS MISSING: ${e} !!!`);
+                    }
+                    return n;
+                })(e, t)
                 : t,
             n,
         );
@@ -1022,8 +1022,8 @@
     void 0 !== V.vscode && void 0 !== V.vscode.process
         ? (B = V.vscode.process)
         : "undefined" != typeof process &&
-          "string" == typeof process?.versions?.node &&
-          (B = process);
+        "string" == typeof process?.versions?.node &&
+        (B = process);
     const K =
         "string" == typeof B?.versions?.electron && "renderer" === B?.type;
     if ("object" == typeof B) {
@@ -1032,8 +1032,8 @@
             (P = "linux" === B.platform),
             P && B.env.SNAP && B.env.SNAP_REVISION,
             B.env.CI ||
-                B.env.BUILD_ARTIFACTSTAGINGDIRECTORY ||
-                B.env.GITHUB_WORKSPACE,
+            B.env.BUILD_ARTIFACTSTAGINGDIRECTORY ||
+            B.env.GITHUB_WORKSPACE,
             (O = z),
             (q = z));
         const e = B.env.VSCODE_NLS_CONFIG;
@@ -1044,23 +1044,23 @@
                     (F = t.osLocale),
                     (q = t.resolvedLanguage || z),
                     (H = t.languagePack?.translationsConfigFile));
-            } catch (gl) {}
+            } catch (gl) { }
     } else
         "object" != typeof navigator ||
             K ||
             ((U = navigator.userAgent),
-            (D = U.indexOf("Windows") >= 0),
-            (W = U.indexOf("Macintosh") >= 0),
-            (U.indexOf("Macintosh") >= 0 ||
-                U.indexOf("iPad") >= 0 ||
-                U.indexOf("iPhone") >= 0) &&
+                (D = U.indexOf("Windows") >= 0),
+                (W = U.indexOf("Macintosh") >= 0),
+                (U.indexOf("Macintosh") >= 0 ||
+                    U.indexOf("iPad") >= 0 ||
+                    U.indexOf("iPhone") >= 0) &&
                 navigator.maxTouchPoints &&
                 navigator.maxTouchPoints,
-            (P = U.indexOf("Linux") >= 0),
-            U?.indexOf("Mobi"),
-            (q = R() || z),
-            (O = navigator.language.toLowerCase()),
-            (F = O));
+                (P = U.indexOf("Linux") >= 0),
+                U?.indexOf("Mobi"),
+                (q = R() || z),
+                (O = navigator.language.toLowerCase()),
+                (F = O));
     const j = D,
         G = W,
         $ = U,
@@ -1104,7 +1104,7 @@
             const t = this._computeKey(e);
             return (
                 this.lastArgKey !== t &&
-                    ((this.lastArgKey = t), (this.lastCache = this._fn(e))),
+                ((this.lastArgKey = t), (this.lastCache = this._fn(e))),
                 this.lastCache
             );
         }
@@ -1239,9 +1239,9 @@
         static getData() {
             return (
                 this._data ||
-                    (this._data = new Set(
-                        [...Object.values(se.getRawData())].flat(),
-                    )),
+                (this._data = new Set(
+                    [...Object.values(se.getRawData())].flat(),
+                )),
                 this._data
             );
         }
@@ -1340,16 +1340,16 @@
             const n = {
                 get: (n, i) => (
                     "string" != typeof i ||
-                        n[i] ||
-                        (fe(i)
-                            ? (n[i] = (t) => this.listen(e, i, t))
-                            : ge(i)
-                              ? (n[i] = this.listen(e, i, void 0))
-                              : 36 === i.charCodeAt(0) &&
-                                (n[i] = async (...n) => (
-                                    await t?.(),
-                                    this.sendMessage(e, i, n)
-                                ))),
+                    n[i] ||
+                    (fe(i)
+                        ? (n[i] = (t) => this.listen(e, i, t))
+                        : ge(i)
+                            ? (n[i] = this.listen(e, i, void 0))
+                            : 36 === i.charCodeAt(0) &&
+                            (n[i] = async (...n) => (
+                                await t?.(),
+                                this.sendMessage(e, i, n)
+                            ))),
                     n[i]
                 ),
             };
@@ -1415,7 +1415,7 @@
         _handleUnsubscribeEventMessage(e) {
             this._pendingEvents.has(e.req) &&
                 (this._pendingEvents.get(e.req).dispose(),
-                this._pendingEvents.delete(e.req));
+                    this._pendingEvents.delete(e.req));
         }
         _send(e) {
             const t = [];
@@ -1594,14 +1594,14 @@
         getChanges() {
             return (
                 (this.m_originalCount > 0 || this.m_modifiedCount > 0) &&
-                    this.MarkNextChange(),
+                this.MarkNextChange(),
                 this.m_changes
             );
         }
         getReverseChanges() {
             return (
                 (this.m_originalCount > 0 || this.m_modifiedCount > 0) &&
-                    this.MarkNextChange(),
+                this.MarkNextChange(),
                 this.m_changes.reverse(),
                 this.m_changes
             );
@@ -1639,10 +1639,10 @@
         ElementsAreEqual(e, t) {
             return (
                 this._originalElementsOrHash[e] ===
-                    this._modifiedElementsOrHash[t] &&
+                this._modifiedElementsOrHash[t] &&
                 (!this._hasStrings ||
                     this._originalStringElements[e] ===
-                        this._modifiedStringElements[t])
+                    this._modifiedStringElements[t])
             );
         }
         ElementsAreStrictEqual(e, t) {
@@ -1660,19 +1660,19 @@
         OriginalElementsAreEqual(e, t) {
             return (
                 this._originalElementsOrHash[e] ===
-                    this._originalElementsOrHash[t] &&
+                this._originalElementsOrHash[t] &&
                 (!this._hasStrings ||
                     this._originalStringElements[e] ===
-                        this._originalStringElements[t])
+                    this._originalStringElements[t])
             );
         }
         ModifiedElementsAreEqual(e, t) {
             return (
                 this._modifiedElementsOrHash[e] ===
-                    this._modifiedElementsOrHash[t] &&
+                this._modifiedElementsOrHash[t] &&
                 (!this._hasStrings ||
                     this._modifiedStringElements[e] ===
-                        this._modifiedStringElements[t])
+                    this._modifiedStringElements[t])
             );
         }
         ComputeDiff(e) {
@@ -1693,34 +1693,34 @@
             );
         }
         ComputeDiffRecursive(e, t, n, i, r) {
-            for (r[0] = !1; e <= t && n <= i && this.ElementsAreEqual(e, n); )
+            for (r[0] = !1; e <= t && n <= i && this.ElementsAreEqual(e, n);)
                 (e++, n++);
-            for (; t >= e && i >= n && this.ElementsAreEqual(t, i); )
+            for (; t >= e && i >= n && this.ElementsAreEqual(t, i);)
                 (t--, i--);
             if (e > t || n > i) {
                 let r;
                 return (
                     n <= i
                         ? (Se.Assert(
-                              e === t + 1,
-                              "originalStart should only be one more than originalEnd",
-                          ),
-                          (r = [new we(e, 0, n, i - n + 1)]))
+                            e === t + 1,
+                            "originalStart should only be one more than originalEnd",
+                        ),
+                            (r = [new we(e, 0, n, i - n + 1)]))
                         : e <= t
-                          ? (Se.Assert(
+                            ? (Se.Assert(
                                 n === i + 1,
                                 "modifiedStart should only be one more than modifiedEnd",
                             ),
-                            (r = [new we(e, t - e + 1, n, 0)]))
-                          : (Se.Assert(
+                                (r = [new we(e, t - e + 1, n, 0)]))
+                            : (Se.Assert(
                                 e === t + 1,
                                 "originalStart should only be one more than originalEnd",
                             ),
-                            Se.Assert(
-                                n === i + 1,
-                                "modifiedStart should only be one more than modifiedEnd",
-                            ),
-                            (r = [])),
+                                Se.Assert(
+                                    n === i + 1,
+                                    "modifiedStart should only be one more than modifiedEnd",
+                                ),
+                                (r = [])),
                     r
                 );
             }
@@ -1736,13 +1736,13 @@
                 return (
                     (a = r[0]
                         ? [
-                              new we(
-                                  l + 1,
-                                  t - (l + 1) + 1,
-                                  c + 1,
-                                  i - (c + 1) + 1,
-                              ),
-                          ]
+                            new we(
+                                l + 1,
+                                t - (l + 1) + 1,
+                                c + 1,
+                                i - (c + 1) + 1,
+                            ),
+                        ]
                         : this.ComputeDiffRecursive(l + 1, t, c + 1, i, r)),
                     this.ConcatenateChanges(o, a)
                 );
@@ -1762,17 +1762,17 @@
                 const t = k + e;
                 (t === y || (t < T && l[t - 1] < l[t + 1])
                     ? ((m = (h = l[t + 1]) - k - i),
-                      h < S && v.MarkNextChange(),
-                      (S = h),
-                      v.AddModifiedElement(h + 1, m),
-                      (k = t + 1 - e))
+                        h < S && v.MarkNextChange(),
+                        (S = h),
+                        v.AddModifiedElement(h + 1, m),
+                        (k = t + 1 - e))
                     : ((m = (h = l[t - 1] + 1) - k - i),
-                      h < S && v.MarkNextChange(),
-                      (S = h - 1),
-                      v.AddOriginalElement(h, m + 1),
-                      (k = t - 1 - e)),
+                        h < S && v.MarkNextChange(),
+                        (S = h - 1),
+                        v.AddOriginalElement(h, m + 1),
+                        (k = t - 1 - e)),
                     L >= 0 &&
-                        ((e = (l = this.m_forwardHistory[L])[0]),
+                    ((e = (l = this.m_forwardHistory[L])[0]),
                         (y = 1),
                         (T = l.length - 1)));
             } while (--L >= -1);
@@ -1798,17 +1798,17 @@
                     const e = k + r;
                     (e === y || (e < T && c[e - 1] >= c[e + 1])
                         ? ((m = (h = c[e + 1] - 1) - k - s),
-                          h > S && v.MarkNextChange(),
-                          (S = h + 1),
-                          v.AddOriginalElement(h + 1, m + 1),
-                          (k = e + 1 - r))
+                            h > S && v.MarkNextChange(),
+                            (S = h + 1),
+                            v.AddOriginalElement(h + 1, m + 1),
+                            (k = e + 1 - r))
                         : ((m = (h = c[e - 1]) - k - s),
-                          h > S && v.MarkNextChange(),
-                          (S = h),
-                          v.AddModifiedElement(h + 1, m + 1),
-                          (k = e - 1 - r)),
+                            h > S && v.MarkNextChange(),
+                            (S = h),
+                            v.AddModifiedElement(h + 1, m + 1),
+                            (k = e - 1 - r)),
                         L >= 0 &&
-                            ((r = (c = this.m_reverseHistory[L])[0]),
+                        ((r = (c = this.m_reverseHistory[L])[0]),
                             (y = 1),
                             (T = c.length - 1)));
                 } while (--L >= -1);
@@ -1858,33 +1858,33 @@
                         (s++, l++);
                     if (
                         ((g[e] = s),
-                        s + l > m + k && ((m = s), (k = l)),
-                        !y && Math.abs(e - _) <= T - 1 && s >= f[e])
+                            s + l > m + k && ((m = s), (k = l)),
+                            !y && Math.abs(e - _) <= T - 1 && s >= f[e])
                     )
                         return (
                             (r[0] = s),
                             (o[0] = l),
                             n <= f[e] && T <= 1448
                                 ? this.WALKTRACE(
-                                      b,
-                                      c,
-                                      h,
-                                      w,
-                                      _,
-                                      d,
-                                      u,
-                                      v,
-                                      g,
-                                      f,
-                                      s,
-                                      t,
-                                      r,
-                                      l,
-                                      i,
-                                      o,
-                                      y,
-                                      a,
-                                  )
+                                    b,
+                                    c,
+                                    h,
+                                    w,
+                                    _,
+                                    d,
+                                    u,
+                                    v,
+                                    g,
+                                    f,
+                                    s,
+                                    t,
+                                    r,
+                                    l,
+                                    i,
+                                    o,
+                                    y,
+                                    a,
+                                )
                                 : null
                         );
                 }
@@ -1899,25 +1899,25 @@
                         (o[0] = k),
                         S > 0 && T <= 1448
                             ? this.WALKTRACE(
-                                  b,
-                                  c,
-                                  h,
-                                  w,
-                                  _,
-                                  d,
-                                  u,
-                                  v,
-                                  g,
-                                  f,
-                                  s,
-                                  t,
-                                  r,
-                                  l,
-                                  i,
-                                  o,
-                                  y,
-                                  a,
-                              )
+                                b,
+                                c,
+                                h,
+                                w,
+                                _,
+                                d,
+                                u,
+                                v,
+                                g,
+                                f,
+                                s,
+                                t,
+                                r,
+                                l,
+                                i,
+                                o,
+                                y,
+                                a,
+                            )
                             : (e++, n++, [new we(e, t - e + 1, n, i - n + 1)])
                     );
                 ((d = this.ClipDiagonalBound(_ - T, T, _, p)),
@@ -1929,7 +1929,7 @@
                             : f[p - 1]),
                         (l = s - (p - _) - v));
                     const m = s;
-                    for (; s > e && l > n && this.ElementsAreEqual(s, l); )
+                    for (; s > e && l > n && this.ElementsAreEqual(s, l);)
                         (s--, l--);
                     if (((f[p] = s), y && Math.abs(p - b) <= T && s <= g[p]))
                         return (
@@ -1937,25 +1937,25 @@
                             (o[0] = l),
                             m >= g[p] && T <= 1448
                                 ? this.WALKTRACE(
-                                      b,
-                                      c,
-                                      h,
-                                      w,
-                                      _,
-                                      d,
-                                      u,
-                                      v,
-                                      g,
-                                      f,
-                                      s,
-                                      t,
-                                      r,
-                                      l,
-                                      i,
-                                      o,
-                                      y,
-                                      a,
-                                  )
+                                    b,
+                                    c,
+                                    h,
+                                    w,
+                                    _,
+                                    d,
+                                    u,
+                                    v,
+                                    g,
+                                    f,
+                                    s,
+                                    t,
+                                    r,
+                                    l,
+                                    i,
+                                    o,
+                                    y,
+                                    a,
+                                )
                                 : null
                         );
                 }
@@ -2113,11 +2113,11 @@
                             (t === n.originalStart + n.originalLength &&
                                 o === n.modifiedStart + n.modifiedLength) ||
                                 ((n.originalLength = t - n.originalStart),
-                                (n.modifiedLength = o - n.modifiedStart),
-                                (i.originalStart = t + r),
-                                (i.modifiedStart = o + r),
-                                (i.originalLength = a - i.originalStart),
-                                (i.modifiedLength = c - i.modifiedStart));
+                                    (n.modifiedLength = o - n.modifiedStart),
+                                    (i.originalStart = t + r),
+                                    (i.modifiedStart = o + r),
+                                    (i.originalLength = a - i.originalStart),
+                                    (i.modifiedLength = c - i.modifiedStart));
                         }
                     }
                 }
@@ -2220,11 +2220,11 @@
                     e.originalStart <= t.originalStart,
                     "Left change is not less than or equal to right change",
                 ),
-                Se.Assert(
-                    e.modifiedStart <= t.modifiedStart,
-                    "Left change is not less than or equal to right change",
-                ),
-                e.originalStart + e.originalLength >= t.originalStart ||
+                    Se.Assert(
+                        e.modifiedStart <= t.modifiedStart,
+                        "Left change is not less than or equal to right change",
+                    ),
+                    e.originalStart + e.originalLength >= t.originalStart ||
                     e.modifiedStart + e.modifiedLength >= t.modifiedStart)
             ) {
                 const i = e.originalStart;
@@ -2233,15 +2233,15 @@
                 let a = e.modifiedLength;
                 return (
                     e.originalStart + e.originalLength >= t.originalStart &&
-                        (r =
-                            t.originalStart +
-                            t.originalLength -
-                            e.originalStart),
+                    (r =
+                        t.originalStart +
+                        t.originalLength -
+                        e.originalStart),
                     e.modifiedStart + e.modifiedLength >= t.modifiedStart &&
-                        (a =
-                            t.modifiedStart +
-                            t.modifiedLength -
-                            e.modifiedStart),
+                    (a =
+                        t.modifiedStart +
+                        t.modifiedLength -
+                        e.modifiedStart),
                     (n[0] = new we(i, r, o, a)),
                     !0
                 );
@@ -2258,89 +2258,89 @@
         }
     }
     let Ee = class e {
-            constructor(e, t) {
-                ((this.lineNumber = e), (this.column = t));
+        constructor(e, t) {
+            ((this.lineNumber = e), (this.column = t));
+        }
+        with(t = this.lineNumber, n = this.column) {
+            return t === this.lineNumber && n === this.column
+                ? this
+                : new e(t, n);
+        }
+        delta(e = 0, t = 0) {
+            return this.with(
+                Math.max(1, this.lineNumber + e),
+                Math.max(1, this.column + t),
+            );
+        }
+        equals(t) {
+            return e.equals(this, t);
+        }
+        static equals(e, t) {
+            return (
+                (!e && !t) ||
+                (!!e &&
+                    !!t &&
+                    e.lineNumber === t.lineNumber &&
+                    e.column === t.column)
+            );
+        }
+        isBefore(t) {
+            return e.isBefore(this, t);
+        }
+        static isBefore(e, t) {
+            return (
+                e.lineNumber < t.lineNumber ||
+                (!(t.lineNumber < e.lineNumber) && e.column < t.column)
+            );
+        }
+        isBeforeOrEqual(t) {
+            return e.isBeforeOrEqual(this, t);
+        }
+        static isBeforeOrEqual(e, t) {
+            return (
+                e.lineNumber < t.lineNumber ||
+                (!(t.lineNumber < e.lineNumber) && e.column <= t.column)
+            );
+        }
+        static compare(e, t) {
+            const n = 0 | e.lineNumber,
+                i = 0 | t.lineNumber;
+            if (n === i) {
+                return (0 | e.column) - (0 | t.column);
             }
-            with(t = this.lineNumber, n = this.column) {
-                return t === this.lineNumber && n === this.column
-                    ? this
-                    : new e(t, n);
-            }
-            delta(e = 0, t = 0) {
-                return this.with(
-                    Math.max(1, this.lineNumber + e),
-                    Math.max(1, this.column + t),
-                );
-            }
-            equals(t) {
-                return e.equals(this, t);
-            }
-            static equals(e, t) {
-                return (
-                    (!e && !t) ||
-                    (!!e &&
-                        !!t &&
-                        e.lineNumber === t.lineNumber &&
-                        e.column === t.column)
-                );
-            }
-            isBefore(t) {
-                return e.isBefore(this, t);
-            }
-            static isBefore(e, t) {
-                return (
-                    e.lineNumber < t.lineNumber ||
-                    (!(t.lineNumber < e.lineNumber) && e.column < t.column)
-                );
-            }
-            isBeforeOrEqual(t) {
-                return e.isBeforeOrEqual(this, t);
-            }
-            static isBeforeOrEqual(e, t) {
-                return (
-                    e.lineNumber < t.lineNumber ||
-                    (!(t.lineNumber < e.lineNumber) && e.column <= t.column)
-                );
-            }
-            static compare(e, t) {
-                const n = 0 | e.lineNumber,
-                    i = 0 | t.lineNumber;
-                if (n === i) {
-                    return (0 | e.column) - (0 | t.column);
-                }
-                return n - i;
-            }
-            clone() {
-                return new e(this.lineNumber, this.column);
-            }
-            toString() {
-                return "(" + this.lineNumber + "," + this.column + ")";
-            }
-            static lift(t) {
-                return new e(t.lineNumber, t.column);
-            }
-            static isIPosition(e) {
-                return (
-                    !!e &&
-                    "number" == typeof e.lineNumber &&
-                    "number" == typeof e.column
-                );
-            }
-            toJSON() {
-                return { lineNumber: this.lineNumber, column: this.column };
-            }
-        },
+            return n - i;
+        }
+        clone() {
+            return new e(this.lineNumber, this.column);
+        }
+        toString() {
+            return "(" + this.lineNumber + "," + this.column + ")";
+        }
+        static lift(t) {
+            return new e(t.lineNumber, t.column);
+        }
+        static isIPosition(e) {
+            return (
+                !!e &&
+                "number" == typeof e.lineNumber &&
+                "number" == typeof e.column
+            );
+        }
+        toJSON() {
+            return { lineNumber: this.lineNumber, column: this.column };
+        }
+    },
         Ae = class e {
             constructor(e, t, n, i) {
                 e > n || (e === n && t > i)
                     ? ((this.startLineNumber = n),
-                      (this.startColumn = i),
-                      (this.endLineNumber = e),
-                      (this.endColumn = t))
+                        (this.startColumn = i),
+                        (this.endLineNumber = e),
+                        (this.endColumn = t))
                     : ((this.startLineNumber = e),
-                      (this.startColumn = t),
-                      (this.endLineNumber = n),
-                      (this.endColumn = i));
+                        (this.startColumn = t),
+                        (this.endLineNumber = n),
+                        (this.endColumn = i));
             }
             isEmpty() {
                 return e.isEmpty(this);
@@ -2441,15 +2441,15 @@
                     n.startLineNumber < t.startLineNumber
                         ? ((i = n.startLineNumber), (r = n.startColumn))
                         : n.startLineNumber === t.startLineNumber
-                          ? ((i = n.startLineNumber),
-                            (r = Math.min(n.startColumn, t.startColumn)))
-                          : ((i = t.startLineNumber), (r = t.startColumn)),
+                            ? ((i = n.startLineNumber),
+                                (r = Math.min(n.startColumn, t.startColumn)))
+                            : ((i = t.startLineNumber), (r = t.startColumn)),
                     n.endLineNumber > t.endLineNumber
                         ? ((o = n.endLineNumber), (a = n.endColumn))
                         : n.endLineNumber === t.endLineNumber
-                          ? ((o = n.endLineNumber),
-                            (a = Math.max(n.endColumn, t.endColumn)))
-                          : ((o = t.endLineNumber), (a = t.endColumn)),
+                            ? ((o = n.endLineNumber),
+                                (a = Math.max(n.endColumn, t.endColumn)))
+                            : ((o = t.endLineNumber), (a = t.endColumn)),
                     new e(i, r, o, a)
                 );
             }
@@ -2559,11 +2559,11 @@
             static lift(t) {
                 return t
                     ? new e(
-                          t.startLineNumber,
-                          t.startColumn,
-                          t.endLineNumber,
-                          t.endColumn,
-                      )
+                        t.startLineNumber,
+                        t.startColumn,
+                        t.endLineNumber,
+                        t.endColumn,
+                    )
                     : null;
             }
             static isIRange(e) {
@@ -2750,47 +2750,47 @@
             t = (function () {
                 return (
                     null === Oe &&
-                        (Oe = new ze([
-                            [1, 104, 2],
-                            [1, 72, 2],
-                            [1, 102, 6],
-                            [1, 70, 6],
-                            [2, 116, 3],
-                            [2, 84, 3],
-                            [3, 116, 4],
-                            [3, 84, 4],
-                            [4, 112, 5],
-                            [4, 80, 5],
-                            [5, 115, 9],
-                            [5, 83, 9],
-                            [5, 58, 10],
-                            [6, 105, 7],
-                            [6, 73, 7],
-                            [7, 108, 8],
-                            [7, 76, 8],
-                            [8, 101, 9],
-                            [8, 69, 9],
-                            [9, 58, 10],
-                            [10, 47, 11],
-                            [11, 47, 12],
-                        ])),
+                    (Oe = new ze([
+                        [1, 104, 2],
+                        [1, 72, 2],
+                        [1, 102, 6],
+                        [1, 70, 6],
+                        [2, 116, 3],
+                        [2, 84, 3],
+                        [3, 116, 4],
+                        [3, 84, 4],
+                        [4, 112, 5],
+                        [4, 80, 5],
+                        [5, 115, 9],
+                        [5, 83, 9],
+                        [5, 58, 10],
+                        [6, 105, 7],
+                        [6, 73, 7],
+                        [7, 108, 8],
+                        [7, 76, 8],
+                        [8, 101, 9],
+                        [8, 69, 9],
+                        [9, 58, 10],
+                        [10, 47, 11],
+                        [11, 47, 12],
+                    ])),
                     Oe
                 );
             })(),
         ) {
             const n = (function () {
-                    if (null === He) {
-                        He = new Ne(0);
-                        const e =
-                            " \t<>'\"、。｡､，．：；‘〈「『〔（［｛｢｣｝］）〕』」〉’｀～…|";
-                        for (let n = 0; n < e.length; n++)
-                            He.set(e.charCodeAt(n), 1);
-                        const t = ".,;:";
-                        for (let n = 0; n < t.length; n++)
-                            He.set(t.charCodeAt(n), 2);
-                    }
-                    return He;
-                })(),
+                if (null === He) {
+                    He = new Ne(0);
+                    const e =
+                        " \t<>'\"、。｡､，．：；‘〈「『〔（［｛｢｣｝］）〕』」〉’｀～…|";
+                    for (let n = 0; n < e.length; n++)
+                        He.set(e.charCodeAt(n), 1);
+                    const t = ".,;:";
+                    for (let n = 0; n < t.length; n++)
+                        He.set(t.charCodeAt(n), 2);
+                }
+                return He;
+            })(),
                 i = [];
             for (let r = 1, o = e.getLineCount(); r <= o; r++) {
                 const o = e.getLineContent(r),
@@ -2803,7 +2803,7 @@
                     u = !1,
                     m = !1,
                     p = !1;
-                for (; s < a; ) {
+                for (; s < a;) {
                     let e = !1;
                     const a = o.charCodeAt(s);
                     if (13 === h) {
@@ -2834,8 +2834,8 @@
                                     c === a
                                         ? 1
                                         : 39 === c || 34 === c || 96 === c
-                                          ? 0
-                                          : 1;
+                                            ? 0
+                                            : 1;
                                 break;
                             case 42:
                                 t = 42 === c ? 1 : 0;
@@ -2855,11 +2855,11 @@
                     } else ((h = t.nextState(h, a)), 0 === h && (e = !0));
                     (e &&
                         ((h = 1),
-                        (d = !1),
-                        (u = !1),
-                        (p = !1),
-                        (l = s + 1),
-                        (c = a)),
+                            (d = !1),
+                            (u = !1),
+                            (p = !1),
+                            (l = s + 1),
+                            (c = a)),
                         s++);
                 }
                 13 === h && i.push(Ue._createLink(n, o, r, l, a));
@@ -2909,8 +2909,8 @@
             return isNaN(i) || isNaN(r) || i !== r
                 ? null
                 : 0 !== i || t
-                  ? ((i = Math.floor(i * n)), (i += t ? n : -n), String(i / n))
-                  : null;
+                    ? ((i = Math.floor(i * n)), (i += t ? n : -n), String(i / n))
+                    : null;
         }
         textReplace(e, t) {
             return this.valueSetsReplace(this._defaultValueSet, e, t);
@@ -2925,8 +2925,8 @@
             let i = e.indexOf(t);
             return i >= 0
                 ? ((i += n ? 1 : -1),
-                  i < 0 ? (i = e.length - 1) : (i %= e.length),
-                  e[i])
+                    i < 0 ? (i = e.length - 1) : (i %= e.length),
+                    e[i])
                 : null;
         }
     }
@@ -2966,7 +2966,7 @@
         cancel() {
             this._isCancelled ||
                 ((this._isCancelled = !0),
-                this._emitter && (this._emitter.fire(void 0), this.dispose()));
+                    this._emitter && (this._emitter.fire(void 0), this.dispose()));
         }
         get isCancellationRequested() {
             return this._isCancelled;
@@ -2975,7 +2975,7 @@
             return this._isCancelled
                 ? We
                 : (this._emitter || (this._emitter = new E()),
-                  this._emitter.event);
+                    this._emitter.event);
         }
         dispose() {
             this._emitter && (this._emitter.dispose(), (this._emitter = null));
@@ -3516,7 +3516,7 @@
             const [e, t, o, a, s, l, c, h, d] = r;
             if (
                 (i[t] || ((i[t] = !0), ($e[o] = t), (Xe[o.toLowerCase()] = t)),
-                !n[a])
+                    !n[a])
             ) {
                 if (((n[a] = !0), !s))
                     throw new Error(
@@ -3580,29 +3580,29 @@
     } else
         Qe =
             "undefined" != typeof process &&
-            "string" == typeof process?.versions?.node
+                "string" == typeof process?.versions?.node
                 ? {
-                      get platform() {
-                          return process.platform;
-                      },
-                      get arch() {
-                          return process.arch;
-                      },
-                      get env() {
-                          return Ye;
-                      },
-                      cwd: () => Ye.VSCODE_CWD || process.cwd(),
-                  }
+                    get platform() {
+                        return process.platform;
+                    },
+                    get arch() {
+                        return process.arch;
+                    },
+                    get env() {
+                        return Ye;
+                    },
+                    cwd: () => Ye.VSCODE_CWD || process.cwd(),
+                }
                 : {
-                      get platform() {
-                          return j ? "win32" : G ? "darwin" : "linux";
-                      },
-                      get arch() {},
-                      get env() {
-                          return {};
-                      },
-                      cwd: () => "/",
-                  };
+                    get platform() {
+                        return j ? "win32" : G ? "darwin" : "linux";
+                    },
+                    get arch() { },
+                    get env() {
+                        return {};
+                    },
+                    cwd: () => "/",
+                };
     const et = Qe.cwd,
         tt = Qe.env,
         nt = Qe.platform,
@@ -3662,7 +3662,7 @@
                             (-1 === e
                                 ? ((r = ""), (o = 0))
                                 : ((r = r.slice(0, e)),
-                                  (o = r.length - 1 - r.lastIndexOf(n))),
+                                    (o = r.length - 1 - r.lastIndexOf(n))),
                                 (a = c),
                                 (s = 0));
                             continue;
@@ -3696,452 +3696,452 @@
         return n ? (n === t.root ? `${n}${i}` : `${n}${e}${i}`) : i;
     }
     const gt = {
-            resolve(...e) {
-                let t = "",
-                    n = "",
-                    i = !1;
-                for (let r = e.length - 1; r >= -1; r--) {
-                    let o;
-                    if (r >= 0) {
-                        if (((o = e[r]), lt(o, `paths[${r}]`), 0 === o.length))
-                            continue;
-                    } else
-                        0 === t.length
-                            ? (o = et())
-                            : ((o = tt[`=${t}`] || et()),
-                              (void 0 === o ||
-                                  (o.slice(0, 2).toLowerCase() !==
-                                      t.toLowerCase() &&
-                                      o.charCodeAt(2) === ot)) &&
-                                  (o = `${t}\\`));
-                    const a = o.length;
-                    let s = 0,
-                        l = "",
-                        c = !1;
-                    const h = o.charCodeAt(0);
-                    if (1 === a) ht(h) && ((s = 1), (c = !0));
-                    else if (ht(h))
-                        if (((c = !0), ht(o.charCodeAt(1)))) {
-                            let e = 2,
-                                t = e;
-                            for (; e < a && !ht(o.charCodeAt(e)); ) e++;
+        resolve(...e) {
+            let t = "",
+                n = "",
+                i = !1;
+            for (let r = e.length - 1; r >= -1; r--) {
+                let o;
+                if (r >= 0) {
+                    if (((o = e[r]), lt(o, `paths[${r}]`), 0 === o.length))
+                        continue;
+                } else
+                    0 === t.length
+                        ? (o = et())
+                        : ((o = tt[`=${t}`] || et()),
+                            (void 0 === o ||
+                                (o.slice(0, 2).toLowerCase() !==
+                                    t.toLowerCase() &&
+                                    o.charCodeAt(2) === ot)) &&
+                            (o = `${t}\\`));
+                const a = o.length;
+                let s = 0,
+                    l = "",
+                    c = !1;
+                const h = o.charCodeAt(0);
+                if (1 === a) ht(h) && ((s = 1), (c = !0));
+                else if (ht(h))
+                    if (((c = !0), ht(o.charCodeAt(1)))) {
+                        let e = 2,
+                            t = e;
+                        for (; e < a && !ht(o.charCodeAt(e));) e++;
+                        if (e < a && e !== t) {
+                            const n = o.slice(t, e);
+                            for (t = e; e < a && ht(o.charCodeAt(e));) e++;
                             if (e < a && e !== t) {
-                                const n = o.slice(t, e);
-                                for (t = e; e < a && ht(o.charCodeAt(e)); ) e++;
-                                if (e < a && e !== t) {
-                                    for (t = e; e < a && !ht(o.charCodeAt(e)); )
-                                        e++;
-                                    (e !== a && e === t) ||
-                                        ((l = `\\\\${n}\\${o.slice(t, e)}`),
+                                for (t = e; e < a && !ht(o.charCodeAt(e));)
+                                    e++;
+                                (e !== a && e === t) ||
+                                    ((l = `\\\\${n}\\${o.slice(t, e)}`),
                                         (s = e));
-                                }
                             }
-                        } else s = 1;
-                    else
-                        ut(h) &&
-                            o.charCodeAt(1) === at &&
-                            ((l = o.slice(0, 2)),
+                        }
+                    } else s = 1;
+                else
+                    ut(h) &&
+                        o.charCodeAt(1) === at &&
+                        ((l = o.slice(0, 2)),
                             (s = 2),
                             a > 2 &&
-                                ht(o.charCodeAt(2)) &&
-                                ((c = !0), (s = 3)));
-                    if (l.length > 0)
-                        if (t.length > 0) {
-                            if (l.toLowerCase() !== t.toLowerCase()) continue;
-                        } else t = l;
-                    if (i) {
-                        if (t.length > 0) break;
-                    } else if (
-                        ((n = `${o.slice(s)}\\${n}`),
+                            ht(o.charCodeAt(2)) &&
+                            ((c = !0), (s = 3)));
+                if (l.length > 0)
+                    if (t.length > 0) {
+                        if (l.toLowerCase() !== t.toLowerCase()) continue;
+                    } else t = l;
+                if (i) {
+                    if (t.length > 0) break;
+                } else if (
+                    ((n = `${o.slice(s)}\\${n}`),
                         (i = c),
                         c && t.length > 0)
-                    )
-                        break;
-                }
-                return (
-                    (n = mt(n, !i, "\\", ht)),
-                    i ? `${t}\\${n}` : `${t}${n}` || "."
-                );
-            },
-            normalize(e) {
-                lt(e, "path");
-                const t = e.length;
-                if (0 === t) return ".";
-                let n,
-                    i = 0,
-                    r = !1;
-                const o = e.charCodeAt(0);
-                if (1 === t) return dt(o) ? "\\" : e;
-                if (ht(o))
-                    if (((r = !0), ht(e.charCodeAt(1)))) {
-                        let r = 2,
-                            o = r;
-                        for (; r < t && !ht(e.charCodeAt(r)); ) r++;
+                )
+                    break;
+            }
+            return (
+                (n = mt(n, !i, "\\", ht)),
+                i ? `${t}\\${n}` : `${t}${n}` || "."
+            );
+        },
+        normalize(e) {
+            lt(e, "path");
+            const t = e.length;
+            if (0 === t) return ".";
+            let n,
+                i = 0,
+                r = !1;
+            const o = e.charCodeAt(0);
+            if (1 === t) return dt(o) ? "\\" : e;
+            if (ht(o))
+                if (((r = !0), ht(e.charCodeAt(1)))) {
+                    let r = 2,
+                        o = r;
+                    for (; r < t && !ht(e.charCodeAt(r));) r++;
+                    if (r < t && r !== o) {
+                        const a = e.slice(o, r);
+                        for (o = r; r < t && ht(e.charCodeAt(r));) r++;
                         if (r < t && r !== o) {
-                            const a = e.slice(o, r);
-                            for (o = r; r < t && ht(e.charCodeAt(r)); ) r++;
-                            if (r < t && r !== o) {
-                                for (o = r; r < t && !ht(e.charCodeAt(r)); )
-                                    r++;
-                                if (r === t) return `\\\\${a}\\${e.slice(o)}\\`;
-                                r !== o &&
-                                    ((n = `\\\\${a}\\${e.slice(o, r)}`),
+                            for (o = r; r < t && !ht(e.charCodeAt(r));)
+                                r++;
+                            if (r === t) return `\\\\${a}\\${e.slice(o)}\\`;
+                            r !== o &&
+                                ((n = `\\\\${a}\\${e.slice(o, r)}`),
                                     (i = r));
-                            }
                         }
-                    } else i = 1;
-                else
-                    ut(o) &&
-                        e.charCodeAt(1) === at &&
-                        ((n = e.slice(0, 2)),
+                    }
+                } else i = 1;
+            else
+                ut(o) &&
+                    e.charCodeAt(1) === at &&
+                    ((n = e.slice(0, 2)),
                         (i = 2),
                         t > 2 && ht(e.charCodeAt(2)) && ((r = !0), (i = 3)));
-                let a = i < t ? mt(e.slice(i), !r, "\\", ht) : "";
-                if (
-                    (0 !== a.length || r || (a = "."),
+            let a = i < t ? mt(e.slice(i), !r, "\\", ht) : "";
+            if (
+                (0 !== a.length || r || (a = "."),
                     a.length > 0 && ht(e.charCodeAt(t - 1)) && (a += "\\"),
                     !r && void 0 === n && e.includes(":"))
-                ) {
-                    if (
-                        a.length >= 2 &&
-                        ut(a.charCodeAt(0)) &&
-                        a.charCodeAt(1) === at
-                    )
+            ) {
+                if (
+                    a.length >= 2 &&
+                    ut(a.charCodeAt(0)) &&
+                    a.charCodeAt(1) === at
+                )
+                    return `.\\${a}`;
+                let n = e.indexOf(":");
+                do {
+                    if (n === t - 1 || ht(e.charCodeAt(n + 1)))
                         return `.\\${a}`;
-                    let n = e.indexOf(":");
-                    do {
-                        if (n === t - 1 || ht(e.charCodeAt(n + 1)))
-                            return `.\\${a}`;
-                    } while (-1 !== (n = e.indexOf(":", n + 1)));
-                }
-                return void 0 === n
-                    ? r
-                        ? `\\${a}`
-                        : a
-                    : r
-                      ? `${n}\\${a}`
-                      : `${n}${a}`;
-            },
-            isAbsolute(e) {
-                lt(e, "path");
-                const t = e.length;
-                if (0 === t) return !1;
-                const n = e.charCodeAt(0);
-                return (
-                    ht(n) ||
-                    (t > 2 &&
-                        ut(n) &&
-                        e.charCodeAt(1) === at &&
-                        ht(e.charCodeAt(2)))
+                } while (-1 !== (n = e.indexOf(":", n + 1)));
+            }
+            return void 0 === n
+                ? r
+                    ? `\\${a}`
+                    : a
+                : r
+                    ? `${n}\\${a}`
+                    : `${n}${a}`;
+        },
+        isAbsolute(e) {
+            lt(e, "path");
+            const t = e.length;
+            if (0 === t) return !1;
+            const n = e.charCodeAt(0);
+            return (
+                ht(n) ||
+                (t > 2 &&
+                    ut(n) &&
+                    e.charCodeAt(1) === at &&
+                    ht(e.charCodeAt(2)))
+            );
+        },
+        join(...e) {
+            if (0 === e.length) return ".";
+            let t, n;
+            for (let o = 0; o < e.length; ++o) {
+                const i = e[o];
+                (lt(i, "path"),
+                    i.length > 0 &&
+                    (void 0 === t ? (t = n = i) : (t += `\\${i}`)));
+            }
+            if (void 0 === t) return ".";
+            let i = !0,
+                r = 0;
+            if ("string" == typeof n && ht(n.charCodeAt(0))) {
+                ++r;
+                const e = n.length;
+                e > 1 &&
+                    ht(n.charCodeAt(1)) &&
+                    (++r, e > 2 && (ht(n.charCodeAt(2)) ? ++r : (i = !1)));
+            }
+            if (i) {
+                for (; r < t.length && ht(t.charCodeAt(r));) r++;
+                r >= 2 && (t = `\\${t.slice(r)}`);
+            }
+            return gt.normalize(t);
+        },
+        relative(e, t) {
+            if ((lt(e, "from"), lt(t, "to"), e === t)) return "";
+            const n = gt.resolve(e),
+                i = gt.resolve(t);
+            if (n === i) return "";
+            if ((e = n.toLowerCase()) === (t = i.toLowerCase())) return "";
+            if (n.length !== e.length || i.length !== t.length) {
+                const e = n.split("\\"),
+                    t = i.split("\\");
+                ("" === e[e.length - 1] && e.pop(),
+                    "" === t[t.length - 1] && t.pop());
+                const r = e.length,
+                    o = t.length,
+                    a = r < o ? r : o;
+                let s;
+                for (
+                    s = 0;
+                    s < a && e[s].toLowerCase() === t[s].toLowerCase();
+                    s++
                 );
-            },
-            join(...e) {
-                if (0 === e.length) return ".";
-                let t, n;
-                for (let o = 0; o < e.length; ++o) {
-                    const i = e[o];
-                    (lt(i, "path"),
-                        i.length > 0 &&
-                            (void 0 === t ? (t = n = i) : (t += `\\${i}`)));
-                }
-                if (void 0 === t) return ".";
-                let i = !0,
-                    r = 0;
-                if ("string" == typeof n && ht(n.charCodeAt(0))) {
-                    ++r;
-                    const e = n.length;
-                    e > 1 &&
-                        ht(n.charCodeAt(1)) &&
-                        (++r, e > 2 && (ht(n.charCodeAt(2)) ? ++r : (i = !1)));
-                }
-                if (i) {
-                    for (; r < t.length && ht(t.charCodeAt(r)); ) r++;
-                    r >= 2 && (t = `\\${t.slice(r)}`);
-                }
-                return gt.normalize(t);
-            },
-            relative(e, t) {
-                if ((lt(e, "from"), lt(t, "to"), e === t)) return "";
-                const n = gt.resolve(e),
-                    i = gt.resolve(t);
-                if (n === i) return "";
-                if ((e = n.toLowerCase()) === (t = i.toLowerCase())) return "";
-                if (n.length !== e.length || i.length !== t.length) {
-                    const e = n.split("\\"),
-                        t = i.split("\\");
-                    ("" === e[e.length - 1] && e.pop(),
-                        "" === t[t.length - 1] && t.pop());
-                    const r = e.length,
-                        o = t.length,
-                        a = r < o ? r : o;
-                    let s;
-                    for (
-                        s = 0;
-                        s < a && e[s].toLowerCase() === t[s].toLowerCase();
-                        s++
-                    );
-                    return 0 === s
-                        ? i
-                        : s === a
-                          ? o > a
-                              ? t.slice(s).join("\\")
-                              : r > a
+                return 0 === s
+                    ? i
+                    : s === a
+                        ? o > a
+                            ? t.slice(s).join("\\")
+                            : r > a
                                 ? "..\\".repeat(r - 1 - s) + ".."
                                 : ""
-                          : "..\\".repeat(r - s) + t.slice(s).join("\\");
+                        : "..\\".repeat(r - s) + t.slice(s).join("\\");
+            }
+            let r = 0;
+            for (; r < e.length && e.charCodeAt(r) === ot;) r++;
+            let o = e.length;
+            for (; o - 1 > r && e.charCodeAt(o - 1) === ot;) o--;
+            const a = o - r;
+            let s = 0;
+            for (; s < t.length && t.charCodeAt(s) === ot;) s++;
+            let l = t.length;
+            for (; l - 1 > s && t.charCodeAt(l - 1) === ot;) l--;
+            const c = l - s,
+                h = a < c ? a : c;
+            let d = -1,
+                u = 0;
+            for (; u < h; u++) {
+                const n = e.charCodeAt(r + u);
+                if (n !== t.charCodeAt(s + u)) break;
+                n === ot && (d = u);
+            }
+            if (u !== h) {
+                if (-1 === d) return i;
+            } else {
+                if (c > h) {
+                    if (t.charCodeAt(s + u) === ot)
+                        return i.slice(s + u + 1);
+                    if (2 === u) return i.slice(s + u);
                 }
-                let r = 0;
-                for (; r < e.length && e.charCodeAt(r) === ot; ) r++;
-                let o = e.length;
-                for (; o - 1 > r && e.charCodeAt(o - 1) === ot; ) o--;
-                const a = o - r;
-                let s = 0;
-                for (; s < t.length && t.charCodeAt(s) === ot; ) s++;
-                let l = t.length;
-                for (; l - 1 > s && t.charCodeAt(l - 1) === ot; ) l--;
-                const c = l - s,
-                    h = a < c ? a : c;
-                let d = -1,
-                    u = 0;
-                for (; u < h; u++) {
-                    const n = e.charCodeAt(r + u);
-                    if (n !== t.charCodeAt(s + u)) break;
-                    n === ot && (d = u);
+                (a > h &&
+                    (e.charCodeAt(r + u) === ot
+                        ? (d = u)
+                        : 2 === u && (d = 3)),
+                    -1 === d && (d = 0));
+            }
+            let m = "";
+            for (u = r + d + 1; u <= o; ++u)
+                (u !== o && e.charCodeAt(u) !== ot) ||
+                    (m += 0 === m.length ? ".." : "\\..");
+            return (
+                (s += d),
+                m.length > 0
+                    ? `${m}${i.slice(s, l)}`
+                    : (i.charCodeAt(s) === ot && ++s, i.slice(s, l))
+            );
+        },
+        toNamespacedPath(e) {
+            if ("string" != typeof e || 0 === e.length) return e;
+            const t = gt.resolve(e);
+            if (t.length <= 2) return e;
+            if (t.charCodeAt(0) === ot) {
+                if (t.charCodeAt(1) === ot) {
+                    const e = t.charCodeAt(2);
+                    if (63 !== e && e !== it)
+                        return `\\\\?\\UNC\\${t.slice(2)}`;
                 }
-                if (u !== h) {
-                    if (-1 === d) return i;
-                } else {
-                    if (c > h) {
-                        if (t.charCodeAt(s + u) === ot)
-                            return i.slice(s + u + 1);
-                        if (2 === u) return i.slice(s + u);
-                    }
-                    (a > h &&
-                        (e.charCodeAt(r + u) === ot
-                            ? (d = u)
-                            : 2 === u && (d = 3)),
-                        -1 === d && (d = 0));
-                }
-                let m = "";
-                for (u = r + d + 1; u <= o; ++u)
-                    (u !== o && e.charCodeAt(u) !== ot) ||
-                        (m += 0 === m.length ? ".." : "\\..");
-                return (
-                    (s += d),
-                    m.length > 0
-                        ? `${m}${i.slice(s, l)}`
-                        : (i.charCodeAt(s) === ot && ++s, i.slice(s, l))
-                );
-            },
-            toNamespacedPath(e) {
-                if ("string" != typeof e || 0 === e.length) return e;
-                const t = gt.resolve(e);
-                if (t.length <= 2) return e;
-                if (t.charCodeAt(0) === ot) {
-                    if (t.charCodeAt(1) === ot) {
-                        const e = t.charCodeAt(2);
-                        if (63 !== e && e !== it)
-                            return `\\\\?\\UNC\\${t.slice(2)}`;
-                    }
-                } else if (
-                    ut(t.charCodeAt(0)) &&
-                    t.charCodeAt(1) === at &&
-                    t.charCodeAt(2) === ot
-                )
-                    return `\\\\?\\${t}`;
-                return t;
-            },
-            dirname(e) {
-                lt(e, "path");
-                const t = e.length;
-                if (0 === t) return ".";
-                let n = -1,
-                    i = 0;
-                const r = e.charCodeAt(0);
-                if (1 === t) return ht(r) ? e : ".";
-                if (ht(r)) {
-                    if (((n = i = 1), ht(e.charCodeAt(1)))) {
-                        let r = 2,
-                            o = r;
-                        for (; r < t && !ht(e.charCodeAt(r)); ) r++;
+            } else if (
+                ut(t.charCodeAt(0)) &&
+                t.charCodeAt(1) === at &&
+                t.charCodeAt(2) === ot
+            )
+                return `\\\\?\\${t}`;
+            return t;
+        },
+        dirname(e) {
+            lt(e, "path");
+            const t = e.length;
+            if (0 === t) return ".";
+            let n = -1,
+                i = 0;
+            const r = e.charCodeAt(0);
+            if (1 === t) return ht(r) ? e : ".";
+            if (ht(r)) {
+                if (((n = i = 1), ht(e.charCodeAt(1)))) {
+                    let r = 2,
+                        o = r;
+                    for (; r < t && !ht(e.charCodeAt(r));) r++;
+                    if (r < t && r !== o) {
+                        for (o = r; r < t && ht(e.charCodeAt(r));) r++;
                         if (r < t && r !== o) {
-                            for (o = r; r < t && ht(e.charCodeAt(r)); ) r++;
-                            if (r < t && r !== o) {
-                                for (o = r; r < t && !ht(e.charCodeAt(r)); )
-                                    r++;
-                                if (r === t) return e;
-                                r !== o && (n = i = r + 1);
-                            }
+                            for (o = r; r < t && !ht(e.charCodeAt(r));)
+                                r++;
+                            if (r === t) return e;
+                            r !== o && (n = i = r + 1);
                         }
                     }
-                } else
-                    ut(r) &&
-                        e.charCodeAt(1) === at &&
-                        ((n = t > 2 && ht(e.charCodeAt(2)) ? 3 : 2), (i = n));
-                let o = -1,
-                    a = !0;
-                for (let s = t - 1; s >= i; --s)
-                    if (ht(e.charCodeAt(s))) {
-                        if (!a) {
-                            o = s;
-                            break;
-                        }
-                    } else a = !1;
-                if (-1 === o) {
-                    if (-1 === n) return ".";
-                    o = n;
                 }
-                return e.slice(0, o);
-            },
-            basename(e, t) {
-                (void 0 !== t && lt(t, "suffix"), lt(e, "path"));
-                let n,
-                    i = 0,
-                    r = -1,
-                    o = !0;
-                if (
-                    (e.length >= 2 &&
-                        ut(e.charCodeAt(0)) &&
-                        e.charCodeAt(1) === at &&
-                        (i = 2),
+            } else
+                ut(r) &&
+                    e.charCodeAt(1) === at &&
+                    ((n = t > 2 && ht(e.charCodeAt(2)) ? 3 : 2), (i = n));
+            let o = -1,
+                a = !0;
+            for (let s = t - 1; s >= i; --s)
+                if (ht(e.charCodeAt(s))) {
+                    if (!a) {
+                        o = s;
+                        break;
+                    }
+                } else a = !1;
+            if (-1 === o) {
+                if (-1 === n) return ".";
+                o = n;
+            }
+            return e.slice(0, o);
+        },
+        basename(e, t) {
+            (void 0 !== t && lt(t, "suffix"), lt(e, "path"));
+            let n,
+                i = 0,
+                r = -1,
+                o = !0;
+            if (
+                (e.length >= 2 &&
+                    ut(e.charCodeAt(0)) &&
+                    e.charCodeAt(1) === at &&
+                    (i = 2),
                     void 0 !== t && t.length > 0 && t.length <= e.length)
-                ) {
-                    if (t === e) return "";
-                    let a = t.length - 1,
-                        s = -1;
-                    for (n = e.length - 1; n >= i; --n) {
-                        const l = e.charCodeAt(n);
-                        if (ht(l)) {
-                            if (!o) {
-                                i = n + 1;
-                                break;
-                            }
-                        } else
-                            (-1 === s && ((o = !1), (s = n + 1)),
-                                a >= 0 &&
-                                    (l === t.charCodeAt(a)
-                                        ? -1 === --a && (r = n)
-                                        : ((a = -1), (r = s))));
-                    }
-                    return (
-                        i === r ? (r = s) : -1 === r && (r = e.length),
-                        e.slice(i, r)
-                    );
-                }
-                for (n = e.length - 1; n >= i; --n)
-                    if (ht(e.charCodeAt(n))) {
+            ) {
+                if (t === e) return "";
+                let a = t.length - 1,
+                    s = -1;
+                for (n = e.length - 1; n >= i; --n) {
+                    const l = e.charCodeAt(n);
+                    if (ht(l)) {
                         if (!o) {
                             i = n + 1;
                             break;
                         }
-                    } else -1 === r && ((o = !1), (r = n + 1));
-                return -1 === r ? "" : e.slice(i, r);
-            },
-            extname(e) {
-                lt(e, "path");
-                let t = 0,
-                    n = -1,
-                    i = 0,
-                    r = -1,
-                    o = !0,
-                    a = 0;
-                e.length >= 2 &&
-                    e.charCodeAt(1) === at &&
-                    ut(e.charCodeAt(0)) &&
-                    (t = i = 2);
-                for (let s = e.length - 1; s >= t; --s) {
-                    const t = e.charCodeAt(s);
-                    if (ht(t)) {
-                        if (!o) {
-                            i = s + 1;
-                            break;
-                        }
                     } else
-                        (-1 === r && ((o = !1), (r = s + 1)),
-                            t === it
-                                ? -1 === n
-                                    ? (n = s)
-                                    : 1 !== a && (a = 1)
-                                : -1 !== n && (a = -1));
+                        (-1 === s && ((o = !1), (s = n + 1)),
+                            a >= 0 &&
+                            (l === t.charCodeAt(a)
+                                ? -1 === --a && (r = n)
+                                : ((a = -1), (r = s))));
                 }
-                return -1 === n ||
-                    -1 === r ||
-                    0 === a ||
-                    (1 === a && n === r - 1 && n === i + 1)
-                    ? ""
-                    : e.slice(n, r);
-            },
-            format: pt.bind(null, "\\"),
-            parse(e) {
-                lt(e, "path");
-                const t = { root: "", dir: "", base: "", ext: "", name: "" };
-                if (0 === e.length) return t;
-                const n = e.length;
-                let i = 0,
-                    r = e.charCodeAt(0);
-                if (1 === n)
-                    return ht(r)
-                        ? ((t.root = t.dir = e), t)
-                        : ((t.base = t.name = e), t);
-                if (ht(r)) {
-                    if (((i = 1), ht(e.charCodeAt(1)))) {
-                        let t = 2,
-                            r = t;
-                        for (; t < n && !ht(e.charCodeAt(t)); ) t++;
-                        if (t < n && t !== r) {
-                            for (r = t; t < n && ht(e.charCodeAt(t)); ) t++;
-                            if (t < n && t !== r) {
-                                for (r = t; t < n && !ht(e.charCodeAt(t)); )
-                                    t++;
-                                t === n ? (i = t) : t !== r && (i = t + 1);
-                            }
-                        }
-                    }
-                } else if (ut(r) && e.charCodeAt(1) === at) {
-                    if (n <= 2) return ((t.root = t.dir = e), t);
-                    if (((i = 2), ht(e.charCodeAt(2)))) {
-                        if (3 === n) return ((t.root = t.dir = e), t);
-                        i = 3;
-                    }
-                }
-                i > 0 && (t.root = e.slice(0, i));
-                let o = -1,
-                    a = i,
-                    s = -1,
-                    l = !0,
-                    c = e.length - 1,
-                    h = 0;
-                for (; c >= i; --c)
-                    if (((r = e.charCodeAt(c)), ht(r))) {
-                        if (!l) {
-                            a = c + 1;
-                            break;
-                        }
-                    } else
-                        (-1 === s && ((l = !1), (s = c + 1)),
-                            r === it
-                                ? -1 === o
-                                    ? (o = c)
-                                    : 1 !== h && (h = 1)
-                                : -1 !== o && (h = -1));
                 return (
-                    -1 !== s &&
-                        (-1 === o ||
-                        0 === h ||
-                        (1 === h && o === s - 1 && o === a + 1)
-                            ? (t.base = t.name = e.slice(a, s))
-                            : ((t.name = e.slice(a, o)),
-                              (t.base = e.slice(a, s)),
-                              (t.ext = e.slice(o, s)))),
-                    (t.dir = a > 0 && a !== i ? e.slice(0, a - 1) : t.root),
-                    t
+                    i === r ? (r = s) : -1 === r && (r = e.length),
+                    e.slice(i, r)
                 );
-            },
-            sep: "\\",
-            delimiter: ";",
-            win32: null,
-            posix: null,
+            }
+            for (n = e.length - 1; n >= i; --n)
+                if (ht(e.charCodeAt(n))) {
+                    if (!o) {
+                        i = n + 1;
+                        break;
+                    }
+                } else -1 === r && ((o = !1), (r = n + 1));
+            return -1 === r ? "" : e.slice(i, r);
         },
+        extname(e) {
+            lt(e, "path");
+            let t = 0,
+                n = -1,
+                i = 0,
+                r = -1,
+                o = !0,
+                a = 0;
+            e.length >= 2 &&
+                e.charCodeAt(1) === at &&
+                ut(e.charCodeAt(0)) &&
+                (t = i = 2);
+            for (let s = e.length - 1; s >= t; --s) {
+                const t = e.charCodeAt(s);
+                if (ht(t)) {
+                    if (!o) {
+                        i = s + 1;
+                        break;
+                    }
+                } else
+                    (-1 === r && ((o = !1), (r = s + 1)),
+                        t === it
+                            ? -1 === n
+                                ? (n = s)
+                                : 1 !== a && (a = 1)
+                            : -1 !== n && (a = -1));
+            }
+            return -1 === n ||
+                -1 === r ||
+                0 === a ||
+                (1 === a && n === r - 1 && n === i + 1)
+                ? ""
+                : e.slice(n, r);
+        },
+        format: pt.bind(null, "\\"),
+        parse(e) {
+            lt(e, "path");
+            const t = { root: "", dir: "", base: "", ext: "", name: "" };
+            if (0 === e.length) return t;
+            const n = e.length;
+            let i = 0,
+                r = e.charCodeAt(0);
+            if (1 === n)
+                return ht(r)
+                    ? ((t.root = t.dir = e), t)
+                    : ((t.base = t.name = e), t);
+            if (ht(r)) {
+                if (((i = 1), ht(e.charCodeAt(1)))) {
+                    let t = 2,
+                        r = t;
+                    for (; t < n && !ht(e.charCodeAt(t));) t++;
+                    if (t < n && t !== r) {
+                        for (r = t; t < n && ht(e.charCodeAt(t));) t++;
+                        if (t < n && t !== r) {
+                            for (r = t; t < n && !ht(e.charCodeAt(t));)
+                                t++;
+                            t === n ? (i = t) : t !== r && (i = t + 1);
+                        }
+                    }
+                }
+            } else if (ut(r) && e.charCodeAt(1) === at) {
+                if (n <= 2) return ((t.root = t.dir = e), t);
+                if (((i = 2), ht(e.charCodeAt(2)))) {
+                    if (3 === n) return ((t.root = t.dir = e), t);
+                    i = 3;
+                }
+            }
+            i > 0 && (t.root = e.slice(0, i));
+            let o = -1,
+                a = i,
+                s = -1,
+                l = !0,
+                c = e.length - 1,
+                h = 0;
+            for (; c >= i; --c)
+                if (((r = e.charCodeAt(c)), ht(r))) {
+                    if (!l) {
+                        a = c + 1;
+                        break;
+                    }
+                } else
+                    (-1 === s && ((l = !1), (s = c + 1)),
+                        r === it
+                            ? -1 === o
+                                ? (o = c)
+                                : 1 !== h && (h = 1)
+                            : -1 !== o && (h = -1));
+            return (
+                -1 !== s &&
+                (-1 === o ||
+                    0 === h ||
+                    (1 === h && o === s - 1 && o === a + 1)
+                    ? (t.base = t.name = e.slice(a, s))
+                    : ((t.name = e.slice(a, o)),
+                        (t.base = e.slice(a, s)),
+                        (t.ext = e.slice(o, s)))),
+                (t.dir = a > 0 && a !== i ? e.slice(0, a - 1) : t.root),
+                t
+            );
+        },
+        sep: "\\",
+        delimiter: ";",
+        win32: null,
+        posix: null,
+    },
         ft = (() => {
             if (ct) {
                 const e = /\\/g;
@@ -4160,7 +4160,7 @@
                     const r = e[i];
                     (lt(r, `paths[${i}]`),
                         0 !== r.length &&
-                            ((t = `${r}/${t}`), (n = r.charCodeAt(0) === rt)));
+                        ((t = `${r}/${t}`), (n = r.charCodeAt(0) === rt)));
                 }
                 if (!n) {
                     const e = ft();
@@ -4179,8 +4179,8 @@
                     ? t
                         ? "/"
                         : n
-                          ? "./"
-                          : "."
+                            ? "./"
+                            : "."
                     : (n && (e += "/"), t ? `/${e}` : e);
             },
             isAbsolute: (e) => (
@@ -4244,8 +4244,8 @@
                         ? "/"
                         : "."
                     : t && 1 === n
-                      ? "//"
-                      : e.slice(0, n);
+                        ? "//"
+                        : e.slice(0, n);
             },
             basename(e, t) {
                 (void 0 !== t && lt(t, "suffix"), lt(e, "path"));
@@ -4267,9 +4267,9 @@
                         } else
                             (-1 === s && ((o = !1), (s = n + 1)),
                                 a >= 0 &&
-                                    (l === t.charCodeAt(a)
-                                        ? -1 === --a && (r = n)
-                                        : ((a = -1), (r = s))));
+                                (l === t.charCodeAt(a)
+                                    ? -1 === --a && (r = n)
+                                    : ((a = -1), (r = s))));
                     }
                     return (
                         i === r ? (r = s) : -1 === r && (r = e.length),
@@ -4344,12 +4344,12 @@
                 if (-1 !== a) {
                     const i = 0 === o && n ? 1 : o;
                     -1 === r ||
-                    0 === c ||
-                    (1 === c && r === a - 1 && r === o + 1)
+                        0 === c ||
+                        (1 === c && r === a - 1 && r === o + 1)
                         ? (t.base = t.name = e.slice(i, a))
                         : ((t.name = e.slice(i, r)),
-                          (t.base = e.slice(i, a)),
-                          (t.ext = e.slice(r, a)));
+                            (t.base = e.slice(i, a)),
+                            (t.ext = e.slice(r, a)));
                 }
                 return (
                     o > 0 ? (t.dir = e.slice(0, o - 1)) : n && (t.dir = "/"),
@@ -4394,45 +4394,45 @@
         constructor(e, t, n, i, r, o = !1) {
             "object" == typeof e
                 ? ((this.scheme = e.scheme || yt),
-                  (this.authority = e.authority || yt),
-                  (this.path = e.path || yt),
-                  (this.query = e.query || yt),
-                  (this.fragment = e.fragment || yt))
+                    (this.authority = e.authority || yt),
+                    (this.path = e.path || yt),
+                    (this.query = e.query || yt),
+                    (this.fragment = e.fragment || yt))
                 : ((this.scheme = (function (e, t) {
-                      return e || t ? e : "file";
-                  })(e, o)),
-                  (this.authority = t || yt),
-                  (this.path = (function (e, t) {
-                      switch (e) {
-                          case "https":
-                          case "http":
-                          case "file":
-                              t ? t[0] !== Tt && (t = Tt + t) : (t = Tt);
-                      }
-                      return t;
-                  })(this.scheme, n || yt)),
-                  (this.query = i || yt),
-                  (this.fragment = r || yt),
-                  (function (e, t) {
-                      if (!e.scheme && t)
-                          throw new Error(
-                              `[UriError]: Scheme is missing: {scheme: "", authority: "${e.authority}", path: "${e.path}", query: "${e.query}", fragment: "${e.fragment}"}`,
-                          );
-                      if (e.scheme && !_t.test(e.scheme))
-                          throw new Error(
-                              "[UriError]: Scheme contains illegal characters.",
-                          );
-                      if (e.path)
-                          if (e.authority) {
-                              if (!wt.test(e.path))
-                                  throw new Error(
-                                      '[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash ("/") character',
-                                  );
-                          } else if (vt.test(e.path))
-                              throw new Error(
-                                  '[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters ("//")',
-                              );
-                  })(this, o));
+                    return e || t ? e : "file";
+                })(e, o)),
+                    (this.authority = t || yt),
+                    (this.path = (function (e, t) {
+                        switch (e) {
+                            case "https":
+                            case "http":
+                            case "file":
+                                t ? t[0] !== Tt && (t = Tt + t) : (t = Tt);
+                        }
+                        return t;
+                    })(this.scheme, n || yt)),
+                    (this.query = i || yt),
+                    (this.fragment = r || yt),
+                    (function (e, t) {
+                        if (!e.scheme && t)
+                            throw new Error(
+                                `[UriError]: Scheme is missing: {scheme: "", authority: "${e.authority}", path: "${e.path}", query: "${e.query}", fragment: "${e.fragment}"}`,
+                            );
+                        if (e.scheme && !_t.test(e.scheme))
+                            throw new Error(
+                                "[UriError]: Scheme contains illegal characters.",
+                            );
+                        if (e.path)
+                            if (e.authority) {
+                                if (!wt.test(e.path))
+                                    throw new Error(
+                                        '[UriError]: If a URI contains an authority component, then the path component must either be empty or begin with a slash ("/") character',
+                                    );
+                            } else if (vt.test(e.path))
+                                throw new Error(
+                                    '[UriError]: If a URI does not contain an authority component, then the path cannot begin with two slash characters ("//")',
+                                );
+                    })(this, o));
         }
         get fsPath() {
             return Rt(this, !1);
@@ -4447,10 +4447,10 @@
                 void 0 === r ? (r = this.query) : null === r && (r = yt),
                 void 0 === o ? (o = this.fragment) : null === o && (o = yt),
                 t === this.scheme &&
-                n === this.authority &&
-                i === this.path &&
-                r === this.query &&
-                o === this.fragment
+                    n === this.authority &&
+                    i === this.path &&
+                    r === this.query &&
+                    o === this.fragment
                     ? this
                     : new xt(t, n, i, r, o)
             );
@@ -4459,13 +4459,13 @@
             const n = kt.exec(e);
             return n
                 ? new xt(
-                      n[2] || yt,
-                      zt(n[4] || yt),
-                      zt(n[5] || yt),
-                      zt(n[7] || yt),
-                      zt(n[9] || yt),
-                      t,
-                  )
+                    n[2] || yt,
+                    zt(n[4] || yt),
+                    zt(n[5] || yt),
+                    zt(n[7] || yt),
+                    zt(n[9] || yt),
+                    t,
+                )
                 : new xt(yt, yt, yt, yt, yt);
         }
         static file(e) {
@@ -4540,7 +4540,7 @@
             return e
                 ? Mt(this, !0)
                 : (this._formatted || (this._formatted = Mt(this, !1)),
-                  this._formatted);
+                    this._formatted);
         }
         toJSON() {
             const e = { $mid: 1 };
@@ -4603,9 +4603,9 @@
                 const t = Ct[a];
                 void 0 !== t
                     ? (-1 !== r &&
-                          ((i += encodeURIComponent(e.substring(r, o))),
-                          (r = -1)),
-                      (i += t))
+                        ((i += encodeURIComponent(e.substring(r, o))),
+                            (r = -1)),
+                        (i += t))
                     : -1 === r && (r = o);
             }
         }
@@ -4636,10 +4636,10 @@
                             (e.path.charCodeAt(1) >= 97 &&
                                 e.path.charCodeAt(1) <= 122)) &&
                         58 === e.path.charCodeAt(2)
-                      ? t
-                          ? e.path.substr(1)
-                          : e.path[1].toLowerCase() + e.path.substr(2)
-                      : e.path),
+                        ? t
+                            ? e.path.substr(1)
+                            : e.path[1].toLowerCase() + e.path.substr(2)
+                        : e.path),
             j && (n = n.replace(/\//g, "\\")),
             n
         );
@@ -4650,8 +4650,8 @@
             { scheme: r, authority: o, path: a, query: s, fragment: l } = e;
         if (
             (r && ((i += r), (i += ":")),
-            (o || "file" === r) && ((i += Tt), (i += Tt)),
-            o)
+                (o || "file" === r) && ((i += Tt), (i += Tt)),
+                o)
         ) {
             let e = o.indexOf("@");
             if (-1 !== e) {
@@ -4661,8 +4661,8 @@
                     -1 === e
                         ? (i += n(t, !1, !1))
                         : ((i += n(t.substr(0, e), !1, !1)),
-                          (i += ":"),
-                          (i += n(t.substr(e + 1), !1, !0))),
+                            (i += ":"),
+                            (i += n(t.substr(e + 1), !1, !0))),
                     (i += "@"));
             }
             ((o = o.toLowerCase()),
@@ -4769,17 +4769,17 @@
         static fromRange(e, t) {
             return 0 === t
                 ? new Ot(
-                      e.startLineNumber,
-                      e.startColumn,
-                      e.endLineNumber,
-                      e.endColumn,
-                  )
+                    e.startLineNumber,
+                    e.startColumn,
+                    e.endLineNumber,
+                    e.endColumn,
+                )
                 : new Ot(
-                      e.endLineNumber,
-                      e.endColumn,
-                      e.startLineNumber,
-                      e.startColumn,
-                  );
+                    e.endLineNumber,
+                    e.endColumn,
+                    e.startLineNumber,
+                    e.startColumn,
+                );
         }
         static liftSelection(e) {
             return new Ot(
@@ -5551,10 +5551,10 @@
             const e = await this._factory.tokenizationSupport;
             ((this._isResolved = !0),
                 e &&
-                    !this._isDisposed &&
-                    this._register(
-                        this._registry.register(this._languageId, e),
-                    ));
+                !this._isDisposed &&
+                this._register(
+                    this._registry.register(this._languageId, e),
+                ));
         }
     }
     class Pt {
@@ -5948,7 +5948,7 @@
                     p(() => {
                         this._tokenizationSupports.get(e) === t &&
                             (this._tokenizationSupports.delete(e),
-                            this.handleChange([e]));
+                                this.handleChange([e]));
                     })
                 );
             }
@@ -6697,7 +6697,7 @@
             if (i) ((i.value = t), 0 !== n && this.touch(i, n));
             else {
                 switch (
-                    ((i = { key: e, value: t, next: void 0, previous: void 0 }),
+                ((i = { key: e, value: t, next: void 0, previous: void 0 }),
                     n)
                 ) {
                     case 0:
@@ -6739,12 +6739,12 @@
         forEach(e, t) {
             const n = this._state;
             let i = this._head;
-            for (; i; ) {
+            for (; i;) {
                 if (
                     (t
                         ? e.bind(t)(i.value, i.key, this)
                         : e(i.value, i.key, this),
-                    this._state !== n)
+                        this._state !== n)
                 )
                     throw new Error("LinkedMap got modified during iteration.");
                 i = i.next;
@@ -6818,7 +6818,7 @@
             if (0 === e) return void this.clear();
             let t = this._head,
                 n = this.size;
-            for (; t && n > e; ) (this._map.delete(t.key), (t = t.next), n--);
+            for (; t && n > e;) (this._map.delete(t.key), (t = t.next), n--);
             ((this._head = t),
                 (this._size = n),
                 t && (t.previous = void 0),
@@ -6829,7 +6829,7 @@
             if (0 === e) return void this.clear();
             let t = this._tail,
                 n = this.size;
-            for (; t && n > e; )
+            for (; t && n > e;)
                 (this._map.delete(t.key), (t = t.previous), n--);
             ((this._tail = t),
                 (this._size = n),
@@ -7045,8 +7045,8 @@
                 }
                 if (
                     ((this._prevMatchStartIndex = i),
-                    (this._prevMatchLength = r),
-                    !this._wordSeparators ||
+                        (this._prevMatchLength = r),
+                        !this._wordSeparators ||
                         ri(this._wordSeparators, e, t, i, r))
                 )
                     return n;
@@ -7106,7 +7106,7 @@
     }
     function hi(e, t, n, i) {
         let r;
-        for (; (r = e.exec(t)); ) {
+        for (; (r = e.exec(t));) {
             const t = r.index || 0;
             if (t <= n && e.lastIndex >= n) return r;
             if (i > 0 && t > i) return null;
@@ -7126,11 +7126,11 @@
                 "allNonBasicAscii" === a
                     ? new RegExp("[^\\t\\n\\r\\x20-\\x7E]", "g")
                     : new RegExp(
-                          "" +
-                              ((c = Array.from(a)),
-                              `[${((h = c.map((e) => String.fromCodePoint(e)).join("")), h.replace(/[\\\{\}\*\+\?\|\^\$\.\[\]\(\)]/g, "\\$&"))}]`),
-                          "g",
-                      );
+                        "" +
+                        ((c = Array.from(a)),
+                            `[${((h = c.map((e) => String.fromCodePoint(e)).join("")), h.replace(/[\\\{\}\*\+\?\|\^\$\.\[\]\(\)]/g, "\\$&"))}]`),
+                        "g",
+                    );
             const d = new oi(null, l),
                 u = [];
             let m,
@@ -7242,20 +7242,20 @@
                         t = oe(o);
                     ((i = i || t),
                         t ||
-                            this.ambiguousCharacters.isAmbiguous(e) ||
-                            se.isInvisibleCharacter(e) ||
-                            (r = !0));
+                        this.ambiguousCharacters.isAmbiguous(e) ||
+                        se.isInvisibleCharacter(e) ||
+                        (r = !0));
                 }
             return !i && r
                 ? 0
                 : this.options.invisibleCharacters &&
                     !mi(e) &&
                     se.isInvisibleCharacter(n)
-                  ? 2
-                  : this.options.ambiguousCharacters &&
-                      this.ambiguousCharacters.isAmbiguous(n)
-                    ? 3
-                    : 0;
+                    ? 2
+                    : this.options.ambiguousCharacters &&
+                        this.ambiguousCharacters.isAmbiguous(n)
+                        ? 3
+                        : 0;
         }
     }
     function mi(e) {
@@ -7295,7 +7295,7 @@
     const _i = (e, t) => e - t;
     class wi {
         static {
-            this.empty = new wi((e) => {});
+            this.empty = new wi((e) => { });
         }
         constructor(e) {
             this.iterate = e;
@@ -7334,9 +7334,9 @@
         }
         static addRange(e, t) {
             let n = 0;
-            for (; n < t.length && t[n].endExclusive < e.start; ) n++;
+            for (; n < t.length && t[n].endExclusive < e.start;) n++;
             let i = n;
-            for (; i < t.length && t[i].start <= e.endExclusive; ) i++;
+            for (; i < t.length && t[i].start <= e.endExclusive;) i++;
             if (n === i) t.splice(n, 0, e);
             else {
                 const r = Math.min(e.start, t[n].start),
@@ -7437,8 +7437,8 @@
             return e < this.start
                 ? this.endExclusive - ((this.start - e) % this.length)
                 : e >= this.endExclusive
-                  ? this.start + ((e - this.start) % this.length)
-                  : e;
+                    ? this.start + ((e - this.start) % this.length)
+                    : e;
         }
         forEach(e) {
             for (let t = this.start; t < this.endExclusive; t++) e(t);
@@ -7458,7 +7458,7 @@
     function Ti(e, t, n = 0, i = e.length) {
         let r = n,
             o = i;
-        for (; r < o; ) {
+        for (; r < o;) {
             const n = Math.floor((r + o) / 2);
             t(e[n]) ? (r = n + 1) : (o = n);
         }
@@ -7467,7 +7467,7 @@
     function ki(e, t, n = 0, i = e.length) {
         let r = n,
             o = i;
-        for (; r < o; ) {
+        for (; r < o;) {
             const n = Math.floor((r + o) / 2);
             t(e[n]) ? (o = n) : (r = n + 1);
         }
@@ -7596,11 +7596,11 @@
             return this.isEmpty
                 ? null
                 : new Ae(
-                      this.startLineNumber,
-                      1,
-                      this.endLineNumberExclusive - 1,
-                      Number.MAX_SAFE_INTEGER,
-                  );
+                    this.startLineNumber,
+                    1,
+                    this.endLineNumberExclusive - 1,
+                    Number.MAX_SAFE_INTEGER,
+                );
         }
         toExclusiveRange() {
             return new Ae(
@@ -7654,9 +7654,9 @@
         addRange(e) {
             if (0 === e.length) return;
             const t = ki(
-                    this._normalizedRanges,
-                    (t) => t.endLineNumberExclusive >= e.startLineNumber,
-                ),
+                this._normalizedRanges,
+                (t) => t.endLineNumberExclusive >= e.startLineNumber,
+            ),
                 n =
                     Ti(
                         this._normalizedRanges,
@@ -7713,22 +7713,22 @@
                 null === r
                     ? (r = o)
                     : r.endLineNumberExclusive >= o.startLineNumber
-                      ? (r = new Li(
+                        ? (r = new Li(
                             r.startLineNumber,
                             Math.max(
                                 r.endLineNumberExclusive,
                                 o.endLineNumberExclusive,
                             ),
                         ))
-                      : (t.push(r), (r = o));
+                        : (t.push(r), (r = o));
             }
             return (null !== r && t.push(r), new xi(t));
         }
         subtractFrom(e) {
             const t = ki(
-                    this._normalizedRanges,
-                    (t) => t.endLineNumberExclusive >= e.startLineNumber,
-                ),
+                this._normalizedRanges,
+                (t) => t.endLineNumberExclusive >= e.startLineNumber,
+            ),
                 n =
                     Ti(
                         this._normalizedRanges,
@@ -7744,7 +7744,7 @@
             }
             return (
                 r < e.endLineNumberExclusive &&
-                    i.push(new Li(r, e.endLineNumberExclusive)),
+                i.push(new Li(r, e.endLineNumberExclusive)),
                 new xi(i)
             );
         }
@@ -7814,17 +7814,17 @@
         createRange(e) {
             return 0 === this.lineCount
                 ? new Ae(
-                      e.lineNumber,
-                      e.column,
-                      e.lineNumber,
-                      e.column + this.columnCount,
-                  )
+                    e.lineNumber,
+                    e.column,
+                    e.lineNumber,
+                    e.column + this.columnCount,
+                )
                 : new Ae(
-                      e.lineNumber,
-                      e.column,
-                      e.lineNumber + this.lineCount,
-                      this.columnCount + 1,
-                  );
+                    e.lineNumber,
+                    e.column,
+                    e.lineNumber + this.lineCount,
+                    this.columnCount + 1,
+                );
         }
         toRange() {
             return new Ae(1, 1, this.lineCount + 1, this.columnCount + 1);
@@ -7893,9 +7893,9 @@
             for (let t = 0; t < e.length; t++)
                 "\n" === e.charAt(t) &&
                     (this.lineStartOffsetByLineIdx.push(t + 1),
-                    t > 0 && "\r" === e.charAt(t - 1)
-                        ? this.lineEndOffsetByLineIdx.push(t - 1)
-                        : this.lineEndOffsetByLineIdx.push(t));
+                        t > 0 && "\r" === e.charAt(t - 1)
+                            ? this.lineEndOffsetByLineIdx.push(t - 1)
+                            : this.lineEndOffsetByLineIdx.push(t));
             this.lineEndOffsetByLineIdx.push(e.length);
         }
         getOffset(e) {
@@ -7959,7 +7959,7 @@
         getTransformer() {
             return (
                 this._transformer ||
-                    (this._transformer = new Ri(this.getValue())),
+                (this._transformer = new Ri(this.getValue())),
                 this._transformer
             );
         }
@@ -8282,8 +8282,8 @@
     class Di extends Oi {
         static fromRangeMappings(e) {
             const t = Li.join(
-                    e.map((e) => Li.fromRangeInclusive(e.originalRange)),
-                ),
+                e.map((e) => Li.fromRangeInclusive(e.originalRange)),
+            ),
                 n = Li.join(
                     e.map((e) => Li.fromRangeInclusive(e.modifiedRange)),
                 );
@@ -8357,23 +8357,23 @@
                     1 === e.modifiedRange.endColumn &&
                         1 === e.originalRange.endColumn &&
                         e.originalRange.startLineNumber + i <=
-                            e.originalRange.endLineNumber &&
+                        e.originalRange.endLineNumber &&
                         e.modifiedRange.startLineNumber + i <=
-                            e.modifiedRange.endLineNumber &&
+                        e.modifiedRange.endLineNumber &&
                         (r = -1);
                     e.modifiedRange.startColumn - 1 >=
                         n.getLineLength(e.modifiedRange.startLineNumber) &&
                         e.originalRange.startColumn - 1 >=
-                            t.getLineLength(e.originalRange.startLineNumber) &&
+                        t.getLineLength(e.originalRange.startLineNumber) &&
                         e.originalRange.startLineNumber <=
-                            e.originalRange.endLineNumber + r &&
+                        e.originalRange.endLineNumber + r &&
                         e.modifiedRange.startLineNumber <=
-                            e.modifiedRange.endLineNumber + r &&
+                        e.modifiedRange.endLineNumber + r &&
                         (i = 1);
                     const o = new Li(
-                            e.originalRange.startLineNumber + i,
-                            e.originalRange.endLineNumber + 1 + r,
-                        ),
+                        e.originalRange.startLineNumber + i,
+                        e.originalRange.endLineNumber + 1 + r,
+                    ),
                         a = new Li(
                             e.modifiedRange.startLineNumber + i,
                             e.modifiedRange.endLineNumber + 1 + r,
@@ -8405,9 +8405,9 @@
                         return !1;
                     if (
                         n.length.lineCount -
-                            r[r.length - 1].modified.endLineNumberExclusive !==
+                        r[r.length - 1].modified.endLineNumberExclusive !==
                         t.length.lineCount -
-                            r[r.length - 1].original.endLineNumberExclusive
+                        r[r.length - 1].original.endLineNumberExclusive
                     )
                         return !1;
                 }
@@ -8415,13 +8415,13 @@
                     r,
                     (e, t) =>
                         t.original.startLineNumber -
-                            e.original.endLineNumberExclusive ===
-                            t.modified.startLineNumber -
-                                e.modified.endLineNumberExclusive &&
+                        e.original.endLineNumberExclusive ===
+                        t.modified.startLineNumber -
+                        e.modified.endLineNumberExclusive &&
                         e.original.endLineNumberExclusive <
-                            t.original.startLineNumber &&
+                        t.original.startLineNumber &&
                         e.modified.endLineNumberExclusive <
-                            t.modified.startLineNumber,
+                        t.modified.startLineNumber,
                 );
             }),
             r
@@ -8430,12 +8430,12 @@
     class qi {
         computeDiff(e, t, n) {
             const i = new Gi(e, t, {
-                    maxComputationTime: n.maxComputationTimeMs,
-                    shouldIgnoreTrimWhitespace: n.ignoreTrimWhitespace,
-                    shouldComputeCharChanges: !0,
-                    shouldMakePrettyDiff: !0,
-                    shouldPostProcessCharChanges: !0,
-                }).computeDiff(),
+                maxComputationTime: n.maxComputationTimeMs,
+                shouldIgnoreTrimWhitespace: n.ignoreTrimWhitespace,
+                shouldComputeCharChanges: !0,
+                shouldMakePrettyDiff: !0,
+                shouldPostProcessCharChanges: !0,
+            }).computeDiff(),
                 r = [];
             let o = null;
             for (const a of i.changes) {
@@ -8443,23 +8443,23 @@
                 ((e =
                     0 === a.originalEndLineNumber
                         ? new Li(
-                              a.originalStartLineNumber + 1,
-                              a.originalStartLineNumber + 1,
-                          )
+                            a.originalStartLineNumber + 1,
+                            a.originalStartLineNumber + 1,
+                        )
                         : new Li(
-                              a.originalStartLineNumber,
-                              a.originalEndLineNumber + 1,
-                          )),
+                            a.originalStartLineNumber,
+                            a.originalEndLineNumber + 1,
+                        )),
                     (t =
                         0 === a.modifiedEndLineNumber
                             ? new Li(
-                                  a.modifiedStartLineNumber + 1,
-                                  a.modifiedStartLineNumber + 1,
-                              )
+                                a.modifiedStartLineNumber + 1,
+                                a.modifiedStartLineNumber + 1,
+                            )
                             : new Li(
-                                  a.modifiedStartLineNumber,
-                                  a.modifiedEndLineNumber + 1,
-                              )));
+                                a.modifiedStartLineNumber,
+                                a.modifiedEndLineNumber + 1,
+                            )));
                 let n = new Di(
                     e,
                     t,
@@ -8485,7 +8485,7 @@
                     ((o.modified.endLineNumberExclusive !==
                         n.modified.startLineNumber &&
                         o.original.endLineNumberExclusive !==
-                            n.original.startLineNumber) ||
+                        n.original.startLineNumber) ||
                         ((n = new Di(
                             o.original.join(n.original),
                             o.modified.join(n.modified),
@@ -8493,7 +8493,7 @@
                                 ? o.innerChanges.concat(n.innerChanges)
                                 : void 0,
                         )),
-                        r.pop())),
+                            r.pop())),
                     r.push(n),
                     (o = n));
             }
@@ -8503,13 +8503,13 @@
                         r,
                         (e, t) =>
                             t.original.startLineNumber -
-                                e.original.endLineNumberExclusive ===
-                                t.modified.startLineNumber -
-                                    e.modified.endLineNumberExclusive &&
+                            e.original.endLineNumberExclusive ===
+                            t.modified.startLineNumber -
+                            e.modified.endLineNumberExclusive &&
                             e.original.endLineNumberExclusive <
-                                t.original.startLineNumber &&
+                            t.original.startLineNumber &&
                             e.modified.endLineNumberExclusive <
-                                t.modified.startLineNumber,
+                            t.modified.startLineNumber,
                     ),
                 ),
                 new pi(r, [], i.quitEarly)
@@ -8597,15 +8597,15 @@
             return e > 0 && e === this._lineNumbers.length
                 ? this.getEndLineNumber(e - 1)
                 : (this._assertIndex(e, this._lineNumbers),
-                  this._lineNumbers[e]);
+                    this._lineNumbers[e]);
         }
         getEndLineNumber(e) {
             return -1 === e
                 ? this.getStartLineNumber(e + 1)
                 : (this._assertIndex(e, this._lineNumbers),
-                  10 === this._charCodes[e]
-                      ? this._lineNumbers[e] + 1
-                      : this._lineNumbers[e]);
+                    10 === this._charCodes[e]
+                        ? this._lineNumbers[e] + 1
+                        : this._lineNumbers[e]);
         }
         getStartColumn(e) {
             return e > 0 && e === this._columns.length
@@ -8616,7 +8616,7 @@
             return -1 === e
                 ? this.getStartColumn(e + 1)
                 : (this._assertIndex(e, this._columns),
-                  10 === this._charCodes[e] ? 1 : this._columns[e] + 1);
+                    10 === this._charCodes[e] ? 1 : this._columns[e] + 1);
         }
     }
     class Ki {
@@ -8656,16 +8656,16 @@
                 (0 === t.originalLength
                     ? ((s = n.getStartLineNumber(t.originalStart) - 1), (l = 0))
                     : ((s = n.getStartLineNumber(t.originalStart)),
-                      (l = n.getEndLineNumber(
-                          t.originalStart + t.originalLength - 1,
-                      ))),
-                0 === t.modifiedLength
-                    ? ((c = i.getStartLineNumber(t.modifiedStart) - 1), (h = 0))
-                    : ((c = i.getStartLineNumber(t.modifiedStart)),
-                      (h = i.getEndLineNumber(
-                          t.modifiedStart + t.modifiedLength - 1,
-                      ))),
-                o &&
+                        (l = n.getEndLineNumber(
+                            t.originalStart + t.originalLength - 1,
+                        ))),
+                    0 === t.modifiedLength
+                        ? ((c = i.getStartLineNumber(t.modifiedStart) - 1), (h = 0))
+                        : ((c = i.getStartLineNumber(t.modifiedStart)),
+                            (h = i.getEndLineNumber(
+                                t.modifiedStart + t.modifiedLength - 1,
+                            ))),
+                    o &&
                     t.originalLength > 0 &&
                     t.originalLength < 20 &&
                     t.modifiedLength > 0 &&
@@ -8673,10 +8673,10 @@
                     r())
             ) {
                 const o = n.createCharSequence(
-                        e,
-                        t.originalStart,
-                        t.originalStart + t.originalLength - 1,
-                    ),
+                    e,
+                    t.originalStart,
+                    t.originalStart + t.originalLength - 1,
+                ),
                     s = i.createCharSequence(
                         e,
                         t.modifiedStart,
@@ -8699,13 +8699,13 @@
                                         (n.modifiedStart + n.modifiedLength);
                                 Math.min(o, a) < 3
                                     ? ((n.originalLength =
-                                          r.originalStart +
-                                          r.originalLength -
-                                          n.originalStart),
-                                      (n.modifiedLength =
-                                          r.modifiedStart +
-                                          r.modifiedLength -
-                                          n.modifiedStart))
+                                        r.originalStart +
+                                        r.originalLength -
+                                        n.originalStart),
+                                        (n.modifiedLength =
+                                            r.modifiedStart +
+                                            r.modifiedLength -
+                                            n.modifiedStart))
                                     : (t.push(r), (n = r));
                             }
                             return t;
@@ -8746,18 +8746,18 @@
                     0 === this.modified.lines[0].length
                     ? { quitEarly: !1, changes: [] }
                     : {
-                          quitEarly: !1,
-                          changes: [
-                              {
-                                  originalStartLineNumber: 1,
-                                  originalEndLineNumber: 1,
-                                  modifiedStartLineNumber: 1,
-                                  modifiedEndLineNumber:
-                                      this.modified.lines.length,
-                                  charChanges: void 0,
-                              },
-                          ],
-                      };
+                        quitEarly: !1,
+                        changes: [
+                            {
+                                originalStartLineNumber: 1,
+                                originalEndLineNumber: 1,
+                                modifiedStartLineNumber: 1,
+                                modifiedEndLineNumber:
+                                    this.modified.lines.length,
+                                charChanges: void 0,
+                            },
+                        ],
+                    };
             if (
                 1 === this.modified.lines.length &&
                 0 === this.modified.lines[0].length
@@ -8775,11 +8775,11 @@
                     ],
                 };
             const e = Fi(
-                    this.original,
-                    this.modified,
-                    this.continueLineDiff,
-                    this.shouldMakePrettyDiff,
-                ),
+                this.original,
+                this.modified,
+                this.continueLineDiff,
+                this.shouldMakePrettyDiff,
+            ),
                 t = e.changes,
                 n = e.quitEarly;
             if (this.shouldIgnoreTrimWhitespace) {
@@ -8805,14 +8805,14 @@
                 const e = a + 1 < s ? t[a + 1] : null,
                     n = e ? e.originalStart : this.originalLines.length,
                     l = e ? e.modifiedStart : this.modifiedLines.length;
-                for (; r < n && o < l; ) {
+                for (; r < n && o < l;) {
                     const e = this.originalLines[r],
                         t = this.modifiedLines[o];
                     if (e !== t) {
                         {
                             let n = $i(e, 1),
                                 a = $i(t, 1);
-                            for (; n > 1 && a > 1; ) {
+                            for (; n > 1 && a > 1;) {
                                 if (e.charCodeAt(n - 2) !== t.charCodeAt(a - 2))
                                     break;
                                 (n--, a--);
@@ -8833,7 +8833,7 @@
                                 a = Xi(t, 1);
                             const s = e.length + 1,
                                 l = t.length + 1;
-                            for (; n < s && a < l; ) {
+                            for (; n < s && a < l;) {
                                 if (e.charCodeAt(n - 1) !== e.charCodeAt(a - 1))
                                     break;
                                 (n++, a++);
@@ -8864,8 +8864,8 @@
                             this.shouldPostProcessCharChanges,
                         ),
                     ),
-                    (r += e.originalLength),
-                    (o += e.modifiedLength));
+                        (r += e.originalLength),
+                        (o += e.modifiedLength));
             }
             return { quitEarly: n, changes: i };
         }
@@ -8886,17 +8886,17 @@
                 0 !== l.modifiedEndLineNumber &&
                 (l.originalEndLineNumber === t && l.modifiedEndLineNumber === r
                     ? (this.shouldComputeCharChanges &&
-                          l.charChanges &&
-                          l.charChanges.push(new Ki(t, n, t, i, r, o, r, a)),
-                      !0)
+                        l.charChanges &&
+                        l.charChanges.push(new Ki(t, n, t, i, r, o, r, a)),
+                        !0)
                     : l.originalEndLineNumber + 1 === t &&
-                      l.modifiedEndLineNumber + 1 === r &&
-                      ((l.originalEndLineNumber = t),
-                      (l.modifiedEndLineNumber = r),
-                      this.shouldComputeCharChanges &&
-                          l.charChanges &&
-                          l.charChanges.push(new Ki(t, n, t, i, r, o, r, a)),
-                      !0))
+                    l.modifiedEndLineNumber + 1 === r &&
+                    ((l.originalEndLineNumber = t),
+                        (l.modifiedEndLineNumber = r),
+                        this.shouldComputeCharChanges &&
+                        l.charChanges &&
+                        l.charChanges.push(new Ki(t, n, t, i, r, o, r, a)),
+                        !0))
             );
         }
     }
@@ -8959,12 +8959,12 @@
                             i
                                 ? i.getStarts()
                                 : new Zi(
-                                      t,
-                                      (e
-                                          ? e.seq2Range.endExclusive -
-                                            e.seq1Range.endExclusive
-                                          : 0) + t,
-                                  ),
+                                    t,
+                                    (e
+                                        ? e.seq2Range.endExclusive -
+                                        e.seq1Range.endExclusive
+                                        : 0) + t,
+                                ),
                         ),
                     );
                 }),
@@ -9015,17 +9015,17 @@
             return 0 === e
                 ? this
                 : new Qi(
-                      this.seq1Range.deltaStart(e),
-                      this.seq2Range.deltaStart(e),
-                  );
+                    this.seq1Range.deltaStart(e),
+                    this.seq2Range.deltaStart(e),
+                );
         }
         deltaEnd(e) {
             return 0 === e
                 ? this
                 : new Qi(
-                      this.seq1Range.deltaEnd(e),
-                      this.seq2Range.deltaEnd(e),
-                  );
+                    this.seq1Range.deltaEnd(e),
+                    this.seq2Range.deltaEnd(e),
+                );
         }
         intersect(e) {
             const t = this.seq1Range.intersect(e.seq1Range),
@@ -9074,17 +9074,17 @@
         constructor(e) {
             if (
                 ((this.timeout = e),
-                (this.startTime = Date.now()),
-                (this.valid = !0),
-                e <= 0)
+                    (this.startTime = Date.now()),
+                    (this.valid = !0),
+                    e <= 0)
             )
                 throw new a("timeout must be positive");
         }
         isValid() {
             return (
                 !(Date.now() - this.startTime < this.timeout) &&
-                    this.valid &&
-                    (this.valid = !1),
+                this.valid &&
+                (this.valid = !1),
                 this.valid
             );
         }
@@ -9114,7 +9114,7 @@
             let t = this.chrKeys.get(e);
             return (
                 void 0 === t &&
-                    ((t = this.chrKeys.size), this.chrKeys.set(e, t)),
+                ((t = this.chrKeys.size), this.chrKeys.set(e, t)),
                 t
             );
         }
@@ -9164,11 +9164,11 @@
                     let h;
                     e.getElement(m) === t.getElement(s)
                         ? ((h = 0 === m || 0 === s ? 0 : r.get(m - 1, s - 1)),
-                          m > 0 &&
-                              s > 0 &&
-                              3 === o.get(m - 1, s - 1) &&
-                              (h += a.get(m - 1, s - 1)),
-                          (h += i ? i(m, s) : 1))
+                            m > 0 &&
+                            s > 0 &&
+                            3 === o.get(m - 1, s - 1) &&
+                            (h += a.get(m - 1, s - 1)),
+                            (h += i ? i(m, s) : 1))
                         : (h = -1);
                     const d = Math.max(l, c, h);
                     if (d === h) {
@@ -9191,12 +9191,12 @@
             }
             let d = e.length - 1,
                 u = t.length - 1;
-            for (; d >= 0 && u >= 0; )
+            for (; d >= 0 && u >= 0;)
                 3 === o.get(d, u)
                     ? (h(d, u), d--, u--)
                     : 1 === o.get(d, u)
-                      ? d--
-                      : u--;
+                        ? d--
+                        : u--;
             return (h(-1, -1), s.reverse(), new Yi(s, !1));
         }
     }
@@ -9221,7 +9221,7 @@
             const l = new cr();
             l.set(0, 0 === s.get(0) ? null : new sr(null, 0, 0, s.get(0)));
             let c = 0;
-            e: for (;;) {
+            e: for (; ;) {
                 if ((a++, !n.isValid())) return Yi.trivialTimedOut(i, r);
                 const e = -Math.min(a, r.length + (a % 2)),
                     t = Math.min(a, i.length + (a % 2));
@@ -9236,7 +9236,7 @@
                     const m = h === n ? l.get(c + 1) : l.get(c - 1);
                     if (
                         (l.set(c, u !== h ? new sr(m, h, d, u - h) : m),
-                        s.get(c) === i.length && s.get(c) - c === r.length)
+                            s.get(c) === i.length && s.get(c) - c === r.length)
                     )
                         break e;
                 }
@@ -9245,13 +9245,13 @@
             const d = [];
             let u = i.length,
                 m = r.length;
-            for (;;) {
+            for (; ;) {
                 const e = h ? h.x + h.length : 0,
                     t = h ? h.y + h.length : 0;
                 if (
                     ((e === u && t === m) ||
                         d.push(new Qi(new vi(e, u), new vi(t, m))),
-                    !h)
+                        !h)
                 )
                     break;
                 ((u = h.x), (m = h.y), (h = h.prev));
@@ -9341,9 +9341,9 @@
                 for (let e = 0; e < a; e++) this.elements.push(t.charCodeAt(e));
                 i < this.range.endLineNumber &&
                     (this.elements.push("\n".charCodeAt(0)),
-                    this.firstElementOffsetByLineIdx.push(
-                        this.elements.length,
-                    ));
+                        this.firstElementOffsetByLineIdx.push(
+                            this.elements.length,
+                        ));
             }
         }
         toString() {
@@ -9383,11 +9383,11 @@
             return new Ee(
                 this.range.startLineNumber + n,
                 1 +
-                    this.lineStartOffsets[n] +
-                    i +
-                    (0 === i && "left" === t
-                        ? 0
-                        : this.trimmedWsLengthsByLineIdx[n]),
+                this.lineStartOffsets[n] +
+                i +
+                (0 === i && "left" === t
+                    ? 0
+                    : this.trimmedWsLengthsByLineIdx[n]),
             );
         }
         translateRange(e) {
@@ -9401,16 +9401,16 @@
             if (e < 0 || e >= this.elements.length) return;
             if (!dr(this.elements[e])) return;
             let t = e;
-            for (; t > 0 && dr(this.elements[t - 1]); ) t--;
+            for (; t > 0 && dr(this.elements[t - 1]);) t--;
             let n = e;
-            for (; n < this.elements.length && dr(this.elements[n]); ) n++;
+            for (; n < this.elements.length && dr(this.elements[n]);) n++;
             return new vi(t, n);
         }
         findSubWordContaining(e) {
             if (e < 0 || e >= this.elements.length) return;
             if (!dr(this.elements[e])) return;
             let t = e;
-            for (; t > 0 && dr(this.elements[t - 1]) && !ur(this.elements[t]); )
+            for (; t > 0 && dr(this.elements[t - 1]) && !ur(this.elements[t]);)
                 t--;
             let n = e;
             for (
@@ -9433,8 +9433,8 @@
         }
         extendToFullLines(e) {
             const t =
-                    yi(this.firstElementOffsetByLineIdx, (t) => t <= e.start) ??
-                    0,
+                yi(this.firstElementOffsetByLineIdx, (t) => t <= e.start) ??
+                0,
                 n =
                     (function (e, t) {
                         const n = ki(e, t);
@@ -9464,20 +9464,20 @@
         return 10 === e
             ? 8
             : 13 === e
-              ? 7
-              : ir(e)
-                ? 6
-                : e >= 97 && e <= 122
-                  ? 0
-                  : e >= 65 && e <= 90
-                    ? 1
-                    : e >= 48 && e <= 57
-                      ? 2
-                      : -1 === e
-                        ? 3
-                        : 44 === e || 59 === e
-                          ? 5
-                          : 4;
+                ? 7
+                : ir(e)
+                    ? 6
+                    : e >= 97 && e <= 122
+                        ? 0
+                        : e >= 65 && e <= 90
+                            ? 1
+                            : e >= 48 && e <= 57
+                                ? 2
+                                : -1 === e
+                                    ? 3
+                                    : 44 === e || 59 === e
+                                        ? 5
+                                        : 4;
     }
     function fr(e, t, n, i, r, o) {
         let { moves: a, excludedChanges: s } = (function (e, t, n, i) {
@@ -9504,10 +9504,10 @@
                     (t > 0.9 &&
                         e &&
                         (a.delete(e),
-                        r.push(new Oi(l.range, e.range)),
-                        s.add(l.source),
-                        s.add(e.source)),
-                    !i.isValid())
+                            r.push(new Oi(l.range, e.range)),
+                            s.add(l.source),
+                            s.add(e.source)),
+                        !i.isValid())
                 )
                     return { moves: r, excludedChanges: s };
             }
@@ -9542,11 +9542,11 @@
                         for (const i of e)
                             if (
                                 i.originalLineRange.endLineNumberExclusive +
-                                    1 ===
-                                    t.endLineNumberExclusive &&
+                                1 ===
+                                t.endLineNumberExclusive &&
                                 i.modifiedLineRange.endLineNumberExclusive +
-                                    1 ===
-                                    r.endLineNumberExclusive
+                                1 ===
+                                r.endLineNumberExclusive
                             )
                                 return (
                                     (i.originalLineRange = new Li(
@@ -9571,15 +9571,15 @@
             }
             l.sort(
                 ((c = bi((e) => e.modifiedLineRange.length, _i)),
-                (e, t) => -c(e, t)),
+                    (e, t) => -c(e, t)),
             );
             var c;
             const h = new xi(),
                 d = new xi();
             for (const m of l) {
                 const e =
-                        m.modifiedLineRange.startLineNumber -
-                        m.originalLineRange.startLineNumber,
+                    m.modifiedLineRange.startLineNumber -
+                    m.originalLineRange.startLineNumber,
                     t = h.subtractFrom(m.modifiedLineRange),
                     n = d.subtractFrom(m.originalLineRange).getWithDelta(e),
                     i = t.getIntersection(n);
@@ -9622,9 +9622,9 @@
                     ),
                     g = Math.max(
                         c.original.endLineNumberExclusive -
-                            t.original.endLineNumberExclusive,
+                        t.original.endLineNumberExclusive,
                         p.modified.endLineNumberExclusive -
-                            t.modified.endLineNumberExclusive,
+                        t.modified.endLineNumberExclusive,
                     );
                 let f, b;
                 for (f = 0; f < l; f++) {
@@ -9636,19 +9636,19 @@
                 }
                 for (
                     f > 0 &&
-                        (d.addRange(
-                            new Li(
-                                t.original.startLineNumber - f,
-                                t.original.startLineNumber,
-                            ),
+                    (d.addRange(
+                        new Li(
+                            t.original.startLineNumber - f,
+                            t.original.startLineNumber,
                         ),
+                    ),
                         h.addRange(
                             new Li(
                                 t.modified.startLineNumber - f,
                                 t.modified.startLineNumber,
                             ),
                         )),
-                        b = 0;
+                    b = 0;
                     b < g;
                     b++
                 ) {
@@ -9665,23 +9665,23 @@
                             t.original.endLineNumberExclusive + b,
                         ),
                     ),
-                    h.addRange(
-                        new Li(
-                            t.modified.endLineNumberExclusive,
-                            t.modified.endLineNumberExclusive + b,
-                        ),
-                    )),
-                    (f > 0 || b > 0) &&
-                        (a[m] = new Oi(
+                        h.addRange(
                             new Li(
-                                t.original.startLineNumber - f,
-                                t.original.endLineNumberExclusive + b,
-                            ),
-                            new Li(
-                                t.modified.startLineNumber - f,
+                                t.modified.endLineNumberExclusive,
                                 t.modified.endLineNumberExclusive + b,
                             ),
-                        )));
+                        )),
+                    (f > 0 || b > 0) &&
+                    (a[m] = new Oi(
+                        new Li(
+                            t.original.startLineNumber - f,
+                            t.original.endLineNumberExclusive + b,
+                        ),
+                        new Li(
+                            t.modified.startLineNumber - f,
+                            t.modified.endLineNumberExclusive + b,
+                        ),
+                    )));
             }
             return a;
         })(
@@ -9795,7 +9795,7 @@
                     o.seq1Range.isEmpty
                         ? (n[i] = vr(o, e, t, s, l))
                         : o.seq2Range.isEmpty &&
-                          (n[i] = vr(o.swap(), t, e, l, s).swap());
+                        (n[i] = vr(o.swap(), t, e, l, s).swap());
                 }
                 return n;
             })(e, t, i)),
@@ -9816,9 +9816,9 @@
                     o = 1;
                     o <= n &&
                     e.getElement(a.seq1Range.start - o) ===
-                        e.getElement(a.seq1Range.endExclusive - o) &&
+                    e.getElement(a.seq1Range.endExclusive - o) &&
                     t.getElement(a.seq2Range.start - o) ===
-                        t.getElement(a.seq2Range.endExclusive - o);
+                    t.getElement(a.seq2Range.endExclusive - o);
                     o++
                 );
                 if ((o--, o === n)) {
@@ -9919,7 +9919,7 @@
             const u = d.intersect(l);
             let m = u.seq1Range.length,
                 p = u.seq2Range.length;
-            for (; o.length > 0; ) {
+            for (; o.length > 0;) {
                 const n = o[0];
                 if (
                     !(
@@ -9934,9 +9934,9 @@
                     l = s.intersect(n);
                 if (
                     ((m += l.seq1Range.length),
-                    (p += l.seq2Range.length),
-                    (d = d.join(s)),
-                    !(d.seq1Range.endExclusive >= n.seq1Range.endExclusive))
+                        (p += l.seq2Range.length),
+                        (d = d.join(s)),
+                        !(d.seq1Range.endExclusive >= n.seq1Range.endExclusive))
                 )
                     break;
                 o.shift();
@@ -9946,14 +9946,14 @@
                 a.push(d),
                 (s = d.getEndExclusives()));
         }
-        for (; o.length > 0; ) {
+        for (; o.length > 0;) {
             const e = o.shift();
             e.seq1Range.isEmpty ||
                 (l(e.getStarts(), e), l(e.getEndExclusives().delta(-1), e));
         }
         return (function (e, t) {
             const n = [];
-            for (; e.length > 0 || t.length > 0; ) {
+            for (; e.length > 0 || t.length > 0;) {
                 const i = e[0],
                     r = t[0];
                 let o;
@@ -9962,7 +9962,7 @@
                         ? e.shift()
                         : t.shift()),
                     n.length > 0 &&
-                    n[n.length - 1].seq1Range.endExclusive >= o.seq1Range.start
+                        n[n.length - 1].seq1Range.endExclusive >= o.seq1Range.start
                         ? (n[n.length - 1] = n[n.length - 1].join(o))
                         : n.push(o));
             }
@@ -10051,9 +10051,9 @@
                     !1,
                 );
             const i =
-                    0 === n.maxComputationTimeMs
-                        ? er.instance
-                        : new tr(n.maxComputationTimeMs),
+                0 === n.maxComputationTimeMs
+                    ? er.instance
+                    : new tr(n.maxComputationTimeMs),
                 r = !n.ignoreTrimWhitespace,
                 o = new Map();
             function a(e) {
@@ -10067,16 +10067,16 @@
                 u = (() =>
                     h.length + d.length < 1700
                         ? this.dynamicProgrammingDiffing.compute(
-                              h,
-                              d,
-                              i,
-                              (n, i) =>
-                                  e[n] === t[i]
-                                      ? 0 === t[i].length
-                                          ? 0.1
-                                          : 1 + Math.log(1 + t[i].length)
-                                      : 0.99,
-                          )
+                            h,
+                            d,
+                            i,
+                            (n, i) =>
+                                e[n] === t[i]
+                                    ? 0 === t[i].length
+                                        ? 0.1
+                                        : 1 + Math.log(1 + t[i].length)
+                                    : 0.99,
+                        )
                         : this.myersDiffingAlgorithm.compute(h, d, i))();
             let m = u.diffs,
                 p = u.hitTimeout;
@@ -10099,17 +10099,17 @@
                                 );
                                 return (
                                     e.getText(i).replace(/\s/g, "").length <=
-                                        4 &&
+                                    4 &&
                                     (t.seq1Range.length + t.seq2Range.length >
                                         5 ||
                                         n.seq1Range.length +
-                                            n.seq2Range.length >
-                                            5)
+                                        n.seq2Range.length >
+                                        5)
                                 );
                             }
                             h(c, l)
                                 ? ((r = !0),
-                                  (a[a.length - 1] = a[a.length - 1].join(l)))
+                                    (a[a.length - 1] = a[a.length - 1].join(l)))
                                 : a.push(l);
                         }
                         i = a;
@@ -10154,7 +10154,7 @@
             let T = [];
             return (
                 n.computeMoves &&
-                    (T = this.computeMoves(y, e, t, s, c, i, r, n)),
+                (T = this.computeMoves(y, e, t, s, c, i, r, n)),
                 l(() => {
                     function n(e, t) {
                         if (e.lineNumber < 1 || e.lineNumber > t.length)
@@ -10218,12 +10218,12 @@
         refineDiff(e, t, n, i, r, o) {
             var a;
             const s = new Oi(
-                    new Li(
-                        (a = n).seq1Range.start + 1,
-                        a.seq1Range.endExclusive + 1,
-                    ),
-                    new Li(a.seq2Range.start + 1, a.seq2Range.endExclusive + 1),
-                ).toRangeMapping2(e, t),
+                new Li(
+                    (a = n).seq1Range.start + 1,
+                    a.seq1Range.endExclusive + 1,
+                ),
+                new Li(a.seq2Range.start + 1, a.seq2Range.endExclusive + 1),
+            ).toRangeMapping2(e, t),
                 l = new hr(e, s.originalRange, r),
                 c = new hr(t, s.modifiedRange, r),
                 h =
@@ -10234,18 +10234,18 @@
             ((d = _r(l, c, d)),
                 (d = yr(l, c, d, (e, t) => e.findWordContaining(t))),
                 o.extendToSubwords &&
-                    (d = yr(l, c, d, (e, t) => e.findSubWordContaining(t), !0)),
+                (d = yr(l, c, d, (e, t) => e.findSubWordContaining(t), !0)),
                 (d = (function (e, t, n) {
                     const i = [];
                     for (const r of n) {
                         const e = i[i.length - 1];
                         e &&
-                        (r.seq1Range.start - e.seq1Range.endExclusive <= 2 ||
-                            r.seq2Range.start - e.seq2Range.endExclusive <= 2)
+                            (r.seq1Range.start - e.seq1Range.endExclusive <= 2 ||
+                                r.seq2Range.start - e.seq2Range.endExclusive <= 2)
                             ? (i[i.length - 1] = new Qi(
-                                  e.seq1Range.join(r.seq1Range),
-                                  e.seq2Range.join(r.seq2Range),
-                              ))
+                                e.seq1Range.join(r.seq1Range),
+                                e.seq2Range.join(r.seq2Range),
+                            ))
                             : i.push(r);
                     }
                     return i;
@@ -10288,20 +10288,20 @@
                                 return (
                                     Math.pow(
                                         Math.pow(f(40 * a + s), 1.5) +
-                                            Math.pow(f(40 * l + d), 1.5),
+                                        Math.pow(f(40 * l + d), 1.5),
                                         1.5,
                                     ) +
-                                        Math.pow(
-                                            Math.pow(f(40 * u + m), 1.5) +
-                                                Math.pow(f(40 * p + g), 1.5),
-                                            1.5,
-                                        ) >
+                                    Math.pow(
+                                        Math.pow(f(40 * u + m), 1.5) +
+                                        Math.pow(f(40 * p + g), 1.5),
+                                        1.5,
+                                    ) >
                                     74184.96480721243
                                 );
                             }
                             d(h, c)
                                 ? ((r = !0),
-                                  (s[s.length - 1] = s[s.length - 1].join(c)))
+                                    (s[s.length - 1] = s[s.length - 1].join(c)))
                                 : s.push(c);
                         }
                         i = s;
@@ -10322,7 +10322,7 @@
                                     e.length > 0 &&
                                     e.trim().length <= 3 &&
                                     n.seq1Range.length + n.seq2Range.length >
-                                        100
+                                    100
                                 );
                             }
                             const s = e.extendToFullLines(n.seq1Range),
@@ -10338,14 +10338,14 @@
                             );
                             o(c) && (r = r.deltaEnd(c.length));
                             const h = Qi.fromOffsetPairs(
-                                    t ? t.getEndExclusives() : Zi.zero,
-                                    i ? i.getStarts() : Zi.max,
-                                ),
+                                t ? t.getEndExclusives() : Zi.zero,
+                                i ? i.getStarts() : Zi.max,
+                            ),
                                 d = r.intersect(h);
                             a.length > 0 &&
-                            d
-                                .getStarts()
-                                .equals(a[a.length - 1].getEndExclusives())
+                                d
+                                    .getStarts()
+                                    .equals(a[a.length - 1].getEndExclusives())
                                 ? (a[a.length - 1] = a[a.length - 1].join(d))
                                 : a.push(d);
                         }),
@@ -10406,10 +10406,10 @@
                 h = o - a;
             if (h > 0) {
                 switch (
-                    ((l = Math.min(
-                        c <= 0.5 ? h / (2 * c) : h / (2 - 2 * c),
-                        1,
-                    )),
+                ((l = Math.min(
+                    c <= 0.5 ? h / (2 * c) : h / (2 - 2 * c),
+                    1,
+                )),
                     o)
                 ) {
                     case t:
@@ -10432,10 +10432,10 @@
                 n < 1 / 6
                     ? e + 6 * (t - e) * n
                     : n < 0.5
-                      ? t
-                      : n < 2 / 3
-                        ? e + (t - e) * (2 / 3 - n) * 6
-                        : e
+                        ? t
+                        : n < 2 / 3
+                            ? e + (t - e) * (2 / 3 - n) * 6
+                            : e
             );
         }
         static toRGBA(e) {
@@ -10482,10 +10482,10 @@
                     0 === o
                         ? 0
                         : r === t
-                          ? ((((n - i) / o) % 6) + 6) % 6
-                          : r === n
-                            ? (i - t) / o + 2
-                            : (t - n) / o + 4),
+                            ? ((((n - i) / o) % 6) + 6) % 6
+                            : r === n
+                                ? (i - t) / o + 2
+                                : (t - n) / o + 4),
                 new Rr(Math.round(60 * s), a, r, e.a)
             );
         }
@@ -10499,14 +10499,14 @@
                 t < 60
                     ? ((l = o), (c = a))
                     : t < 120
-                      ? ((l = a), (c = o))
-                      : t < 180
-                        ? ((c = o), (h = a))
-                        : t < 240
-                          ? ((c = a), (h = o))
-                          : t < 300
-                            ? ((l = a), (h = o))
-                            : t <= 360 && ((l = o), (h = a)),
+                        ? ((l = a), (c = o))
+                        : t < 180
+                            ? ((c = o), (h = a))
+                            : t < 240
+                                ? ((c = a), (h = o))
+                                : t < 300
+                                    ? ((l = a), (h = o))
+                                    : t <= 360 && ((l = o), (h = a)),
                 (l = Math.round(255 * (l + s))),
                 (c = Math.round(255 * (c + s))),
                 (h = Math.round(255 * (h + s))),
@@ -10549,8 +10549,8 @@
         getRelativeLuminance() {
             return Cr(
                 0.2126 * e._relativeLuminanceForComponent(this.rgba.r) +
-                    0.7152 * e._relativeLuminanceForComponent(this.rgba.g) +
-                    0.0722 * e._relativeLuminanceForComponent(this.rgba.b),
+                0.7152 * e._relativeLuminanceForComponent(this.rgba.g) +
+                0.0722 * e._relativeLuminanceForComponent(this.rgba.b),
                 4,
             );
         }
@@ -10563,7 +10563,7 @@
         isLighter() {
             return (
                 (299 * this.rgba.r + 587 * this.rgba.g + 114 * this.rgba.b) /
-                    1e3 >=
+                1e3 >=
                 128
             );
         }
@@ -10644,12 +10644,12 @@
         toNumber32Bit() {
             return (
                 this._toNumber32Bit ||
-                    (this._toNumber32Bit =
-                        ((this.rgba.r << 24) |
-                            (this.rgba.g << 16) |
-                            (this.rgba.b << 8) |
-                            (255 * this.rgba.a)) >>>
-                        0),
+                (this._toNumber32Bit =
+                    ((this.rgba.r << 24) |
+                        (this.rgba.g << 16) |
+                        (this.rgba.b << 8) |
+                        (255 * this.rgba.a)) >>>
+                    0),
                 this._toNumber32Bit
             );
         }
@@ -10743,39 +10743,39 @@
             "function" == typeof e.getValue &&
             "function" == typeof e.positionAt
             ? (function (e) {
-                  const t = [],
-                      n = Dr(
-                          e,
-                          /\b(rgb|rgba|hsl|hsla)(\([0-9\s,.\%]*\))|^(#)([A-Fa-f0-9]{3})\b|^(#)([A-Fa-f0-9]{4})\b|^(#)([A-Fa-f0-9]{6})\b|^(#)([A-Fa-f0-9]{8})\b|(?<=['"\s])(#)([A-Fa-f0-9]{3})\b|(?<=['"\s])(#)([A-Fa-f0-9]{4})\b|(?<=['"\s])(#)([A-Fa-f0-9]{6})\b|(?<=['"\s])(#)([A-Fa-f0-9]{8})\b/gm,
-                      );
-                  if (n.length > 0)
-                      for (const i of n) {
-                          const n = i.filter((e) => void 0 !== e),
-                              r = n[1],
-                              o = n[2];
-                          if (!o) continue;
-                          let a;
-                          if ("rgb" === r) {
-                              const t =
-                                  /^\(\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*\)$/gm;
-                              a = Hr(zr(e, i), Dr(o, t), !1);
-                          } else if ("rgba" === r) {
-                              const t =
-                                  /^\(\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(0[.][0-9]+|[.][0-9]+|[01][.]|[01])\s*\)$/gm;
-                              a = Hr(zr(e, i), Dr(o, t), !0);
-                          } else if ("hsl" === r) {
-                              const t =
-                                  /^\(\s*((?:360(?:\.0+)?|(?:36[0]|3[0-5][0-9]|[12][0-9][0-9]|[1-9]?[0-9])(?:\.\d+)?))\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*\)$/gm;
-                              a = Ur(zr(e, i), Dr(o, t), !1);
-                          } else if ("hsla" === r) {
-                              const t =
-                                  /^\(\s*((?:360(?:\.0+)?|(?:36[0]|3[0-5][0-9]|[12][0-9][0-9]|[1-9]?[0-9])(?:\.\d+)?))\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(0[.][0-9]+|[.][0-9]+|[01][.]0*|[01])\s*\)$/gm;
-                              a = Ur(zr(e, i), Dr(o, t), !0);
-                          } else "#" === r && (a = Or(zr(e, i), r + o));
-                          a && t.push(a);
-                      }
-                  return t;
-              })(e)
+                const t = [],
+                    n = Dr(
+                        e,
+                        /\b(rgb|rgba|hsl|hsla)(\([0-9\s,.\%]*\))|^(#)([A-Fa-f0-9]{3})\b|^(#)([A-Fa-f0-9]{4})\b|^(#)([A-Fa-f0-9]{6})\b|^(#)([A-Fa-f0-9]{8})\b|(?<=['"\s])(#)([A-Fa-f0-9]{3})\b|(?<=['"\s])(#)([A-Fa-f0-9]{4})\b|(?<=['"\s])(#)([A-Fa-f0-9]{6})\b|(?<=['"\s])(#)([A-Fa-f0-9]{8})\b/gm,
+                    );
+                if (n.length > 0)
+                    for (const i of n) {
+                        const n = i.filter((e) => void 0 !== e),
+                            r = n[1],
+                            o = n[2];
+                        if (!o) continue;
+                        let a;
+                        if ("rgb" === r) {
+                            const t =
+                                /^\(\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*\)$/gm;
+                            a = Hr(zr(e, i), Dr(o, t), !1);
+                        } else if ("rgba" === r) {
+                            const t =
+                                /^\(\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\s*,\s*(0[.][0-9]+|[.][0-9]+|[01][.]|[01])\s*\)$/gm;
+                            a = Hr(zr(e, i), Dr(o, t), !0);
+                        } else if ("hsl" === r) {
+                            const t =
+                                /^\(\s*((?:360(?:\.0+)?|(?:36[0]|3[0-5][0-9]|[12][0-9][0-9]|[1-9]?[0-9])(?:\.\d+)?))\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*\)$/gm;
+                            a = Ur(zr(e, i), Dr(o, t), !1);
+                        } else if ("hsla" === r) {
+                            const t =
+                                /^\(\s*((?:360(?:\.0+)?|(?:36[0]|3[0-5][0-9]|[12][0-9][0-9]|[1-9]?[0-9])(?:\.\d+)?))\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(100|\d{1,2}[.]\d*|\d{1,2})%\s*[\s,]\s*(0[.][0-9]+|[.][0-9]+|[01][.]0*|[01])\s*\)$/gm;
+                            a = Ur(zr(e, i), Dr(o, t), !0);
+                        } else "#" === r && (a = Or(zr(e, i), r + o));
+                        a && t.push(a);
+                    }
+                return t;
+            })(e)
             : [];
     }
     !(function (e) {
@@ -11259,26 +11259,26 @@
                 )
                     return n;
                 const r = (function (e) {
-                        if (!e || 0 === e.length) return !1;
-                        for (let t = 0, n = e.length; t < n; t++) {
+                    if (!e || 0 === e.length) return !1;
+                    for (let t = 0, n = e.length; t < n; t++) {
+                        const i = e.charCodeAt(t);
+                        if (10 === i) return !0;
+                        if (92 === i) {
+                            if ((t++, t >= n)) break;
                             const i = e.charCodeAt(t);
-                            if (10 === i) return !0;
-                            if (92 === i) {
-                                if ((t++, t >= n)) break;
-                                const i = e.charCodeAt(t);
-                                if (110 === i || 114 === i || 87 === i)
-                                    return !0;
-                            }
+                            if (110 === i || 114 === i || 87 === i)
+                                return !0;
                         }
-                        return !1;
-                    })(t.markSectionHeaderRegex),
+                    }
+                    return !1;
+                })(t.markSectionHeaderRegex),
                     o = new RegExp(
                         t.markSectionHeaderRegex,
                         "gdm" + (r ? "s" : ""),
                     );
                 if (
                     ((a = o),
-                    "^" !== a.source &&
+                        "^" !== a.source &&
                         "^$" !== a.source &&
                         "$" !== a.source &&
                         "^\\s*$" !== a.source &&
@@ -11293,7 +11293,7 @@
                     for (let n = s; n <= t; n++) r.push(e.getLineContent(n));
                     const a = r.join("\n");
                     let l;
-                    for (o.lastIndex = 0; null !== (l = o.exec(a)); ) {
+                    for (o.lastIndex = 0; null !== (l = o.exec(a));) {
                         const e = a.substring(0, l.index),
                             t = s + (e.match(/\n/g) || []).length,
                             i = l[0].split("\n"),
@@ -11320,7 +11320,7 @@
                         ((m.text || m.hasSeparatorLine) &&
                             (0 === n.length ||
                                 n[n.length - 1].range.endLineNumber <
-                                    m.range.startLineNumber) &&
+                                m.range.startLineNumber) &&
                             n.push(m),
                             (o.lastIndex = l.index + l[0].length));
                     }
@@ -11351,19 +11351,19 @@
             return this.isSettled
                 ? Promise.resolve()
                 : new Promise((t) => {
-                      (this.completeCallback(e),
-                          (this.outcome = { outcome: 0, value: e }),
-                          t());
-                  });
+                    (this.completeCallback(e),
+                        (this.outcome = { outcome: 0, value: e }),
+                        t());
+                });
         }
         error(e) {
             return this.isSettled
                 ? Promise.resolve()
                 : new Promise((t) => {
-                      (this.errorCallback(e),
-                          (this.outcome = { outcome: 1, value: e }),
-                          t());
-                  });
+                    (this.errorCallback(e),
+                        (this.outcome = { outcome: 1, value: e }),
+                        t());
+                });
         }
         cancel() {
             return this.error(new r());
@@ -11406,7 +11406,7 @@
         produce(e) {
             if (
                 (this._ensureNoFinalValue(),
-                this._unsatisfiedConsumers.length > 0)
+                    this._unsatisfiedConsumers.length > 0)
             ) {
                 const t = this._unsatisfiedConsumers.shift();
                 this._resolveOrRejectDeferred(t, e);
@@ -11561,17 +11561,17 @@
             return (
                 0 !== r &&
                 ((this.values = new Uint32Array(n.length + r)),
-                this.values.set(n.subarray(0, e), 0),
-                this.values.set(n.subarray(e), e + r),
-                this.values.set(t, e),
-                e - 1 < this.prefixSumValidIndex[0] &&
+                    this.values.set(n.subarray(0, e), 0),
+                    this.values.set(n.subarray(e), e + r),
+                    this.values.set(t, e),
+                    e - 1 < this.prefixSumValidIndex[0] &&
                     (this.prefixSumValidIndex[0] = e - 1),
-                (this.prefixSum = new Uint32Array(this.values.length)),
-                this.prefixSumValidIndex[0] >= 0 &&
+                    (this.prefixSum = new Uint32Array(this.values.length)),
+                    this.prefixSumValidIndex[0] >= 0 &&
                     this.prefixSum.set(
                         i.subarray(0, this.prefixSumValidIndex[0] + 1),
                     ),
-                !0)
+                    !0)
             );
         }
         setValue(e, t) {
@@ -11579,9 +11579,9 @@
                 (e = Me(e)),
                 (t = Me(t)),
                 this.values[e] !== t &&
-                    ((this.values[e] = t),
+                ((this.values[e] = t),
                     e - 1 < this.prefixSumValidIndex[0] &&
-                        (this.prefixSumValidIndex[0] = e - 1),
+                    (this.prefixSumValidIndex[0] = e - 1),
                     !0)
             );
         }
@@ -11594,16 +11594,16 @@
             return (
                 t >= r && (t = r),
                 0 !== t &&
-                    ((this.values = new Uint32Array(n.length - t)),
+                ((this.values = new Uint32Array(n.length - t)),
                     this.values.set(n.subarray(0, e), 0),
                     this.values.set(n.subarray(e + t), e),
                     (this.prefixSum = new Uint32Array(this.values.length)),
                     e - 1 < this.prefixSumValidIndex[0] &&
-                        (this.prefixSumValidIndex[0] = e - 1),
+                    (this.prefixSumValidIndex[0] = e - 1),
                     this.prefixSumValidIndex[0] >= 0 &&
-                        this.prefixSum.set(
-                            i.subarray(0, this.prefixSumValidIndex[0] + 1),
-                        ),
+                    this.prefixSum.set(
+                        i.subarray(0, this.prefixSumValidIndex[0] + 1),
+                    ),
                     !0)
             );
         }
@@ -11637,12 +11637,12 @@
                 i = 0,
                 r = 0,
                 o = 0;
-            for (; t <= n; )
+            for (; t <= n;)
                 if (
                     ((i = (t + (n - t) / 2) | 0),
-                    (r = this.prefixSum[i]),
-                    (o = r - this.values[i]),
-                    e < o)
+                        (r = this.prefixSum[i]),
+                        (o = r - this.values[i]),
+                        e < o)
                 )
                     n = i - 1;
                 else {
@@ -11679,7 +11679,7 @@
         getText() {
             return (
                 null === this._cachedTextValue &&
-                    (this._cachedTextValue = this._lines.join(this._eol)),
+                (this._cachedTextValue = this._lines.join(this._eol)),
                 this._cachedTextValue
             );
         }
@@ -11708,10 +11708,10 @@
         _setLineText(e, t) {
             ((this._lines[e] = t),
                 this._lineStarts &&
-                    this._lineStarts.setValue(
-                        e,
-                        this._lines[e].length + this._eol.length,
-                    ));
+                this._lineStarts.setValue(
+                    e,
+                    this._lines[e].length + this._eol.length,
+                ));
         }
         _acceptDeleteRange(e) {
             if (e.startLineNumber !== e.endLineNumber)
@@ -11721,19 +11721,19 @@
                         0,
                         e.startColumn - 1,
                     ) +
-                        this._lines[e.endLineNumber - 1].substring(
-                            e.endColumn - 1,
-                        ),
+                    this._lines[e.endLineNumber - 1].substring(
+                        e.endColumn - 1,
+                    ),
                 ),
                     this._lines.splice(
                         e.startLineNumber,
                         e.endLineNumber - e.startLineNumber,
                     ),
                     this._lineStarts &&
-                        this._lineStarts.removeValues(
-                            e.startLineNumber,
-                            e.endLineNumber - e.startLineNumber,
-                        ));
+                    this._lineStarts.removeValues(
+                        e.startLineNumber,
+                        e.endLineNumber - e.startLineNumber,
+                    ));
             else {
                 if (e.startColumn === e.endColumn) return;
                 this._setLineText(
@@ -11742,9 +11742,9 @@
                         0,
                         e.startColumn - 1,
                     ) +
-                        this._lines[e.startLineNumber - 1].substring(
-                            e.endColumn - 1,
-                        ),
+                    this._lines[e.startLineNumber - 1].substring(
+                        e.endColumn - 1,
+                    ),
                 );
             }
         }
@@ -11755,8 +11755,8 @@
                 return void this._setLineText(
                     e.lineNumber - 1,
                     this._lines[e.lineNumber - 1].substring(0, e.column - 1) +
-                        n[0] +
-                        this._lines[e.lineNumber - 1].substring(e.column - 1),
+                    n[0] +
+                    this._lines[e.lineNumber - 1].substring(e.column - 1),
                 );
             ((n[n.length - 1] += this._lines[e.lineNumber - 1].substring(
                 e.column - 1,
@@ -11764,7 +11764,7 @@
                 this._setLineText(
                     e.lineNumber - 1,
                     this._lines[e.lineNumber - 1].substring(0, e.column - 1) +
-                        n[0],
+                    n[0],
                 ));
             const i = new Uint32Array(n.length - 1);
             for (let r = 1; r < n.length; r++)
@@ -11851,7 +11851,7 @@
                 a = [];
             return {
                 *[Symbol.iterator]() {
-                    for (;;)
+                    for (; ;)
                         if (o < a.length) {
                             const e = r.substring(a[o].start, a[o].end);
                             ((o += 1), yield e);
@@ -11877,7 +11877,7 @@
         _wordenize(e, t) {
             const n = [];
             let i;
-            for (t.lastIndex = 0; (i = t.exec(e)) && 0 !== i[0].length; )
+            for (t.lastIndex = 0; (i = t.exec(e)) && 0 !== i[0].length;)
                 n.push({ start: i.index, end: i.index + i[0].length });
             return n;
         }
@@ -11920,9 +11920,9 @@
         }
         _validateRange(e) {
             const t = this._validatePosition({
-                    lineNumber: e.startLineNumber,
-                    column: e.startColumn,
-                }),
+                lineNumber: e.startLineNumber,
+                column: e.startColumn,
+            }),
                 n = this._validatePosition({
                     lineNumber: e.endLineNumber,
                     column: e.endColumn,
@@ -11932,11 +11932,11 @@
                 n.lineNumber !== e.endLineNumber ||
                 n.column !== e.endColumn
                 ? {
-                      startLineNumber: t.lineNumber,
-                      startColumn: t.column,
-                      endLineNumber: n.lineNumber,
-                      endColumn: n.column,
-                  }
+                    startLineNumber: t.lineNumber,
+                    startColumn: t.column,
+                    endLineNumber: n.lineNumber,
+                    endColumn: n.column,
+                }
                 : e;
         }
         _validatePosition(e) {
@@ -11961,7 +11961,7 @@
                 (this._requestHandlerBrand = void 0),
                 (this._workerTextModelSyncServer = new Yr()));
         }
-        dispose() {}
+        dispose() { }
         async $ping() {
             return "pong";
         }
@@ -11985,12 +11985,12 @@
             return i
                 ? di.computeUnicodeHighlights(i, t, n)
                 : {
-                      ranges: [],
-                      hasMore: !1,
-                      ambiguousCharacterCount: 0,
-                      invisibleCharacterCount: 0,
-                      nonBasicAsciiCharacterCount: 0,
-                  };
+                    ranges: [],
+                    hasMore: !1,
+                    ambiguousCharacterCount: 0,
+                    invisibleCharacterCount: 0,
+                    nonBasicAsciiCharacterCount: 0,
+                };
         }
         async $findSectionHeaders(e, t) {
             const n = this._getModel(e);
@@ -12066,10 +12066,10 @@
                     Ae.getStartPosition(t[s].range),
                 )
                     ? ((t[a].range = Ae.fromPositions(
-                          Ae.getStartPosition(t[a].range),
-                          Ae.getEndPosition(t[s].range),
-                      )),
-                      (t[a].text += t[s].text))
+                        Ae.getStartPosition(t[a].range),
+                        Ae.getEndPosition(t[s].range),
+                    )),
+                        (t[a].text += t[s].text))
                     : (a++, (t[a] = t[s]));
             t.length = a + 1;
             for (let { range: s, text: l, eol: c } of t) {
@@ -12102,16 +12102,16 @@
             }
             return (
                 "number" == typeof o &&
-                    r.push({
-                        eol: o,
-                        text: "",
-                        range: {
-                            startLineNumber: 0,
-                            startColumn: 0,
-                            endLineNumber: 0,
-                            endColumn: 0,
-                        },
-                    }),
+                r.push({
+                    eol: o,
+                    text: "",
+                    range: {
+                        startLineNumber: 0,
+                        startColumn: 0,
+                        endLineNumber: 0,
+                        endColumn: 0,
+                    },
+                }),
                 r
             );
         }
@@ -12119,12 +12119,12 @@
             const t = this._getModel(e);
             return t
                 ? (function (e) {
-                      return e &&
-                          "function" == typeof e.getLineCount &&
-                          "function" == typeof e.getLineContent
-                          ? Ue.computeLinks(e)
-                          : [];
-                  })(t)
+                    return e &&
+                        "function" == typeof e.getLineCount &&
+                        "function" == typeof e.getLineContent
+                        ? Ue.computeLinks(e)
+                        : [];
+                })(t)
                 : null;
         }
         async $computeDefaultDocumentColors(e) {
@@ -12298,8 +12298,8 @@
             ((i = t.message),
                 (n = i),
                 t.comment &&
-                    t.comment.length > 0 &&
-                    (n += `/${Array.isArray(t.comment) ? t.comment.join("") : t.comment}`),
+                t.comment.length > 0 &&
+                (n += `/${Array.isArray(t.comment) ? t.comment.join("") : t.comment}`),
                 (r = t.args ?? {}));
         }
         return (function (e, t) {
@@ -12720,9 +12720,9 @@
                 let i = { kind: "create", uri: e };
                 return (
                     void 0 === t ||
-                        (void 0 === t.overwrite &&
-                            void 0 === t.ignoreIfExists) ||
-                        (i.options = t),
+                    (void 0 === t.overwrite &&
+                        void 0 === t.ignoreIfExists) ||
+                    (i.options = t),
                     void 0 !== n && (i.annotationId = n),
                     i
                 );
@@ -12747,9 +12747,9 @@
                 let r = { kind: "rename", oldUri: e, newUri: t };
                 return (
                     void 0 === n ||
-                        (void 0 === n.overwrite &&
-                            void 0 === n.ignoreIfExists) ||
-                        (r.options = n),
+                    (void 0 === n.overwrite &&
+                        void 0 === n.ignoreIfExists) ||
+                    (r.options = n),
                     void 0 !== i && (r.annotationId = i),
                     r
                 );
@@ -12775,9 +12775,9 @@
                 let i = { kind: "delete", uri: e };
                 return (
                     void 0 === t ||
-                        (void 0 === t.recursive &&
-                            void 0 === t.ignoreIfNotExists) ||
-                        (i.options = t),
+                    (void 0 === t.recursive &&
+                        void 0 === t.ignoreIfNotExists) ||
+                    (i.options = t),
                     void 0 !== n && (i.annotationId = n),
                     i
                 );
@@ -13115,8 +13115,8 @@
                     "string" == typeof t
                         ? ((r = !1), (i.kind = t))
                         : To.is(t)
-                          ? (i.command = t)
-                          : (i.edit = t),
+                            ? (i.command = t)
+                            : (i.edit = t),
                     r && void 0 !== n && (i.kind = n),
                     i
                 );
@@ -13375,12 +13375,12 @@
                 let a = 0,
                     s = 0,
                     l = 0;
-                for (; a < r.length && s < o.length; ) {
+                for (; a < r.length && s < o.length;) {
                     let t = n(r[a], o[s]);
                     e[l++] = t <= 0 ? r[a++] : o[s++];
                 }
-                for (; a < r.length; ) e[l++] = r[a++];
-                for (; s < o.length; ) e[l++] = o[s++];
+                for (; a < r.length;) e[l++] = r[a++];
+                for (; s < o.length;) e[l++] = o[s++];
                 return e;
             }
             ((e.create = function (e, t, n, i) {
@@ -13405,7 +13405,7 @@
                             let n = e.range.start.line - t.range.start.line;
                             return 0 === n
                                 ? e.range.start.character -
-                                      t.range.start.character
+                                t.range.start.character
                                 : n;
                         }),
                         o = i.length;
@@ -13463,9 +13463,9 @@
                     let r = t.charAt(i);
                     ((n = "\r" === r || "\n" === r),
                         "\r" === r &&
-                            i + 1 < t.length &&
-                            "\n" === t.charAt(i + 1) &&
-                            i++);
+                        i + 1 < t.length &&
+                        "\n" === t.charAt(i + 1) &&
+                        i++);
                 }
                 (n && t.length > 0 && e.push(t.length),
                     (this._lineOffsets = e));
@@ -13478,7 +13478,7 @@
                 n = 0,
                 i = t.length;
             if (0 === i) return so.create(0, e);
-            for (; n < i; ) {
+            for (; n < i;) {
                 let r = Math.floor((n + i) / 2);
                 t[r] > e ? (i = r) : (n = r + 1);
             }
@@ -13589,7 +13589,7 @@
                         s.length < 1e4
                             ? a.splice(r + 1, o - r, ...s)
                             : (this._lineOffsets = a =
-                                  a.slice(0, r + 1).concat(s, a.slice(o + 1)));
+                                a.slice(0, r + 1).concat(s, a.slice(o + 1)));
                     const l = n.text.length - (i - t);
                     if (0 !== l)
                         for (let n = r + 1 + s.length, c = a.length; n < c; n++)
@@ -13604,7 +13604,7 @@
         getLineOffsets() {
             return (
                 void 0 === this._lineOffsets &&
-                    (this._lineOffsets = Wa(this._content, !0)),
+                (this._lineOffsets = Wa(this._content, !0)),
                 this._lineOffsets
             );
         }
@@ -13614,7 +13614,7 @@
                 n = 0,
                 i = t.length;
             if (0 === i) return { line: 0, character: e };
-            for (; n < i; ) {
+            for (; n < i;) {
                 let r = Math.floor((n + i) / 2);
                 t[r] > e ? (i = r) : (n = r + 1);
             }
@@ -13663,12 +13663,12 @@
         let o = 0,
             a = 0,
             s = 0;
-        for (; o < i.length && a < r.length; ) {
+        for (; o < i.length && a < r.length;) {
             let n = t(i[o], r[a]);
             e[s++] = n <= 0 ? i[o++] : r[a++];
         }
-        for (; o < i.length; ) e[s++] = i[o++];
-        for (; a < r.length; ) e[s++] = r[a++];
+        for (; o < i.length;) e[s++] = i[o++];
+        for (; a < r.length;) e[s++] = r[a++];
         return e;
     }
     function Wa(e, t, n = 0) {
@@ -13680,7 +13680,7 @@
                     r + 1 < e.length &&
                     10 === e.charCodeAt(r + 1) &&
                     r++,
-                i.push(n + r + 1));
+                    i.push(n + r + 1));
         }
         return i;
     }
@@ -13830,7 +13830,7 @@
             const t = this.source.substr(this.position).match(e);
             return t
                 ? ((this.position = this.position + t.index + t[0].length),
-                  t[0])
+                    t[0])
                 : "";
         }
         advanceUntilRegExp(e) {
@@ -13840,14 +13840,14 @@
                 : (this.goToEnd(), "");
         }
         advanceUntilChar(e) {
-            for (; this.position < this.source.length; ) {
+            for (; this.position < this.source.length;) {
                 if (this.source.charCodeAt(this.position) === e) return !0;
                 this.advance(1);
             }
             return !1;
         }
         advanceUntilChars(e) {
-            for (; this.position + e.length <= this.source.length; ) {
+            for (; this.position + e.length <= this.source.length;) {
                 let t = 0;
                 for (
                     ;
@@ -13943,25 +13943,25 @@
                         return r.advanceIfChar(Ga)
                             ? ((h = za.AfterOpeningEndTag), p(e, Ia.EndTagOpen))
                             : ((h = za.AfterOpeningStartTag),
-                              p(e, Ia.StartTagOpen));
+                                p(e, Ia.StartTagOpen));
                     }
                     return (r.advanceUntilChar(Ka), p(e, Ia.Content));
                 case za.AfterOpeningEndTag:
                     return m().length > 0
                         ? ((h = za.WithinEndTag), p(e, Ia.EndTag))
                         : r.skipWhitespace()
-                          ? p(
+                            ? p(
                                 e,
                                 Ia.Whitespace,
                                 no(
                                     "Tag name must directly follow the open bracket.",
                                 ),
                             )
-                          : ((h = za.WithinEndTag),
-                            r.advanceUntilChar(ja),
-                            e < r.pos()
-                                ? p(e, Ia.Unknown, no("End tag name expected."))
-                                : g());
+                            : ((h = za.WithinEndTag),
+                                r.advanceUntilChar(ja),
+                                e < r.pos()
+                                    ? p(e, Ia.Unknown, no("End tag name expected."))
+                                    : g());
                 case za.WithinEndTag:
                     if (r.skipWhitespace()) return p(e, Ia.Whitespace);
                     if (r.advanceIfChar(ja))
@@ -13981,22 +13981,22 @@
                         s.length > 0
                             ? ((a = !1), (h = za.WithinTag), p(e, Ia.StartTag))
                             : r.skipWhitespace()
-                              ? p(
+                                ? p(
                                     e,
                                     Ia.Whitespace,
                                     no(
                                         "Tag name must directly follow the open bracket.",
                                     ),
                                 )
-                              : ((h = za.WithinTag),
-                                r.advanceUntilChar(ja),
-                                e < r.pos()
-                                    ? p(
-                                          e,
-                                          Ia.Unknown,
-                                          no("Start tag name expected."),
-                                      )
-                                    : g())
+                                : ((h = za.WithinTag),
+                                    r.advanceUntilChar(ja),
+                                    e < r.pos()
+                                        ? p(
+                                            e,
+                                            Ia.Unknown,
+                                            no("Start tag name expected."),
+                                        )
+                                        : g())
                     );
                 case za.WithinTag:
                     return r.skipWhitespace()
@@ -14007,43 +14007,43 @@
                                     /^[^\s"'></=\x00-\x0F\x7F\x80-\x9F]*/,
                                 )
                                 .toLowerCase()),
-                            l.length > 0)
-                          ? ((h = za.AfterAttributeName),
-                            (a = !1),
-                            p(e, Ia.AttributeName))
-                          : r.advanceIfChars([Ga, ja])
-                            ? ((h = za.WithinContent),
-                              p(e, Ia.StartTagSelfClose))
-                            : r.advanceIfChar(ja)
-                              ? ((h =
-                                    "script" === s
-                                        ? c && ns[c]
-                                            ? za.WithinContent
-                                            : za.WithinScriptContent
-                                        : "style" === s
-                                          ? za.WithinStyleContent
-                                          : za.WithinContent),
-                                p(e, Ia.StartTagClose))
-                              : i && r.peekChar() === Ka
+                                l.length > 0)
+                            ? ((h = za.AfterAttributeName),
+                                (a = !1),
+                                p(e, Ia.AttributeName))
+                            : r.advanceIfChars([Ga, ja])
                                 ? ((h = za.WithinContent),
-                                  p(
-                                      e,
-                                      Ia.StartTagClose,
-                                      no("Closing bracket missing."),
-                                  ))
-                                : (r.advance(1),
-                                  p(
-                                      e,
-                                      Ia.Unknown,
-                                      no("Unexpected character in tag."),
-                                  ));
+                                    p(e, Ia.StartTagSelfClose))
+                                : r.advanceIfChar(ja)
+                                    ? ((h =
+                                        "script" === s
+                                            ? c && ns[c]
+                                                ? za.WithinContent
+                                                : za.WithinScriptContent
+                                            : "style" === s
+                                                ? za.WithinStyleContent
+                                                : za.WithinContent),
+                                        p(e, Ia.StartTagClose))
+                                    : i && r.peekChar() === Ka
+                                        ? ((h = za.WithinContent),
+                                            p(
+                                                e,
+                                                Ia.StartTagClose,
+                                                no("Closing bracket missing."),
+                                            ))
+                                        : (r.advance(1),
+                                            p(
+                                                e,
+                                                Ia.Unknown,
+                                                no("Unexpected character in tag."),
+                                            ));
                 case za.AfterAttributeName:
                     return r.skipWhitespace()
                         ? ((a = !0), p(e, Ia.Whitespace))
                         : r.advanceIfChar($a)
-                          ? ((h = za.BeforeAttributeValue),
-                            p(e, Ia.DelimiterAssign))
-                          : ((h = za.WithinTag), g());
+                            ? ((h = za.BeforeAttributeValue),
+                                p(e, Ia.DelimiterAssign))
+                            : ((h = za.WithinTag), g());
                 case za.BeforeAttributeValue:
                     if (r.skipWhitespace()) return p(e, Ia.Whitespace);
                     let n = r.advanceIfRegExp(/^[^\s"'`=<>]+/);
@@ -14052,8 +14052,8 @@
                         (r.peekChar() === ja &&
                             r.peekChar(-1) === Ga &&
                             (r.goBack(1), (n = n.substring(0, n.length - 1))),
-                        "type" === l && (c = n),
-                        n.length > 0)
+                            "type" === l && (c = n),
+                            n.length > 0)
                     )
                         return (
                             (h = za.WithinTag),
@@ -14063,16 +14063,16 @@
                     const o = r.peekChar();
                     return o === Ja || o === Xa
                         ? (r.advance(1),
-                          r.advanceUntilChar(o) && r.advance(1),
-                          "type" === l &&
-                              (c = r.getSource().substring(e + 1, r.pos() - 1)),
-                          (h = za.WithinTag),
-                          (a = !1),
-                          p(e, Ia.AttributeValue))
+                            r.advanceUntilChar(o) && r.advance(1),
+                            "type" === l &&
+                            (c = r.getSource().substring(e + 1, r.pos() - 1)),
+                            (h = za.WithinTag),
+                            (a = !1),
+                            p(e, Ia.AttributeValue))
                         : ((h = za.WithinTag), (a = !1), g());
                 case za.WithinScriptContent:
                     let d = 1;
-                    for (; !r.eos(); ) {
+                    for (; !r.eos();) {
                         const t = r.advanceIfRegExp(
                             /<!--|-->|<\/?script\s*\/?>?/i,
                         );
@@ -14125,7 +14125,7 @@
         let n = 0,
             i = e.length;
         if (0 === i) return 0;
-        for (; n < i; ) {
+        for (; n < i;) {
             let r = Math.floor((n + i) / 2);
             t(e[r]) ? (i = r) : (n = r + 1);
         }
@@ -14146,8 +14146,8 @@
             return void 0 === this.tag
                 ? void 0 === e
                 : void 0 !== e &&
-                      this.tag.length === e.length &&
-                      this.tag.toLowerCase() === e;
+                this.tag.length === e.length &&
+                this.tag.toLowerCase() === e;
         }
         get firstChild() {
             return this.children[0];
@@ -14196,7 +14196,7 @@
                 a = -1,
                 s = null,
                 l = n.scan();
-            for (; l !== Ia.EOS; ) {
+            for (; l !== Ia.EOS;) {
                 switch (l) {
                     case Ia.StartTagOpen:
                         const i = new os(n.getTokenOffset(), e.length, [], o);
@@ -14208,22 +14208,22 @@
                     case Ia.StartTagClose:
                         o.parent &&
                             ((o.end = n.getTokenEnd()),
-                            n.getTokenLength()
-                                ? ((o.startTagEnd = n.getTokenEnd()),
-                                  o.tag &&
-                                      this.dataManager.isVoidElement(
-                                          o.tag,
-                                          t,
-                                      ) &&
-                                      ((o.closed = !0), (o = o.parent)))
-                                : (o = o.parent));
+                                n.getTokenLength()
+                                    ? ((o.startTagEnd = n.getTokenEnd()),
+                                        o.tag &&
+                                        this.dataManager.isVoidElement(
+                                            o.tag,
+                                            t,
+                                        ) &&
+                                        ((o.closed = !0), (o = o.parent)))
+                                    : (o = o.parent));
                         break;
                     case Ia.StartTagSelfClose:
                         o.parent &&
                             ((o.closed = !0),
-                            (o.end = n.getTokenEnd()),
-                            (o.startTagEnd = n.getTokenEnd()),
-                            (o = o.parent));
+                                (o.end = n.getTokenEnd()),
+                                (o.startTagEnd = n.getTokenEnd()),
+                                (o = o.parent));
                         break;
                     case Ia.EndTagOpen:
                         ((a = n.getTokenOffset()), (r = void 0));
@@ -14233,9 +14233,9 @@
                         break;
                     case Ia.EndTagClose:
                         let l = o;
-                        for (; !l.isSameTag(r) && l.parent; ) l = l.parent;
+                        for (; !l.isSameTag(r) && l.parent;) l = l.parent;
                         if (l.parent) {
-                            for (; o !== l; )
+                            for (; o !== l;)
                                 ((o.end = a), (o.closed = !1), (o = o.parent));
                             ((o.closed = !0),
                                 (o.endTagStart = a),
@@ -14258,7 +14258,7 @@
                 }
                 l = n.scan();
             }
-            for (; o.parent; )
+            for (; o.parent;)
                 ((o.end = e.length), (o.closed = !1), (o = o.parent));
             return {
                 roots: i.children,
@@ -16511,7 +16511,7 @@
     }
     function hs(e, t) {
         let n = "";
-        for (; t > 0; ) (1 & ~t || (n += e), (e += e), (t >>>= 1));
+        for (; t > 0;) (1 & ~t || (n += e), (e += e), (t >>>= 1));
         return n;
     }
     const ds = "a".charCodeAt(0),
@@ -16544,9 +16544,9 @@
                     this._tagMap[e.name.toLowerCase()] = e;
                 }),
                 t.valueSets &&
-                    t.valueSets.forEach((e) => {
-                        this._valueSetMap[e.name] = e.values;
-                    }));
+                t.valueSets.forEach((e) => {
+                    this._valueSetMap[e.name] = e.values;
+                }));
         }
         getId() {
             return this.id;
@@ -16570,19 +16570,19 @@
             const n = [];
             t = t.toLowerCase();
             const i = (e) => {
-                    e.forEach((e) => {
-                        e.name.toLowerCase() === t &&
-                            (e.values &&
-                                e.values.forEach((e) => {
-                                    n.push(e);
-                                }),
+                e.forEach((e) => {
+                    e.name.toLowerCase() === t &&
+                        (e.values &&
+                            e.values.forEach((e) => {
+                                n.push(e);
+                            }),
                             e.valueSet &&
-                                this._valueSetMap[e.valueSet] &&
-                                this._valueSetMap[e.valueSet].forEach((e) => {
-                                    n.push(e);
-                                }));
-                    });
-                },
+                            this._valueSetMap[e.valueSet] &&
+                            this._valueSetMap[e.valueSet].forEach((e) => {
+                                n.push(e);
+                            }));
+                });
+            },
                 r = this._tagMap[e.toLowerCase()];
             return (r && i(r.attributes), i(this._globalAttributes), n);
         }
@@ -16603,14 +16603,14 @@
                 e.references.length > 0 &&
                 !1 !== t.references &&
                 (i.value.length && (i.value += "\n\n"),
-                (i.value += n
-                    ? e.references
-                          .map((e) => `[${e.name}](${e.url})`)
-                          .join(" | ")
-                    : e.references
-                          .map((e) => `${e.name}: ${e.url}`)
-                          .join("\n"))),
-            "" !== i.value)
+                    (i.value += n
+                        ? e.references
+                            .map((e) => `[${e.name}](${e.url})`)
+                            .join(" | ")
+                        : e.references
+                            .map((e) => `${e.name}: ${e.url}`)
+                            .join("\n"))),
+                "" !== i.value)
         )
             return i;
     }
@@ -16654,7 +16654,7 @@
                         i.charCodeAt(0) !== Ts &&
                             e.push(xs(i, r === Ha.Directory, t));
                     return e;
-                } catch (gl) {}
+                } catch (gl) { }
             return [];
         }
     }
@@ -16686,14 +16686,14 @@
     function xs(e, t, n) {
         return t
             ? {
-                  label: (e += "/"),
-                  kind: Do.Folder,
-                  textEdit: ko.replace(n, e),
-                  command: {
-                      title: "Suggest",
-                      command: "editor.action.triggerSuggest",
-                  },
-              }
+                label: (e += "/"),
+                kind: Do.Folder,
+                textEdit: ko.replace(n, e),
+                command: {
+                    title: "Suggest",
+                    command: "editor.action.triggerSuggest",
+                },
+            }
             : { label: e, kind: Do.File, textEdit: ko.replace(n, e) };
     }
     function Cs(e, t) {
@@ -16715,9 +16715,9 @@
             )
                 return this.doComplete(e, t, n, r);
             const o = new ys(
-                    this.dataManager,
-                    this.lsOptions.fileSystemProvider.readDirectory,
-                ),
+                this.dataManager,
+                this.lsOptions.fileSystemProvider.readDirectory,
+            ),
                 a = this.completionParticipants;
             this.completionParticipants = [o].concat(a);
             const s = this.doComplete(e, t, n, r);
@@ -16779,7 +16779,7 @@
             }
             function b(e) {
                 let t = e;
-                for (; t > 0; ) {
+                for (; t > 0;) {
                     const n = c.charAt(t - 1);
                     if ("\n\r".indexOf(n) >= 0) return c.substring(t, e);
                     if (!As(n)) return null;
@@ -16791,19 +16791,19 @@
                 const i = g(e, n),
                     o = Rs(c, n, za.WithinEndTag, Ia.EndTagClose) ? "" : ">";
                 let s = d;
-                for (t && (s = s.parent); s; ) {
+                for (t && (s = s.parent); s;) {
                     const t = s.tag;
                     if (
                         t &&
                         (!s.closed || (s.endTagStart && s.endTagStart > h))
                     ) {
                         const n = {
-                                label: "/" + t,
-                                kind: Do.Property,
-                                filterText: "/" + t,
-                                textEdit: ko.replace(i, "/" + t + o),
-                                insertTextFormat: Wo.PlainText,
-                            },
+                            label: "/" + t,
+                            kind: Do.Property,
+                            filterText: "/" + t,
+                            textEdit: ko.replace(i, "/" + t + o),
+                            insertTextFormat: Wo.PlainText,
+                        },
                             a = b(s.start),
                             l = b(e - 1);
                         if (null !== a && null !== l && a !== l) {
@@ -16817,18 +16817,18 @@
                 }
                 return (
                     t ||
-                        a.forEach((e) => {
-                            e.provideTags().forEach((e) => {
-                                r.items.push({
-                                    label: "/" + e.name,
-                                    kind: Do.Property,
-                                    documentation: vs(e, void 0, l),
-                                    filterText: "/" + e.name + o,
-                                    textEdit: ko.replace(i, "/" + e.name + o),
-                                    insertTextFormat: Wo.PlainText,
-                                });
+                    a.forEach((e) => {
+                        e.provideTags().forEach((e) => {
+                            r.items.push({
+                                label: "/" + e.name,
+                                kind: Do.Property,
+                                documentation: vs(e, void 0, l),
+                                filterText: "/" + e.name + o,
+                                textEdit: ko.replace(i, "/" + e.name + o),
+                                insertTextFormat: Wo.PlainText,
                             });
-                        }),
+                        });
+                    }),
                     r
                 );
             }
@@ -16851,7 +16851,7 @@
             }
             function y(e, t = h) {
                 let o = h;
-                for (; o < t && "<" !== c[o]; ) o++;
+                for (; o < t && "<" !== c[o];) o++;
                 const s = c.substring(e, t),
                     u = g(e, o);
                 let m = "";
@@ -16861,8 +16861,8 @@
                         "empty" === e
                             ? "=$1"
                             : "singlequotes" === e
-                              ? "='$1'"
-                              : '="$1"';
+                                ? "='$1'"
+                                : '="$1"';
                 }
                 const f = (function () {
                     const e = Object.create(null);
@@ -16884,7 +16884,7 @@
                             ("v" !== e.valueSet &&
                                 m.length &&
                                 ((n += m),
-                                (e.valueSet || "style" === e.name) &&
+                                    (e.valueSet || "style" === e.name) &&
                                     (t = {
                                         title: "Suggest",
                                         command: "editor.action.triggerSuggest",
@@ -16935,11 +16935,11 @@
                     let t = i;
                     i > n && c[i - 1] === c[n] && t--;
                     const r = (function (e, t, n) {
-                            for (; t > n && !As(e[t - 1]); ) t--;
-                            return t;
-                        })(c, h, e),
+                        for (; t > n && !As(e[t - 1]);) t--;
+                        return t;
+                    })(c, h, e),
                         o = (function (e, t, n) {
-                            for (; t < n && !As(e[t]); ) t++;
+                            for (; t < n && !As(e[t]);) t++;
                             return t;
                         })(c, h, t);
                     ((s = g(r, o)),
@@ -16995,7 +16995,7 @@
             function L() {
                 let e = h - 1,
                     n = t.character;
-                for (; e >= 0 && bs(c, e); ) (e--, n--);
+                for (; e >= 0 && bs(c, e);) (e--, n--);
                 if (e >= 0 && "&" === c[e]) {
                     const e = lo.create(so.create(t.line, n - 1), t);
                     for (const t in ss)
@@ -17026,7 +17026,7 @@
                 });
             }
             let C = u.scan();
-            for (; C !== Ia.EOS && u.getTokenOffset() <= h; ) {
+            for (; C !== Ia.EOS && u.getTokenOffset() <= h;) {
                 switch (C) {
                     case Ia.StartTagOpen:
                         if (u.getTokenEnd() === h) {
@@ -17081,7 +17081,7 @@
                     case Ia.EndTag:
                         if (h <= u.getTokenEnd()) {
                             let e = u.getTokenOffset() - 1;
-                            for (; e >= 0; ) {
+                            for (; e >= 0;) {
                                 const t = c.charAt(e);
                                 if ("/" === t) return _(e, !1, u.getTokenEnd());
                                 if (!As(t)) break;
@@ -17119,16 +17119,16 @@
             ) {
                 const t = is(e.getText(), s.start);
                 let n = t.scan();
-                for (; n !== Ia.EOS && t.getTokenEnd() <= r; ) {
+                for (; n !== Ia.EOS && t.getTokenEnd() <= r;) {
                     if (n === Ia.AttributeName && t.getTokenEnd() === r - 1)
                         return (
                             (n = t.scan()),
                             n !== Ia.DelimiterAssign
                                 ? null
                                 : ((n = t.scan()),
-                                  n === Ia.Unknown || n === Ia.AttributeValue
-                                      ? null
-                                      : a)
+                                    n === Ia.Unknown || n === Ia.AttributeValue
+                                        ? null
+                                        : a)
                         );
                     n = t.scan();
                 }
@@ -17151,7 +17151,7 @@
                 ) {
                     const t = is(e.getText(), r.start);
                     let n = t.scan();
-                    for (; n !== Ia.EOS && t.getTokenEnd() <= i; ) {
+                    for (; n !== Ia.EOS && t.getTokenEnd() <= i;) {
                         if (n === Ia.StartTagClose && t.getTokenEnd() === i)
                             return `$0</${r.tag}>`;
                         n = t.scan();
@@ -17159,12 +17159,12 @@
                 }
             } else if ("/" === r) {
                 let t = n.findNodeBefore(i);
-                for (; t && t.closed && !(t.endTagStart && t.endTagStart > i); )
+                for (; t && t.closed && !(t.endTagStart && t.endTagStart > i);)
                     t = t.parent;
                 if (t && t.tag) {
                     const n = is(e.getText(), t.start);
                     let r = n.scan();
-                    for (; r !== Ia.EOS && n.getTokenEnd() <= i; ) {
+                    for (; r !== Ia.EOS && n.getTokenEnd() <= i;) {
                         if (r === Ia.EndTagOpen && n.getTokenEnd() === i)
                             return ">" !== e.getText().charAt(i)
                                 ? `${t.tag}>`
@@ -17178,14 +17178,14 @@
         convertCompletionList(e) {
             return (
                 this.doesSupportMarkdown() ||
-                    e.items.forEach((e) => {
-                        e.documentation &&
-                            "string" != typeof e.documentation &&
-                            (e.documentation = {
-                                kind: "plaintext",
-                                value: e.documentation.value,
-                            });
-                    }),
+                e.items.forEach((e) => {
+                    e.documentation &&
+                        "string" != typeof e.documentation &&
+                        (e.documentation = {
+                            kind: "plaintext",
+                            value: e.documentation.value,
+                        });
+                }),
                 e
             );
         }
@@ -17211,7 +17211,7 @@
     function Rs(e, t, n, i) {
         const r = is(e, t, n);
         let o = r.scan();
-        for (; o === Ia.Whitespace; ) o = r.scan();
+        for (; o === Ia.Whitespace;) o = r.scan();
         return o === i;
     }
     class Ms {
@@ -17243,7 +17243,7 @@
                                     (n = { contents: e, range: t }));
                             }
                         }),
-                        n)
+                            n)
                     )
                         return ((n.contents = r(n.contents)), n);
                 }
@@ -17260,9 +17260,9 @@
                     r = i.scan();
                 return r === t && a <= i.getTokenEnd()
                     ? {
-                          start: e.positionAt(i.getTokenOffset()),
-                          end: e.positionAt(i.getTokenEnd()),
-                      }
+                        start: e.positionAt(i.getTokenOffset()),
+                        end: e.positionAt(i.getTokenEnd()),
+                    }
                     : null;
             }
             if (s.endTagStart && a >= s.endTagStart) {
@@ -17283,7 +17283,7 @@
                                     s = t ? { contents: t, range: n } : null;
                                 }
                             }),
-                            s)
+                                s)
                         )
                             return ((s.contents = r(s.contents)), s);
                     }
@@ -17293,23 +17293,23 @@
             const p = (function () {
                 let e = a - 1,
                     n = t.character;
-                for (; e >= 0 && bs(l, e); ) (e--, n--);
+                for (; e >= 0 && bs(l, e);) (e--, n--);
                 let i = e + 1,
                     r = n;
-                for (; bs(l, i); ) (i++, r++);
+                for (; bs(l, i);) (i++, r++);
                 if (e >= 0 && "&" === l[e]) {
                     let e = null;
                     return (
                         (e =
                             ";" === l[i]
                                 ? lo.create(
-                                      so.create(t.line, n),
-                                      so.create(t.line, r + 1),
-                                  )
+                                    so.create(t.line, n),
+                                    so.create(t.line, r + 1),
+                                )
                                 : lo.create(
-                                      so.create(t.line, n),
-                                      so.create(t.line, r),
-                                  )),
+                                    so.create(t.line, n),
+                                    so.create(t.line, r),
+                                )),
                         e
                     );
                 }
@@ -17320,22 +17320,22 @@
                     let n = (function (e) {
                         let t = a - 1,
                             n = "&";
-                        for (; t >= 0 && bs(e, t); ) t--;
-                        for (t += 1; bs(e, t); ) ((n += e[t]), (t += 1));
+                        for (; t >= 0 && bs(e, t);) t--;
+                        for (t += 1; bs(e, t);) ((n += e[t]), (t += 1));
                         return ((n += ";"), n);
                     })(e);
                     for (const i in ss) {
                         let e = null;
                         if (n === "&" + i) {
                             let n = ss[i]
-                                    .charCodeAt(0)
-                                    .toString(16)
-                                    .toUpperCase(),
+                                .charCodeAt(0)
+                                .toString(16)
+                                .toUpperCase(),
                                 r = "U+";
                             if (n.length < 4) {
                                 const e = 4 - n.length;
                                 let t = 0;
-                                for (; t < e; ) ((r += "0"), (t += 1));
+                                for (; t < e;) ((r += "0"), (t += 1));
                             }
                             r += n;
                             const o = no(
@@ -17363,10 +17363,10 @@
                         const i = is(e.getText(), t);
                         let r,
                             o = i.scan();
-                        for (; o !== Ia.EOS && i.getTokenEnd() <= n; )
+                        for (; o !== Ia.EOS && i.getTokenEnd() <= n;)
                             ((o = i.scan()),
                                 o === Ia.AttributeName &&
-                                    (r = i.getTokenText()));
+                                (r = i.getTokenText()));
                         return r;
                     })(s.start, e.offsetAt(g.start));
                 if (a)
@@ -17382,7 +17382,7 @@
                                             : null;
                                     }
                                 }),
-                                l)
+                                    l)
                             )
                                 return ((l.contents = r(l.contents)), l);
                         }
@@ -17440,14 +17440,14 @@
                     (this.__indent_size = e.indent_size),
                     (this.__indent_string = e.indent_char),
                     e.indent_with_tabs ||
-                        (this.__indent_string = new Array(
-                            e.indent_size + 1,
-                        ).join(e.indent_char)),
+                    (this.__indent_string = new Array(
+                        e.indent_size + 1,
+                    ).join(e.indent_char)),
                     (t = t || ""),
                     e.indent_level > 0 &&
-                        (t = new Array(e.indent_level + 1).join(
-                            this.__indent_string,
-                        )),
+                    (t = new Array(e.indent_level + 1).join(
+                        this.__indent_string,
+                    )),
                     (this.__base_string = t),
                     (this.__base_string_length = t.length));
             }
@@ -17487,29 +17487,29 @@
                 (t.prototype.set_indent = function (e, t) {
                     this.is_empty() &&
                         ((this.__indent_count = e || 0),
-                        (this.__alignment_count = t || 0),
-                        (this.__character_count = this.__parent.get_indent_size(
-                            this.__indent_count,
-                            this.__alignment_count,
-                        )));
+                            (this.__alignment_count = t || 0),
+                            (this.__character_count = this.__parent.get_indent_size(
+                                this.__indent_count,
+                                this.__alignment_count,
+                            )));
                 }),
                 (t.prototype._set_wrap_point = function () {
                     this.__parent.wrap_line_length &&
                         ((this.__wrap_point_index = this.__items.length),
-                        (this.__wrap_point_character_count =
-                            this.__character_count),
-                        (this.__wrap_point_indent_count =
-                            this.__parent.next_line.__indent_count),
-                        (this.__wrap_point_alignment_count =
-                            this.__parent.next_line.__alignment_count));
+                            (this.__wrap_point_character_count =
+                                this.__character_count),
+                            (this.__wrap_point_indent_count =
+                                this.__parent.next_line.__indent_count),
+                            (this.__wrap_point_alignment_count =
+                                this.__parent.next_line.__alignment_count));
                 }),
                 (t.prototype._should_wrap = function () {
                     return (
                         this.__wrap_point_index &&
                         this.__character_count >
-                            this.__parent.wrap_line_length &&
+                        this.__parent.wrap_line_length &&
                         this.__wrap_point_character_count >
-                            this.__parent.next_line.__character_count
+                        this.__parent.next_line.__character_count
                     );
                 }),
                 (t.prototype._allow_wrap = function () {
@@ -17534,7 +17534,7 @@
                             (this.__character_count =
                                 this.__wrap_point_character_count),
                             " " === e.__items[0] &&
-                                (e.__items.splice(0, 1),
+                            (e.__items.splice(0, 1),
                                 (e.__character_count -= 1)),
                             !0
                         );
@@ -17560,7 +17560,7 @@
                     var e = null;
                     return (
                         this.is_empty() ||
-                            ((e = this.__items.pop()),
+                        ((e = this.__items.pop()),
                             (this.__character_count -= e.length)),
                         e
                     );
@@ -17568,14 +17568,14 @@
                 (t.prototype._remove_indent = function () {
                     this.__indent_count > 0 &&
                         ((this.__indent_count -= 1),
-                        (this.__character_count -= this.__parent.indent_size));
+                            (this.__character_count -= this.__parent.indent_size));
                 }),
                 (t.prototype._remove_wrap_indent = function () {
                     this.__wrap_point_indent_count > 0 &&
                         (this.__wrap_point_indent_count -= 1);
                 }),
                 (t.prototype.trim = function () {
-                    for (; " " === this.last(); )
+                    for (; " " === this.last();)
                         (this.__items.pop(), (this.__character_count -= 1));
                 }),
                 (t.prototype.toString = function () {
@@ -17583,14 +17583,14 @@
                     return (
                         this.is_empty()
                             ? this.__parent.indent_empty_lines &&
-                              (e = this.__parent.get_indent_string(
-                                  this.__indent_count,
-                              ))
+                            (e = this.__parent.get_indent_string(
+                                this.__indent_count,
+                            ))
                             : ((e = this.__parent.get_indent_string(
-                                  this.__indent_count,
-                                  this.__alignment_count,
-                              )),
-                              (e += this.__items.join(""))),
+                                this.__indent_count,
+                                this.__alignment_count,
+                            )),
+                                (e += this.__items.join(""))),
                         e
                     );
                 }),
@@ -17614,7 +17614,7 @@
                     );
                 }),
                 (n.prototype.__ensure_cache = function (e) {
-                    for (; e >= this.__cache.length; ) this.__add_column();
+                    for (; e >= this.__cache.length;) this.__add_column();
                 }),
                 (n.prototype.__add_column = function () {
                     var e = this.__cache.length,
@@ -17625,7 +17625,7 @@
                         ((e -=
                             (t = Math.floor(e / this.__indent_size)) *
                             this.__indent_size),
-                        (n = new Array(t + 1).join(this.__indent_string))),
+                            (n = new Array(t + 1).join(this.__indent_string))),
                         e && (n += new Array(e + 1).join(" ")),
                         this.__cache.push(n));
                 }),
@@ -17659,7 +17659,7 @@
                     (t &&
                         ("\n" === t[t.length - 1] &&
                             (t = t.replace(/\n+$/g, "")),
-                        this.current_line.push(t)),
+                            this.current_line.push(t)),
                         this._end_with_newline && this.__add_outputline());
                     var n = this.__lines.join("\n");
                     return ("\n" !== e && (n = n.replace(/[\n]/g, e)), n);
@@ -17699,10 +17699,10 @@
                     this.space_before_token &&
                         !this.just_added_newline() &&
                         (this.non_breaking_space || this.set_wrap_point(),
-                        this.current_line.push(" "));
+                            this.current_line.push(" "));
                 }),
                 (i.prototype.remove_indent = function (e) {
-                    for (var t = this.__lines.length; e < t; )
+                    for (var t = this.__lines.length; e < t;)
                         (this.__lines[e]._remove_indent(), e++);
                     this.current_line._remove_wrap_indent();
                 }),
@@ -17733,7 +17733,7 @@
                     );
                 }),
                 (i.prototype.ensure_empty_line_above = function (e, n) {
-                    for (var i = this.__lines.length - 2; i >= 0; ) {
+                    for (var i = this.__lines.length - 2; i >= 0;) {
                         var r = this.__lines[i];
                         if (r.is_empty()) break;
                         if (0 !== r.item(0).indexOf(e) && r.item(-1) !== n) {
@@ -17777,7 +17777,7 @@
                         "\t" === this.indent_char,
                     )),
                     this.indent_with_tabs &&
-                        ((this.indent_char = "\t"),
+                    ((this.indent_char = "\t"),
                         1 === this.indent_size && (this.indent_size = 4)),
                     (this.wrap_line_length = this._get_number(
                         "wrap_line_length",
@@ -17819,10 +17819,10 @@
                 return (
                     "object" == typeof n
                         ? null !== n &&
-                          "function" == typeof n.concat &&
-                          (i = n.concat())
+                        "function" == typeof n.concat &&
+                        (i = n.concat())
                         : "string" == typeof n &&
-                          (i = n.split(/[^a-zA-Z0-9_\/\-]+/)),
+                        (i = n.split(/[^a-zA-Z0-9_\/\-]+/)),
                     i
                 );
             }),
@@ -17835,10 +17835,10 @@
                         i = t || "";
                     return (
                         "string" == typeof n &&
-                            (i = n
-                                .replace(/\\r/, "\r")
-                                .replace(/\\n/, "\n")
-                                .replace(/\\t/, "\t")),
+                        (i = n
+                            .replace(/\\r/, "\r")
+                            .replace(/\\n/, "\n")
+                            .replace(/\\t/, "\t")),
                         i
                     );
                 }),
@@ -17853,12 +17853,12 @@
                     if (1 !== i.length)
                         throw new Error(
                             "Invalid Option Value: The option '" +
-                                e +
-                                "' can only be one of the following values:\n" +
-                                t +
-                                "\nYou passed in: '" +
-                                this.raw_options[e] +
-                                "'",
+                            e +
+                            "' can only be one of the following values:\n" +
+                            t +
+                            "\nYou passed in: '" +
+                            this.raw_options[e] +
+                            "'",
                         );
                     return i[0];
                 }),
@@ -17871,12 +17871,12 @@
                     if (!this._is_valid_selection(i, t))
                         throw new Error(
                             "Invalid Option Value: The option '" +
-                                e +
-                                "' can contain only the following values:\n" +
-                                t +
-                                "\nYou passed in: '" +
-                                this.raw_options[e] +
-                                "'",
+                            e +
+                            "' can contain only the following values:\n" +
+                            t +
+                            "\nYou passed in: '" +
+                            this.raw_options[e] +
+                            "'",
                         );
                     return i;
                 }),
@@ -17914,7 +17914,7 @@
                     var e = null;
                     return (
                         this.hasNext() &&
-                            ((e = this.__input.charAt(this.__position)),
+                        ((e = this.__input.charAt(this.__position)),
                             (this.__position += 1)),
                         e
                     );
@@ -17924,8 +17924,8 @@
                     return (
                         (e = e || 0),
                         (e += this.__position) >= 0 &&
-                            e < this.__input_length &&
-                            (t = this.__input.charAt(e)),
+                        e < this.__input_length &&
+                        (t = this.__input.charAt(e)),
                         t
                     );
                 }),
@@ -17941,8 +17941,8 @@
                     return (
                         (t = t || 0),
                         (t += this.__position) >= 0 &&
-                            t < this.__input_length &&
-                            !!this.__match(e, t)
+                        t < this.__input_length &&
+                        !!this.__match(e, t)
                     );
                 }),
                 (n.prototype.testChar = function (e, t) {
@@ -18034,7 +18034,7 @@
                 if (!e.match(this.__directives_block_pattern)) return null;
                 var t = {};
                 this.__directive_pattern.lastIndex = 0;
-                for (var n = this.__directive_pattern.exec(e); n; )
+                for (var n = this.__directive_pattern.exec(e); n;)
                     ((t[n[1]] = n[2]), (n = this.__directive_pattern.exec(e)));
                 return t;
             }),
@@ -18092,7 +18092,7 @@
             }
             ((m.prototype.eatString = function (e) {
                 var t = "";
-                for (this._ch = this._input.next(); this._ch; ) {
+                for (this._ch = this._input.next(); this._ch;) {
                     if (((t += this._ch), "\\" === this._ch))
                         t += this._input.next();
                     else if (-1 !== e.indexOf(this._ch) || "\n" === this._ch)
@@ -18108,14 +18108,14 @@
                     )
                         ((this._ch = this._input.next()),
                             e &&
-                                "\n" === this._ch &&
-                                (0 === n ||
-                                    n < this._options.max_preserve_newlines) &&
-                                (n++, this._output.add_new_line(!0)));
+                            "\n" === this._ch &&
+                            (0 === n ||
+                                n < this._options.max_preserve_newlines) &&
+                            (n++, this._output.add_new_line(!0)));
                     return t;
                 }),
                 (m.prototype.foundNestedPseudoClass = function () {
-                    for (var e = 0, t = 1, n = this._input.peek(t); n; ) {
+                    for (var e = 0, t = 1, n = this._input.peek(t); n;) {
                         if ("{" === n) return !0;
                         if ("(" === n) e += 1;
                         else if (")" === n) {
@@ -18146,7 +18146,7 @@
                         t = this._options.eol;
                     "auto" === t &&
                         ((t = "\n"),
-                        e && s.test(e || "") && (t = e.match(s)[0]));
+                            e && s.test(e || "") && (t = e.match(s)[0]));
                     var n = (e = e.replace(l, "\n")).match(/^[\t ]*/)[0];
                     ((this._output = new r(this._options, n)),
                         (this._input = new o(e)),
@@ -18155,23 +18155,23 @@
                         (this._ch = null));
                     for (
                         var i,
-                            m,
-                            p = 0,
-                            g = !1,
-                            f = !1,
-                            b = !1,
-                            _ = !1,
-                            w = !1,
-                            v = this._ch,
-                            y = !1;
+                        m,
+                        p = 0,
+                        g = !1,
+                        f = !1,
+                        b = !1,
+                        _ = !1,
+                        w = !1,
+                        v = this._ch,
+                        y = !1;
                         (i = "" !== this._input.read(h)),
-                            (m = v),
-                            (this._ch = this._input.next()),
-                            "\\" === this._ch &&
-                                this._input.hasNext() &&
-                                (this._ch += this._input.next()),
-                            (v = this._ch),
-                            this._ch;
+                        (m = v),
+                        (this._ch = this._input.next()),
+                        "\\" === this._ch &&
+                        this._input.hasNext() &&
+                        (this._ch += this._input.next()),
+                        (v = this._ch),
+                        this._ch;
                     )
                         if ("/" === this._ch && "*" === this._input.peek()) {
                             (this._output.add_new_line(), this._input.back());
@@ -18200,15 +18200,15 @@
                                 );
                             (S.match(/[ :]$/) &&
                                 ((S = this.eatString(": ").replace(/\s+$/, "")),
-                                this.print_string(S),
-                                (this._output.space_before_token = !0)),
+                                    this.print_string(S),
+                                    (this._output.space_before_token = !0)),
                                 0 === p &&
-                                    -1 !== S.indexOf(":") &&
-                                    ((f = !0), this.indent()));
+                                -1 !== S.indexOf(":") &&
+                                ((f = !0), this.indent()));
                         } else if ("@" === this._ch)
                             if (
                                 (this.preserveSingleSpace(i),
-                                "{" === this._input.peek())
+                                    "{" === this._input.peek())
                             )
                                 this.print_string(
                                     this._ch + this.eatString("}"),
@@ -18224,15 +18224,15 @@
                                         /\s+$/,
                                         "",
                                     )),
-                                    this.print_string(L),
-                                    (this._output.space_before_token = !0)),
+                                        this.print_string(L),
+                                        (this._output.space_before_token = !0)),
                                     0 === p && -1 !== L.indexOf(":")
                                         ? ((f = !0), this.indent())
                                         : L in this.NESTED_AT_RULE
-                                          ? ((this._nestedLevel += 1),
-                                            L in this.CONDITIONAL_GROUP_RULE &&
+                                            ? ((this._nestedLevel += 1),
+                                                L in this.CONDITIONAL_GROUP_RULE &&
                                                 (b = !0))
-                                          : 0 !== p || f || (_ = !0));
+                                            : 0 !== p || f || (_ = !0));
                             }
                         else if ("#" === this._ch && "{" === this._input.peek())
                             (this.preserveSingleSpace(i),
@@ -18244,34 +18244,34 @@
                                 (_ = !1),
                                 b
                                     ? ((b = !1),
-                                      (g =
-                                          this._indentLevel >=
-                                          this._nestedLevel))
+                                        (g =
+                                            this._indentLevel >=
+                                            this._nestedLevel))
                                     : (g =
-                                          this._indentLevel >=
-                                          this._nestedLevel - 1),
+                                        this._indentLevel >=
+                                        this._nestedLevel - 1),
                                 this._options.newline_between_rules &&
-                                    g &&
-                                    this._output.previous_line &&
-                                    "{" !==
-                                        this._output.previous_line.item(-1) &&
-                                    this._output.ensure_empty_line_above(
-                                        "/",
-                                        ",",
-                                    ),
+                                g &&
+                                this._output.previous_line &&
+                                "{" !==
+                                this._output.previous_line.item(-1) &&
+                                this._output.ensure_empty_line_above(
+                                    "/",
+                                    ",",
+                                ),
                                 (this._output.space_before_token = !0),
                                 "expand" === this._options.brace_style
                                     ? (this._output.add_new_line(),
-                                      this.print_string(this._ch),
-                                      this.indent(),
-                                      this._output.set_indent(
-                                          this._indentLevel,
-                                      ))
+                                        this.print_string(this._ch),
+                                        this.indent(),
+                                        this._output.set_indent(
+                                            this._indentLevel,
+                                        ))
                                     : ("(" === m
-                                          ? (this._output.space_before_token =
-                                                !1)
-                                          : "," !== m && this.indent(),
-                                      this.print_string(this._ch)),
+                                        ? (this._output.space_before_token =
+                                            !1)
+                                        : "," !== m && this.indent(),
+                                        this.print_string(this._ch)),
                                 this.eatWhitespace(!0),
                                 this._output.add_new_line());
                         else if ("}" === this._ch)
@@ -18285,13 +18285,13 @@
                                 this.eatWhitespace(!0),
                                 this._output.add_new_line(),
                                 this._options.newline_between_rules &&
-                                    !this._output.just_added_blankline() &&
-                                    "}" !== this._input.peek() &&
-                                    this._output.add_new_line(!0),
+                                !this._output.just_added_blankline() &&
+                                "}" !== this._input.peek() &&
+                                this._output.add_new_line(!0),
                                 ")" === this._input.peek() &&
-                                    (this._output.trim(!0),
+                                (this._output.trim(!0),
                                     "expand" === this._options.brace_style &&
-                                        this._output.add_new_line(!0)));
+                                    this._output.add_new_line(!0)));
                         else if (":" === this._ch) {
                             for (
                                 var x = 0;
@@ -18307,23 +18307,23 @@
                                     break;
                                 }
                             (!g && !b) ||
-                            this._input.lookBack("&") ||
-                            this.foundNestedPseudoClass() ||
-                            this._input.lookBack("(") ||
-                            _ ||
-                            0 !== p
+                                this._input.lookBack("&") ||
+                                this.foundNestedPseudoClass() ||
+                                this._input.lookBack("(") ||
+                                _ ||
+                                0 !== p
                                 ? (this._input.lookBack(" ") &&
-                                      (this._output.space_before_token = !0),
-                                  ":" === this._input.peek()
-                                      ? ((this._ch = this._input.next()),
-                                        this.print_string("::"))
-                                      : this.print_string(":"))
+                                    (this._output.space_before_token = !0),
+                                    ":" === this._input.peek()
+                                        ? ((this._ch = this._input.next()),
+                                            this.print_string("::"))
+                                        : this.print_string(":"))
                                 : (this.print_string(":"),
-                                  f ||
-                                      ((f = !0),
-                                      (this._output.space_before_token = !0),
-                                      this.eatWhitespace(!0),
-                                      this.indent()));
+                                    f ||
+                                    ((f = !0),
+                                        (this._output.space_before_token = !0),
+                                        this.eatWhitespace(!0),
+                                        this.indent()));
                         } else if ('"' === this._ch || "'" === this._ch) {
                             var C = '"' === m || "'" === m;
                             (this.preserveSingleSpace(C || i),
@@ -18335,14 +18335,14 @@
                             ((y = !1),
                                 0 === p
                                     ? (f && (this.outdent(), (f = !1)),
-                                      (_ = !1),
-                                      this.print_string(this._ch),
-                                      this.eatWhitespace(!0),
-                                      "/" !== this._input.peek() &&
-                                          this._output.add_new_line())
+                                        (_ = !1),
+                                        this.print_string(this._ch),
+                                        this.eatWhitespace(!0),
+                                        "/" !== this._input.peek() &&
+                                        this._output.add_new_line())
                                     : (this.print_string(this._ch),
-                                      this.eatWhitespace(!0),
-                                      (this._output.space_before_token = !0)));
+                                        this.eatWhitespace(!0),
+                                        (this._output.space_before_token = !0)));
                         else if ("(" === this._ch)
                             if (this._input.lookBack("url"))
                                 (this.print_string(this._ch),
@@ -18351,34 +18351,34 @@
                                     this.indent(),
                                     (this._ch = this._input.next()),
                                     ")" === this._ch ||
-                                    '"' === this._ch ||
-                                    "'" === this._ch
+                                        '"' === this._ch ||
+                                        "'" === this._ch
                                         ? this._input.back()
                                         : this._ch &&
-                                          (this.print_string(
-                                              this._ch + this.eatString(")"),
-                                          ),
-                                          p && (p--, this.outdent())));
+                                        (this.print_string(
+                                            this._ch + this.eatString(")"),
+                                        ),
+                                            p && (p--, this.outdent())));
                             else {
                                 var E = !1;
                                 (this._input.lookBack("with") && (E = !0),
                                     this.preserveSingleSpace(i || E),
                                     this.print_string(this._ch),
                                     f &&
-                                    "$" === m &&
-                                    this._options.selector_separator_newline
+                                        "$" === m &&
+                                        this._options.selector_separator_newline
                                         ? (this._output.add_new_line(),
-                                          (w = !0))
+                                            (w = !0))
                                         : (this.eatWhitespace(),
-                                          p++,
-                                          this.indent()));
+                                            p++,
+                                            this.indent()));
                             }
                         else if (")" === this._ch)
                             (p && (p--, this.outdent()),
                                 w &&
-                                    ";" === this._input.peek() &&
-                                    this._options.selector_separator_newline &&
-                                    ((w = !1),
+                                ";" === this._input.peek() &&
+                                this._options.selector_separator_newline &&
+                                ((w = !1),
                                     this.outdent(),
                                     this._output.add_new_line()),
                                 this.print_string(this._ch));
@@ -18386,9 +18386,9 @@
                             (this.print_string(this._ch),
                                 this.eatWhitespace(!0),
                                 !this._options.selector_separator_newline ||
-                                (f && !w) ||
-                                0 !== p ||
-                                _
+                                    (f && !w) ||
+                                    0 !== p ||
+                                    _
                                     ? (this._output.space_before_token = !0)
                                     : this._output.add_new_line());
                         else if (
@@ -18414,22 +18414,22 @@
                                 (this.preserveSingleSpace(A || i),
                                     this.print_string(this._ch),
                                     !this._output.just_added_newline() &&
-                                        "\n" === this._input.peek() &&
-                                        y &&
-                                        this._output.add_new_line());
+                                    "\n" === this._input.peek() &&
+                                    y &&
+                                    this._output.add_new_line());
                             } else
                                 ((this._output.space_before_token = !0),
                                     this.print_string(this._ch));
                         else
                             this._options.space_around_combinator
                                 ? ((this._output.space_before_token = !0),
-                                  this.print_string(this._ch),
-                                  (this._output.space_before_token = !0))
+                                    this.print_string(this._ch),
+                                    (this._output.space_before_token = !0))
                                 : (this.print_string(this._ch),
-                                  this.eatWhitespace(),
-                                  this._ch &&
-                                      c.test(this._ch) &&
-                                      (this._ch = ""));
+                                    this.eatWhitespace(),
+                                    this._ch &&
+                                    c.test(this._ch) &&
+                                    (this._ch = ""));
                     return this._output.get_code(t);
                 }),
                 (e.exports.Beautifier = m));
@@ -18483,11 +18483,11 @@
         if (t) {
             let a = e.offsetAt(t.start),
                 s = a;
-            for (; s > 0 && Bs(i, s - 1); ) s--;
+            for (; s > 0 && Bs(i, s - 1);) s--;
             0 === s || Vs(i, s - 1) ? (a = s) : s < a && (a = s + 1);
             let l = e.offsetAt(t.end),
                 c = l;
-            for (; c < i.length && Bs(i, c); ) c++;
+            for (; c < i.length && Bs(i, c);) c++;
             ((c === i.length || Vs(i, c)) && (l = c),
                 (t = lo.create(e.positionAt(a), e.positionAt(l))));
             const h = i.substring(0, a);
@@ -18499,7 +18499,7 @@
                     let i = t,
                         r = 0;
                     const o = n.tabSize || 4;
-                    for (; i < e.length; ) {
+                    for (; i < e.length;) {
                         const t = e.charAt(i);
                         if (" " === t) r++;
                         else {
@@ -18570,8 +18570,8 @@
         return !0 === n
             ? ["auto"]
             : !1 === n || n === t || !1 === Array.isArray(n)
-              ? ["none"]
-              : n;
+                ? ["none"]
+                : n;
     }
     function Vs(e, t) {
         return -1 !== "\r\n".indexOf(e.charAt(t));
@@ -18581,1713 +18581,1713 @@
     }
     (!(function () {
         var e = [
-                ,
-                ,
-                function (e) {
-                    function t(e) {
-                        ((this.__parent = e),
-                            (this.__character_count = 0),
-                            (this.__indent_count = -1),
-                            (this.__alignment_count = 0),
-                            (this.__wrap_point_index = 0),
-                            (this.__wrap_point_character_count = 0),
-                            (this.__wrap_point_indent_count = -1),
-                            (this.__wrap_point_alignment_count = 0),
-                            (this.__items = []));
-                    }
-                    function n(e, t) {
-                        ((this.__cache = [""]),
-                            (this.__indent_size = e.indent_size),
-                            (this.__indent_string = e.indent_char),
-                            e.indent_with_tabs ||
-                                (this.__indent_string = new Array(
-                                    e.indent_size + 1,
-                                ).join(e.indent_char)),
-                            (t = t || ""),
-                            e.indent_level > 0 &&
-                                (t = new Array(e.indent_level + 1).join(
-                                    this.__indent_string,
-                                )),
-                            (this.__base_string = t),
-                            (this.__base_string_length = t.length));
-                    }
-                    function i(e, i) {
-                        ((this.__indent_cache = new n(e, i)),
-                            (this.raw = !1),
-                            (this._end_with_newline = e.end_with_newline),
-                            (this.indent_size = e.indent_size),
-                            (this.wrap_line_length = e.wrap_line_length),
-                            (this.indent_empty_lines = e.indent_empty_lines),
-                            (this.__lines = []),
-                            (this.previous_line = null),
-                            (this.current_line = null),
-                            (this.next_line = new t(this)),
-                            (this.space_before_token = !1),
-                            (this.non_breaking_space = !1),
-                            (this.previous_token_wrapped = !1),
-                            this.__add_outputline());
-                    }
-                    ((t.prototype.clone_empty = function () {
-                        var e = new t(this.__parent);
-                        return (
-                            e.set_indent(
-                                this.__indent_count,
-                                this.__alignment_count,
-                            ),
-                            e
-                        );
+            ,
+            ,
+            function (e) {
+                function t(e) {
+                    ((this.__parent = e),
+                        (this.__character_count = 0),
+                        (this.__indent_count = -1),
+                        (this.__alignment_count = 0),
+                        (this.__wrap_point_index = 0),
+                        (this.__wrap_point_character_count = 0),
+                        (this.__wrap_point_indent_count = -1),
+                        (this.__wrap_point_alignment_count = 0),
+                        (this.__items = []));
+                }
+                function n(e, t) {
+                    ((this.__cache = [""]),
+                        (this.__indent_size = e.indent_size),
+                        (this.__indent_string = e.indent_char),
+                        e.indent_with_tabs ||
+                        (this.__indent_string = new Array(
+                            e.indent_size + 1,
+                        ).join(e.indent_char)),
+                        (t = t || ""),
+                        e.indent_level > 0 &&
+                        (t = new Array(e.indent_level + 1).join(
+                            this.__indent_string,
+                        )),
+                        (this.__base_string = t),
+                        (this.__base_string_length = t.length));
+                }
+                function i(e, i) {
+                    ((this.__indent_cache = new n(e, i)),
+                        (this.raw = !1),
+                        (this._end_with_newline = e.end_with_newline),
+                        (this.indent_size = e.indent_size),
+                        (this.wrap_line_length = e.wrap_line_length),
+                        (this.indent_empty_lines = e.indent_empty_lines),
+                        (this.__lines = []),
+                        (this.previous_line = null),
+                        (this.current_line = null),
+                        (this.next_line = new t(this)),
+                        (this.space_before_token = !1),
+                        (this.non_breaking_space = !1),
+                        (this.previous_token_wrapped = !1),
+                        this.__add_outputline());
+                }
+                ((t.prototype.clone_empty = function () {
+                    var e = new t(this.__parent);
+                    return (
+                        e.set_indent(
+                            this.__indent_count,
+                            this.__alignment_count,
+                        ),
+                        e
+                    );
+                }),
+                    (t.prototype.item = function (e) {
+                        return e < 0
+                            ? this.__items[this.__items.length + e]
+                            : this.__items[e];
                     }),
-                        (t.prototype.item = function (e) {
-                            return e < 0
-                                ? this.__items[this.__items.length + e]
-                                : this.__items[e];
-                        }),
-                        (t.prototype.has_match = function (e) {
-                            for (var t = this.__items.length - 1; t >= 0; t--)
-                                if (this.__items[t].match(e)) return !0;
-                            return !1;
-                        }),
-                        (t.prototype.set_indent = function (e, t) {
-                            this.is_empty() &&
-                                ((this.__indent_count = e || 0),
+                    (t.prototype.has_match = function (e) {
+                        for (var t = this.__items.length - 1; t >= 0; t--)
+                            if (this.__items[t].match(e)) return !0;
+                        return !1;
+                    }),
+                    (t.prototype.set_indent = function (e, t) {
+                        this.is_empty() &&
+                            ((this.__indent_count = e || 0),
                                 (this.__alignment_count = t || 0),
                                 (this.__character_count =
                                     this.__parent.get_indent_size(
                                         this.__indent_count,
                                         this.__alignment_count,
                                     )));
-                        }),
-                        (t.prototype._set_wrap_point = function () {
-                            this.__parent.wrap_line_length &&
-                                ((this.__wrap_point_index =
-                                    this.__items.length),
+                    }),
+                    (t.prototype._set_wrap_point = function () {
+                        this.__parent.wrap_line_length &&
+                            ((this.__wrap_point_index =
+                                this.__items.length),
                                 (this.__wrap_point_character_count =
                                     this.__character_count),
                                 (this.__wrap_point_indent_count =
                                     this.__parent.next_line.__indent_count),
                                 (this.__wrap_point_alignment_count =
                                     this.__parent.next_line.__alignment_count));
-                        }),
-                        (t.prototype._should_wrap = function () {
-                            return (
-                                this.__wrap_point_index &&
-                                this.__character_count >
-                                    this.__parent.wrap_line_length &&
-                                this.__wrap_point_character_count >
-                                    this.__parent.next_line.__character_count
-                            );
-                        }),
-                        (t.prototype._allow_wrap = function () {
-                            if (this._should_wrap()) {
-                                this.__parent.add_new_line();
-                                var e = this.__parent.current_line;
-                                return (
-                                    e.set_indent(
-                                        this.__wrap_point_indent_count,
-                                        this.__wrap_point_alignment_count,
-                                    ),
-                                    (e.__items = this.__items.slice(
-                                        this.__wrap_point_index,
-                                    )),
-                                    (this.__items = this.__items.slice(
-                                        0,
-                                        this.__wrap_point_index,
-                                    )),
-                                    (e.__character_count +=
-                                        this.__character_count -
-                                        this.__wrap_point_character_count),
-                                    (this.__character_count =
-                                        this.__wrap_point_character_count),
-                                    " " === e.__items[0] &&
-                                        (e.__items.splice(0, 1),
-                                        (e.__character_count -= 1)),
-                                    !0
-                                );
-                            }
-                            return !1;
-                        }),
-                        (t.prototype.is_empty = function () {
-                            return 0 === this.__items.length;
-                        }),
-                        (t.prototype.last = function () {
-                            return this.is_empty()
-                                ? null
-                                : this.__items[this.__items.length - 1];
-                        }),
-                        (t.prototype.push = function (e) {
-                            this.__items.push(e);
-                            var t = e.lastIndexOf("\n");
-                            -1 !== t
-                                ? (this.__character_count = e.length - t)
-                                : (this.__character_count += e.length);
-                        }),
-                        (t.prototype.pop = function () {
-                            var e = null;
-                            return (
-                                this.is_empty() ||
-                                    ((e = this.__items.pop()),
-                                    (this.__character_count -= e.length)),
-                                e
-                            );
-                        }),
-                        (t.prototype._remove_indent = function () {
-                            this.__indent_count > 0 &&
-                                ((this.__indent_count -= 1),
-                                (this.__character_count -=
-                                    this.__parent.indent_size));
-                        }),
-                        (t.prototype._remove_wrap_indent = function () {
-                            this.__wrap_point_indent_count > 0 &&
-                                (this.__wrap_point_indent_count -= 1);
-                        }),
-                        (t.prototype.trim = function () {
-                            for (; " " === this.last(); )
-                                (this.__items.pop(),
-                                    (this.__character_count -= 1));
-                        }),
-                        (t.prototype.toString = function () {
-                            var e = "";
-                            return (
-                                this.is_empty()
-                                    ? this.__parent.indent_empty_lines &&
-                                      (e = this.__parent.get_indent_string(
-                                          this.__indent_count,
-                                      ))
-                                    : ((e = this.__parent.get_indent_string(
-                                          this.__indent_count,
-                                          this.__alignment_count,
-                                      )),
-                                      (e += this.__items.join(""))),
-                                e
-                            );
-                        }),
-                        (n.prototype.get_indent_size = function (e, t) {
-                            var n = this.__base_string_length;
-                            return (
-                                (t = t || 0),
-                                e < 0 && (n = 0),
-                                (n += e * this.__indent_size),
-                                (n += t)
-                            );
-                        }),
-                        (n.prototype.get_indent_string = function (e, t) {
-                            var n = this.__base_string;
-                            return (
-                                (t = t || 0),
-                                e < 0 && ((e = 0), (n = "")),
-                                (t += e * this.__indent_size),
-                                this.__ensure_cache(t),
-                                (n += this.__cache[t])
-                            );
-                        }),
-                        (n.prototype.__ensure_cache = function (e) {
-                            for (; e >= this.__cache.length; )
-                                this.__add_column();
-                        }),
-                        (n.prototype.__add_column = function () {
-                            var e = this.__cache.length,
-                                t = 0,
-                                n = "";
-                            (this.__indent_size &&
-                                e >= this.__indent_size &&
-                                ((e -=
-                                    (t = Math.floor(e / this.__indent_size)) *
-                                    this.__indent_size),
-                                (n = new Array(t + 1).join(
-                                    this.__indent_string,
-                                ))),
-                                e && (n += new Array(e + 1).join(" ")),
-                                this.__cache.push(n));
-                        }),
-                        (i.prototype.__add_outputline = function () {
-                            ((this.previous_line = this.current_line),
-                                (this.current_line =
-                                    this.next_line.clone_empty()),
-                                this.__lines.push(this.current_line));
-                        }),
-                        (i.prototype.get_line_number = function () {
-                            return this.__lines.length;
-                        }),
-                        (i.prototype.get_indent_string = function (e, t) {
-                            return this.__indent_cache.get_indent_string(e, t);
-                        }),
-                        (i.prototype.get_indent_size = function (e, t) {
-                            return this.__indent_cache.get_indent_size(e, t);
-                        }),
-                        (i.prototype.is_empty = function () {
-                            return (
-                                !this.previous_line &&
-                                this.current_line.is_empty()
-                            );
-                        }),
-                        (i.prototype.add_new_line = function (e) {
-                            return (
-                                !(
-                                    this.is_empty() ||
-                                    (!e && this.just_added_newline())
-                                ) && (this.raw || this.__add_outputline(), !0)
-                            );
-                        }),
-                        (i.prototype.get_code = function (e) {
-                            this.trim(!0);
-                            var t = this.current_line.pop();
-                            (t &&
-                                ("\n" === t[t.length - 1] &&
-                                    (t = t.replace(/\n+$/g, "")),
-                                this.current_line.push(t)),
-                                this._end_with_newline &&
-                                    this.__add_outputline());
-                            var n = this.__lines.join("\n");
-                            return (
-                                "\n" !== e && (n = n.replace(/[\n]/g, e)),
-                                n
-                            );
-                        }),
-                        (i.prototype.set_wrap_point = function () {
-                            this.current_line._set_wrap_point();
-                        }),
-                        (i.prototype.set_indent = function (e, t) {
-                            return (
-                                (e = e || 0),
-                                (t = t || 0),
-                                this.next_line.set_indent(e, t),
-                                this.__lines.length > 1
-                                    ? (this.current_line.set_indent(e, t), !0)
-                                    : (this.current_line.set_indent(), !1)
-                            );
-                        }),
-                        (i.prototype.add_raw_token = function (e) {
-                            for (var t = 0; t < e.newlines; t++)
-                                this.__add_outputline();
-                            (this.current_line.set_indent(-1),
-                                this.current_line.push(e.whitespace_before),
-                                this.current_line.push(e.text),
-                                (this.space_before_token = !1),
-                                (this.non_breaking_space = !1),
-                                (this.previous_token_wrapped = !1));
-                        }),
-                        (i.prototype.add_token = function (e) {
-                            (this.__add_space_before_token(),
-                                this.current_line.push(e),
-                                (this.space_before_token = !1),
-                                (this.non_breaking_space = !1),
-                                (this.previous_token_wrapped =
-                                    this.current_line._allow_wrap()));
-                        }),
-                        (i.prototype.__add_space_before_token = function () {
-                            this.space_before_token &&
-                                !this.just_added_newline() &&
-                                (this.non_breaking_space ||
-                                    this.set_wrap_point(),
-                                this.current_line.push(" "));
-                        }),
-                        (i.prototype.remove_indent = function (e) {
-                            for (var t = this.__lines.length; e < t; )
-                                (this.__lines[e]._remove_indent(), e++);
-                            this.current_line._remove_wrap_indent();
-                        }),
-                        (i.prototype.trim = function (e) {
-                            for (
-                                e = void 0 !== e && e, this.current_line.trim();
-                                e &&
-                                this.__lines.length > 1 &&
-                                this.current_line.is_empty();
-                            )
-                                (this.__lines.pop(),
-                                    (this.current_line =
-                                        this.__lines[this.__lines.length - 1]),
-                                    this.current_line.trim());
-                            this.previous_line =
-                                this.__lines.length > 1
-                                    ? this.__lines[this.__lines.length - 2]
-                                    : null;
-                        }),
-                        (i.prototype.just_added_newline = function () {
-                            return this.current_line.is_empty();
-                        }),
-                        (i.prototype.just_added_blankline = function () {
-                            return (
-                                this.is_empty() ||
-                                (this.current_line.is_empty() &&
-                                    this.previous_line.is_empty())
-                            );
-                        }),
-                        (i.prototype.ensure_empty_line_above = function (e, n) {
-                            for (var i = this.__lines.length - 2; i >= 0; ) {
-                                var r = this.__lines[i];
-                                if (r.is_empty()) break;
-                                if (
-                                    0 !== r.item(0).indexOf(e) &&
-                                    r.item(-1) !== n
-                                ) {
-                                    (this.__lines.splice(i + 1, 0, new t(this)),
-                                        (this.previous_line =
-                                            this.__lines[
-                                                this.__lines.length - 2
-                                            ]));
-                                    break;
-                                }
-                                i--;
-                            }
-                        }),
-                        (e.exports.Output = i));
-                },
-                function (e) {
-                    e.exports.Token = function (e, t, n, i) {
-                        ((this.type = e),
-                            (this.text = t),
-                            (this.comments_before = null),
-                            (this.newlines = n || 0),
-                            (this.whitespace_before = i || ""),
-                            (this.parent = null),
-                            (this.next = null),
-                            (this.previous = null),
-                            (this.opened = null),
-                            (this.closed = null),
-                            (this.directives = null));
-                    };
-                },
-                ,
-                ,
-                function (e) {
-                    function t(e, t) {
-                        ((this.raw_options = n(e, t)),
-                            (this.disabled = this._get_boolean("disabled")),
-                            (this.eol = this._get_characters("eol", "auto")),
-                            (this.end_with_newline =
-                                this._get_boolean("end_with_newline")),
-                            (this.indent_size = this._get_number(
-                                "indent_size",
-                                4,
-                            )),
-                            (this.indent_char = this._get_characters(
-                                "indent_char",
-                                " ",
-                            )),
-                            (this.indent_level =
-                                this._get_number("indent_level")),
-                            (this.preserve_newlines = this._get_boolean(
-                                "preserve_newlines",
-                                !0,
-                            )),
-                            (this.max_preserve_newlines = this._get_number(
-                                "max_preserve_newlines",
-                                32786,
-                            )),
-                            this.preserve_newlines ||
-                                (this.max_preserve_newlines = 0),
-                            (this.indent_with_tabs = this._get_boolean(
-                                "indent_with_tabs",
-                                "\t" === this.indent_char,
-                            )),
-                            this.indent_with_tabs &&
-                                ((this.indent_char = "\t"),
-                                1 === this.indent_size &&
-                                    (this.indent_size = 4)),
-                            (this.wrap_line_length = this._get_number(
-                                "wrap_line_length",
-                                this._get_number("max_char"),
-                            )),
-                            (this.indent_empty_lines =
-                                this._get_boolean("indent_empty_lines")),
-                            (this.templating = this._get_selection_list(
-                                "templating",
-                                [
-                                    "auto",
-                                    "none",
-                                    "angular",
-                                    "django",
-                                    "erb",
-                                    "handlebars",
-                                    "php",
-                                    "smarty",
-                                ],
-                                ["auto"],
-                            )));
-                    }
-                    function n(e, t) {
-                        var n,
-                            r = {};
-                        for (n in (e = i(e))) n !== t && (r[n] = e[n]);
-                        if (t && e[t]) for (n in e[t]) r[n] = e[t][n];
-                        return r;
-                    }
-                    function i(e) {
-                        var t,
-                            n = {};
-                        for (t in e) {
-                            n[t.replace(/-/g, "_")] = e[t];
-                        }
-                        return n;
-                    }
-                    ((t.prototype._get_array = function (e, t) {
-                        var n = this.raw_options[e],
-                            i = t || [];
+                    }),
+                    (t.prototype._should_wrap = function () {
                         return (
-                            "object" == typeof n
-                                ? null !== n &&
-                                  "function" == typeof n.concat &&
-                                  (i = n.concat())
-                                : "string" == typeof n &&
-                                  (i = n.split(/[^a-zA-Z0-9_\/\-]+/)),
-                            i
+                            this.__wrap_point_index &&
+                            this.__character_count >
+                            this.__parent.wrap_line_length &&
+                            this.__wrap_point_character_count >
+                            this.__parent.next_line.__character_count
                         );
                     }),
-                        (t.prototype._get_boolean = function (e, t) {
-                            var n = this.raw_options[e];
-                            return void 0 === n ? !!t : !!n;
-                        }),
-                        (t.prototype._get_characters = function (e, t) {
-                            var n = this.raw_options[e],
-                                i = t || "";
+                    (t.prototype._allow_wrap = function () {
+                        if (this._should_wrap()) {
+                            this.__parent.add_new_line();
+                            var e = this.__parent.current_line;
                             return (
-                                "string" == typeof n &&
-                                    (i = n
-                                        .replace(/\\r/, "\r")
-                                        .replace(/\\n/, "\n")
-                                        .replace(/\\t/, "\t")),
-                                i
-                            );
-                        }),
-                        (t.prototype._get_number = function (e, t) {
-                            var n = this.raw_options[e];
-                            ((t = parseInt(t, 10)), isNaN(t) && (t = 0));
-                            var i = parseInt(n, 10);
-                            return (isNaN(i) && (i = t), i);
-                        }),
-                        (t.prototype._get_selection = function (e, t, n) {
-                            var i = this._get_selection_list(e, t, n);
-                            if (1 !== i.length)
-                                throw new Error(
-                                    "Invalid Option Value: The option '" +
-                                        e +
-                                        "' can only be one of the following values:\n" +
-                                        t +
-                                        "\nYou passed in: '" +
-                                        this.raw_options[e] +
-                                        "'",
-                                );
-                            return i[0];
-                        }),
-                        (t.prototype._get_selection_list = function (e, t, n) {
-                            if (!t || 0 === t.length)
-                                throw new Error(
-                                    "Selection list cannot be empty.",
-                                );
-                            if (
-                                ((n = n || [t[0]]),
-                                !this._is_valid_selection(n, t))
-                            )
-                                throw new Error("Invalid Default Value!");
-                            var i = this._get_array(e, n);
-                            if (!this._is_valid_selection(i, t))
-                                throw new Error(
-                                    "Invalid Option Value: The option '" +
-                                        e +
-                                        "' can contain only the following values:\n" +
-                                        t +
-                                        "\nYou passed in: '" +
-                                        this.raw_options[e] +
-                                        "'",
-                                );
-                            return i;
-                        }),
-                        (t.prototype._is_valid_selection = function (e, t) {
-                            return (
-                                e.length &&
-                                t.length &&
-                                !e.some(function (e) {
-                                    return -1 === t.indexOf(e);
-                                })
-                            );
-                        }),
-                        (e.exports.Options = t),
-                        (e.exports.normalizeOpts = i),
-                        (e.exports.mergeOpts = n));
-                },
-                ,
-                function (e) {
-                    var t = RegExp.prototype.hasOwnProperty("sticky");
-                    function n(e) {
-                        ((this.__input = e || ""),
-                            (this.__input_length = this.__input.length),
-                            (this.__position = 0));
-                    }
-                    ((n.prototype.restart = function () {
-                        this.__position = 0;
-                    }),
-                        (n.prototype.back = function () {
-                            this.__position > 0 && (this.__position -= 1);
-                        }),
-                        (n.prototype.hasNext = function () {
-                            return this.__position < this.__input_length;
-                        }),
-                        (n.prototype.next = function () {
-                            var e = null;
-                            return (
-                                this.hasNext() &&
-                                    ((e = this.__input.charAt(this.__position)),
-                                    (this.__position += 1)),
-                                e
-                            );
-                        }),
-                        (n.prototype.peek = function (e) {
-                            var t = null;
-                            return (
-                                (e = e || 0),
-                                (e += this.__position) >= 0 &&
-                                    e < this.__input_length &&
-                                    (t = this.__input.charAt(e)),
-                                t
-                            );
-                        }),
-                        (n.prototype.__match = function (e, n) {
-                            e.lastIndex = n;
-                            var i = e.exec(this.__input);
-                            return (
-                                !i ||
-                                    (t && e.sticky) ||
-                                    (i.index !== n && (i = null)),
-                                i
-                            );
-                        }),
-                        (n.prototype.test = function (e, t) {
-                            return (
-                                (t = t || 0),
-                                (t += this.__position) >= 0 &&
-                                    t < this.__input_length &&
-                                    !!this.__match(e, t)
-                            );
-                        }),
-                        (n.prototype.testChar = function (e, t) {
-                            var n = this.peek(t);
-                            return ((e.lastIndex = 0), null !== n && e.test(n));
-                        }),
-                        (n.prototype.match = function (e) {
-                            var t = this.__match(e, this.__position);
-                            return (
-                                t
-                                    ? (this.__position += t[0].length)
-                                    : (t = null),
-                                t
-                            );
-                        }),
-                        (n.prototype.read = function (e, t, n) {
-                            var i,
-                                r = "";
-                            return (
-                                e && (i = this.match(e)) && (r += i[0]),
-                                !t || (!i && e) || (r += this.readUntil(t, n)),
-                                r
-                            );
-                        }),
-                        (n.prototype.readUntil = function (e, t) {
-                            var n,
-                                i = this.__position;
-                            e.lastIndex = this.__position;
-                            var r = e.exec(this.__input);
-                            return (
-                                r
-                                    ? ((i = r.index), t && (i += r[0].length))
-                                    : (i = this.__input_length),
-                                (n = this.__input.substring(
-                                    this.__position,
-                                    i,
+                                e.set_indent(
+                                    this.__wrap_point_indent_count,
+                                    this.__wrap_point_alignment_count,
+                                ),
+                                (e.__items = this.__items.slice(
+                                    this.__wrap_point_index,
                                 )),
-                                (this.__position = i),
-                                n
+                                (this.__items = this.__items.slice(
+                                    0,
+                                    this.__wrap_point_index,
+                                )),
+                                (e.__character_count +=
+                                    this.__character_count -
+                                    this.__wrap_point_character_count),
+                                (this.__character_count =
+                                    this.__wrap_point_character_count),
+                                " " === e.__items[0] &&
+                                (e.__items.splice(0, 1),
+                                    (e.__character_count -= 1)),
+                                !0
                             );
-                        }),
-                        (n.prototype.readUntilAfter = function (e) {
-                            return this.readUntil(e, !0);
-                        }),
-                        (n.prototype.get_regexp = function (e, n) {
-                            var i = null,
-                                r = "g";
-                            return (
-                                n && t && (r = "y"),
-                                "string" == typeof e && "" !== e
-                                    ? (i = new RegExp(e, r))
-                                    : e && (i = new RegExp(e.source, r)),
-                                i
-                            );
-                        }),
-                        (n.prototype.get_literal_regexp = function (e) {
-                            return RegExp(
-                                e.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&"),
-                            );
-                        }),
-                        (n.prototype.peekUntilAfter = function (e) {
-                            var t = this.__position,
-                                n = this.readUntilAfter(e);
-                            return ((this.__position = t), n);
-                        }),
-                        (n.prototype.lookBack = function (e) {
-                            var t = this.__position - 1;
-                            return (
-                                t >= e.length &&
-                                this.__input
-                                    .substring(t - e.length, t)
-                                    .toLowerCase() === e
-                            );
-                        }),
-                        (e.exports.InputScanner = n));
-                },
-                function (e, t, n) {
-                    var i = n(8).InputScanner,
-                        r = n(3).Token,
-                        o = n(10).TokenStream,
-                        a = n(11).WhitespacePattern,
-                        s = { START: "TK_START", RAW: "TK_RAW", EOF: "TK_EOF" },
-                        l = function (e, t) {
-                            ((this._input = new i(e)),
-                                (this._options = t || {}),
-                                (this.__tokens = null),
-                                (this._patterns = {}),
-                                (this._patterns.whitespace = new a(
-                                    this._input,
-                                )));
-                        };
-                    ((l.prototype.tokenize = function () {
-                        var e;
-                        (this._input.restart(),
-                            (this.__tokens = new o()),
-                            this._reset());
-                        for (
-                            var t = new r(s.START, ""),
-                                n = null,
-                                i = [],
-                                a = new o();
-                            t.type !== s.EOF;
-                        ) {
-                            for (
-                                e = this._get_next_token(t, n);
-                                this._is_comment(e);
-                            )
-                                (a.add(e), (e = this._get_next_token(t, n)));
-                            (a.isEmpty() ||
-                                ((e.comments_before = a), (a = new o())),
-                                (e.parent = n),
-                                this._is_opening(e)
-                                    ? (i.push(n), (n = e))
-                                    : n &&
-                                      this._is_closing(e, n) &&
-                                      ((e.opened = n),
-                                      (n.closed = e),
-                                      (n = i.pop()),
-                                      (e.parent = n)),
-                                (e.previous = t),
-                                (t.next = e),
-                                this.__tokens.add(e),
-                                (t = e));
                         }
-                        return this.__tokens;
+                        return !1;
                     }),
-                        (l.prototype._is_first_token = function () {
-                            return this.__tokens.isEmpty();
-                        }),
-                        (l.prototype._reset = function () {}),
-                        (l.prototype._get_next_token = function (e, t) {
-                            this._readWhitespace();
-                            var n = this._input.read(/.+/g);
-                            return n
-                                ? this._create_token(s.RAW, n)
-                                : this._create_token(s.EOF, "");
-                        }),
-                        (l.prototype._is_comment = function (e) {
-                            return !1;
-                        }),
-                        (l.prototype._is_opening = function (e) {
-                            return !1;
-                        }),
-                        (l.prototype._is_closing = function (e, t) {
-                            return !1;
-                        }),
-                        (l.prototype._create_token = function (e, t) {
-                            return new r(
-                                e,
-                                t,
-                                this._patterns.whitespace.newline_count,
-                                this._patterns.whitespace
-                                    .whitespace_before_token,
-                            );
-                        }),
-                        (l.prototype._readWhitespace = function () {
-                            return this._patterns.whitespace.read();
-                        }),
-                        (e.exports.Tokenizer = l),
-                        (e.exports.TOKEN = s));
-                },
-                function (e) {
-                    function t(e) {
-                        ((this.__tokens = []),
-                            (this.__tokens_length = this.__tokens.length),
-                            (this.__position = 0),
-                            (this.__parent_token = e));
-                    }
-                    ((t.prototype.restart = function () {
-                        this.__position = 0;
+                    (t.prototype.is_empty = function () {
+                        return 0 === this.__items.length;
                     }),
-                        (t.prototype.isEmpty = function () {
-                            return 0 === this.__tokens_length;
-                        }),
-                        (t.prototype.hasNext = function () {
-                            return this.__position < this.__tokens_length;
-                        }),
-                        (t.prototype.next = function () {
-                            var e = null;
-                            return (
-                                this.hasNext() &&
-                                    ((e = this.__tokens[this.__position]),
-                                    (this.__position += 1)),
-                                e
-                            );
-                        }),
-                        (t.prototype.peek = function (e) {
-                            var t = null;
-                            return (
-                                (e = e || 0),
-                                (e += this.__position) >= 0 &&
-                                    e < this.__tokens_length &&
-                                    (t = this.__tokens[e]),
-                                t
-                            );
-                        }),
-                        (t.prototype.add = function (e) {
-                            (this.__parent_token &&
-                                (e.parent = this.__parent_token),
-                                this.__tokens.push(e),
-                                (this.__tokens_length += 1));
-                        }),
-                        (e.exports.TokenStream = t));
-                },
-                function (e, t, n) {
-                    var i = n(12).Pattern;
-                    function r(e, t) {
-                        (i.call(this, e, t),
-                            t
-                                ? (this._line_regexp = this._input.get_regexp(
-                                      t._line_regexp,
-                                  ))
-                                : this.__set_whitespace_patterns("", ""),
-                            (this.newline_count = 0),
-                            (this.whitespace_before_token = ""));
-                    }
-                    ((r.prototype = new i()),
-                        (r.prototype.__set_whitespace_patterns = function (
-                            e,
-                            t,
-                        ) {
-                            ((e += "\\t "),
-                                (t += "\\n\\r"),
-                                (this._match_pattern = this._input.get_regexp(
-                                    "[" + e + t + "]+",
-                                    !0,
-                                )),
-                                (this._newline_regexp = this._input.get_regexp(
-                                    "\\r\\n|[" + t + "]",
-                                )));
-                        }),
-                        (r.prototype.read = function () {
-                            ((this.newline_count = 0),
-                                (this.whitespace_before_token = ""));
-                            var e = this._input.read(this._match_pattern);
-                            if (" " === e) this.whitespace_before_token = " ";
-                            else if (e) {
-                                var t = this.__split(this._newline_regexp, e);
-                                ((this.newline_count = t.length - 1),
-                                    (this.whitespace_before_token =
-                                        t[this.newline_count]));
-                            }
-                            return e;
-                        }),
-                        (r.prototype.matching = function (e, t) {
-                            var n = this._create();
-                            return (
-                                n.__set_whitespace_patterns(e, t),
-                                n._update(),
-                                n
-                            );
-                        }),
-                        (r.prototype._create = function () {
-                            return new r(this._input, this);
-                        }),
-                        (r.prototype.__split = function (e, t) {
-                            e.lastIndex = 0;
-                            for (var n = 0, i = [], r = e.exec(t); r; )
-                                (i.push(t.substring(n, r.index)),
-                                    (n = r.index + r[0].length),
-                                    (r = e.exec(t)));
-                            return (
-                                n < t.length
-                                    ? i.push(t.substring(n, t.length))
-                                    : i.push(""),
-                                i
-                            );
-                        }),
-                        (e.exports.WhitespacePattern = r));
-                },
-                function (e) {
-                    function t(e, t) {
-                        ((this._input = e),
-                            (this._starting_pattern = null),
-                            (this._match_pattern = null),
-                            (this._until_pattern = null),
-                            (this._until_after = !1),
-                            t &&
-                                ((this._starting_pattern =
-                                    this._input.get_regexp(
-                                        t._starting_pattern,
-                                        !0,
-                                    )),
-                                (this._match_pattern = this._input.get_regexp(
-                                    t._match_pattern,
-                                    !0,
-                                )),
-                                (this._until_pattern = this._input.get_regexp(
-                                    t._until_pattern,
-                                )),
-                                (this._until_after = t._until_after)));
-                    }
-                    ((t.prototype.read = function () {
-                        var e = this._input.read(this._starting_pattern);
+                    (t.prototype.last = function () {
+                        return this.is_empty()
+                            ? null
+                            : this.__items[this.__items.length - 1];
+                    }),
+                    (t.prototype.push = function (e) {
+                        this.__items.push(e);
+                        var t = e.lastIndexOf("\n");
+                        -1 !== t
+                            ? (this.__character_count = e.length - t)
+                            : (this.__character_count += e.length);
+                    }),
+                    (t.prototype.pop = function () {
+                        var e = null;
                         return (
-                            (this._starting_pattern && !e) ||
-                                (e += this._input.read(
-                                    this._match_pattern,
-                                    this._until_pattern,
-                                    this._until_after,
-                                )),
+                            this.is_empty() ||
+                            ((e = this.__items.pop()),
+                                (this.__character_count -= e.length)),
                             e
                         );
                     }),
-                        (t.prototype.read_match = function () {
-                            return this._input.match(this._match_pattern);
-                        }),
-                        (t.prototype.until_after = function (e) {
-                            var t = this._create();
-                            return (
-                                (t._until_after = !0),
-                                (t._until_pattern = this._input.get_regexp(e)),
-                                t._update(),
-                                t
-                            );
-                        }),
-                        (t.prototype.until = function (e) {
-                            var t = this._create();
-                            return (
-                                (t._until_after = !1),
-                                (t._until_pattern = this._input.get_regexp(e)),
-                                t._update(),
-                                t
-                            );
-                        }),
-                        (t.prototype.starting_with = function (e) {
-                            var t = this._create();
-                            return (
-                                (t._starting_pattern = this._input.get_regexp(
-                                    e,
-                                    !0,
-                                )),
-                                t._update(),
-                                t
-                            );
-                        }),
-                        (t.prototype.matching = function (e) {
-                            var t = this._create();
-                            return (
-                                (t._match_pattern = this._input.get_regexp(
-                                    e,
-                                    !0,
-                                )),
-                                t._update(),
-                                t
-                            );
-                        }),
-                        (t.prototype._create = function () {
-                            return new t(this._input, this);
-                        }),
-                        (t.prototype._update = function () {}),
-                        (e.exports.Pattern = t));
-                },
-                function (e) {
-                    function t(e, t) {
-                        ((e = "string" == typeof e ? e : e.source),
-                            (t = "string" == typeof t ? t : t.source),
-                            (this.__directives_block_pattern = new RegExp(
-                                e + / beautify( \w+[:]\w+)+ /.source + t,
-                                "g",
-                            )),
-                            (this.__directive_pattern = / (\w+)[:](\w+)/g),
-                            (this.__directives_end_ignore_pattern = new RegExp(
-                                e + /\sbeautify\signore:end\s/.source + t,
-                                "g",
-                            )));
-                    }
-                    ((t.prototype.get_directives = function (e) {
-                        if (!e.match(this.__directives_block_pattern))
-                            return null;
-                        var t = {};
-                        this.__directive_pattern.lastIndex = 0;
-                        for (var n = this.__directive_pattern.exec(e); n; )
-                            ((t[n[1]] = n[2]),
-                                (n = this.__directive_pattern.exec(e)));
-                        return t;
+                    (t.prototype._remove_indent = function () {
+                        this.__indent_count > 0 &&
+                            ((this.__indent_count -= 1),
+                                (this.__character_count -=
+                                    this.__parent.indent_size));
                     }),
-                        (t.prototype.readIgnored = function (e) {
-                            return e.readUntilAfter(
-                                this.__directives_end_ignore_pattern,
-                            );
-                        }),
-                        (e.exports.Directives = t));
-                },
-                function (e, t, n) {
-                    var i = n(12).Pattern,
-                        r = {
-                            django: !1,
-                            erb: !1,
-                            handlebars: !1,
-                            php: !1,
-                            smarty: !1,
-                            angular: !1,
-                        };
-                    function o(e, t) {
-                        (i.call(this, e, t),
-                            (this.__template_pattern = null),
-                            (this._disabled = Object.assign({}, r)),
-                            (this._excluded = Object.assign({}, r)),
-                            t &&
-                                ((this.__template_pattern =
-                                    this._input.get_regexp(
-                                        t.__template_pattern,
-                                    )),
-                                (this._excluded = Object.assign(
-                                    this._excluded,
-                                    t._excluded,
+                    (t.prototype._remove_wrap_indent = function () {
+                        this.__wrap_point_indent_count > 0 &&
+                            (this.__wrap_point_indent_count -= 1);
+                    }),
+                    (t.prototype.trim = function () {
+                        for (; " " === this.last();)
+                            (this.__items.pop(),
+                                (this.__character_count -= 1));
+                    }),
+                    (t.prototype.toString = function () {
+                        var e = "";
+                        return (
+                            this.is_empty()
+                                ? this.__parent.indent_empty_lines &&
+                                (e = this.__parent.get_indent_string(
+                                    this.__indent_count,
+                                ))
+                                : ((e = this.__parent.get_indent_string(
+                                    this.__indent_count,
+                                    this.__alignment_count,
                                 )),
-                                (this._disabled = Object.assign(
-                                    this._disabled,
-                                    t._disabled,
-                                ))));
-                        var n = new i(e);
-                        this.__patterns = {
-                            handlebars_comment: n
-                                .starting_with(/{{!--/)
-                                .until_after(/--}}/),
-                            handlebars_unescaped: n
-                                .starting_with(/{{{/)
-                                .until_after(/}}}/),
-                            handlebars: n.starting_with(/{{/).until_after(/}}/),
-                            php: n
-                                .starting_with(/<\?(?:[= ]|php)/)
-                                .until_after(/\?>/),
-                            erb: n
-                                .starting_with(/<%[^%]/)
-                                .until_after(/[^%]%>/),
-                            django: n.starting_with(/{%/).until_after(/%}/),
-                            django_value: n
-                                .starting_with(/{{/)
-                                .until_after(/}}/),
-                            django_comment: n
-                                .starting_with(/{#/)
-                                .until_after(/#}/),
-                            smarty: n
-                                .starting_with(/{(?=[^}{\s\n])/)
-                                .until_after(/[^\s\n]}/),
-                            smarty_comment: n
-                                .starting_with(/{\*/)
-                                .until_after(/\*}/),
-                            smarty_literal: n
-                                .starting_with(/{literal}/)
-                                .until_after(/{\/literal}/),
-                        };
+                                    (e += this.__items.join(""))),
+                            e
+                        );
+                    }),
+                    (n.prototype.get_indent_size = function (e, t) {
+                        var n = this.__base_string_length;
+                        return (
+                            (t = t || 0),
+                            e < 0 && (n = 0),
+                            (n += e * this.__indent_size),
+                            (n += t)
+                        );
+                    }),
+                    (n.prototype.get_indent_string = function (e, t) {
+                        var n = this.__base_string;
+                        return (
+                            (t = t || 0),
+                            e < 0 && ((e = 0), (n = "")),
+                            (t += e * this.__indent_size),
+                            this.__ensure_cache(t),
+                            (n += this.__cache[t])
+                        );
+                    }),
+                    (n.prototype.__ensure_cache = function (e) {
+                        for (; e >= this.__cache.length;)
+                            this.__add_column();
+                    }),
+                    (n.prototype.__add_column = function () {
+                        var e = this.__cache.length,
+                            t = 0,
+                            n = "";
+                        (this.__indent_size &&
+                            e >= this.__indent_size &&
+                            ((e -=
+                                (t = Math.floor(e / this.__indent_size)) *
+                                this.__indent_size),
+                                (n = new Array(t + 1).join(
+                                    this.__indent_string,
+                                ))),
+                            e && (n += new Array(e + 1).join(" ")),
+                            this.__cache.push(n));
+                    }),
+                    (i.prototype.__add_outputline = function () {
+                        ((this.previous_line = this.current_line),
+                            (this.current_line =
+                                this.next_line.clone_empty()),
+                            this.__lines.push(this.current_line));
+                    }),
+                    (i.prototype.get_line_number = function () {
+                        return this.__lines.length;
+                    }),
+                    (i.prototype.get_indent_string = function (e, t) {
+                        return this.__indent_cache.get_indent_string(e, t);
+                    }),
+                    (i.prototype.get_indent_size = function (e, t) {
+                        return this.__indent_cache.get_indent_size(e, t);
+                    }),
+                    (i.prototype.is_empty = function () {
+                        return (
+                            !this.previous_line &&
+                            this.current_line.is_empty()
+                        );
+                    }),
+                    (i.prototype.add_new_line = function (e) {
+                        return (
+                            !(
+                                this.is_empty() ||
+                                (!e && this.just_added_newline())
+                            ) && (this.raw || this.__add_outputline(), !0)
+                        );
+                    }),
+                    (i.prototype.get_code = function (e) {
+                        this.trim(!0);
+                        var t = this.current_line.pop();
+                        (t &&
+                            ("\n" === t[t.length - 1] &&
+                                (t = t.replace(/\n+$/g, "")),
+                                this.current_line.push(t)),
+                            this._end_with_newline &&
+                            this.__add_outputline());
+                        var n = this.__lines.join("\n");
+                        return (
+                            "\n" !== e && (n = n.replace(/[\n]/g, e)),
+                            n
+                        );
+                    }),
+                    (i.prototype.set_wrap_point = function () {
+                        this.current_line._set_wrap_point();
+                    }),
+                    (i.prototype.set_indent = function (e, t) {
+                        return (
+                            (e = e || 0),
+                            (t = t || 0),
+                            this.next_line.set_indent(e, t),
+                            this.__lines.length > 1
+                                ? (this.current_line.set_indent(e, t), !0)
+                                : (this.current_line.set_indent(), !1)
+                        );
+                    }),
+                    (i.prototype.add_raw_token = function (e) {
+                        for (var t = 0; t < e.newlines; t++)
+                            this.__add_outputline();
+                        (this.current_line.set_indent(-1),
+                            this.current_line.push(e.whitespace_before),
+                            this.current_line.push(e.text),
+                            (this.space_before_token = !1),
+                            (this.non_breaking_space = !1),
+                            (this.previous_token_wrapped = !1));
+                    }),
+                    (i.prototype.add_token = function (e) {
+                        (this.__add_space_before_token(),
+                            this.current_line.push(e),
+                            (this.space_before_token = !1),
+                            (this.non_breaking_space = !1),
+                            (this.previous_token_wrapped =
+                                this.current_line._allow_wrap()));
+                    }),
+                    (i.prototype.__add_space_before_token = function () {
+                        this.space_before_token &&
+                            !this.just_added_newline() &&
+                            (this.non_breaking_space ||
+                                this.set_wrap_point(),
+                                this.current_line.push(" "));
+                    }),
+                    (i.prototype.remove_indent = function (e) {
+                        for (var t = this.__lines.length; e < t;)
+                            (this.__lines[e]._remove_indent(), e++);
+                        this.current_line._remove_wrap_indent();
+                    }),
+                    (i.prototype.trim = function (e) {
+                        for (
+                            e = void 0 !== e && e, this.current_line.trim();
+                            e &&
+                            this.__lines.length > 1 &&
+                            this.current_line.is_empty();
+                        )
+                            (this.__lines.pop(),
+                                (this.current_line =
+                                    this.__lines[this.__lines.length - 1]),
+                                this.current_line.trim());
+                        this.previous_line =
+                            this.__lines.length > 1
+                                ? this.__lines[this.__lines.length - 2]
+                                : null;
+                    }),
+                    (i.prototype.just_added_newline = function () {
+                        return this.current_line.is_empty();
+                    }),
+                    (i.prototype.just_added_blankline = function () {
+                        return (
+                            this.is_empty() ||
+                            (this.current_line.is_empty() &&
+                                this.previous_line.is_empty())
+                        );
+                    }),
+                    (i.prototype.ensure_empty_line_above = function (e, n) {
+                        for (var i = this.__lines.length - 2; i >= 0;) {
+                            var r = this.__lines[i];
+                            if (r.is_empty()) break;
+                            if (
+                                0 !== r.item(0).indexOf(e) &&
+                                r.item(-1) !== n
+                            ) {
+                                (this.__lines.splice(i + 1, 0, new t(this)),
+                                    (this.previous_line =
+                                        this.__lines[
+                                        this.__lines.length - 2
+                                        ]));
+                                break;
+                            }
+                            i--;
+                        }
+                    }),
+                    (e.exports.Output = i));
+            },
+            function (e) {
+                e.exports.Token = function (e, t, n, i) {
+                    ((this.type = e),
+                        (this.text = t),
+                        (this.comments_before = null),
+                        (this.newlines = n || 0),
+                        (this.whitespace_before = i || ""),
+                        (this.parent = null),
+                        (this.next = null),
+                        (this.previous = null),
+                        (this.opened = null),
+                        (this.closed = null),
+                        (this.directives = null));
+                };
+            },
+            ,
+            ,
+            function (e) {
+                function t(e, t) {
+                    ((this.raw_options = n(e, t)),
+                        (this.disabled = this._get_boolean("disabled")),
+                        (this.eol = this._get_characters("eol", "auto")),
+                        (this.end_with_newline =
+                            this._get_boolean("end_with_newline")),
+                        (this.indent_size = this._get_number(
+                            "indent_size",
+                            4,
+                        )),
+                        (this.indent_char = this._get_characters(
+                            "indent_char",
+                            " ",
+                        )),
+                        (this.indent_level =
+                            this._get_number("indent_level")),
+                        (this.preserve_newlines = this._get_boolean(
+                            "preserve_newlines",
+                            !0,
+                        )),
+                        (this.max_preserve_newlines = this._get_number(
+                            "max_preserve_newlines",
+                            32786,
+                        )),
+                        this.preserve_newlines ||
+                        (this.max_preserve_newlines = 0),
+                        (this.indent_with_tabs = this._get_boolean(
+                            "indent_with_tabs",
+                            "\t" === this.indent_char,
+                        )),
+                        this.indent_with_tabs &&
+                        ((this.indent_char = "\t"),
+                            1 === this.indent_size &&
+                            (this.indent_size = 4)),
+                        (this.wrap_line_length = this._get_number(
+                            "wrap_line_length",
+                            this._get_number("max_char"),
+                        )),
+                        (this.indent_empty_lines =
+                            this._get_boolean("indent_empty_lines")),
+                        (this.templating = this._get_selection_list(
+                            "templating",
+                            [
+                                "auto",
+                                "none",
+                                "angular",
+                                "django",
+                                "erb",
+                                "handlebars",
+                                "php",
+                                "smarty",
+                            ],
+                            ["auto"],
+                        )));
+                }
+                function n(e, t) {
+                    var n,
+                        r = {};
+                    for (n in (e = i(e))) n !== t && (r[n] = e[n]);
+                    if (t && e[t]) for (n in e[t]) r[n] = e[t][n];
+                    return r;
+                }
+                function i(e) {
+                    var t,
+                        n = {};
+                    for (t in e) {
+                        n[t.replace(/-/g, "_")] = e[t];
                     }
-                    ((o.prototype = new i()),
-                        (o.prototype._create = function () {
-                            return new o(this._input, this);
-                        }),
-                        (o.prototype._update = function () {
-                            this.__set_templated_pattern();
-                        }),
-                        (o.prototype.disable = function (e) {
-                            var t = this._create();
-                            return ((t._disabled[e] = !0), t._update(), t);
-                        }),
-                        (o.prototype.read_options = function (e) {
-                            var t = this._create();
-                            for (var n in r)
-                                t._disabled[n] = -1 === e.templating.indexOf(n);
-                            return (t._update(), t);
-                        }),
-                        (o.prototype.exclude = function (e) {
-                            var t = this._create();
-                            return ((t._excluded[e] = !0), t._update(), t);
-                        }),
-                        (o.prototype.read = function () {
-                            var e = "";
-                            e = this._match_pattern
-                                ? this._input.read(this._starting_pattern)
-                                : this._input.read(
-                                      this._starting_pattern,
-                                      this.__template_pattern,
-                                  );
-                            for (var t = this._read_template(); t; )
-                                (this._match_pattern
-                                    ? (t += this._input.read(
-                                          this._match_pattern,
-                                      ))
-                                    : (t += this._input.readUntil(
-                                          this.__template_pattern,
-                                      )),
-                                    (e += t),
-                                    (t = this._read_template()));
-                            return (
-                                this._until_after &&
-                                    (e += this._input.readUntilAfter(
-                                        this._until_pattern,
-                                    )),
-                                e
+                    return n;
+                }
+                ((t.prototype._get_array = function (e, t) {
+                    var n = this.raw_options[e],
+                        i = t || [];
+                    return (
+                        "object" == typeof n
+                            ? null !== n &&
+                            "function" == typeof n.concat &&
+                            (i = n.concat())
+                            : "string" == typeof n &&
+                            (i = n.split(/[^a-zA-Z0-9_\/\-]+/)),
+                        i
+                    );
+                }),
+                    (t.prototype._get_boolean = function (e, t) {
+                        var n = this.raw_options[e];
+                        return void 0 === n ? !!t : !!n;
+                    }),
+                    (t.prototype._get_characters = function (e, t) {
+                        var n = this.raw_options[e],
+                            i = t || "";
+                        return (
+                            "string" == typeof n &&
+                            (i = n
+                                .replace(/\\r/, "\r")
+                                .replace(/\\n/, "\n")
+                                .replace(/\\t/, "\t")),
+                            i
+                        );
+                    }),
+                    (t.prototype._get_number = function (e, t) {
+                        var n = this.raw_options[e];
+                        ((t = parseInt(t, 10)), isNaN(t) && (t = 0));
+                        var i = parseInt(n, 10);
+                        return (isNaN(i) && (i = t), i);
+                    }),
+                    (t.prototype._get_selection = function (e, t, n) {
+                        var i = this._get_selection_list(e, t, n);
+                        if (1 !== i.length)
+                            throw new Error(
+                                "Invalid Option Value: The option '" +
+                                e +
+                                "' can only be one of the following values:\n" +
+                                t +
+                                "\nYou passed in: '" +
+                                this.raw_options[e] +
+                                "'",
                             );
-                        }),
-                        (o.prototype.__set_templated_pattern = function () {
-                            var e = [];
-                            (this._disabled.php ||
+                        return i[0];
+                    }),
+                    (t.prototype._get_selection_list = function (e, t, n) {
+                        if (!t || 0 === t.length)
+                            throw new Error(
+                                "Selection list cannot be empty.",
+                            );
+                        if (
+                            ((n = n || [t[0]]),
+                                !this._is_valid_selection(n, t))
+                        )
+                            throw new Error("Invalid Default Value!");
+                        var i = this._get_array(e, n);
+                        if (!this._is_valid_selection(i, t))
+                            throw new Error(
+                                "Invalid Option Value: The option '" +
+                                e +
+                                "' can contain only the following values:\n" +
+                                t +
+                                "\nYou passed in: '" +
+                                this.raw_options[e] +
+                                "'",
+                            );
+                        return i;
+                    }),
+                    (t.prototype._is_valid_selection = function (e, t) {
+                        return (
+                            e.length &&
+                            t.length &&
+                            !e.some(function (e) {
+                                return -1 === t.indexOf(e);
+                            })
+                        );
+                    }),
+                    (e.exports.Options = t),
+                    (e.exports.normalizeOpts = i),
+                    (e.exports.mergeOpts = n));
+            },
+            ,
+            function (e) {
+                var t = RegExp.prototype.hasOwnProperty("sticky");
+                function n(e) {
+                    ((this.__input = e || ""),
+                        (this.__input_length = this.__input.length),
+                        (this.__position = 0));
+                }
+                ((n.prototype.restart = function () {
+                    this.__position = 0;
+                }),
+                    (n.prototype.back = function () {
+                        this.__position > 0 && (this.__position -= 1);
+                    }),
+                    (n.prototype.hasNext = function () {
+                        return this.__position < this.__input_length;
+                    }),
+                    (n.prototype.next = function () {
+                        var e = null;
+                        return (
+                            this.hasNext() &&
+                            ((e = this.__input.charAt(this.__position)),
+                                (this.__position += 1)),
+                            e
+                        );
+                    }),
+                    (n.prototype.peek = function (e) {
+                        var t = null;
+                        return (
+                            (e = e || 0),
+                            (e += this.__position) >= 0 &&
+                            e < this.__input_length &&
+                            (t = this.__input.charAt(e)),
+                            t
+                        );
+                    }),
+                    (n.prototype.__match = function (e, n) {
+                        e.lastIndex = n;
+                        var i = e.exec(this.__input);
+                        return (
+                            !i ||
+                            (t && e.sticky) ||
+                            (i.index !== n && (i = null)),
+                            i
+                        );
+                    }),
+                    (n.prototype.test = function (e, t) {
+                        return (
+                            (t = t || 0),
+                            (t += this.__position) >= 0 &&
+                            t < this.__input_length &&
+                            !!this.__match(e, t)
+                        );
+                    }),
+                    (n.prototype.testChar = function (e, t) {
+                        var n = this.peek(t);
+                        return ((e.lastIndex = 0), null !== n && e.test(n));
+                    }),
+                    (n.prototype.match = function (e) {
+                        var t = this.__match(e, this.__position);
+                        return (
+                            t
+                                ? (this.__position += t[0].length)
+                                : (t = null),
+                            t
+                        );
+                    }),
+                    (n.prototype.read = function (e, t, n) {
+                        var i,
+                            r = "";
+                        return (
+                            e && (i = this.match(e)) && (r += i[0]),
+                            !t || (!i && e) || (r += this.readUntil(t, n)),
+                            r
+                        );
+                    }),
+                    (n.prototype.readUntil = function (e, t) {
+                        var n,
+                            i = this.__position;
+                        e.lastIndex = this.__position;
+                        var r = e.exec(this.__input);
+                        return (
+                            r
+                                ? ((i = r.index), t && (i += r[0].length))
+                                : (i = this.__input_length),
+                            (n = this.__input.substring(
+                                this.__position,
+                                i,
+                            )),
+                            (this.__position = i),
+                            n
+                        );
+                    }),
+                    (n.prototype.readUntilAfter = function (e) {
+                        return this.readUntil(e, !0);
+                    }),
+                    (n.prototype.get_regexp = function (e, n) {
+                        var i = null,
+                            r = "g";
+                        return (
+                            n && t && (r = "y"),
+                            "string" == typeof e && "" !== e
+                                ? (i = new RegExp(e, r))
+                                : e && (i = new RegExp(e.source, r)),
+                            i
+                        );
+                    }),
+                    (n.prototype.get_literal_regexp = function (e) {
+                        return RegExp(
+                            e.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&"),
+                        );
+                    }),
+                    (n.prototype.peekUntilAfter = function (e) {
+                        var t = this.__position,
+                            n = this.readUntilAfter(e);
+                        return ((this.__position = t), n);
+                    }),
+                    (n.prototype.lookBack = function (e) {
+                        var t = this.__position - 1;
+                        return (
+                            t >= e.length &&
+                            this.__input
+                                .substring(t - e.length, t)
+                                .toLowerCase() === e
+                        );
+                    }),
+                    (e.exports.InputScanner = n));
+            },
+            function (e, t, n) {
+                var i = n(8).InputScanner,
+                    r = n(3).Token,
+                    o = n(10).TokenStream,
+                    a = n(11).WhitespacePattern,
+                    s = { START: "TK_START", RAW: "TK_RAW", EOF: "TK_EOF" },
+                    l = function (e, t) {
+                        ((this._input = new i(e)),
+                            (this._options = t || {}),
+                            (this.__tokens = null),
+                            (this._patterns = {}),
+                            (this._patterns.whitespace = new a(
+                                this._input,
+                            )));
+                    };
+                ((l.prototype.tokenize = function () {
+                    var e;
+                    (this._input.restart(),
+                        (this.__tokens = new o()),
+                        this._reset());
+                    for (
+                        var t = new r(s.START, ""),
+                        n = null,
+                        i = [],
+                        a = new o();
+                        t.type !== s.EOF;
+                    ) {
+                        for (
+                            e = this._get_next_token(t, n);
+                            this._is_comment(e);
+                        )
+                            (a.add(e), (e = this._get_next_token(t, n)));
+                        (a.isEmpty() ||
+                            ((e.comments_before = a), (a = new o())),
+                            (e.parent = n),
+                            this._is_opening(e)
+                                ? (i.push(n), (n = e))
+                                : n &&
+                                this._is_closing(e, n) &&
+                                ((e.opened = n),
+                                    (n.closed = e),
+                                    (n = i.pop()),
+                                    (e.parent = n)),
+                            (e.previous = t),
+                            (t.next = e),
+                            this.__tokens.add(e),
+                            (t = e));
+                    }
+                    return this.__tokens;
+                }),
+                    (l.prototype._is_first_token = function () {
+                        return this.__tokens.isEmpty();
+                    }),
+                    (l.prototype._reset = function () { }),
+                    (l.prototype._get_next_token = function (e, t) {
+                        this._readWhitespace();
+                        var n = this._input.read(/.+/g);
+                        return n
+                            ? this._create_token(s.RAW, n)
+                            : this._create_token(s.EOF, "");
+                    }),
+                    (l.prototype._is_comment = function (e) {
+                        return !1;
+                    }),
+                    (l.prototype._is_opening = function (e) {
+                        return !1;
+                    }),
+                    (l.prototype._is_closing = function (e, t) {
+                        return !1;
+                    }),
+                    (l.prototype._create_token = function (e, t) {
+                        return new r(
+                            e,
+                            t,
+                            this._patterns.whitespace.newline_count,
+                            this._patterns.whitespace
+                                .whitespace_before_token,
+                        );
+                    }),
+                    (l.prototype._readWhitespace = function () {
+                        return this._patterns.whitespace.read();
+                    }),
+                    (e.exports.Tokenizer = l),
+                    (e.exports.TOKEN = s));
+            },
+            function (e) {
+                function t(e) {
+                    ((this.__tokens = []),
+                        (this.__tokens_length = this.__tokens.length),
+                        (this.__position = 0),
+                        (this.__parent_token = e));
+                }
+                ((t.prototype.restart = function () {
+                    this.__position = 0;
+                }),
+                    (t.prototype.isEmpty = function () {
+                        return 0 === this.__tokens_length;
+                    }),
+                    (t.prototype.hasNext = function () {
+                        return this.__position < this.__tokens_length;
+                    }),
+                    (t.prototype.next = function () {
+                        var e = null;
+                        return (
+                            this.hasNext() &&
+                            ((e = this.__tokens[this.__position]),
+                                (this.__position += 1)),
+                            e
+                        );
+                    }),
+                    (t.prototype.peek = function (e) {
+                        var t = null;
+                        return (
+                            (e = e || 0),
+                            (e += this.__position) >= 0 &&
+                            e < this.__tokens_length &&
+                            (t = this.__tokens[e]),
+                            t
+                        );
+                    }),
+                    (t.prototype.add = function (e) {
+                        (this.__parent_token &&
+                            (e.parent = this.__parent_token),
+                            this.__tokens.push(e),
+                            (this.__tokens_length += 1));
+                    }),
+                    (e.exports.TokenStream = t));
+            },
+            function (e, t, n) {
+                var i = n(12).Pattern;
+                function r(e, t) {
+                    (i.call(this, e, t),
+                        t
+                            ? (this._line_regexp = this._input.get_regexp(
+                                t._line_regexp,
+                            ))
+                            : this.__set_whitespace_patterns("", ""),
+                        (this.newline_count = 0),
+                        (this.whitespace_before_token = ""));
+                }
+                ((r.prototype = new i()),
+                    (r.prototype.__set_whitespace_patterns = function (
+                        e,
+                        t,
+                    ) {
+                        ((e += "\\t "),
+                            (t += "\\n\\r"),
+                            (this._match_pattern = this._input.get_regexp(
+                                "[" + e + t + "]+",
+                                !0,
+                            )),
+                            (this._newline_regexp = this._input.get_regexp(
+                                "\\r\\n|[" + t + "]",
+                            )));
+                    }),
+                    (r.prototype.read = function () {
+                        ((this.newline_count = 0),
+                            (this.whitespace_before_token = ""));
+                        var e = this._input.read(this._match_pattern);
+                        if (" " === e) this.whitespace_before_token = " ";
+                        else if (e) {
+                            var t = this.__split(this._newline_regexp, e);
+                            ((this.newline_count = t.length - 1),
+                                (this.whitespace_before_token =
+                                    t[this.newline_count]));
+                        }
+                        return e;
+                    }),
+                    (r.prototype.matching = function (e, t) {
+                        var n = this._create();
+                        return (
+                            n.__set_whitespace_patterns(e, t),
+                            n._update(),
+                            n
+                        );
+                    }),
+                    (r.prototype._create = function () {
+                        return new r(this._input, this);
+                    }),
+                    (r.prototype.__split = function (e, t) {
+                        e.lastIndex = 0;
+                        for (var n = 0, i = [], r = e.exec(t); r;)
+                            (i.push(t.substring(n, r.index)),
+                                (n = r.index + r[0].length),
+                                (r = e.exec(t)));
+                        return (
+                            n < t.length
+                                ? i.push(t.substring(n, t.length))
+                                : i.push(""),
+                            i
+                        );
+                    }),
+                    (e.exports.WhitespacePattern = r));
+            },
+            function (e) {
+                function t(e, t) {
+                    ((this._input = e),
+                        (this._starting_pattern = null),
+                        (this._match_pattern = null),
+                        (this._until_pattern = null),
+                        (this._until_after = !1),
+                        t &&
+                        ((this._starting_pattern =
+                            this._input.get_regexp(
+                                t._starting_pattern,
+                                !0,
+                            )),
+                            (this._match_pattern = this._input.get_regexp(
+                                t._match_pattern,
+                                !0,
+                            )),
+                            (this._until_pattern = this._input.get_regexp(
+                                t._until_pattern,
+                            )),
+                            (this._until_after = t._until_after)));
+                }
+                ((t.prototype.read = function () {
+                    var e = this._input.read(this._starting_pattern);
+                    return (
+                        (this._starting_pattern && !e) ||
+                        (e += this._input.read(
+                            this._match_pattern,
+                            this._until_pattern,
+                            this._until_after,
+                        )),
+                        e
+                    );
+                }),
+                    (t.prototype.read_match = function () {
+                        return this._input.match(this._match_pattern);
+                    }),
+                    (t.prototype.until_after = function (e) {
+                        var t = this._create();
+                        return (
+                            (t._until_after = !0),
+                            (t._until_pattern = this._input.get_regexp(e)),
+                            t._update(),
+                            t
+                        );
+                    }),
+                    (t.prototype.until = function (e) {
+                        var t = this._create();
+                        return (
+                            (t._until_after = !1),
+                            (t._until_pattern = this._input.get_regexp(e)),
+                            t._update(),
+                            t
+                        );
+                    }),
+                    (t.prototype.starting_with = function (e) {
+                        var t = this._create();
+                        return (
+                            (t._starting_pattern = this._input.get_regexp(
+                                e,
+                                !0,
+                            )),
+                            t._update(),
+                            t
+                        );
+                    }),
+                    (t.prototype.matching = function (e) {
+                        var t = this._create();
+                        return (
+                            (t._match_pattern = this._input.get_regexp(
+                                e,
+                                !0,
+                            )),
+                            t._update(),
+                            t
+                        );
+                    }),
+                    (t.prototype._create = function () {
+                        return new t(this._input, this);
+                    }),
+                    (t.prototype._update = function () { }),
+                    (e.exports.Pattern = t));
+            },
+            function (e) {
+                function t(e, t) {
+                    ((e = "string" == typeof e ? e : e.source),
+                        (t = "string" == typeof t ? t : t.source),
+                        (this.__directives_block_pattern = new RegExp(
+                            e + / beautify( \w+[:]\w+)+ /.source + t,
+                            "g",
+                        )),
+                        (this.__directive_pattern = / (\w+)[:](\w+)/g),
+                        (this.__directives_end_ignore_pattern = new RegExp(
+                            e + /\sbeautify\signore:end\s/.source + t,
+                            "g",
+                        )));
+                }
+                ((t.prototype.get_directives = function (e) {
+                    if (!e.match(this.__directives_block_pattern))
+                        return null;
+                    var t = {};
+                    this.__directive_pattern.lastIndex = 0;
+                    for (var n = this.__directive_pattern.exec(e); n;)
+                        ((t[n[1]] = n[2]),
+                            (n = this.__directive_pattern.exec(e)));
+                    return t;
+                }),
+                    (t.prototype.readIgnored = function (e) {
+                        return e.readUntilAfter(
+                            this.__directives_end_ignore_pattern,
+                        );
+                    }),
+                    (e.exports.Directives = t));
+            },
+            function (e, t, n) {
+                var i = n(12).Pattern,
+                    r = {
+                        django: !1,
+                        erb: !1,
+                        handlebars: !1,
+                        php: !1,
+                        smarty: !1,
+                        angular: !1,
+                    };
+                function o(e, t) {
+                    (i.call(this, e, t),
+                        (this.__template_pattern = null),
+                        (this._disabled = Object.assign({}, r)),
+                        (this._excluded = Object.assign({}, r)),
+                        t &&
+                        ((this.__template_pattern =
+                            this._input.get_regexp(
+                                t.__template_pattern,
+                            )),
+                            (this._excluded = Object.assign(
+                                this._excluded,
+                                t._excluded,
+                            )),
+                            (this._disabled = Object.assign(
+                                this._disabled,
+                                t._disabled,
+                            ))));
+                    var n = new i(e);
+                    this.__patterns = {
+                        handlebars_comment: n
+                            .starting_with(/{{!--/)
+                            .until_after(/--}}/),
+                        handlebars_unescaped: n
+                            .starting_with(/{{{/)
+                            .until_after(/}}}/),
+                        handlebars: n.starting_with(/{{/).until_after(/}}/),
+                        php: n
+                            .starting_with(/<\?(?:[= ]|php)/)
+                            .until_after(/\?>/),
+                        erb: n
+                            .starting_with(/<%[^%]/)
+                            .until_after(/[^%]%>/),
+                        django: n.starting_with(/{%/).until_after(/%}/),
+                        django_value: n
+                            .starting_with(/{{/)
+                            .until_after(/}}/),
+                        django_comment: n
+                            .starting_with(/{#/)
+                            .until_after(/#}/),
+                        smarty: n
+                            .starting_with(/{(?=[^}{\s\n])/)
+                            .until_after(/[^\s\n]}/),
+                        smarty_comment: n
+                            .starting_with(/{\*/)
+                            .until_after(/\*}/),
+                        smarty_literal: n
+                            .starting_with(/{literal}/)
+                            .until_after(/{\/literal}/),
+                    };
+                }
+                ((o.prototype = new i()),
+                    (o.prototype._create = function () {
+                        return new o(this._input, this);
+                    }),
+                    (o.prototype._update = function () {
+                        this.__set_templated_pattern();
+                    }),
+                    (o.prototype.disable = function (e) {
+                        var t = this._create();
+                        return ((t._disabled[e] = !0), t._update(), t);
+                    }),
+                    (o.prototype.read_options = function (e) {
+                        var t = this._create();
+                        for (var n in r)
+                            t._disabled[n] = -1 === e.templating.indexOf(n);
+                        return (t._update(), t);
+                    }),
+                    (o.prototype.exclude = function (e) {
+                        var t = this._create();
+                        return ((t._excluded[e] = !0), t._update(), t);
+                    }),
+                    (o.prototype.read = function () {
+                        var e = "";
+                        e = this._match_pattern
+                            ? this._input.read(this._starting_pattern)
+                            : this._input.read(
+                                this._starting_pattern,
+                                this.__template_pattern,
+                            );
+                        for (var t = this._read_template(); t;)
+                            (this._match_pattern
+                                ? (t += this._input.read(
+                                    this._match_pattern,
+                                ))
+                                : (t += this._input.readUntil(
+                                    this.__template_pattern,
+                                )),
+                                (e += t),
+                                (t = this._read_template()));
+                        return (
+                            this._until_after &&
+                            (e += this._input.readUntilAfter(
+                                this._until_pattern,
+                            )),
+                            e
+                        );
+                    }),
+                    (o.prototype.__set_templated_pattern = function () {
+                        var e = [];
+                        (this._disabled.php ||
+                            e.push(
+                                this.__patterns.php._starting_pattern
+                                    .source,
+                            ),
+                            this._disabled.handlebars ||
+                            e.push(
+                                this.__patterns.handlebars
+                                    ._starting_pattern.source,
+                            ),
+                            this._disabled.erb ||
+                            e.push(
+                                this.__patterns.erb._starting_pattern
+                                    .source,
+                            ),
+                            this._disabled.django ||
+                            (e.push(
+                                this.__patterns.django._starting_pattern
+                                    .source,
+                            ),
                                 e.push(
-                                    this.__patterns.php._starting_pattern
-                                        .source,
+                                    this.__patterns.django_value
+                                        ._starting_pattern.source,
                                 ),
-                                this._disabled.handlebars ||
-                                    e.push(
-                                        this.__patterns.handlebars
-                                            ._starting_pattern.source,
-                                    ),
+                                e.push(
+                                    this.__patterns.django_comment
+                                        ._starting_pattern.source,
+                                )),
+                            this._disabled.smarty ||
+                            e.push(
+                                this.__patterns.smarty._starting_pattern
+                                    .source,
+                            ),
+                            this._until_pattern &&
+                            e.push(this._until_pattern.source),
+                            (this.__template_pattern =
+                                this._input.get_regexp(
+                                    "(?:" + e.join("|") + ")",
+                                )));
+                    }),
+                    (o.prototype._read_template = function () {
+                        var e = "",
+                            t = this._input.peek();
+                        if ("<" === t) {
+                            var n = this._input.peek(1);
+                            (this._disabled.php ||
+                                this._excluded.php ||
+                                "?" !== n ||
+                                (e = e || this.__patterns.php.read()),
                                 this._disabled.erb ||
-                                    e.push(
-                                        this.__patterns.erb._starting_pattern
-                                            .source,
-                                    ),
-                                this._disabled.django ||
-                                    (e.push(
-                                        this.__patterns.django._starting_pattern
-                                            .source,
-                                    ),
-                                    e.push(
-                                        this.__patterns.django_value
-                                            ._starting_pattern.source,
-                                    ),
-                                    e.push(
-                                        this.__patterns.django_comment
-                                            ._starting_pattern.source,
-                                    )),
-                                this._disabled.smarty ||
-                                    e.push(
-                                        this.__patterns.smarty._starting_pattern
-                                            .source,
-                                    ),
-                                this._until_pattern &&
-                                    e.push(this._until_pattern.source),
-                                (this.__template_pattern =
-                                    this._input.get_regexp(
-                                        "(?:" + e.join("|") + ")",
-                                    )));
-                        }),
-                        (o.prototype._read_template = function () {
-                            var e = "",
-                                t = this._input.peek();
-                            if ("<" === t) {
-                                var n = this._input.peek(1);
-                                (this._disabled.php ||
-                                    this._excluded.php ||
-                                    "?" !== n ||
-                                    (e = e || this.__patterns.php.read()),
-                                    this._disabled.erb ||
-                                        this._excluded.erb ||
-                                        "%" !== n ||
-                                        (e = e || this.__patterns.erb.read()));
-                            } else
-                                "{" === t &&
-                                    (this._disabled.handlebars ||
+                                this._excluded.erb ||
+                                "%" !== n ||
+                                (e = e || this.__patterns.erb.read()));
+                        } else
+                            "{" === t &&
+                                (this._disabled.handlebars ||
+                                    this._excluded.handlebars ||
+                                    (e =
+                                        (e =
+                                            (e =
+                                                e ||
+                                                this.__patterns.handlebars_comment.read()) ||
+                                            this.__patterns.handlebars_unescaped.read()) ||
+                                        this.__patterns.handlebars.read()),
+                                    this._disabled.django ||
+                                    (this._excluded.django ||
                                         this._excluded.handlebars ||
+                                        (e =
+                                            e ||
+                                            this.__patterns.django_value.read()),
+                                        this._excluded.django ||
+                                        (e =
+                                            (e =
+                                                e ||
+                                                this.__patterns.django_comment.read()) ||
+                                            this.__patterns.django.read())),
+                                    this._disabled.smarty ||
+                                    (this._disabled.django &&
+                                        this._disabled.handlebars &&
                                         (e =
                                             (e =
                                                 (e =
                                                     e ||
-                                                    this.__patterns.handlebars_comment.read()) ||
-                                                this.__patterns.handlebars_unescaped.read()) ||
-                                            this.__patterns.handlebars.read()),
-                                    this._disabled.django ||
-                                        (this._excluded.django ||
-                                            this._excluded.handlebars ||
-                                            (e =
-                                                e ||
-                                                this.__patterns.django_value.read()),
-                                        this._excluded.django ||
-                                            (e =
-                                                (e =
-                                                    e ||
-                                                    this.__patterns.django_comment.read()) ||
-                                                this.__patterns.django.read())),
-                                    this._disabled.smarty ||
-                                        (this._disabled.django &&
-                                            this._disabled.handlebars &&
-                                            (e =
-                                                (e =
-                                                    (e =
-                                                        e ||
-                                                        this.__patterns.smarty_comment.read()) ||
-                                                    this.__patterns.smarty_literal.read()) ||
-                                                this.__patterns.smarty.read())));
-                            return e;
-                        }),
-                        (e.exports.TemplatablePattern = o));
-                },
-                ,
-                ,
-                ,
-                function (e, t, n) {
-                    var i = n(19).Beautifier,
-                        r = n(20).Options;
-                    ((e.exports = function (e, t, n, r) {
-                        return new i(e, t, n, r).beautify();
+                                                    this.__patterns.smarty_comment.read()) ||
+                                                this.__patterns.smarty_literal.read()) ||
+                                            this.__patterns.smarty.read())));
+                        return e;
                     }),
-                        (e.exports.defaultOptions = function () {
-                            return new r();
-                        }));
-                },
-                function (e, t, n) {
-                    var i = n(20).Options,
-                        r = n(2).Output,
-                        o = n(21).Tokenizer,
-                        a = n(21).TOKEN,
-                        s = /\r\n|[\r\n]/,
-                        l = /\r\n|[\r\n]/g,
-                        c = function (e, t) {
-                            ((this.indent_level = 0),
-                                (this.alignment_size = 0),
-                                (this.max_preserve_newlines =
-                                    e.max_preserve_newlines),
-                                (this.preserve_newlines = e.preserve_newlines),
-                                (this._output = new r(e, t)));
-                        };
-                    ((c.prototype.current_line_has_match = function (e) {
-                        return this._output.current_line.has_match(e);
+                    (e.exports.TemplatablePattern = o));
+            },
+            ,
+            ,
+            ,
+            function (e, t, n) {
+                var i = n(19).Beautifier,
+                    r = n(20).Options;
+                ((e.exports = function (e, t, n, r) {
+                    return new i(e, t, n, r).beautify();
+                }),
+                    (e.exports.defaultOptions = function () {
+                        return new r();
+                    }));
+            },
+            function (e, t, n) {
+                var i = n(20).Options,
+                    r = n(2).Output,
+                    o = n(21).Tokenizer,
+                    a = n(21).TOKEN,
+                    s = /\r\n|[\r\n]/,
+                    l = /\r\n|[\r\n]/g,
+                    c = function (e, t) {
+                        ((this.indent_level = 0),
+                            (this.alignment_size = 0),
+                            (this.max_preserve_newlines =
+                                e.max_preserve_newlines),
+                            (this.preserve_newlines = e.preserve_newlines),
+                            (this._output = new r(e, t)));
+                    };
+                ((c.prototype.current_line_has_match = function (e) {
+                    return this._output.current_line.has_match(e);
+                }),
+                    (c.prototype.set_space_before_token = function (e, t) {
+                        ((this._output.space_before_token = e),
+                            (this._output.non_breaking_space = t));
                     }),
-                        (c.prototype.set_space_before_token = function (e, t) {
-                            ((this._output.space_before_token = e),
-                                (this._output.non_breaking_space = t));
-                        }),
-                        (c.prototype.set_wrap_point = function () {
+                    (c.prototype.set_wrap_point = function () {
+                        (this._output.set_indent(
+                            this.indent_level,
+                            this.alignment_size,
+                        ),
+                            this._output.set_wrap_point());
+                    }),
+                    (c.prototype.add_raw_token = function (e) {
+                        this._output.add_raw_token(e);
+                    }),
+                    (c.prototype.print_preserved_newlines = function (e) {
+                        var t = 0;
+                        (e.type !== a.TEXT &&
+                            e.previous.type !== a.TEXT &&
+                            (t = e.newlines ? 1 : 0),
+                            this.preserve_newlines &&
+                            (t =
+                                e.newlines <
+                                    this.max_preserve_newlines + 1
+                                    ? e.newlines
+                                    : this.max_preserve_newlines + 1));
+                        for (var n = 0; n < t; n++)
+                            this.print_newline(n > 0);
+                        return 0 !== t;
+                    }),
+                    (c.prototype.traverse_whitespace = function (e) {
+                        return (
+                            !(!e.whitespace_before && !e.newlines) &&
+                            (this.print_preserved_newlines(e) ||
+                                (this._output.space_before_token = !0),
+                                !0)
+                        );
+                    }),
+                    (c.prototype.previous_token_wrapped = function () {
+                        return this._output.previous_token_wrapped;
+                    }),
+                    (c.prototype.print_newline = function (e) {
+                        this._output.add_new_line(e);
+                    }),
+                    (c.prototype.print_token = function (e) {
+                        e.text &&
                             (this._output.set_indent(
                                 this.indent_level,
                                 this.alignment_size,
                             ),
-                                this._output.set_wrap_point());
-                        }),
-                        (c.prototype.add_raw_token = function (e) {
-                            this._output.add_raw_token(e);
-                        }),
-                        (c.prototype.print_preserved_newlines = function (e) {
-                            var t = 0;
-                            (e.type !== a.TEXT &&
-                                e.previous.type !== a.TEXT &&
-                                (t = e.newlines ? 1 : 0),
-                                this.preserve_newlines &&
-                                    (t =
-                                        e.newlines <
-                                        this.max_preserve_newlines + 1
-                                            ? e.newlines
-                                            : this.max_preserve_newlines + 1));
-                            for (var n = 0; n < t; n++)
-                                this.print_newline(n > 0);
-                            return 0 !== t;
-                        }),
-                        (c.prototype.traverse_whitespace = function (e) {
-                            return (
-                                !(!e.whitespace_before && !e.newlines) &&
-                                (this.print_preserved_newlines(e) ||
-                                    (this._output.space_before_token = !0),
-                                !0)
-                            );
-                        }),
-                        (c.prototype.previous_token_wrapped = function () {
-                            return this._output.previous_token_wrapped;
-                        }),
-                        (c.prototype.print_newline = function (e) {
-                            this._output.add_new_line(e);
-                        }),
-                        (c.prototype.print_token = function (e) {
-                            e.text &&
-                                (this._output.set_indent(
-                                    this.indent_level,
-                                    this.alignment_size,
-                                ),
                                 this._output.add_token(e.text));
-                        }),
-                        (c.prototype.indent = function () {
-                            this.indent_level++;
-                        }),
-                        (c.prototype.deindent = function () {
-                            this.indent_level > 0 &&
-                                (this.indent_level--,
+                    }),
+                    (c.prototype.indent = function () {
+                        this.indent_level++;
+                    }),
+                    (c.prototype.deindent = function () {
+                        this.indent_level > 0 &&
+                            (this.indent_level--,
                                 this._output.set_indent(
                                     this.indent_level,
                                     this.alignment_size,
                                 ));
-                        }),
-                        (c.prototype.get_full_indent = function (e) {
-                            return (e = this.indent_level + (e || 0)) < 1
-                                ? ""
-                                : this._output.get_indent_string(e);
-                        }));
-                    var h = function (e, t) {
-                        var n = null,
-                            i = null;
-                        return t.closed
-                            ? ("script" === e
-                                  ? (n = "text/javascript")
-                                  : "style" === e && (n = "text/css"),
-                              (n =
-                                  (function (e) {
-                                      for (
-                                          var t = null, n = e.next;
-                                          n.type !== a.EOF && e.closed !== n;
-                                      ) {
-                                          if (
-                                              n.type === a.ATTRIBUTE &&
-                                              "type" === n.text
-                                          ) {
-                                              n.next &&
-                                                  n.next.type === a.EQUALS &&
-                                                  n.next.next &&
-                                                  n.next.next.type ===
-                                                      a.VALUE &&
-                                                  (t = n.next.next.text);
-                                              break;
-                                          }
-                                          n = n.next;
-                                      }
-                                      return t;
-                                  })(t) || n),
-                              n.search("text/css") > -1
-                                  ? (i = "css")
-                                  : n.search(
-                                          /module|((text|application|dojo)\/(x-)?(javascript|ecmascript|jscript|livescript|(ld\+)?json|method|aspect))/,
-                                      ) > -1
+                    }),
+                    (c.prototype.get_full_indent = function (e) {
+                        return (e = this.indent_level + (e || 0)) < 1
+                            ? ""
+                            : this._output.get_indent_string(e);
+                    }));
+                var h = function (e, t) {
+                    var n = null,
+                        i = null;
+                    return t.closed
+                        ? ("script" === e
+                            ? (n = "text/javascript")
+                            : "style" === e && (n = "text/css"),
+                            (n =
+                                (function (e) {
+                                    for (
+                                        var t = null, n = e.next;
+                                        n.type !== a.EOF && e.closed !== n;
+                                    ) {
+                                        if (
+                                            n.type === a.ATTRIBUTE &&
+                                            "type" === n.text
+                                        ) {
+                                            n.next &&
+                                                n.next.type === a.EQUALS &&
+                                                n.next.next &&
+                                                n.next.next.type ===
+                                                a.VALUE &&
+                                                (t = n.next.next.text);
+                                            break;
+                                        }
+                                        n = n.next;
+                                    }
+                                    return t;
+                                })(t) || n),
+                            n.search("text/css") > -1
+                                ? (i = "css")
+                                : n.search(
+                                    /module|((text|application|dojo)\/(x-)?(javascript|ecmascript|jscript|livescript|(ld\+)?json|method|aspect))/,
+                                ) > -1
                                     ? (i = "javascript")
                                     : n.search(
-                                            /(text|application|dojo)\/(x-)?(html)/,
-                                        ) > -1
-                                      ? (i = "html")
-                                      : n.search(/test\/null/) > -1 &&
+                                        /(text|application|dojo)\/(x-)?(html)/,
+                                    ) > -1
+                                        ? (i = "html")
+                                        : n.search(/test\/null/) > -1 &&
                                         (i = "null"),
-                              i)
-                            : null;
-                    };
-                    function d(e, t) {
-                        return -1 !== t.indexOf(e);
-                    }
-                    function u(e, t, n) {
-                        ((this.parent = e || null),
-                            (this.tag = t ? t.tag_name : ""),
-                            (this.indent_level = n || 0),
-                            (this.parser_token = t || null));
-                    }
-                    function m(e) {
-                        ((this._printer = e), (this._current_frame = null));
-                    }
-                    function p(e, t, n, r) {
-                        ((this._source_text = e || ""),
-                            (t = t || {}),
-                            (this._js_beautify = n),
-                            (this._css_beautify = r),
-                            (this._tag_stack = null));
-                        var o = new i(t, "html");
-                        ((this._options = o),
-                            (this._is_wrap_attributes_force =
-                                "force" ===
-                                this._options.wrap_attributes.substr(0, 5)),
-                            (this._is_wrap_attributes_force_expand_multiline =
-                                "force-expand-multiline" ===
-                                this._options.wrap_attributes),
-                            (this._is_wrap_attributes_force_aligned =
-                                "force-aligned" ===
-                                this._options.wrap_attributes),
-                            (this._is_wrap_attributes_aligned_multiple =
-                                "aligned-multiple" ===
-                                this._options.wrap_attributes),
-                            (this._is_wrap_attributes_preserve =
-                                "preserve" ===
-                                this._options.wrap_attributes.substr(0, 8)),
-                            (this._is_wrap_attributes_preserve_aligned =
-                                "preserve-aligned" ===
-                                this._options.wrap_attributes));
-                    }
-                    ((m.prototype.get_parser_token = function () {
-                        return this._current_frame
-                            ? this._current_frame.parser_token
-                            : null;
+                            i)
+                        : null;
+                };
+                function d(e, t) {
+                    return -1 !== t.indexOf(e);
+                }
+                function u(e, t, n) {
+                    ((this.parent = e || null),
+                        (this.tag = t ? t.tag_name : ""),
+                        (this.indent_level = n || 0),
+                        (this.parser_token = t || null));
+                }
+                function m(e) {
+                    ((this._printer = e), (this._current_frame = null));
+                }
+                function p(e, t, n, r) {
+                    ((this._source_text = e || ""),
+                        (t = t || {}),
+                        (this._js_beautify = n),
+                        (this._css_beautify = r),
+                        (this._tag_stack = null));
+                    var o = new i(t, "html");
+                    ((this._options = o),
+                        (this._is_wrap_attributes_force =
+                            "force" ===
+                            this._options.wrap_attributes.substr(0, 5)),
+                        (this._is_wrap_attributes_force_expand_multiline =
+                            "force-expand-multiline" ===
+                            this._options.wrap_attributes),
+                        (this._is_wrap_attributes_force_aligned =
+                            "force-aligned" ===
+                            this._options.wrap_attributes),
+                        (this._is_wrap_attributes_aligned_multiple =
+                            "aligned-multiple" ===
+                            this._options.wrap_attributes),
+                        (this._is_wrap_attributes_preserve =
+                            "preserve" ===
+                            this._options.wrap_attributes.substr(0, 8)),
+                        (this._is_wrap_attributes_preserve_aligned =
+                            "preserve-aligned" ===
+                            this._options.wrap_attributes));
+                }
+                ((m.prototype.get_parser_token = function () {
+                    return this._current_frame
+                        ? this._current_frame.parser_token
+                        : null;
+                }),
+                    (m.prototype.record_tag = function (e) {
+                        var t = new u(
+                            this._current_frame,
+                            e,
+                            this._printer.indent_level,
+                        );
+                        this._current_frame = t;
                     }),
-                        (m.prototype.record_tag = function (e) {
-                            var t = new u(
-                                this._current_frame,
-                                e,
-                                this._printer.indent_level,
-                            );
-                            this._current_frame = t;
-                        }),
-                        (m.prototype._try_pop_frame = function (e) {
-                            var t = null;
-                            return (
-                                e &&
-                                    ((t = e.parser_token),
-                                    (this._printer.indent_level =
-                                        e.indent_level),
-                                    (this._current_frame = e.parent)),
-                                t
-                            );
-                        }),
-                        (m.prototype._get_frame = function (e, t) {
-                            for (
-                                var n = this._current_frame;
-                                n && -1 === e.indexOf(n.tag);
-                            ) {
-                                if (t && -1 !== t.indexOf(n.tag)) {
-                                    n = null;
-                                    break;
-                                }
-                                n = n.parent;
+                    (m.prototype._try_pop_frame = function (e) {
+                        var t = null;
+                        return (
+                            e &&
+                            ((t = e.parser_token),
+                                (this._printer.indent_level =
+                                    e.indent_level),
+                                (this._current_frame = e.parent)),
+                            t
+                        );
+                    }),
+                    (m.prototype._get_frame = function (e, t) {
+                        for (
+                            var n = this._current_frame;
+                            n && -1 === e.indexOf(n.tag);
+                        ) {
+                            if (t && -1 !== t.indexOf(n.tag)) {
+                                n = null;
+                                break;
                             }
-                            return n;
-                        }),
-                        (m.prototype.try_pop = function (e, t) {
-                            var n = this._get_frame([e], t);
-                            return this._try_pop_frame(n);
-                        }),
-                        (m.prototype.indent_to_tag = function (e) {
-                            var t = this._get_frame(e);
-                            t && (this._printer.indent_level = t.indent_level);
-                        }),
-                        (p.prototype.beautify = function () {
-                            if (this._options.disabled)
-                                return this._source_text;
-                            var e = this._source_text,
-                                t = this._options.eol;
-                            "auto" === this._options.eol &&
-                                ((t = "\n"),
+                            n = n.parent;
+                        }
+                        return n;
+                    }),
+                    (m.prototype.try_pop = function (e, t) {
+                        var n = this._get_frame([e], t);
+                        return this._try_pop_frame(n);
+                    }),
+                    (m.prototype.indent_to_tag = function (e) {
+                        var t = this._get_frame(e);
+                        t && (this._printer.indent_level = t.indent_level);
+                    }),
+                    (p.prototype.beautify = function () {
+                        if (this._options.disabled)
+                            return this._source_text;
+                        var e = this._source_text,
+                            t = this._options.eol;
+                        "auto" === this._options.eol &&
+                            ((t = "\n"),
                                 e && s.test(e) && (t = e.match(s)[0]));
-                            var n = (e = e.replace(l, "\n")).match(
-                                    /^[\t ]*/,
-                                )[0],
-                                i = { text: "", type: "" },
-                                r = new g(),
-                                h = new c(this._options, n),
-                                d = new o(e, this._options).tokenize();
-                            this._tag_stack = new m(h);
-                            for (var u = null, p = d.next(); p.type !== a.EOF; )
-                                (p.type === a.TAG_OPEN || p.type === a.COMMENT
-                                    ? (r = u =
-                                          this._handle_tag_open(h, p, r, i, d))
-                                    : p.type === a.ATTRIBUTE ||
-                                        p.type === a.EQUALS ||
-                                        p.type === a.VALUE ||
-                                        (p.type === a.TEXT && !r.tag_complete)
-                                      ? (u = this._handle_inside_tag(
-                                            h,
-                                            p,
-                                            r,
-                                            i,
-                                        ))
-                                      : p.type === a.TAG_CLOSE
+                        var n = (e = e.replace(l, "\n")).match(
+                            /^[\t ]*/,
+                        )[0],
+                            i = { text: "", type: "" },
+                            r = new g(),
+                            h = new c(this._options, n),
+                            d = new o(e, this._options).tokenize();
+                        this._tag_stack = new m(h);
+                        for (var u = null, p = d.next(); p.type !== a.EOF;)
+                            (p.type === a.TAG_OPEN || p.type === a.COMMENT
+                                ? (r = u =
+                                    this._handle_tag_open(h, p, r, i, d))
+                                : p.type === a.ATTRIBUTE ||
+                                    p.type === a.EQUALS ||
+                                    p.type === a.VALUE ||
+                                    (p.type === a.TEXT && !r.tag_complete)
+                                    ? (u = this._handle_inside_tag(
+                                        h,
+                                        p,
+                                        r,
+                                        i,
+                                    ))
+                                    : p.type === a.TAG_CLOSE
                                         ? (u = this._handle_tag_close(h, p, r))
                                         : p.type === a.TEXT
-                                          ? (u = this._handle_text(h, p, r))
-                                          : p.type === a.CONTROL_FLOW_OPEN
-                                            ? (u =
-                                                  this._handle_control_flow_open(
-                                                      h,
-                                                      p,
-                                                  ))
-                                            : p.type === a.CONTROL_FLOW_CLOSE
-                                              ? (u =
-                                                    this._handle_control_flow_close(
+                                            ? (u = this._handle_text(h, p, r))
+                                            : p.type === a.CONTROL_FLOW_OPEN
+                                                ? (u =
+                                                    this._handle_control_flow_open(
                                                         h,
                                                         p,
                                                     ))
-                                              : h.add_raw_token(p),
-                                    (i = u),
-                                    (p = d.next()));
-                            return h._output.get_code(t);
-                        }),
-                        (p.prototype._handle_control_flow_open = function (
-                            e,
-                            t,
-                        ) {
-                            var n = { text: t.text, type: t.type };
-                            return (
-                                e.set_space_before_token(
-                                    t.newlines || "" !== t.whitespace_before,
+                                                : p.type === a.CONTROL_FLOW_CLOSE
+                                                    ? (u =
+                                                        this._handle_control_flow_close(
+                                                            h,
+                                                            p,
+                                                        ))
+                                                    : h.add_raw_token(p),
+                                (i = u),
+                                (p = d.next()));
+                        return h._output.get_code(t);
+                    }),
+                    (p.prototype._handle_control_flow_open = function (
+                        e,
+                        t,
+                    ) {
+                        var n = { text: t.text, type: t.type };
+                        return (
+                            e.set_space_before_token(
+                                t.newlines || "" !== t.whitespace_before,
+                                !0,
+                            ),
+                            t.newlines
+                                ? e.print_preserved_newlines(t)
+                                : e.set_space_before_token(
+                                    t.newlines ||
+                                    "" !== t.whitespace_before,
                                     !0,
                                 ),
-                                t.newlines
+                            e.print_token(t),
+                            e.indent(),
+                            n
+                        );
+                    }),
+                    (p.prototype._handle_control_flow_close = function (
+                        e,
+                        t,
+                    ) {
+                        var n = { text: t.text, type: t.type };
+                        return (
+                            e.deindent(),
+                            t.newlines
+                                ? e.print_preserved_newlines(t)
+                                : e.set_space_before_token(
+                                    t.newlines ||
+                                    "" !== t.whitespace_before,
+                                    !0,
+                                ),
+                            e.print_token(t),
+                            n
+                        );
+                    }),
+                    (p.prototype._handle_tag_close = function (e, t, n) {
+                        var i = { text: t.text, type: t.type };
+                        return (
+                            (e.alignment_size = 0),
+                            (n.tag_complete = !0),
+                            e.set_space_before_token(
+                                t.newlines || "" !== t.whitespace_before,
+                                !0,
+                            ),
+                            n.is_unformatted
+                                ? e.add_raw_token(t)
+                                : ("<" === n.tag_start_char &&
+                                    (e.set_space_before_token(
+                                        "/" === t.text[0],
+                                        !0,
+                                    ),
+                                        this
+                                            ._is_wrap_attributes_force_expand_multiline &&
+                                        n.has_wrapped_attrs &&
+                                        e.print_newline(!1)),
+                                    e.print_token(t)),
+                            !n.indent_content ||
+                            n.is_unformatted ||
+                            n.is_content_unformatted ||
+                            (e.indent(), (n.indent_content = !1)),
+                            n.is_inline_element ||
+                            n.is_unformatted ||
+                            n.is_content_unformatted ||
+                            e.set_wrap_point(),
+                            i
+                        );
+                    }),
+                    (p.prototype._handle_inside_tag = function (
+                        e,
+                        t,
+                        n,
+                        i,
+                    ) {
+                        var r = n.has_wrapped_attrs,
+                            o = { text: t.text, type: t.type };
+                        return (
+                            e.set_space_before_token(
+                                t.newlines || "" !== t.whitespace_before,
+                                !0,
+                            ),
+                            n.is_unformatted
+                                ? e.add_raw_token(t)
+                                : "{" === n.tag_start_char &&
+                                    t.type === a.TEXT
                                     ? e.print_preserved_newlines(t)
-                                    : e.set_space_before_token(
-                                          t.newlines ||
-                                              "" !== t.whitespace_before,
-                                          !0,
-                                      ),
-                                e.print_token(t),
-                                e.indent(),
-                                n
-                            );
-                        }),
-                        (p.prototype._handle_control_flow_close = function (
-                            e,
-                            t,
-                        ) {
-                            var n = { text: t.text, type: t.type };
-                            return (
-                                e.deindent(),
-                                t.newlines
-                                    ? e.print_preserved_newlines(t)
-                                    : e.set_space_before_token(
-                                          t.newlines ||
-                                              "" !== t.whitespace_before,
-                                          !0,
-                                      ),
-                                e.print_token(t),
-                                n
-                            );
-                        }),
-                        (p.prototype._handle_tag_close = function (e, t, n) {
-                            var i = { text: t.text, type: t.type };
-                            return (
-                                (e.alignment_size = 0),
-                                (n.tag_complete = !0),
-                                e.set_space_before_token(
-                                    t.newlines || "" !== t.whitespace_before,
-                                    !0,
-                                ),
-                                n.is_unformatted
-                                    ? e.add_raw_token(t)
-                                    : ("<" === n.tag_start_char &&
-                                          (e.set_space_before_token(
-                                              "/" === t.text[0],
-                                              !0,
-                                          ),
-                                          this
-                                              ._is_wrap_attributes_force_expand_multiline &&
-                                              n.has_wrapped_attrs &&
-                                              e.print_newline(!1)),
-                                      e.print_token(t)),
-                                !n.indent_content ||
-                                    n.is_unformatted ||
-                                    n.is_content_unformatted ||
-                                    (e.indent(), (n.indent_content = !1)),
-                                n.is_inline_element ||
-                                    n.is_unformatted ||
-                                    n.is_content_unformatted ||
-                                    e.set_wrap_point(),
-                                i
-                            );
-                        }),
-                        (p.prototype._handle_inside_tag = function (
-                            e,
-                            t,
-                            n,
-                            i,
-                        ) {
-                            var r = n.has_wrapped_attrs,
-                                o = { text: t.text, type: t.type };
-                            return (
-                                e.set_space_before_token(
-                                    t.newlines || "" !== t.whitespace_before,
-                                    !0,
-                                ),
-                                n.is_unformatted
-                                    ? e.add_raw_token(t)
-                                    : "{" === n.tag_start_char &&
-                                        t.type === a.TEXT
-                                      ? e.print_preserved_newlines(t)
-                                          ? ((t.newlines = 0),
+                                        ? ((t.newlines = 0),
                                             e.add_raw_token(t))
-                                          : e.print_token(t)
-                                      : (t.type === a.ATTRIBUTE
-                                            ? e.set_space_before_token(!0)
-                                            : (t.type === a.EQUALS ||
-                                                  (t.type === a.VALUE &&
-                                                      t.previous.type ===
-                                                          a.EQUALS)) &&
-                                              e.set_space_before_token(!1),
+                                        : e.print_token(t)
+                                    : (t.type === a.ATTRIBUTE
+                                        ? e.set_space_before_token(!0)
+                                        : (t.type === a.EQUALS ||
+                                            (t.type === a.VALUE &&
+                                                t.previous.type ===
+                                                a.EQUALS)) &&
+                                        e.set_space_before_token(!1),
                                         t.type === a.ATTRIBUTE &&
-                                            "<" === n.tag_start_char &&
-                                            ((this
-                                                ._is_wrap_attributes_preserve ||
-                                                this
-                                                    ._is_wrap_attributes_preserve_aligned) &&
-                                                (e.traverse_whitespace(t),
+                                        "<" === n.tag_start_char &&
+                                        ((this
+                                            ._is_wrap_attributes_preserve ||
+                                            this
+                                                ._is_wrap_attributes_preserve_aligned) &&
+                                            (e.traverse_whitespace(t),
                                                 (r = r || 0 !== t.newlines)),
                                             this._is_wrap_attributes_force &&
-                                                n.attr_count >=
-                                                    this._options
-                                                        .wrap_attributes_min_attrs &&
-                                                (i.type !== a.TAG_OPEN ||
-                                                    this
-                                                        ._is_wrap_attributes_force_expand_multiline) &&
-                                                (e.print_newline(!1),
+                                            n.attr_count >=
+                                            this._options
+                                                .wrap_attributes_min_attrs &&
+                                            (i.type !== a.TAG_OPEN ||
+                                                this
+                                                    ._is_wrap_attributes_force_expand_multiline) &&
+                                            (e.print_newline(!1),
                                                 (r = !0))),
                                         e.print_token(t),
                                         (r = r || e.previous_token_wrapped()),
                                         (n.has_wrapped_attrs = r)),
-                                o
-                            );
-                        }),
-                        (p.prototype._handle_text = function (e, t, n) {
-                            var i = { text: t.text, type: "TK_CONTENT" };
-                            return (
-                                n.custom_beautifier_name
-                                    ? this._print_custom_beatifier_text(e, t, n)
-                                    : n.is_unformatted ||
-                                        n.is_content_unformatted
-                                      ? e.add_raw_token(t)
-                                      : (e.traverse_whitespace(t),
+                            o
+                        );
+                    }),
+                    (p.prototype._handle_text = function (e, t, n) {
+                        var i = { text: t.text, type: "TK_CONTENT" };
+                        return (
+                            n.custom_beautifier_name
+                                ? this._print_custom_beatifier_text(e, t, n)
+                                : n.is_unformatted ||
+                                    n.is_content_unformatted
+                                    ? e.add_raw_token(t)
+                                    : (e.traverse_whitespace(t),
                                         e.print_token(t)),
-                                i
-                            );
-                        }),
-                        (p.prototype._print_custom_beatifier_text = function (
-                            e,
-                            t,
-                            n,
-                        ) {
-                            var i = this;
-                            if ("" !== t.text) {
-                                var r,
-                                    o = t.text,
-                                    a = 1,
-                                    s = "",
-                                    l = "";
-                                ("javascript" === n.custom_beautifier_name &&
+                            i
+                        );
+                    }),
+                    (p.prototype._print_custom_beatifier_text = function (
+                        e,
+                        t,
+                        n,
+                    ) {
+                        var i = this;
+                        if ("" !== t.text) {
+                            var r,
+                                o = t.text,
+                                a = 1,
+                                s = "",
+                                l = "";
+                            ("javascript" === n.custom_beautifier_name &&
                                 "function" == typeof this._js_beautify
-                                    ? (r = this._js_beautify)
-                                    : "css" === n.custom_beautifier_name &&
-                                        "function" == typeof this._css_beautify
-                                      ? (r = this._css_beautify)
-                                      : "html" === n.custom_beautifier_name &&
-                                        (r = function (e, t) {
-                                            return new p(
-                                                e,
-                                                t,
-                                                i._js_beautify,
-                                                i._css_beautify,
-                                            ).beautify();
-                                        }),
-                                    "keep" === this._options.indent_scripts
-                                        ? (a = 0)
-                                        : "separate" ===
-                                              this._options.indent_scripts &&
-                                          (a = -e.indent_level));
-                                var c = e.get_full_indent(a);
-                                if (
-                                    ((o = o.replace(/\n[ \t]*$/, "")),
-                                    "html" !== n.custom_beautifier_name &&
-                                        "<" === o[0] &&
-                                        o.match(/^(<!--|<!\[CDATA\[)/))
-                                ) {
-                                    var h =
-                                        /^(<!--[^\n]*|<!\[CDATA\[)(\n?)([ \t\n]*)([\s\S]*)(-->|]]>)$/.exec(
-                                            o,
-                                        );
-                                    if (!h) return void e.add_raw_token(t);
-                                    ((s = c + h[1] + "\n"),
-                                        (o = h[4]),
-                                        h[5] && (l = c + h[5]),
-                                        (o = o.replace(/\n[ \t]*$/, "")),
-                                        (h[2] || -1 !== h[3].indexOf("\n")) &&
-                                            (h = h[3].match(/[ \t]+$/)) &&
-                                            (t.whitespace_before = h[0]));
-                                }
-                                if (o)
-                                    if (r) {
-                                        var d = function () {
-                                            this.eol = "\n";
-                                        };
-                                        ((d.prototype =
-                                            this._options.raw_options),
-                                            (o = r(c + o, new d())));
-                                    } else {
-                                        var u = t.whitespace_before;
-                                        (u &&
-                                            (o = o.replace(
-                                                new RegExp(
-                                                    "\n(" + u + ")?",
-                                                    "g",
-                                                ),
-                                                "\n",
-                                            )),
-                                            (o =
-                                                c +
-                                                o.replace(/\n/g, "\n" + c)));
-                                    }
-                                (s && (o = o ? s + o + "\n" + l : s + l),
-                                    e.print_newline(!1),
-                                    o &&
-                                        ((t.text = o),
-                                        (t.whitespace_before = ""),
-                                        (t.newlines = 0),
-                                        e.add_raw_token(t),
-                                        e.print_newline(!0)));
-                            }
-                        }),
-                        (p.prototype._handle_tag_open = function (
-                            e,
-                            t,
-                            n,
-                            i,
-                            r,
-                        ) {
-                            var o = this._get_tag_open_token(t);
+                                ? (r = this._js_beautify)
+                                : "css" === n.custom_beautifier_name &&
+                                    "function" == typeof this._css_beautify
+                                    ? (r = this._css_beautify)
+                                    : "html" === n.custom_beautifier_name &&
+                                    (r = function (e, t) {
+                                        return new p(
+                                            e,
+                                            t,
+                                            i._js_beautify,
+                                            i._css_beautify,
+                                        ).beautify();
+                                    }),
+                                "keep" === this._options.indent_scripts
+                                    ? (a = 0)
+                                    : "separate" ===
+                                    this._options.indent_scripts &&
+                                    (a = -e.indent_level));
+                            var c = e.get_full_indent(a);
                             if (
-                                ((!n.is_unformatted &&
-                                    !n.is_content_unformatted) ||
+                                ((o = o.replace(/\n[ \t]*$/, "")),
+                                    "html" !== n.custom_beautifier_name &&
+                                    "<" === o[0] &&
+                                    o.match(/^(<!--|<!\[CDATA\[)/))
+                            ) {
+                                var h =
+                                    /^(<!--[^\n]*|<!\[CDATA\[)(\n?)([ \t\n]*)([\s\S]*)(-->|]]>)$/.exec(
+                                        o,
+                                    );
+                                if (!h) return void e.add_raw_token(t);
+                                ((s = c + h[1] + "\n"),
+                                    (o = h[4]),
+                                    h[5] && (l = c + h[5]),
+                                    (o = o.replace(/\n[ \t]*$/, "")),
+                                    (h[2] || -1 !== h[3].indexOf("\n")) &&
+                                    (h = h[3].match(/[ \t]+$/)) &&
+                                    (t.whitespace_before = h[0]));
+                            }
+                            if (o)
+                                if (r) {
+                                    var d = function () {
+                                        this.eol = "\n";
+                                    };
+                                    ((d.prototype =
+                                        this._options.raw_options),
+                                        (o = r(c + o, new d())));
+                                } else {
+                                    var u = t.whitespace_before;
+                                    (u &&
+                                        (o = o.replace(
+                                            new RegExp(
+                                                "\n(" + u + ")?",
+                                                "g",
+                                            ),
+                                            "\n",
+                                        )),
+                                        (o =
+                                            c +
+                                            o.replace(/\n/g, "\n" + c)));
+                                }
+                            (s && (o = o ? s + o + "\n" + l : s + l),
+                                e.print_newline(!1),
+                                o &&
+                                ((t.text = o),
+                                    (t.whitespace_before = ""),
+                                    (t.newlines = 0),
+                                    e.add_raw_token(t),
+                                    e.print_newline(!0)));
+                        }
+                    }),
+                    (p.prototype._handle_tag_open = function (
+                        e,
+                        t,
+                        n,
+                        i,
+                        r,
+                    ) {
+                        var o = this._get_tag_open_token(t);
+                        if (
+                            ((!n.is_unformatted &&
+                                !n.is_content_unformatted) ||
                                 n.is_empty_element ||
                                 t.type !== a.TAG_OPEN ||
                                 o.is_start_tag
-                                    ? (e.traverse_whitespace(t),
-                                      this._set_tag_position(e, t, o, n, i),
-                                      o.is_inline_element || e.set_wrap_point(),
-                                      e.print_token(t))
-                                    : (e.add_raw_token(t),
-                                      (o.start_tag_token =
-                                          this._tag_stack.try_pop(o.tag_name))),
+                                ? (e.traverse_whitespace(t),
+                                    this._set_tag_position(e, t, o, n, i),
+                                    o.is_inline_element || e.set_wrap_point(),
+                                    e.print_token(t))
+                                : (e.add_raw_token(t),
+                                    (o.start_tag_token =
+                                        this._tag_stack.try_pop(o.tag_name))),
                                 o.is_start_tag &&
-                                    this._is_wrap_attributes_force)
-                            ) {
-                                var s,
-                                    l = 0;
-                                do {
-                                    ((s = r.peek(l)).type === a.ATTRIBUTE &&
-                                        (o.attr_count += 1),
-                                        (l += 1));
-                                } while (
-                                    s.type !== a.EOF &&
-                                    s.type !== a.TAG_CLOSE
-                                );
-                            }
-                            return (
-                                (this._is_wrap_attributes_force_aligned ||
-                                    this._is_wrap_attributes_aligned_multiple ||
-                                    this
-                                        ._is_wrap_attributes_preserve_aligned) &&
-                                    (o.alignment_size = t.text.length + 1),
-                                o.tag_complete ||
-                                    o.is_unformatted ||
-                                    (e.alignment_size = o.alignment_size),
-                                o
+                                this._is_wrap_attributes_force)
+                        ) {
+                            var s,
+                                l = 0;
+                            do {
+                                ((s = r.peek(l)).type === a.ATTRIBUTE &&
+                                    (o.attr_count += 1),
+                                    (l += 1));
+                            } while (
+                                s.type !== a.EOF &&
+                                s.type !== a.TAG_CLOSE
                             );
-                        }));
-                    var g = function (e, t) {
-                        if (
-                            ((this.parent = e || null),
+                        }
+                        return (
+                            (this._is_wrap_attributes_force_aligned ||
+                                this._is_wrap_attributes_aligned_multiple ||
+                                this
+                                    ._is_wrap_attributes_preserve_aligned) &&
+                            (o.alignment_size = t.text.length + 1),
+                            o.tag_complete ||
+                            o.is_unformatted ||
+                            (e.alignment_size = o.alignment_size),
+                            o
+                        );
+                    }));
+                var g = function (e, t) {
+                    if (
+                        ((this.parent = e || null),
                             (this.text = ""),
                             (this.type = "TK_TAG_OPEN"),
                             (this.tag_name = ""),
@@ -20308,927 +20308,927 @@
                             (this.tag_start_char = ""),
                             (this.tag_check = ""),
                             t)
-                        ) {
-                            var n;
-                            ((this.tag_start_char = t.text[0]),
-                                (this.text = t.text),
-                                "<" === this.tag_start_char
-                                    ? ((n = t.text.match(/^<([^\s>]*)/)),
-                                      (this.tag_check = n ? n[1] : ""))
-                                    : ((n = t.text.match(
-                                          /^{{~?(?:[\^]|#\*?)?([^\s}]+)/,
-                                      )),
-                                      (this.tag_check = n ? n[1] : ""),
-                                      (t.text.startsWith("{{#>") ||
-                                          t.text.startsWith("{{~#>")) &&
-                                          ">" === this.tag_check[0] &&
-                                          (">" === this.tag_check &&
-                                          null !== t.next
-                                              ? (this.tag_check =
-                                                    t.next.text.split(" ")[0])
-                                              : (this.tag_check =
-                                                    t.text.split(">")[1]))),
-                                (this.tag_check = this.tag_check.toLowerCase()),
-                                t.type === a.COMMENT &&
-                                    (this.tag_complete = !0),
-                                (this.is_start_tag =
-                                    "/" !== this.tag_check.charAt(0)),
-                                (this.tag_name = this.is_start_tag
-                                    ? this.tag_check
-                                    : this.tag_check.substr(1)),
-                                (this.is_end_tag =
-                                    !this.is_start_tag ||
-                                    (t.closed && "/>" === t.closed.text)));
-                            var i = 2;
-                            ("{" === this.tag_start_char &&
-                                this.text.length >= 3 &&
-                                "~" === this.text.charAt(2) &&
-                                (i = 3),
-                                (this.is_end_tag =
-                                    this.is_end_tag ||
-                                    ("{" === this.tag_start_char &&
-                                        (this.text.length < 3 ||
-                                            /[^#\^]/.test(
-                                                this.text.charAt(i),
-                                            )))));
-                        } else this.tag_complete = !0;
-                    };
-                    ((p.prototype._get_tag_open_token = function (e) {
-                        var t = new g(this._tag_stack.get_parser_token(), e);
-                        return (
-                            (t.alignment_size =
-                                this._options.wrap_attributes_indent_size),
-                            (t.is_end_tag =
-                                t.is_end_tag ||
-                                d(t.tag_check, this._options.void_elements)),
-                            (t.is_empty_element =
-                                t.tag_complete ||
-                                (t.is_start_tag && t.is_end_tag)),
-                            (t.is_unformatted =
-                                !t.tag_complete &&
-                                d(t.tag_check, this._options.unformatted)),
-                            (t.is_content_unformatted =
-                                !t.is_empty_element &&
-                                d(
-                                    t.tag_check,
-                                    this._options.content_unformatted,
+                    ) {
+                        var n;
+                        ((this.tag_start_char = t.text[0]),
+                            (this.text = t.text),
+                            "<" === this.tag_start_char
+                                ? ((n = t.text.match(/^<([^\s>]*)/)),
+                                    (this.tag_check = n ? n[1] : ""))
+                                : ((n = t.text.match(
+                                    /^{{~?(?:[\^]|#\*?)?([^\s}]+)/,
                                 )),
-                            (t.is_inline_element =
-                                d(t.tag_name, this._options.inline) ||
-                                (this._options.inline_custom_elements &&
-                                    t.tag_name.includes("-")) ||
-                                "{" === t.tag_start_char),
-                            t
-                        );
-                    }),
-                        (p.prototype._set_tag_position = function (
-                            e,
-                            t,
-                            n,
-                            i,
-                            r,
+                                    (this.tag_check = n ? n[1] : ""),
+                                    (t.text.startsWith("{{#>") ||
+                                        t.text.startsWith("{{~#>")) &&
+                                    ">" === this.tag_check[0] &&
+                                    (">" === this.tag_check &&
+                                        null !== t.next
+                                        ? (this.tag_check =
+                                            t.next.text.split(" ")[0])
+                                        : (this.tag_check =
+                                            t.text.split(">")[1]))),
+                            (this.tag_check = this.tag_check.toLowerCase()),
+                            t.type === a.COMMENT &&
+                            (this.tag_complete = !0),
+                            (this.is_start_tag =
+                                "/" !== this.tag_check.charAt(0)),
+                            (this.tag_name = this.is_start_tag
+                                ? this.tag_check
+                                : this.tag_check.substr(1)),
+                            (this.is_end_tag =
+                                !this.is_start_tag ||
+                                (t.closed && "/>" === t.closed.text)));
+                        var i = 2;
+                        ("{" === this.tag_start_char &&
+                            this.text.length >= 3 &&
+                            "~" === this.text.charAt(2) &&
+                            (i = 3),
+                            (this.is_end_tag =
+                                this.is_end_tag ||
+                                ("{" === this.tag_start_char &&
+                                    (this.text.length < 3 ||
+                                        /[^#\^]/.test(
+                                            this.text.charAt(i),
+                                        )))));
+                    } else this.tag_complete = !0;
+                };
+                ((p.prototype._get_tag_open_token = function (e) {
+                    var t = new g(this._tag_stack.get_parser_token(), e);
+                    return (
+                        (t.alignment_size =
+                            this._options.wrap_attributes_indent_size),
+                        (t.is_end_tag =
+                            t.is_end_tag ||
+                            d(t.tag_check, this._options.void_elements)),
+                        (t.is_empty_element =
+                            t.tag_complete ||
+                            (t.is_start_tag && t.is_end_tag)),
+                        (t.is_unformatted =
+                            !t.tag_complete &&
+                            d(t.tag_check, this._options.unformatted)),
+                        (t.is_content_unformatted =
+                            !t.is_empty_element &&
+                            d(
+                                t.tag_check,
+                                this._options.content_unformatted,
+                            )),
+                        (t.is_inline_element =
+                            d(t.tag_name, this._options.inline) ||
+                            (this._options.inline_custom_elements &&
+                                t.tag_name.includes("-")) ||
+                            "{" === t.tag_start_char),
+                        t
+                    );
+                }),
+                    (p.prototype._set_tag_position = function (
+                        e,
+                        t,
+                        n,
+                        i,
+                        r,
+                    ) {
+                        if (
+                            (n.is_empty_element ||
+                                (n.is_end_tag
+                                    ? (n.start_tag_token =
+                                        this._tag_stack.try_pop(
+                                            n.tag_name,
+                                        ))
+                                    : (this._do_optional_end_element(n) &&
+                                        (n.is_inline_element ||
+                                            e.print_newline(!1)),
+                                        this._tag_stack.record_tag(n),
+                                        ("script" !== n.tag_name &&
+                                            "style" !== n.tag_name) ||
+                                        n.is_unformatted ||
+                                        n.is_content_unformatted ||
+                                        (n.custom_beautifier_name = h(
+                                            n.tag_check,
+                                            t,
+                                        )))),
+                                d(n.tag_check, this._options.extra_liners) &&
+                                (e.print_newline(!1),
+                                    e._output.just_added_blankline() ||
+                                    e.print_newline(!0)),
+                                n.is_empty_element)
                         ) {
                             if (
-                                (n.is_empty_element ||
-                                    (n.is_end_tag
-                                        ? (n.start_tag_token =
-                                              this._tag_stack.try_pop(
-                                                  n.tag_name,
-                                              ))
-                                        : (this._do_optional_end_element(n) &&
-                                              (n.is_inline_element ||
-                                                  e.print_newline(!1)),
-                                          this._tag_stack.record_tag(n),
-                                          ("script" !== n.tag_name &&
-                                              "style" !== n.tag_name) ||
-                                              n.is_unformatted ||
-                                              n.is_content_unformatted ||
-                                              (n.custom_beautifier_name = h(
-                                                  n.tag_check,
-                                                  t,
-                                              )))),
-                                d(n.tag_check, this._options.extra_liners) &&
-                                    (e.print_newline(!1),
-                                    e._output.just_added_blankline() ||
-                                        e.print_newline(!0)),
-                                n.is_empty_element)
-                            ) {
-                                if (
-                                    "{" === n.tag_start_char &&
-                                    "else" === n.tag_check
-                                )
-                                    (this._tag_stack.indent_to_tag([
-                                        "if",
-                                        "unless",
-                                        "each",
-                                    ]),
-                                        (n.indent_content = !0),
-                                        e.current_line_has_match(/{{#if/) ||
-                                            e.print_newline(!1));
-                                ("!--" === n.tag_name &&
-                                    r.type === a.TAG_CLOSE &&
-                                    i.is_end_tag &&
-                                    -1 === n.text.indexOf("\n")) ||
-                                    (n.is_inline_element ||
-                                        n.is_unformatted ||
-                                        e.print_newline(!1),
+                                "{" === n.tag_start_char &&
+                                "else" === n.tag_check
+                            )
+                                (this._tag_stack.indent_to_tag([
+                                    "if",
+                                    "unless",
+                                    "each",
+                                ]),
+                                    (n.indent_content = !0),
+                                    e.current_line_has_match(/{{#if/) ||
+                                    e.print_newline(!1));
+                            ("!--" === n.tag_name &&
+                                r.type === a.TAG_CLOSE &&
+                                i.is_end_tag &&
+                                -1 === n.text.indexOf("\n")) ||
+                                (n.is_inline_element ||
+                                    n.is_unformatted ||
+                                    e.print_newline(!1),
                                     this._calcluate_parent_multiline(e, n));
-                            } else if (n.is_end_tag) {
-                                var o = !1;
-                                ((o =
-                                    (o =
-                                        n.start_tag_token &&
-                                        n.start_tag_token.multiline_content) ||
-                                    (!n.is_inline_element &&
-                                        !(
-                                            i.is_inline_element ||
-                                            i.is_unformatted
-                                        ) &&
-                                        !(
-                                            r.type === a.TAG_CLOSE &&
-                                            n.start_tag_token === i
-                                        ) &&
-                                        "TK_CONTENT" !== r.type)),
-                                    (n.is_content_unformatted ||
-                                        n.is_unformatted) &&
-                                        (o = !1),
-                                    o && e.print_newline(!1));
-                            } else
-                                ((n.indent_content = !n.custom_beautifier_name),
-                                    "<" === n.tag_start_char &&
-                                        ("html" === n.tag_name
-                                            ? (n.indent_content =
-                                                  this._options.indent_inner_html)
-                                            : "head" === n.tag_name
-                                              ? (n.indent_content =
-                                                    this._options.indent_head_inner_html)
-                                              : "body" === n.tag_name &&
-                                                (n.indent_content =
-                                                    this._options.indent_body_inner_html)),
-                                    n.is_inline_element ||
-                                        n.is_unformatted ||
-                                        ("TK_CONTENT" === r.type &&
-                                            !n.is_content_unformatted) ||
-                                        e.print_newline(!1),
-                                    this._calcluate_parent_multiline(e, n));
-                        }),
-                        (p.prototype._calcluate_parent_multiline = function (
-                            e,
-                            t,
-                        ) {
-                            !t.parent ||
-                                !e._output.just_added_newline() ||
-                                ((t.is_inline_element || t.is_unformatted) &&
-                                    t.parent.is_inline_element) ||
-                                (t.parent.multiline_content = !0);
-                        }));
-                    var f = [
-                            "address",
-                            "article",
-                            "aside",
-                            "blockquote",
-                            "details",
-                            "div",
-                            "dl",
-                            "fieldset",
-                            "figcaption",
-                            "figure",
-                            "footer",
-                            "form",
-                            "h1",
-                            "h2",
-                            "h3",
-                            "h4",
-                            "h5",
-                            "h6",
-                            "header",
-                            "hr",
-                            "main",
-                            "menu",
-                            "nav",
-                            "ol",
-                            "p",
-                            "pre",
-                            "section",
-                            "table",
-                            "ul",
-                        ],
-                        b = [
-                            "a",
-                            "audio",
-                            "del",
-                            "ins",
-                            "map",
-                            "noscript",
-                            "video",
-                        ];
-                    ((p.prototype._do_optional_end_element = function (e) {
-                        var t = null;
-                        if (!e.is_empty_element && e.is_start_tag && e.parent) {
-                            if ("body" === e.tag_name)
-                                t = t || this._tag_stack.try_pop("head");
-                            else if ("li" === e.tag_name)
-                                t =
+                        } else if (n.is_end_tag) {
+                            var o = !1;
+                            ((o =
+                                (o =
+                                    n.start_tag_token &&
+                                    n.start_tag_token.multiline_content) ||
+                                (!n.is_inline_element &&
+                                    !(
+                                        i.is_inline_element ||
+                                        i.is_unformatted
+                                    ) &&
+                                    !(
+                                        r.type === a.TAG_CLOSE &&
+                                        n.start_tag_token === i
+                                    ) &&
+                                    "TK_CONTENT" !== r.type)),
+                                (n.is_content_unformatted ||
+                                    n.is_unformatted) &&
+                                (o = !1),
+                                o && e.print_newline(!1));
+                        } else
+                            ((n.indent_content = !n.custom_beautifier_name),
+                                "<" === n.tag_start_char &&
+                                ("html" === n.tag_name
+                                    ? (n.indent_content =
+                                        this._options.indent_inner_html)
+                                    : "head" === n.tag_name
+                                        ? (n.indent_content =
+                                            this._options.indent_head_inner_html)
+                                        : "body" === n.tag_name &&
+                                        (n.indent_content =
+                                            this._options.indent_body_inner_html)),
+                                n.is_inline_element ||
+                                n.is_unformatted ||
+                                ("TK_CONTENT" === r.type &&
+                                    !n.is_content_unformatted) ||
+                                e.print_newline(!1),
+                                this._calcluate_parent_multiline(e, n));
+                    }),
+                    (p.prototype._calcluate_parent_multiline = function (
+                        e,
+                        t,
+                    ) {
+                        !t.parent ||
+                            !e._output.just_added_newline() ||
+                            ((t.is_inline_element || t.is_unformatted) &&
+                                t.parent.is_inline_element) ||
+                            (t.parent.multiline_content = !0);
+                    }));
+                var f = [
+                    "address",
+                    "article",
+                    "aside",
+                    "blockquote",
+                    "details",
+                    "div",
+                    "dl",
+                    "fieldset",
+                    "figcaption",
+                    "figure",
+                    "footer",
+                    "form",
+                    "h1",
+                    "h2",
+                    "h3",
+                    "h4",
+                    "h5",
+                    "h6",
+                    "header",
+                    "hr",
+                    "main",
+                    "menu",
+                    "nav",
+                    "ol",
+                    "p",
+                    "pre",
+                    "section",
+                    "table",
+                    "ul",
+                ],
+                    b = [
+                        "a",
+                        "audio",
+                        "del",
+                        "ins",
+                        "map",
+                        "noscript",
+                        "video",
+                    ];
+                ((p.prototype._do_optional_end_element = function (e) {
+                    var t = null;
+                    if (!e.is_empty_element && e.is_start_tag && e.parent) {
+                        if ("body" === e.tag_name)
+                            t = t || this._tag_stack.try_pop("head");
+                        else if ("li" === e.tag_name)
+                            t =
+                                t ||
+                                this._tag_stack.try_pop("li", [
+                                    "ol",
+                                    "ul",
+                                    "menu",
+                                ]);
+                        else if ("dd" === e.tag_name || "dt" === e.tag_name)
+                            t =
+                                (t =
                                     t ||
-                                    this._tag_stack.try_pop("li", [
-                                        "ol",
-                                        "ul",
-                                        "menu",
-                                    ]);
-                            else if ("dd" === e.tag_name || "dt" === e.tag_name)
-                                t =
+                                    this._tag_stack.try_pop("dt", [
+                                        "dl",
+                                    ])) ||
+                                this._tag_stack.try_pop("dd", ["dl"]);
+                        else if (
+                            "p" === e.parent.tag_name &&
+                            -1 !== f.indexOf(e.tag_name)
+                        ) {
+                            var n = e.parent.parent;
+                            (n && -1 !== b.indexOf(n.tag_name)) ||
+                                (t = t || this._tag_stack.try_pop("p"));
+                        } else
+                            "rp" === e.tag_name || "rt" === e.tag_name
+                                ? (t =
                                     (t =
                                         t ||
-                                        this._tag_stack.try_pop("dt", [
-                                            "dl",
+                                        this._tag_stack.try_pop("rt", [
+                                            "ruby",
+                                            "rtc",
                                         ])) ||
-                                    this._tag_stack.try_pop("dd", ["dl"]);
-                            else if (
-                                "p" === e.parent.tag_name &&
-                                -1 !== f.indexOf(e.tag_name)
-                            ) {
-                                var n = e.parent.parent;
-                                (n && -1 !== b.indexOf(n.tag_name)) ||
-                                    (t = t || this._tag_stack.try_pop("p"));
-                            } else
-                                "rp" === e.tag_name || "rt" === e.tag_name
+                                    this._tag_stack.try_pop("rp", [
+                                        "ruby",
+                                        "rtc",
+                                    ]))
+                                : "optgroup" === e.tag_name
                                     ? (t =
-                                          (t =
-                                              t ||
-                                              this._tag_stack.try_pop("rt", [
-                                                  "ruby",
-                                                  "rtc",
-                                              ])) ||
-                                          this._tag_stack.try_pop("rp", [
-                                              "ruby",
-                                              "rtc",
-                                          ]))
-                                    : "optgroup" === e.tag_name
-                                      ? (t =
+                                        t ||
+                                        this._tag_stack.try_pop(
+                                            "optgroup",
+                                            ["select"],
+                                        ))
+                                    : "option" === e.tag_name
+                                        ? (t =
                                             t ||
                                             this._tag_stack.try_pop(
-                                                "optgroup",
-                                                ["select"],
+                                                "option",
+                                                [
+                                                    "select",
+                                                    "datalist",
+                                                    "optgroup",
+                                                ],
                                             ))
-                                      : "option" === e.tag_name
-                                        ? (t =
-                                              t ||
-                                              this._tag_stack.try_pop(
-                                                  "option",
-                                                  [
-                                                      "select",
-                                                      "datalist",
-                                                      "optgroup",
-                                                  ],
-                                              ))
                                         : "colgroup" === e.tag_name
-                                          ? (t =
+                                            ? (t =
                                                 t ||
                                                 this._tag_stack.try_pop(
                                                     "caption",
                                                     ["table"],
                                                 ))
-                                          : "thead" === e.tag_name
-                                            ? (t =
-                                                  (t =
-                                                      t ||
-                                                      this._tag_stack.try_pop(
-                                                          "caption",
-                                                          ["table"],
-                                                      )) ||
-                                                  this._tag_stack.try_pop(
-                                                      "colgroup",
-                                                      ["table"],
-                                                  ))
-                                            : "tbody" === e.tag_name ||
-                                                "tfoot" === e.tag_name
-                                              ? (t =
+                                            : "thead" === e.tag_name
+                                                ? (t =
                                                     (t =
+                                                        t ||
+                                                        this._tag_stack.try_pop(
+                                                            "caption",
+                                                            ["table"],
+                                                        )) ||
+                                                    this._tag_stack.try_pop(
+                                                        "colgroup",
+                                                        ["table"],
+                                                    ))
+                                                : "tbody" === e.tag_name ||
+                                                    "tfoot" === e.tag_name
+                                                    ? (t =
+                                                        (t =
+                                                            (t =
+                                                                (t =
+                                                                    t ||
+                                                                    this._tag_stack.try_pop(
+                                                                        "caption",
+                                                                        ["table"],
+                                                                    )) ||
+                                                                this._tag_stack.try_pop(
+                                                                    "colgroup",
+                                                                    ["table"],
+                                                                )) ||
+                                                            this._tag_stack.try_pop(
+                                                                "thead",
+                                                                ["table"],
+                                                            )) ||
+                                                        this._tag_stack.try_pop(
+                                                            "tbody",
+                                                            ["table"],
+                                                        ))
+                                                    : "tr" === e.tag_name
+                                                        ? (t =
+                                                            (t =
+                                                                (t =
+                                                                    t ||
+                                                                    this._tag_stack.try_pop(
+                                                                        "caption",
+                                                                        ["table"],
+                                                                    )) ||
+                                                                this._tag_stack.try_pop(
+                                                                    "colgroup",
+                                                                    ["table"],
+                                                                )) ||
+                                                            this._tag_stack.try_pop(
+                                                                "tr",
+                                                                [
+                                                                    "table",
+                                                                    "thead",
+                                                                    "tbody",
+                                                                    "tfoot",
+                                                                ],
+                                                            ))
+                                                        : ("th" !== e.tag_name &&
+                                                            "td" !== e.tag_name) ||
                                                         (t =
                                                             (t =
                                                                 t ||
                                                                 this._tag_stack.try_pop(
-                                                                    "caption",
-                                                                    ["table"],
+                                                                    "td",
+                                                                    [
+                                                                        "table",
+                                                                        "thead",
+                                                                        "tbody",
+                                                                        "tfoot",
+                                                                        "tr",
+                                                                    ],
                                                                 )) ||
                                                             this._tag_stack.try_pop(
-                                                                "colgroup",
-                                                                ["table"],
-                                                            )) ||
-                                                        this._tag_stack.try_pop(
-                                                            "thead",
-                                                            ["table"],
-                                                        )) ||
-                                                    this._tag_stack.try_pop(
-                                                        "tbody",
-                                                        ["table"],
-                                                    ))
-                                              : "tr" === e.tag_name
-                                                ? (t =
-                                                      (t =
-                                                          (t =
-                                                              t ||
-                                                              this._tag_stack.try_pop(
-                                                                  "caption",
-                                                                  ["table"],
-                                                              )) ||
-                                                          this._tag_stack.try_pop(
-                                                              "colgroup",
-                                                              ["table"],
-                                                          )) ||
-                                                      this._tag_stack.try_pop(
-                                                          "tr",
-                                                          [
-                                                              "table",
-                                                              "thead",
-                                                              "tbody",
-                                                              "tfoot",
-                                                          ],
-                                                      ))
-                                                : ("th" !== e.tag_name &&
-                                                      "td" !== e.tag_name) ||
-                                                  (t =
-                                                      (t =
-                                                          t ||
-                                                          this._tag_stack.try_pop(
-                                                              "td",
-                                                              [
-                                                                  "table",
-                                                                  "thead",
-                                                                  "tbody",
-                                                                  "tfoot",
-                                                                  "tr",
-                                                              ],
-                                                          )) ||
-                                                      this._tag_stack.try_pop(
-                                                          "th",
-                                                          [
-                                                              "table",
-                                                              "thead",
-                                                              "tbody",
-                                                              "tfoot",
-                                                              "tr",
-                                                          ],
-                                                      ));
-                            return (
-                                (e.parent = this._tag_stack.get_parser_token()),
-                                t
-                            );
-                        }
-                    }),
-                        (e.exports.Beautifier = p));
-                },
-                function (e, t, n) {
-                    var i = n(6).Options;
-                    function r(e) {
-                        (i.call(this, e, "html"),
-                            1 === this.templating.length &&
-                                "auto" === this.templating[0] &&
-                                (this.templating = [
-                                    "django",
-                                    "erb",
-                                    "handlebars",
-                                    "php",
-                                ]),
-                            (this.indent_inner_html =
-                                this._get_boolean("indent_inner_html")),
-                            (this.indent_body_inner_html = this._get_boolean(
-                                "indent_body_inner_html",
-                                !0,
+                                                                "th",
+                                                                [
+                                                                    "table",
+                                                                    "thead",
+                                                                    "tbody",
+                                                                    "tfoot",
+                                                                    "tr",
+                                                                ],
+                                                            ));
+                        return (
+                            (e.parent = this._tag_stack.get_parser_token()),
+                            t
+                        );
+                    }
+                }),
+                    (e.exports.Beautifier = p));
+            },
+            function (e, t, n) {
+                var i = n(6).Options;
+                function r(e) {
+                    (i.call(this, e, "html"),
+                        1 === this.templating.length &&
+                        "auto" === this.templating[0] &&
+                        (this.templating = [
+                            "django",
+                            "erb",
+                            "handlebars",
+                            "php",
+                        ]),
+                        (this.indent_inner_html =
+                            this._get_boolean("indent_inner_html")),
+                        (this.indent_body_inner_html = this._get_boolean(
+                            "indent_body_inner_html",
+                            !0,
+                        )),
+                        (this.indent_head_inner_html = this._get_boolean(
+                            "indent_head_inner_html",
+                            !0,
+                        )),
+                        (this.indent_handlebars = this._get_boolean(
+                            "indent_handlebars",
+                            !0,
+                        )),
+                        (this.wrap_attributes = this._get_selection(
+                            "wrap_attributes",
+                            [
+                                "auto",
+                                "force",
+                                "force-aligned",
+                                "force-expand-multiline",
+                                "aligned-multiple",
+                                "preserve",
+                                "preserve-aligned",
+                            ],
+                        )),
+                        (this.wrap_attributes_min_attrs = this._get_number(
+                            "wrap_attributes_min_attrs",
+                            2,
+                        )),
+                        (this.wrap_attributes_indent_size =
+                            this._get_number(
+                                "wrap_attributes_indent_size",
+                                this.indent_size,
                             )),
-                            (this.indent_head_inner_html = this._get_boolean(
-                                "indent_head_inner_html",
-                                !0,
-                            )),
-                            (this.indent_handlebars = this._get_boolean(
-                                "indent_handlebars",
-                                !0,
-                            )),
-                            (this.wrap_attributes = this._get_selection(
-                                "wrap_attributes",
-                                [
-                                    "auto",
-                                    "force",
-                                    "force-aligned",
-                                    "force-expand-multiline",
-                                    "aligned-multiple",
-                                    "preserve",
-                                    "preserve-aligned",
-                                ],
-                            )),
-                            (this.wrap_attributes_min_attrs = this._get_number(
-                                "wrap_attributes_min_attrs",
-                                2,
-                            )),
-                            (this.wrap_attributes_indent_size =
-                                this._get_number(
-                                    "wrap_attributes_indent_size",
-                                    this.indent_size,
-                                )),
-                            (this.extra_liners = this._get_array(
-                                "extra_liners",
-                                ["head", "body", "/html"],
-                            )),
-                            (this.inline = this._get_array("inline", [
-                                "a",
-                                "abbr",
+                        (this.extra_liners = this._get_array(
+                            "extra_liners",
+                            ["head", "body", "/html"],
+                        )),
+                        (this.inline = this._get_array("inline", [
+                            "a",
+                            "abbr",
+                            "area",
+                            "audio",
+                            "b",
+                            "bdi",
+                            "bdo",
+                            "br",
+                            "button",
+                            "canvas",
+                            "cite",
+                            "code",
+                            "data",
+                            "datalist",
+                            "del",
+                            "dfn",
+                            "em",
+                            "embed",
+                            "i",
+                            "iframe",
+                            "img",
+                            "input",
+                            "ins",
+                            "kbd",
+                            "keygen",
+                            "label",
+                            "map",
+                            "mark",
+                            "math",
+                            "meter",
+                            "noscript",
+                            "object",
+                            "output",
+                            "progress",
+                            "q",
+                            "ruby",
+                            "s",
+                            "samp",
+                            "select",
+                            "small",
+                            "span",
+                            "strong",
+                            "sub",
+                            "sup",
+                            "svg",
+                            "template",
+                            "textarea",
+                            "time",
+                            "u",
+                            "var",
+                            "video",
+                            "wbr",
+                            "text",
+                            "acronym",
+                            "big",
+                            "strike",
+                            "tt",
+                        ])),
+                        (this.inline_custom_elements = this._get_boolean(
+                            "inline_custom_elements",
+                            !0,
+                        )),
+                        (this.void_elements = this._get_array(
+                            "void_elements",
+                            [
                                 "area",
-                                "audio",
-                                "b",
-                                "bdi",
-                                "bdo",
+                                "base",
                                 "br",
-                                "button",
-                                "canvas",
-                                "cite",
-                                "code",
-                                "data",
-                                "datalist",
-                                "del",
-                                "dfn",
-                                "em",
+                                "col",
                                 "embed",
-                                "i",
-                                "iframe",
+                                "hr",
                                 "img",
                                 "input",
-                                "ins",
-                                "kbd",
                                 "keygen",
-                                "label",
-                                "map",
-                                "mark",
-                                "math",
-                                "meter",
-                                "noscript",
-                                "object",
-                                "output",
-                                "progress",
-                                "q",
-                                "ruby",
-                                "s",
-                                "samp",
-                                "select",
-                                "small",
-                                "span",
-                                "strong",
-                                "sub",
-                                "sup",
-                                "svg",
-                                "template",
-                                "textarea",
-                                "time",
-                                "u",
-                                "var",
-                                "video",
+                                "link",
+                                "menuitem",
+                                "meta",
+                                "param",
+                                "source",
+                                "track",
                                 "wbr",
-                                "text",
-                                "acronym",
-                                "big",
-                                "strike",
-                                "tt",
-                            ])),
-                            (this.inline_custom_elements = this._get_boolean(
-                                "inline_custom_elements",
-                                !0,
+                                "!doctype",
+                                "?xml",
+                                "basefont",
+                                "isindex",
+                            ],
+                        )),
+                        (this.unformatted = this._get_array(
+                            "unformatted",
+                            [],
+                        )),
+                        (this.content_unformatted = this._get_array(
+                            "content_unformatted",
+                            ["pre", "textarea"],
+                        )),
+                        (this.unformatted_content_delimiter =
+                            this._get_characters(
+                                "unformatted_content_delimiter",
                             )),
-                            (this.void_elements = this._get_array(
-                                "void_elements",
-                                [
-                                    "area",
-                                    "base",
-                                    "br",
-                                    "col",
-                                    "embed",
-                                    "hr",
-                                    "img",
-                                    "input",
-                                    "keygen",
-                                    "link",
-                                    "menuitem",
-                                    "meta",
-                                    "param",
-                                    "source",
-                                    "track",
-                                    "wbr",
-                                    "!doctype",
-                                    "?xml",
-                                    "basefont",
-                                    "isindex",
-                                ],
-                            )),
-                            (this.unformatted = this._get_array(
-                                "unformatted",
-                                [],
-                            )),
-                            (this.content_unformatted = this._get_array(
-                                "content_unformatted",
-                                ["pre", "textarea"],
-                            )),
-                            (this.unformatted_content_delimiter =
-                                this._get_characters(
-                                    "unformatted_content_delimiter",
-                                )),
-                            (this.indent_scripts = this._get_selection(
-                                "indent_scripts",
-                                ["normal", "keep", "separate"],
-                            )));
-                    }
-                    ((r.prototype = new i()), (e.exports.Options = r));
-                },
-                function (e, t, n) {
-                    var i = n(9).Tokenizer,
-                        r = n(9).TOKEN,
-                        o = n(13).Directives,
-                        a = n(14).TemplatablePattern,
-                        s = n(12).Pattern,
-                        l = {
-                            TAG_OPEN: "TK_TAG_OPEN",
-                            TAG_CLOSE: "TK_TAG_CLOSE",
-                            CONTROL_FLOW_OPEN: "TK_CONTROL_FLOW_OPEN",
-                            CONTROL_FLOW_CLOSE: "TK_CONTROL_FLOW_CLOSE",
-                            ATTRIBUTE: "TK_ATTRIBUTE",
-                            EQUALS: "TK_EQUALS",
-                            VALUE: "TK_VALUE",
-                            COMMENT: "TK_COMMENT",
-                            TEXT: "TK_TEXT",
-                            UNKNOWN: "TK_UNKNOWN",
-                            START: r.START,
-                            RAW: r.RAW,
-                            EOF: r.EOF,
-                        },
-                        c = new o(/<\!--/, /-->/),
-                        h = function (e, t) {
-                            (i.call(this, e, t), (this._current_tag_name = ""));
-                            var n = new a(this._input).read_options(
-                                    this._options,
+                        (this.indent_scripts = this._get_selection(
+                            "indent_scripts",
+                            ["normal", "keep", "separate"],
+                        )));
+                }
+                ((r.prototype = new i()), (e.exports.Options = r));
+            },
+            function (e, t, n) {
+                var i = n(9).Tokenizer,
+                    r = n(9).TOKEN,
+                    o = n(13).Directives,
+                    a = n(14).TemplatablePattern,
+                    s = n(12).Pattern,
+                    l = {
+                        TAG_OPEN: "TK_TAG_OPEN",
+                        TAG_CLOSE: "TK_TAG_CLOSE",
+                        CONTROL_FLOW_OPEN: "TK_CONTROL_FLOW_OPEN",
+                        CONTROL_FLOW_CLOSE: "TK_CONTROL_FLOW_CLOSE",
+                        ATTRIBUTE: "TK_ATTRIBUTE",
+                        EQUALS: "TK_EQUALS",
+                        VALUE: "TK_VALUE",
+                        COMMENT: "TK_COMMENT",
+                        TEXT: "TK_TEXT",
+                        UNKNOWN: "TK_UNKNOWN",
+                        START: r.START,
+                        RAW: r.RAW,
+                        EOF: r.EOF,
+                    },
+                    c = new o(/<\!--/, /-->/),
+                    h = function (e, t) {
+                        (i.call(this, e, t), (this._current_tag_name = ""));
+                        var n = new a(this._input).read_options(
+                            this._options,
+                        ),
+                            r = new s(this._input);
+                        if (
+                            ((this.__patterns = {
+                                word: n.until(/[\n\r\t <]/),
+                                word_control_flow_close_excluded:
+                                    n.until(/[\n\r\t <}]/),
+                                single_quote: n.until_after(/'/),
+                                double_quote: n.until_after(/"/),
+                                attribute: n.until(/[\n\r\t =>]|\/>/),
+                                element_name: n.until(/[\n\r\t >\/]/),
+                                angular_control_flow_start: r.matching(
+                                    /\@[a-zA-Z]+[^({]*[({]/,
                                 ),
-                                r = new s(this._input);
-                            if (
-                                ((this.__patterns = {
-                                    word: n.until(/[\n\r\t <]/),
-                                    word_control_flow_close_excluded:
-                                        n.until(/[\n\r\t <}]/),
-                                    single_quote: n.until_after(/'/),
-                                    double_quote: n.until_after(/"/),
-                                    attribute: n.until(/[\n\r\t =>]|\/>/),
-                                    element_name: n.until(/[\n\r\t >\/]/),
-                                    angular_control_flow_start: r.matching(
-                                        /\@[a-zA-Z]+[^({]*[({]/,
-                                    ),
-                                    handlebars_comment: r
-                                        .starting_with(/{{!--/)
-                                        .until_after(/--}}/),
-                                    handlebars: r
-                                        .starting_with(/{{/)
-                                        .until_after(/}}/),
-                                    handlebars_open: r.until(/[\n\r\t }]/),
-                                    handlebars_raw_close: r.until(/}}/),
-                                    comment: r
-                                        .starting_with(/<!--/)
-                                        .until_after(/-->/),
-                                    cdata: r
-                                        .starting_with(/<!\[CDATA\[/)
-                                        .until_after(/]]>/),
-                                    conditional_comment: r
-                                        .starting_with(/<!\[/)
-                                        .until_after(/]>/),
-                                    processing: r
-                                        .starting_with(/<\?/)
-                                        .until_after(/\?>/),
-                                }),
+                                handlebars_comment: r
+                                    .starting_with(/{{!--/)
+                                    .until_after(/--}}/),
+                                handlebars: r
+                                    .starting_with(/{{/)
+                                    .until_after(/}}/),
+                                handlebars_open: r.until(/[\n\r\t }]/),
+                                handlebars_raw_close: r.until(/}}/),
+                                comment: r
+                                    .starting_with(/<!--/)
+                                    .until_after(/-->/),
+                                cdata: r
+                                    .starting_with(/<!\[CDATA\[/)
+                                    .until_after(/]]>/),
+                                conditional_comment: r
+                                    .starting_with(/<!\[/)
+                                    .until_after(/]>/),
+                                processing: r
+                                    .starting_with(/<\?/)
+                                    .until_after(/\?>/),
+                            }),
                                 this._options.indent_handlebars &&
-                                    ((this.__patterns.word =
-                                        this.__patterns.word.exclude(
-                                            "handlebars",
-                                        )),
+                                ((this.__patterns.word =
+                                    this.__patterns.word.exclude(
+                                        "handlebars",
+                                    )),
                                     (this.__patterns.word_control_flow_close_excluded =
                                         this.__patterns.word_control_flow_close_excluded.exclude(
                                             "handlebars",
                                         ))),
                                 (this._unformatted_content_delimiter = null),
                                 this._options.unformatted_content_delimiter)
-                            ) {
-                                var o = this._input.get_literal_regexp(
-                                    this._options.unformatted_content_delimiter,
-                                );
-                                this.__patterns.unformatted_content_delimiter =
-                                    r.matching(o).until_after(o);
-                            }
-                        };
-                    (((h.prototype = new i())._is_comment = function (e) {
-                        return !1;
+                        ) {
+                            var o = this._input.get_literal_regexp(
+                                this._options.unformatted_content_delimiter,
+                            );
+                            this.__patterns.unformatted_content_delimiter =
+                                r.matching(o).until_after(o);
+                        }
+                    };
+                (((h.prototype = new i())._is_comment = function (e) {
+                    return !1;
+                }),
+                    (h.prototype._is_opening = function (e) {
+                        return (
+                            e.type === l.TAG_OPEN ||
+                            e.type === l.CONTROL_FLOW_OPEN
+                        );
                     }),
-                        (h.prototype._is_opening = function (e) {
-                            return (
-                                e.type === l.TAG_OPEN ||
-                                e.type === l.CONTROL_FLOW_OPEN
-                            );
-                        }),
-                        (h.prototype._is_closing = function (e, t) {
-                            return (
-                                (e.type === l.TAG_CLOSE &&
-                                    t &&
-                                    (((">" === e.text || "/>" === e.text) &&
-                                        "<" === t.text[0]) ||
-                                        ("}}" === e.text &&
-                                            "{" === t.text[0] &&
-                                            "{" === t.text[1]))) ||
-                                (e.type === l.CONTROL_FLOW_CLOSE &&
-                                    "}" === e.text &&
-                                    t.text.endsWith("{"))
-                            );
-                        }),
-                        (h.prototype._reset = function () {
-                            this._current_tag_name = "";
-                        }),
-                        (h.prototype._get_next_token = function (e, t) {
-                            var n = null;
-                            this._readWhitespace();
-                            var i = this._input.peek();
-                            return null === i
-                                ? this._create_token(l.EOF, "")
-                                : (n =
-                                      (n =
-                                          (n =
-                                              (n =
-                                                  (n =
-                                                      (n =
-                                                          (n =
-                                                              (n =
-                                                                  (n =
-                                                                      (n =
-                                                                          n ||
-                                                                          this._read_open_handlebars(
-                                                                              i,
-                                                                              t,
-                                                                          )) ||
-                                                                      this._read_attribute(
-                                                                          i,
-                                                                          e,
-                                                                          t,
-                                                                      )) ||
-                                                                  this._read_close(
-                                                                      i,
-                                                                      t,
-                                                                  )) ||
-                                                              this._read_control_flows(
-                                                                  i,
-                                                                  t,
-                                                              )) ||
-                                                          this._read_raw_content(
-                                                              i,
-                                                              e,
-                                                              t,
-                                                          )) ||
-                                                      this._read_content_word(
-                                                          i,
-                                                          t,
-                                                      )) ||
-                                                  this._read_comment_or_cdata(
-                                                      i,
-                                                  )) ||
-                                              this._read_processing(i)) ||
-                                          this._read_open(i, t)) ||
-                                      this._create_token(
-                                          l.UNKNOWN,
-                                          this._input.next(),
-                                      ));
-                        }),
-                        (h.prototype._read_comment_or_cdata = function (e) {
-                            var t = null,
-                                n = null,
-                                i = null;
-                            "<" === e &&
-                                ("!" === this._input.peek(1) &&
-                                    ((n = this.__patterns.comment.read())
-                                        ? (i = c.get_directives(n)) &&
-                                          "start" === i.ignore &&
-                                          (n += c.readIgnored(this._input))
-                                        : (n = this.__patterns.cdata.read())),
-                                n &&
-                                    ((t = this._create_token(
-                                        l.COMMENT,
-                                        n,
-                                    )).directives = i));
-                            return t;
-                        }),
-                        (h.prototype._read_processing = function (e) {
-                            var t = null,
-                                n = null;
-                            if ("<" === e) {
-                                var i = this._input.peek(1);
-                                (("!" !== i && "?" !== i) ||
+                    (h.prototype._is_closing = function (e, t) {
+                        return (
+                            (e.type === l.TAG_CLOSE &&
+                                t &&
+                                (((">" === e.text || "/>" === e.text) &&
+                                    "<" === t.text[0]) ||
+                                    ("}}" === e.text &&
+                                        "{" === t.text[0] &&
+                                        "{" === t.text[1]))) ||
+                            (e.type === l.CONTROL_FLOW_CLOSE &&
+                                "}" === e.text &&
+                                t.text.endsWith("{"))
+                        );
+                    }),
+                    (h.prototype._reset = function () {
+                        this._current_tag_name = "";
+                    }),
+                    (h.prototype._get_next_token = function (e, t) {
+                        var n = null;
+                        this._readWhitespace();
+                        var i = this._input.peek();
+                        return null === i
+                            ? this._create_token(l.EOF, "")
+                            : (n =
+                                (n =
                                     (n =
                                         (n =
-                                            this.__patterns.conditional_comment.read()) ||
-                                        this.__patterns.processing.read()),
-                                    n &&
-                                        ((t = this._create_token(
+                                            (n =
+                                                (n =
+                                                    (n =
+                                                        (n =
+                                                            (n =
+                                                                (n =
+                                                                    n ||
+                                                                    this._read_open_handlebars(
+                                                                        i,
+                                                                        t,
+                                                                    )) ||
+                                                                this._read_attribute(
+                                                                    i,
+                                                                    e,
+                                                                    t,
+                                                                )) ||
+                                                            this._read_close(
+                                                                i,
+                                                                t,
+                                                            )) ||
+                                                        this._read_control_flows(
+                                                            i,
+                                                            t,
+                                                        )) ||
+                                                    this._read_raw_content(
+                                                        i,
+                                                        e,
+                                                        t,
+                                                    )) ||
+                                                this._read_content_word(
+                                                    i,
+                                                    t,
+                                                )) ||
+                                            this._read_comment_or_cdata(
+                                                i,
+                                            )) ||
+                                        this._read_processing(i)) ||
+                                    this._read_open(i, t)) ||
+                                this._create_token(
+                                    l.UNKNOWN,
+                                    this._input.next(),
+                                ));
+                    }),
+                    (h.prototype._read_comment_or_cdata = function (e) {
+                        var t = null,
+                            n = null,
+                            i = null;
+                        "<" === e &&
+                            ("!" === this._input.peek(1) &&
+                                ((n = this.__patterns.comment.read())
+                                    ? (i = c.get_directives(n)) &&
+                                    "start" === i.ignore &&
+                                    (n += c.readIgnored(this._input))
+                                    : (n = this.__patterns.cdata.read())),
+                                n &&
+                                ((t = this._create_token(
+                                    l.COMMENT,
+                                    n,
+                                )).directives = i));
+                        return t;
+                    }),
+                    (h.prototype._read_processing = function (e) {
+                        var t = null,
+                            n = null;
+                        if ("<" === e) {
+                            var i = this._input.peek(1);
+                            (("!" !== i && "?" !== i) ||
+                                (n =
+                                    (n =
+                                        this.__patterns.conditional_comment.read()) ||
+                                    this.__patterns.processing.read()),
+                                n &&
+                                ((t = this._create_token(
+                                    l.COMMENT,
+                                    n,
+                                )).directives = null));
+                        }
+                        return t;
+                    }),
+                    (h.prototype._read_open = function (e, t) {
+                        var n = null,
+                            i = null;
+                        return (
+                            (t && t.type !== l.CONTROL_FLOW_OPEN) ||
+                            ("<" === e &&
+                                ((n = this._input.next()),
+                                    "/" === this._input.peek() &&
+                                    (n += this._input.next()),
+                                    (n +=
+                                        this.__patterns.element_name.read()),
+                                    (i = this._create_token(
+                                        l.TAG_OPEN,
+                                        n,
+                                    )))),
+                            i
+                        );
+                    }),
+                    (h.prototype._read_open_handlebars = function (e, t) {
+                        var n = null,
+                            i = null;
+                        return (
+                            (t && t.type !== l.CONTROL_FLOW_OPEN) ||
+                            (this._options.indent_handlebars &&
+                                "{" === e &&
+                                "{" === this._input.peek(1) &&
+                                ("!" === this._input.peek(2)
+                                    ? ((n =
+                                        (n =
+                                            this.__patterns.handlebars_comment.read()) ||
+                                        this.__patterns.handlebars.read()),
+                                        (i = this._create_token(
                                             l.COMMENT,
                                             n,
-                                        )).directives = null));
-                            }
-                            return t;
-                        }),
-                        (h.prototype._read_open = function (e, t) {
-                            var n = null,
-                                i = null;
-                            return (
-                                (t && t.type !== l.CONTROL_FLOW_OPEN) ||
-                                    ("<" === e &&
-                                        ((n = this._input.next()),
-                                        "/" === this._input.peek() &&
-                                            (n += this._input.next()),
-                                        (n +=
-                                            this.__patterns.element_name.read()),
+                                        )))
+                                    : ((n =
+                                        this.__patterns.handlebars_open.read()),
                                         (i = this._create_token(
                                             l.TAG_OPEN,
                                             n,
-                                        )))),
-                                i
-                            );
-                        }),
-                        (h.prototype._read_open_handlebars = function (e, t) {
-                            var n = null,
-                                i = null;
-                            return (
-                                (t && t.type !== l.CONTROL_FLOW_OPEN) ||
-                                    (this._options.indent_handlebars &&
-                                        "{" === e &&
-                                        "{" === this._input.peek(1) &&
-                                        ("!" === this._input.peek(2)
-                                            ? ((n =
-                                                  (n =
-                                                      this.__patterns.handlebars_comment.read()) ||
-                                                  this.__patterns.handlebars.read()),
-                                              (i = this._create_token(
-                                                  l.COMMENT,
-                                                  n,
-                                              )))
-                                            : ((n =
-                                                  this.__patterns.handlebars_open.read()),
-                                              (i = this._create_token(
-                                                  l.TAG_OPEN,
-                                                  n,
-                                              ))))),
-                                i
-                            );
-                        }),
-                        (h.prototype._read_control_flows = function (e, t) {
-                            var n = "",
-                                i = null;
+                                        ))))),
+                            i
+                        );
+                    }),
+                    (h.prototype._read_control_flows = function (e, t) {
+                        var n = "",
+                            i = null;
+                        if (
+                            !this._options.templating.includes("angular") ||
+                            !this._options.indent_handlebars
+                        )
+                            return i;
+                        if ("@" === e) {
                             if (
-                                !this._options.templating.includes("angular") ||
-                                !this._options.indent_handlebars
+                                "" ===
+                                (n =
+                                    this.__patterns.angular_control_flow_start.read())
                             )
                                 return i;
-                            if ("@" === e) {
-                                if (
-                                    "" ===
-                                    (n =
-                                        this.__patterns.angular_control_flow_start.read())
-                                )
-                                    return i;
-                                for (
-                                    var r = n.endsWith("(") ? 1 : 0, o = 0;
-                                    !n.endsWith("{") || r !== o;
-                                ) {
-                                    var a = this._input.next();
-                                    if (null === a) break;
-                                    ("(" === a ? r++ : ")" === a && o++,
-                                        (n += a));
-                                }
-                                i = this._create_token(l.CONTROL_FLOW_OPEN, n);
-                            } else
-                                "}" === e &&
-                                    t &&
-                                    t.type === l.CONTROL_FLOW_OPEN &&
-                                    ((n = this._input.next()),
+                            for (
+                                var r = n.endsWith("(") ? 1 : 0, o = 0;
+                                !n.endsWith("{") || r !== o;
+                            ) {
+                                var a = this._input.next();
+                                if (null === a) break;
+                                ("(" === a ? r++ : ")" === a && o++,
+                                    (n += a));
+                            }
+                            i = this._create_token(l.CONTROL_FLOW_OPEN, n);
+                        } else
+                            "}" === e &&
+                                t &&
+                                t.type === l.CONTROL_FLOW_OPEN &&
+                                ((n = this._input.next()),
                                     (i = this._create_token(
                                         l.CONTROL_FLOW_CLOSE,
                                         n,
                                     )));
-                            return i;
-                        }),
-                        (h.prototype._read_close = function (e, t) {
-                            var n = null,
-                                i = null;
-                            return (
-                                t &&
-                                    t.type === l.TAG_OPEN &&
-                                    ("<" === t.text[0] &&
-                                    (">" === e ||
-                                        ("/" === e &&
-                                            ">" === this._input.peek(1)))
-                                        ? ((n = this._input.next()),
-                                          "/" === e &&
-                                              (n += this._input.next()),
-                                          (i = this._create_token(
-                                              l.TAG_CLOSE,
-                                              n,
-                                          )))
-                                        : "{" === t.text[0] &&
-                                          "}" === e &&
-                                          "}" === this._input.peek(1) &&
-                                          (this._input.next(),
-                                          this._input.next(),
-                                          (i = this._create_token(
-                                              l.TAG_CLOSE,
-                                              "}}",
-                                          )))),
-                                i
-                            );
-                        }),
-                        (h.prototype._read_attribute = function (e, t, n) {
-                            var i = null,
-                                r = "";
-                            if (n && "<" === n.text[0])
-                                if ("=" === e)
-                                    i = this._create_token(
-                                        l.EQUALS,
-                                        this._input.next(),
-                                    );
-                                else if ('"' === e || "'" === e) {
-                                    var o = this._input.next();
-                                    ((o +=
-                                        '"' === e
-                                            ? this.__patterns.double_quote.read()
-                                            : this.__patterns.single_quote.read()),
-                                        (i = this._create_token(l.VALUE, o)));
-                                } else
-                                    (r = this.__patterns.attribute.read()) &&
-                                        (i =
-                                            t.type === l.EQUALS
-                                                ? this._create_token(l.VALUE, r)
-                                                : this._create_token(
-                                                      l.ATTRIBUTE,
-                                                      r,
-                                                  ));
-                            return i;
-                        }),
-                        (h.prototype._is_content_unformatted = function (e) {
-                            return (
-                                -1 === this._options.void_elements.indexOf(e) &&
-                                (-1 !==
-                                    this._options.content_unformatted.indexOf(
-                                        e,
-                                    ) ||
-                                    -1 !== this._options.unformatted.indexOf(e))
-                            );
-                        }),
-                        (h.prototype._read_raw_content = function (e, t, n) {
-                            var i = "";
-                            if (n && "{" === n.text[0])
-                                i = this.__patterns.handlebars_raw_close.read();
-                            else if (
-                                t.type === l.TAG_CLOSE &&
-                                "<" === t.opened.text[0] &&
-                                "/" !== t.text[0]
-                            ) {
-                                var r = t.opened.text.substr(1).toLowerCase();
-                                if ("script" === r || "style" === r) {
-                                    var o = this._read_comment_or_cdata(e);
-                                    if (o) return ((o.type = l.TEXT), o);
-                                    i = this._input.readUntil(
+                        return i;
+                    }),
+                    (h.prototype._read_close = function (e, t) {
+                        var n = null,
+                            i = null;
+                        return (
+                            t &&
+                            t.type === l.TAG_OPEN &&
+                            ("<" === t.text[0] &&
+                                (">" === e ||
+                                    ("/" === e &&
+                                        ">" === this._input.peek(1)))
+                                ? ((n = this._input.next()),
+                                    "/" === e &&
+                                    (n += this._input.next()),
+                                    (i = this._create_token(
+                                        l.TAG_CLOSE,
+                                        n,
+                                    )))
+                                : "{" === t.text[0] &&
+                                "}" === e &&
+                                "}" === this._input.peek(1) &&
+                                (this._input.next(),
+                                    this._input.next(),
+                                    (i = this._create_token(
+                                        l.TAG_CLOSE,
+                                        "}}",
+                                    )))),
+                            i
+                        );
+                    }),
+                    (h.prototype._read_attribute = function (e, t, n) {
+                        var i = null,
+                            r = "";
+                        if (n && "<" === n.text[0])
+                            if ("=" === e)
+                                i = this._create_token(
+                                    l.EQUALS,
+                                    this._input.next(),
+                                );
+                            else if ('"' === e || "'" === e) {
+                                var o = this._input.next();
+                                ((o +=
+                                    '"' === e
+                                        ? this.__patterns.double_quote.read()
+                                        : this.__patterns.single_quote.read()),
+                                    (i = this._create_token(l.VALUE, o)));
+                            } else
+                                (r = this.__patterns.attribute.read()) &&
+                                    (i =
+                                        t.type === l.EQUALS
+                                            ? this._create_token(l.VALUE, r)
+                                            : this._create_token(
+                                                l.ATTRIBUTE,
+                                                r,
+                                            ));
+                        return i;
+                    }),
+                    (h.prototype._is_content_unformatted = function (e) {
+                        return (
+                            -1 === this._options.void_elements.indexOf(e) &&
+                            (-1 !==
+                                this._options.content_unformatted.indexOf(
+                                    e,
+                                ) ||
+                                -1 !== this._options.unformatted.indexOf(e))
+                        );
+                    }),
+                    (h.prototype._read_raw_content = function (e, t, n) {
+                        var i = "";
+                        if (n && "{" === n.text[0])
+                            i = this.__patterns.handlebars_raw_close.read();
+                        else if (
+                            t.type === l.TAG_CLOSE &&
+                            "<" === t.opened.text[0] &&
+                            "/" !== t.text[0]
+                        ) {
+                            var r = t.opened.text.substr(1).toLowerCase();
+                            if ("script" === r || "style" === r) {
+                                var o = this._read_comment_or_cdata(e);
+                                if (o) return ((o.type = l.TEXT), o);
+                                i = this._input.readUntil(
+                                    new RegExp(
+                                        "</" + r + "[\\n\\r\\t ]*?>",
+                                        "ig",
+                                    ),
+                                );
+                            } else
+                                this._is_content_unformatted(r) &&
+                                    (i = this._input.readUntil(
                                         new RegExp(
                                             "</" + r + "[\\n\\r\\t ]*?>",
                                             "ig",
                                         ),
-                                    );
-                                } else
-                                    this._is_content_unformatted(r) &&
-                                        (i = this._input.readUntil(
-                                            new RegExp(
-                                                "</" + r + "[\\n\\r\\t ]*?>",
-                                                "ig",
-                                            ),
-                                        ));
-                            }
-                            return i ? this._create_token(l.TEXT, i) : null;
-                        }),
-                        (h.prototype._read_content_word = function (e, t) {
-                            var n = "";
-                            if (
-                                (this._options.unformatted_content_delimiter &&
-                                    e ===
-                                        this._options
-                                            .unformatted_content_delimiter[0] &&
-                                    (n =
-                                        this.__patterns.unformatted_content_delimiter.read()),
+                                    ));
+                        }
+                        return i ? this._create_token(l.TEXT, i) : null;
+                    }),
+                    (h.prototype._read_content_word = function (e, t) {
+                        var n = "";
+                        if (
+                            (this._options.unformatted_content_delimiter &&
+                                e ===
+                                this._options
+                                    .unformatted_content_delimiter[0] &&
+                                (n =
+                                    this.__patterns.unformatted_content_delimiter.read()),
                                 n ||
-                                    (n =
-                                        t && t.type === l.CONTROL_FLOW_OPEN
-                                            ? this.__patterns.word_control_flow_close_excluded.read()
-                                            : this.__patterns.word.read()),
+                                (n =
+                                    t && t.type === l.CONTROL_FLOW_OPEN
+                                        ? this.__patterns.word_control_flow_close_excluded.read()
+                                        : this.__patterns.word.read()),
                                 n)
-                            )
-                                return this._create_token(l.TEXT, n);
-                        }),
-                        (e.exports.Tokenizer = h),
-                        (e.exports.TOKEN = l));
-                },
-            ],
+                        )
+                            return this._create_token(l.TEXT, n);
+                    }),
+                    (e.exports.Tokenizer = h),
+                    (e.exports.TOKEN = l));
+            },
+        ],
             t = {};
         var n = (function n(i) {
             var r = t[i];
@@ -21240,381 +21240,381 @@
     })(),
         (() => {
             var e = {
-                    470: (e) => {
-                        function t(e) {
-                            if ("string" != typeof e)
-                                throw new TypeError(
-                                    "Path must be a string. Received " +
-                                        JSON.stringify(e),
-                                );
-                        }
-                        function n(e, t) {
-                            for (
-                                var n, i = "", r = 0, o = -1, a = 0, s = 0;
-                                s <= e.length;
-                                ++s
-                            ) {
-                                if (s < e.length) n = e.charCodeAt(s);
-                                else {
-                                    if (47 === n) break;
-                                    n = 47;
-                                }
-                                if (47 === n) {
-                                    if (o === s - 1 || 1 === a);
-                                    else if (o !== s - 1 && 2 === a) {
-                                        if (
-                                            i.length < 2 ||
-                                            2 !== r ||
-                                            46 !== i.charCodeAt(i.length - 1) ||
-                                            46 !== i.charCodeAt(i.length - 2)
-                                        )
-                                            if (i.length > 2) {
-                                                var l = i.lastIndexOf("/");
-                                                if (l !== i.length - 1) {
-                                                    (-1 === l
-                                                        ? ((i = ""), (r = 0))
-                                                        : (r =
-                                                              (i = i.slice(
-                                                                  0,
-                                                                  l,
-                                                              )).length -
-                                                              1 -
-                                                              i.lastIndexOf(
-                                                                  "/",
-                                                              )),
-                                                        (o = s),
-                                                        (a = 0));
-                                                    continue;
-                                                }
-                                            } else if (
-                                                2 === i.length ||
-                                                1 === i.length
-                                            ) {
-                                                ((i = ""),
-                                                    (r = 0),
+                470: (e) => {
+                    function t(e) {
+                        if ("string" != typeof e)
+                            throw new TypeError(
+                                "Path must be a string. Received " +
+                                JSON.stringify(e),
+                            );
+                    }
+                    function n(e, t) {
+                        for (
+                            var n, i = "", r = 0, o = -1, a = 0, s = 0;
+                            s <= e.length;
+                            ++s
+                        ) {
+                            if (s < e.length) n = e.charCodeAt(s);
+                            else {
+                                if (47 === n) break;
+                                n = 47;
+                            }
+                            if (47 === n) {
+                                if (o === s - 1 || 1 === a);
+                                else if (o !== s - 1 && 2 === a) {
+                                    if (
+                                        i.length < 2 ||
+                                        2 !== r ||
+                                        46 !== i.charCodeAt(i.length - 1) ||
+                                        46 !== i.charCodeAt(i.length - 2)
+                                    )
+                                        if (i.length > 2) {
+                                            var l = i.lastIndexOf("/");
+                                            if (l !== i.length - 1) {
+                                                (-1 === l
+                                                    ? ((i = ""), (r = 0))
+                                                    : (r =
+                                                        (i = i.slice(
+                                                            0,
+                                                            l,
+                                                        )).length -
+                                                        1 -
+                                                        i.lastIndexOf(
+                                                            "/",
+                                                        )),
                                                     (o = s),
                                                     (a = 0));
                                                 continue;
                                             }
-                                        t &&
-                                            (i.length > 0
-                                                ? (i += "/..")
-                                                : (i = ".."),
-                                            (r = 2));
-                                    } else
+                                        } else if (
+                                            2 === i.length ||
+                                            1 === i.length
+                                        ) {
+                                            ((i = ""),
+                                                (r = 0),
+                                                (o = s),
+                                                (a = 0));
+                                            continue;
+                                        }
+                                    t &&
                                         (i.length > 0
-                                            ? (i += "/" + e.slice(o + 1, s))
-                                            : (i = e.slice(o + 1, s)),
-                                            (r = s - o - 1));
-                                    ((o = s), (a = 0));
-                                } else 46 === n && -1 !== a ? ++a : (a = -1);
-                            }
-                            return i;
+                                            ? (i += "/..")
+                                            : (i = ".."),
+                                            (r = 2));
+                                } else
+                                    (i.length > 0
+                                        ? (i += "/" + e.slice(o + 1, s))
+                                        : (i = e.slice(o + 1, s)),
+                                        (r = s - o - 1));
+                                ((o = s), (a = 0));
+                            } else 46 === n && -1 !== a ? ++a : (a = -1);
                         }
-                        var i = {
-                            resolve: function () {
-                                for (
-                                    var e,
-                                        i = "",
-                                        r = !1,
-                                        o = arguments.length - 1;
-                                    o >= -1 && !r;
-                                    o--
-                                ) {
-                                    var a;
-                                    (o >= 0
-                                        ? (a = arguments[o])
-                                        : (void 0 === e && (e = process.cwd()),
-                                          (a = e)),
-                                        t(a),
-                                        0 !== a.length &&
-                                            ((i = a + "/" + i),
-                                            (r = 47 === a.charCodeAt(0))));
+                        return i;
+                    }
+                    var i = {
+                        resolve: function () {
+                            for (
+                                var e,
+                                i = "",
+                                r = !1,
+                                o = arguments.length - 1;
+                                o >= -1 && !r;
+                                o--
+                            ) {
+                                var a;
+                                (o >= 0
+                                    ? (a = arguments[o])
+                                    : (void 0 === e && (e = process.cwd()),
+                                        (a = e)),
+                                    t(a),
+                                    0 !== a.length &&
+                                    ((i = a + "/" + i),
+                                        (r = 47 === a.charCodeAt(0))));
+                            }
+                            return (
+                                (i = n(i, !r)),
+                                r
+                                    ? i.length > 0
+                                        ? "/" + i
+                                        : "/"
+                                    : i.length > 0
+                                        ? i
+                                        : "."
+                            );
+                        },
+                        normalize: function (e) {
+                            if ((t(e), 0 === e.length)) return ".";
+                            var i = 47 === e.charCodeAt(0),
+                                r = 47 === e.charCodeAt(e.length - 1);
+                            return (
+                                0 !== (e = n(e, !i)).length ||
+                                i ||
+                                (e = "."),
+                                e.length > 0 && r && (e += "/"),
+                                i ? "/" + e : e
+                            );
+                        },
+                        isAbsolute: function (e) {
+                            return (
+                                t(e),
+                                e.length > 0 && 47 === e.charCodeAt(0)
+                            );
+                        },
+                        join: function () {
+                            if (0 === arguments.length) return ".";
+                            for (var e, n = 0; n < arguments.length; ++n) {
+                                var r = arguments[n];
+                                (t(r),
+                                    r.length > 0 &&
+                                    (void 0 === e
+                                        ? (e = r)
+                                        : (e += "/" + r)));
+                            }
+                            return void 0 === e ? "." : i.normalize(e);
+                        },
+                        relative: function (e, n) {
+                            if ((t(e), t(n), e === n)) return "";
+                            if ((e = i.resolve(e)) === (n = i.resolve(n)))
+                                return "";
+                            for (
+                                var r = 1;
+                                r < e.length && 47 === e.charCodeAt(r);
+                                ++r
+                            );
+                            for (
+                                var o = e.length, a = o - r, s = 1;
+                                s < n.length && 47 === n.charCodeAt(s);
+                                ++s
+                            );
+                            for (
+                                var l = n.length - s,
+                                c = a < l ? a : l,
+                                h = -1,
+                                d = 0;
+                                d <= c;
+                                ++d
+                            ) {
+                                if (d === c) {
+                                    if (l > c) {
+                                        if (47 === n.charCodeAt(s + d))
+                                            return n.slice(s + d + 1);
+                                        if (0 === d) return n.slice(s + d);
+                                    } else
+                                        a > c &&
+                                            (47 === e.charCodeAt(r + d)
+                                                ? (h = d)
+                                                : 0 === d && (h = 0));
+                                    break;
                                 }
-                                return (
-                                    (i = n(i, !r)),
-                                    r
-                                        ? i.length > 0
-                                            ? "/" + i
-                                            : "/"
-                                        : i.length > 0
-                                          ? i
-                                          : "."
-                                );
-                            },
-                            normalize: function (e) {
-                                if ((t(e), 0 === e.length)) return ".";
-                                var i = 47 === e.charCodeAt(0),
-                                    r = 47 === e.charCodeAt(e.length - 1);
-                                return (
-                                    0 !== (e = n(e, !i)).length ||
-                                        i ||
-                                        (e = "."),
-                                    e.length > 0 && r && (e += "/"),
-                                    i ? "/" + e : e
-                                );
-                            },
-                            isAbsolute: function (e) {
-                                return (
-                                    t(e),
-                                    e.length > 0 && 47 === e.charCodeAt(0)
-                                );
-                            },
-                            join: function () {
-                                if (0 === arguments.length) return ".";
-                                for (var e, n = 0; n < arguments.length; ++n) {
-                                    var r = arguments[n];
-                                    (t(r),
-                                        r.length > 0 &&
-                                            (void 0 === e
-                                                ? (e = r)
-                                                : (e += "/" + r)));
-                                }
-                                return void 0 === e ? "." : i.normalize(e);
-                            },
-                            relative: function (e, n) {
-                                if ((t(e), t(n), e === n)) return "";
-                                if ((e = i.resolve(e)) === (n = i.resolve(n)))
-                                    return "";
-                                for (
-                                    var r = 1;
-                                    r < e.length && 47 === e.charCodeAt(r);
-                                    ++r
-                                );
-                                for (
-                                    var o = e.length, a = o - r, s = 1;
-                                    s < n.length && 47 === n.charCodeAt(s);
-                                    ++s
-                                );
-                                for (
-                                    var l = n.length - s,
-                                        c = a < l ? a : l,
-                                        h = -1,
-                                        d = 0;
-                                    d <= c;
-                                    ++d
-                                ) {
-                                    if (d === c) {
-                                        if (l > c) {
-                                            if (47 === n.charCodeAt(s + d))
-                                                return n.slice(s + d + 1);
-                                            if (0 === d) return n.slice(s + d);
-                                        } else
-                                            a > c &&
-                                                (47 === e.charCodeAt(r + d)
-                                                    ? (h = d)
-                                                    : 0 === d && (h = 0));
+                                var u = e.charCodeAt(r + d);
+                                if (u !== n.charCodeAt(s + d)) break;
+                                47 === u && (h = d);
+                            }
+                            var m = "";
+                            for (d = r + h + 1; d <= o; ++d)
+                                (d !== o && 47 !== e.charCodeAt(d)) ||
+                                    (0 === m.length
+                                        ? (m += "..")
+                                        : (m += "/.."));
+                            return m.length > 0
+                                ? m + n.slice(s + h)
+                                : ((s += h),
+                                    47 === n.charCodeAt(s) && ++s,
+                                    n.slice(s));
+                        },
+                        _makeLong: function (e) {
+                            return e;
+                        },
+                        dirname: function (e) {
+                            if ((t(e), 0 === e.length)) return ".";
+                            for (
+                                var n = e.charCodeAt(0),
+                                i = 47 === n,
+                                r = -1,
+                                o = !0,
+                                a = e.length - 1;
+                                a >= 1;
+                                --a
+                            )
+                                if (47 === (n = e.charCodeAt(a))) {
+                                    if (!o) {
+                                        r = a;
                                         break;
                                     }
-                                    var u = e.charCodeAt(r + d);
-                                    if (u !== n.charCodeAt(s + d)) break;
-                                    47 === u && (h = d);
-                                }
-                                var m = "";
-                                for (d = r + h + 1; d <= o; ++d)
-                                    (d !== o && 47 !== e.charCodeAt(d)) ||
-                                        (0 === m.length
-                                            ? (m += "..")
-                                            : (m += "/.."));
-                                return m.length > 0
-                                    ? m + n.slice(s + h)
-                                    : ((s += h),
-                                      47 === n.charCodeAt(s) && ++s,
-                                      n.slice(s));
-                            },
-                            _makeLong: function (e) {
-                                return e;
-                            },
-                            dirname: function (e) {
-                                if ((t(e), 0 === e.length)) return ".";
-                                for (
-                                    var n = e.charCodeAt(0),
-                                        i = 47 === n,
-                                        r = -1,
-                                        o = !0,
-                                        a = e.length - 1;
-                                    a >= 1;
-                                    --a
-                                )
-                                    if (47 === (n = e.charCodeAt(a))) {
-                                        if (!o) {
-                                            r = a;
-                                            break;
-                                        }
-                                    } else o = !1;
-                                return -1 === r
-                                    ? i
-                                        ? "/"
-                                        : "."
-                                    : i && 1 === r
-                                      ? "//"
-                                      : e.slice(0, r);
-                            },
-                            basename: function (e, n) {
-                                if (void 0 !== n && "string" != typeof n)
-                                    throw new TypeError(
-                                        '"ext" argument must be a string',
-                                    );
-                                t(e);
-                                var i,
-                                    r = 0,
-                                    o = -1,
-                                    a = !0;
-                                if (
-                                    void 0 !== n &&
-                                    n.length > 0 &&
-                                    n.length <= e.length
-                                ) {
-                                    if (n.length === e.length && n === e)
-                                        return "";
-                                    var s = n.length - 1,
-                                        l = -1;
-                                    for (i = e.length - 1; i >= 0; --i) {
-                                        var c = e.charCodeAt(i);
-                                        if (47 === c) {
-                                            if (!a) {
-                                                r = i + 1;
-                                                break;
-                                            }
-                                        } else
-                                            (-1 === l &&
-                                                ((a = !1), (l = i + 1)),
-                                                s >= 0 &&
-                                                    (c === n.charCodeAt(s)
-                                                        ? -1 == --s && (o = i)
-                                                        : ((s = -1), (o = l))));
-                                    }
-                                    return (
-                                        r === o
-                                            ? (o = l)
-                                            : -1 === o && (o = e.length),
-                                        e.slice(r, o)
-                                    );
-                                }
-                                for (i = e.length - 1; i >= 0; --i)
-                                    if (47 === e.charCodeAt(i)) {
+                                } else o = !1;
+                            return -1 === r
+                                ? i
+                                    ? "/"
+                                    : "."
+                                : i && 1 === r
+                                    ? "//"
+                                    : e.slice(0, r);
+                        },
+                        basename: function (e, n) {
+                            if (void 0 !== n && "string" != typeof n)
+                                throw new TypeError(
+                                    '"ext" argument must be a string',
+                                );
+                            t(e);
+                            var i,
+                                r = 0,
+                                o = -1,
+                                a = !0;
+                            if (
+                                void 0 !== n &&
+                                n.length > 0 &&
+                                n.length <= e.length
+                            ) {
+                                if (n.length === e.length && n === e)
+                                    return "";
+                                var s = n.length - 1,
+                                    l = -1;
+                                for (i = e.length - 1; i >= 0; --i) {
+                                    var c = e.charCodeAt(i);
+                                    if (47 === c) {
                                         if (!a) {
                                             r = i + 1;
                                             break;
                                         }
-                                    } else -1 === o && ((a = !1), (o = i + 1));
-                                return -1 === o ? "" : e.slice(r, o);
-                            },
-                            extname: function (e) {
-                                t(e);
-                                for (
-                                    var n = -1,
-                                        i = 0,
-                                        r = -1,
-                                        o = !0,
-                                        a = 0,
-                                        s = e.length - 1;
-                                    s >= 0;
-                                    --s
-                                ) {
-                                    var l = e.charCodeAt(s);
-                                    if (47 !== l)
-                                        (-1 === r && ((o = !1), (r = s + 1)),
-                                            46 === l
-                                                ? -1 === n
-                                                    ? (n = s)
-                                                    : 1 !== a && (a = 1)
-                                                : -1 !== n && (a = -1));
-                                    else if (!o) {
-                                        i = s + 1;
-                                        break;
-                                    }
+                                    } else
+                                        (-1 === l &&
+                                            ((a = !1), (l = i + 1)),
+                                            s >= 0 &&
+                                            (c === n.charCodeAt(s)
+                                                ? -1 == --s && (o = i)
+                                                : ((s = -1), (o = l))));
                                 }
-                                return -1 === n ||
-                                    -1 === r ||
-                                    0 === a ||
-                                    (1 === a && n === r - 1 && n === i + 1)
-                                    ? ""
-                                    : e.slice(n, r);
-                            },
-                            format: function (e) {
-                                if (null === e || "object" != typeof e)
-                                    throw new TypeError(
-                                        'The "pathObject" argument must be of type Object. Received type ' +
-                                            typeof e,
-                                    );
-                                return (function (e, t) {
-                                    var n = t.dir || t.root,
-                                        i =
-                                            t.base ||
-                                            (t.name || "") + (t.ext || "");
-                                    return n
-                                        ? n === t.root
-                                            ? n + i
-                                            : n + "/" + i
-                                        : i;
-                                })(0, e);
-                            },
-                            parse: function (e) {
-                                t(e);
-                                var n = {
-                                    root: "",
-                                    dir: "",
-                                    base: "",
-                                    ext: "",
-                                    name: "",
-                                };
-                                if (0 === e.length) return n;
-                                var i,
-                                    r = e.charCodeAt(0),
-                                    o = 47 === r;
-                                o ? ((n.root = "/"), (i = 1)) : (i = 0);
-                                for (
-                                    var a = -1,
-                                        s = 0,
-                                        l = -1,
-                                        c = !0,
-                                        h = e.length - 1,
-                                        d = 0;
-                                    h >= i;
-                                    --h
-                                )
-                                    if (47 !== (r = e.charCodeAt(h)))
-                                        (-1 === l && ((c = !1), (l = h + 1)),
-                                            46 === r
-                                                ? -1 === a
-                                                    ? (a = h)
-                                                    : 1 !== d && (d = 1)
-                                                : -1 !== a && (d = -1));
-                                    else if (!c) {
-                                        s = h + 1;
+                                return (
+                                    r === o
+                                        ? (o = l)
+                                        : -1 === o && (o = e.length),
+                                    e.slice(r, o)
+                                );
+                            }
+                            for (i = e.length - 1; i >= 0; --i)
+                                if (47 === e.charCodeAt(i)) {
+                                    if (!a) {
+                                        r = i + 1;
                                         break;
                                     }
-                                return (
-                                    -1 === a ||
+                                } else -1 === o && ((a = !1), (o = i + 1));
+                            return -1 === o ? "" : e.slice(r, o);
+                        },
+                        extname: function (e) {
+                            t(e);
+                            for (
+                                var n = -1,
+                                i = 0,
+                                r = -1,
+                                o = !0,
+                                a = 0,
+                                s = e.length - 1;
+                                s >= 0;
+                                --s
+                            ) {
+                                var l = e.charCodeAt(s);
+                                if (47 !== l)
+                                    (-1 === r && ((o = !1), (r = s + 1)),
+                                        46 === l
+                                            ? -1 === n
+                                                ? (n = s)
+                                                : 1 !== a && (a = 1)
+                                            : -1 !== n && (a = -1));
+                                else if (!o) {
+                                    i = s + 1;
+                                    break;
+                                }
+                            }
+                            return -1 === n ||
+                                -1 === r ||
+                                0 === a ||
+                                (1 === a && n === r - 1 && n === i + 1)
+                                ? ""
+                                : e.slice(n, r);
+                        },
+                        format: function (e) {
+                            if (null === e || "object" != typeof e)
+                                throw new TypeError(
+                                    'The "pathObject" argument must be of type Object. Received type ' +
+                                    typeof e,
+                                );
+                            return (function (e, t) {
+                                var n = t.dir || t.root,
+                                    i =
+                                        t.base ||
+                                        (t.name || "") + (t.ext || "");
+                                return n
+                                    ? n === t.root
+                                        ? n + i
+                                        : n + "/" + i
+                                    : i;
+                            })(0, e);
+                        },
+                        parse: function (e) {
+                            t(e);
+                            var n = {
+                                root: "",
+                                dir: "",
+                                base: "",
+                                ext: "",
+                                name: "",
+                            };
+                            if (0 === e.length) return n;
+                            var i,
+                                r = e.charCodeAt(0),
+                                o = 47 === r;
+                            o ? ((n.root = "/"), (i = 1)) : (i = 0);
+                            for (
+                                var a = -1,
+                                s = 0,
+                                l = -1,
+                                c = !0,
+                                h = e.length - 1,
+                                d = 0;
+                                h >= i;
+                                --h
+                            )
+                                if (47 !== (r = e.charCodeAt(h)))
+                                    (-1 === l && ((c = !1), (l = h + 1)),
+                                        46 === r
+                                            ? -1 === a
+                                                ? (a = h)
+                                                : 1 !== d && (d = 1)
+                                            : -1 !== a && (d = -1));
+                                else if (!c) {
+                                    s = h + 1;
+                                    break;
+                                }
+                            return (
+                                -1 === a ||
                                     -1 === l ||
                                     0 === d ||
                                     (1 === d && a === l - 1 && a === s + 1)
-                                        ? -1 !== l &&
-                                          (n.base = n.name =
-                                              0 === s && o
-                                                  ? e.slice(1, l)
-                                                  : e.slice(s, l))
-                                        : (0 === s && o
-                                              ? ((n.name = e.slice(1, a)),
-                                                (n.base = e.slice(1, l)))
-                                              : ((n.name = e.slice(s, a)),
-                                                (n.base = e.slice(s, l))),
-                                          (n.ext = e.slice(a, l))),
-                                    s > 0
-                                        ? (n.dir = e.slice(0, s - 1))
-                                        : o && (n.dir = "/"),
-                                    n
-                                );
-                            },
-                            sep: "/",
-                            delimiter: ":",
-                            win32: null,
-                            posix: null,
-                        };
-                        ((i.posix = i), (e.exports = i));
-                    },
+                                    ? -1 !== l &&
+                                    (n.base = n.name =
+                                        0 === s && o
+                                            ? e.slice(1, l)
+                                            : e.slice(s, l))
+                                    : (0 === s && o
+                                        ? ((n.name = e.slice(1, a)),
+                                            (n.base = e.slice(1, l)))
+                                        : ((n.name = e.slice(s, a)),
+                                            (n.base = e.slice(s, l))),
+                                        (n.ext = e.slice(a, l))),
+                                s > 0
+                                    ? (n.dir = e.slice(0, s - 1))
+                                    : o && (n.dir = "/"),
+                                n
+                            );
+                        },
+                        sep: "/",
+                        delimiter: ":",
+                        win32: null,
+                        posix: null,
+                    };
+                    ((i.posix = i), (e.exports = i));
                 },
+            },
                 t = {};
             function n(i) {
                 var r = t[i];
@@ -21645,8 +21645,8 @@
                 let e;
                 if (
                     (n.r(i),
-                    n.d(i, { URI: () => h, Utils: () => S }),
-                    "object" == typeof process)
+                        n.d(i, { URI: () => h, Utils: () => S }),
+                        "object" == typeof process)
                 )
                     e = "win32" === process.platform;
                 else if ("object" == typeof navigator) {
@@ -21703,28 +21703,28 @@
                     constructor(e, t, n, i, r, o = !1) {
                         "object" == typeof e
                             ? ((this.scheme = e.scheme || s),
-                              (this.authority = e.authority || s),
-                              (this.path = e.path || s),
-                              (this.query = e.query || s),
-                              (this.fragment = e.fragment || s))
+                                (this.authority = e.authority || s),
+                                (this.path = e.path || s),
+                                (this.query = e.query || s),
+                                (this.fragment = e.fragment || s))
                             : ((this.scheme = (function (e, t) {
-                                  return e || t ? e : "file";
-                              })(e, o)),
-                              (this.authority = t || s),
-                              (this.path = (function (e, t) {
-                                  switch (e) {
-                                      case "https":
-                                      case "http":
-                                      case "file":
-                                          t
-                                              ? t[0] !== l && (t = l + t)
-                                              : (t = l);
-                                  }
-                                  return t;
-                              })(this.scheme, n || s)),
-                              (this.query = i || s),
-                              (this.fragment = r || s),
-                              a(this, o));
+                                return e || t ? e : "file";
+                            })(e, o)),
+                                (this.authority = t || s),
+                                (this.path = (function (e, t) {
+                                    switch (e) {
+                                        case "https":
+                                        case "http":
+                                        case "file":
+                                            t
+                                                ? t[0] !== l && (t = l + t)
+                                                : (t = l);
+                                    }
+                                    return t;
+                                })(this.scheme, n || s)),
+                                (this.query = i || s),
+                                (this.fragment = r || s),
+                                a(this, o));
                     }
                     get fsPath() {
                         return f(this);
@@ -21755,10 +21755,10 @@
                                 ? (o = this.fragment)
                                 : null === o && (o = s),
                             t === this.scheme &&
-                            n === this.authority &&
-                            i === this.path &&
-                            r === this.query &&
-                            o === this.fragment
+                                n === this.authority &&
+                                i === this.path &&
+                                r === this.query &&
+                                o === this.fragment
                                 ? this
                                 : new u(t, n, i, r, o)
                         );
@@ -21767,26 +21767,26 @@
                         const n = c.exec(e);
                         return n
                             ? new u(
-                                  n[2] || s,
-                                  v(n[4] || s),
-                                  v(n[5] || s),
-                                  v(n[7] || s),
-                                  v(n[9] || s),
-                                  t,
-                              )
+                                n[2] || s,
+                                v(n[4] || s),
+                                v(n[5] || s),
+                                v(n[7] || s),
+                                v(n[9] || s),
+                                t,
+                            )
                             : new u(s, s, s, s, s);
                     }
                     static file(t) {
                         let n = s;
                         if (
                             (e && (t = t.replace(/\\/g, l)),
-                            t[0] === l && t[1] === l)
+                                t[0] === l && t[1] === l)
                         ) {
                             const e = t.indexOf(l, 2);
                             -1 === e
                                 ? ((n = t.substring(2)), (t = l))
                                 : ((n = t.substring(2, e)),
-                                  (t = t.substring(e) || l));
+                                    (t = t.substring(e) || l));
                         }
                         return new u("file", n, t, s, s);
                     }
@@ -21836,14 +21836,14 @@
                         return e
                             ? b(this, !0)
                             : (this._formatted ||
-                                  (this._formatted = b(this, !1)),
-                              this._formatted);
+                                (this._formatted = b(this, !1)),
+                                this._formatted);
                     }
                     toJSON() {
                         const e = { $mid: 1 };
                         return (
                             this._fsPath &&
-                                ((e.fsPath = this._fsPath), (e._sep = d)),
+                            ((e.fsPath = this._fsPath), (e._sep = d)),
                             this._formatted && (e.external = this._formatted),
                             this.path && (e.path = this.path),
                             this.scheme && (e.scheme = this.scheme),
@@ -21895,18 +21895,18 @@
                         )
                             (-1 !== r &&
                                 ((i += encodeURIComponent(e.substring(r, o))),
-                                (r = -1)),
+                                    (r = -1)),
                                 void 0 !== i && (i += e.charAt(o)));
                         else {
                             void 0 === i && (i = e.substr(0, o));
                             const t = m[a];
                             void 0 !== t
                                 ? (-1 !== r &&
-                                      ((i += encodeURIComponent(
-                                          e.substring(r, o),
-                                      )),
-                                      (r = -1)),
-                                  (i += t))
+                                    ((i += encodeURIComponent(
+                                        e.substring(r, o),
+                                    )),
+                                        (r = -1)),
+                                    (i += t))
                                 : -1 === r && (r = o);
                         }
                     }
@@ -21921,7 +21921,7 @@
                         const i = e.charCodeAt(n);
                         35 === i || 63 === i
                             ? (void 0 === t && (t = e.substr(0, n)),
-                              (t += m[i]))
+                                (t += m[i]))
                             : void 0 !== t && (t += e[n]);
                     }
                     return void 0 !== t ? t : e;
@@ -21931,8 +21931,8 @@
                     return (
                         (i =
                             t.authority &&
-                            t.path.length > 1 &&
-                            "file" === t.scheme
+                                t.path.length > 1 &&
+                                "file" === t.scheme
                                 ? `//${t.authority}${t.path}`
                                 : 47 === t.path.charCodeAt(0) &&
                                     ((t.path.charCodeAt(1) >= 65 &&
@@ -21940,8 +21940,8 @@
                                         (t.path.charCodeAt(1) >= 97 &&
                                             t.path.charCodeAt(1) <= 122)) &&
                                     58 === t.path.charCodeAt(2)
-                                  ? t.path[1].toLowerCase() + t.path.substr(2)
-                                  : t.path),
+                                    ? t.path[1].toLowerCase() + t.path.substr(2)
+                                    : t.path),
                         e && (i = i.replace(/\//g, "\\")),
                         i
                     );
@@ -21958,8 +21958,8 @@
                         } = e;
                     if (
                         (r && ((i += r), (i += ":")),
-                        (o || "file" === r) && ((i += l), (i += l)),
-                        o)
+                            (o || "file" === r) && ((i += l), (i += l)),
+                            o)
                     ) {
                         let e = o.indexOf("@");
                         if (-1 !== e) {
@@ -21969,8 +21969,8 @@
                                 -1 === e
                                     ? (i += n(t, !1, !1))
                                     : ((i += n(t.substr(0, e), !1, !1)),
-                                      (i += ":"),
-                                      (i += n(t.substr(e + 1), !1, !0))),
+                                        (i += ":"),
+                                        (i += n(t.substr(e + 1), !1, !0))),
                                 (i += "@"));
                         }
                         ((o = o.toLowerCase()),
@@ -21978,7 +21978,7 @@
                             -1 === e
                                 ? (i += n(o, !1, !0))
                                 : ((i += n(o.substr(0, e), !1, !0)),
-                                  (i += o.substr(e))));
+                                    (i += o.substr(e))));
                     }
                     if (a) {
                         if (
@@ -22032,9 +22032,9 @@
                             let r = T.resolve(n, ...t);
                             return (
                                 i &&
-                                    r[0] === k &&
-                                    !e.authority &&
-                                    (r = r.substring(1)),
+                                r[0] === k &&
+                                !e.authority &&
+                                (r = r.substring(1)),
                                 e.with({ path: r })
                             );
                         }),
@@ -22043,8 +22043,8 @@
                             let t = T.dirname(e.path);
                             return (
                                 1 === t.length &&
-                                    46 === t.charCodeAt(0) &&
-                                    (t = ""),
+                                46 === t.charCodeAt(0) &&
+                                (t = ""),
                                 e.with({ path: t })
                             );
                         }),
@@ -22063,8 +22063,8 @@
         const t = e[0];
         return (
             t !== e[e.length - 1] ||
-                ("'" !== t && '"' !== t) ||
-                (e = e.substring(1, e.length - 1)),
+            ("'" !== t && '"' !== t) ||
+            (e = e.substring(1, e.length - 1)),
             e
         );
     }
@@ -22072,8 +22072,8 @@
         const a = Gs(n);
         if (
             ((s = a),
-            (l = e.languageId),
-            !s.length ||
+                (l = e.languageId),
+                !s.length ||
                 ("handlebars" === l && /{{|}}/.test(s)) ||
                 !/\b(w[\w\d+.-]*:\/\/)?[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/?))/.test(
                     s,
@@ -22106,11 +22106,11 @@
                 let n = Ks.parse(e);
                 return (
                     "file" === n.scheme &&
-                        n.query &&
-                        ((n = n.with({ query: null })), (e = n.toString(!0))),
+                    n.query &&
+                    ((n = n.with({ query: null })), (e = n.toString(!0))),
                     "file" !== n.scheme ||
-                    !n.fragment ||
-                    (e.startsWith(t.uri) && e.charCodeAt(t.uri.length) === Xs)
+                        !n.fragment ||
+                        (e.startsWith(t.uri) && e.charCodeAt(t.uri.length) === Xs)
                         ? e
                         : n.with({ fragment: null }).toString(!0)
                 );
@@ -22137,7 +22137,7 @@
                 s = i.scan(),
                 l = !1;
             const c = {};
-            for (; s !== Ia.EOS; ) {
+            for (; s !== Ia.EOS;) {
                 switch (s) {
                     case Ia.StartTag:
                         ((o = i.getTokenText().toLowerCase()),
@@ -22163,7 +22163,7 @@
                             (l &&
                                 void 0 === a &&
                                 ((a = Gs(o)),
-                                a && t && (a = t.resolveReference(a, e.uri))),
+                                    a && t && (a = t.resolveReference(a, e.uri))),
                                 (l = !1),
                                 (r = void 0));
                         } else if ("id" === r) {
@@ -22196,7 +22196,7 @@
                 el(Ia.EndTag, e, r.endTagStart);
         return (
             ((a && Zs(a, t)) || (s && Zs(s, t))) &&
-                (a && o.push({ kind: Jo.Read, range: a }),
+            (a && o.push({ kind: Jo.Read, range: a }),
                 s && o.push({ kind: Jo.Read, range: s })),
             o
         );
@@ -22212,12 +22212,12 @@
     function el(e, t, n) {
         const i = is(t.getText(), n);
         let r = i.scan();
-        for (; r !== Ia.EOS && r !== e; ) r = i.scan();
+        for (; r !== Ia.EOS && r !== e;) r = i.scan();
         return r !== Ia.EOS
             ? {
-                  start: t.positionAt(i.getTokenOffset()),
-                  end: t.positionAt(i.getTokenEnd()),
-              }
+                start: t.positionAt(i.getTokenOffset()),
+                end: t.positionAt(i.getTokenEnd()),
+            }
             : null;
     }
     function tl(e, t) {
@@ -22229,8 +22229,8 @@
             const o = ea.create(t.name, t.kind, t.range, e.uri, i?.name);
             if (
                 (o.containerName ?? (o.containerName = ""),
-                n.push(o),
-                t.children)
+                    n.push(o),
+                    t.children)
             )
                 for (const e of t.children) r(e, t);
         }
@@ -22246,20 +22246,20 @@
     }
     function il(e, t, n) {
         const i = (function (e) {
-                let t = e.tag;
-                if (e.attributes) {
-                    const n = e.attributes.id,
-                        i = e.attributes.class;
-                    (n && (t += `#${n.replace(/[\"\']/g, "")}`),
-                        i &&
-                            (t += i
-                                .replace(/[\"\']/g, "")
-                                .split(/\s+/)
-                                .map((e) => `.${e}`)
-                                .join("")));
-                }
-                return t || "?";
-            })(t),
+            let t = e.tag;
+            if (e.attributes) {
+                const n = e.attributes.id,
+                    i = e.attributes.class;
+                (n && (t += `#${n.replace(/[\"\']/g, "")}`),
+                    i &&
+                    (t += i
+                        .replace(/[\"\']/g, "")
+                        .split(/\s+/)
+                        .map((e) => `.${e}`)
+                        .join("")));
+            }
+            return t || "?";
+        })(t),
             r = lo.create(e.positionAt(t.start), e.positionAt(t.end)),
             o = na.create(i, void 0, Qo.Field, r, r);
         (n.push(o),
@@ -22320,15 +22320,15 @@
             ((r.start + 1 <= i && i <= r.start + 1 + o) ||
                 (r.endTagStart + 2 <= i && i <= r.endTagStart + 2 + o))
             ? [
-                  lo.create(
-                      e.positionAt(r.start + 1),
-                      e.positionAt(r.start + 1 + o),
-                  ),
-                  lo.create(
-                      e.positionAt(r.endTagStart + 2),
-                      e.positionAt(r.endTagStart + 2 + o),
-                  ),
-              ]
+                lo.create(
+                    e.positionAt(r.start + 1),
+                    e.positionAt(r.start + 1 + o),
+                ),
+                lo.create(
+                    e.positionAt(r.endTagStart + 2),
+                    e.positionAt(r.endTagStart + 2 + o),
+                ),
+            ]
             : null;
     }
     class sl {
@@ -22393,7 +22393,7 @@
             function c(e) {
                 (o.push(e), (l = e.startLine));
             }
-            for (; r !== Ia.EOS; ) {
+            for (; r !== Ia.EOS;) {
                 switch (r) {
                     case Ia.StartTag: {
                         const t = i.getTokenText(),
@@ -22409,7 +22409,7 @@
                     case Ia.EndTagClose:
                     case Ia.StartTagSelfClose: {
                         let t = a.length - 1;
-                        for (; t >= 0 && a[t].tagName !== s; ) t--;
+                        for (; t >= 0 && a[t].tagName !== s;) t--;
                         if (t >= 0) {
                             const n = a[t];
                             a.length = t;
@@ -22429,19 +22429,19 @@
                             if (n[1]) a.push({ startLine: t, tagName: "" });
                             else {
                                 let e = a.length - 1;
-                                for (; e >= 0 && a[e].tagName.length; ) e--;
+                                for (; e >= 0 && a[e].tagName.length;) e--;
                                 if (e >= 0) {
                                     const n = a[e];
                                     a.length = e;
                                     const i = t;
                                     ((t = n.startLine),
                                         i > t &&
-                                            l !== t &&
-                                            c({
-                                                startLine: t,
-                                                endLine: i,
-                                                kind: go.Region,
-                                            }));
+                                        l !== t &&
+                                        c({
+                                            startLine: t,
+                                            endLine: i,
+                                            kind: go.Region,
+                                        }));
                                 }
                             }
                         else {
@@ -22517,13 +22517,13 @@
             return r.startTagEnd <= i && i <= r.endTagStart
                 ? (o.unshift([r.startTagEnd, r.endTagStart]), o)
                 : (i >= r.endTagStart + 2 &&
-                      o.unshift([r.endTagStart + 2, r.end - 1]),
-                  o);
+                    o.unshift([r.endTagStart + 2, r.end - 1]),
+                    o);
         }
         getAllParentTagRanges(e) {
             let t = e;
             const n = [];
-            for (; t.parent; )
+            for (; t.parent;)
                 ((t = t.parent),
                     this.getNodeRanges(t).forEach((e) => n.push(e)));
             return n;
@@ -22533,9 +22533,9 @@
                 e.endTagStart &&
                 e.startTagEnd < e.endTagStart
                 ? [
-                      [e.startTagEnd, e.endTagStart],
-                      [e.start, e.end],
-                  ]
+                    [e.startTagEnd, e.endTagStart],
+                    [e.start, e.end],
+                ]
                 : [[e.start, e.end]];
         }
         getAttributeLevelRanges(e, t, n) {
@@ -22548,7 +22548,7 @@
                 c = [];
             let h = !1,
                 d = -1;
-            for (; s !== Ia.EOS; ) {
+            for (; s !== Ia.EOS;) {
                 switch (s) {
                     case Ia.AttributeName:
                         if (o < a.getTokenOffset()) {
@@ -22570,15 +22570,15 @@
                         o >= a.getTokenOffset() &&
                             o <= a.getTokenEnd() &&
                             (c.unshift([a.getTokenOffset(), a.getTokenEnd()]),
-                            (('"' === e[0] && '"' === e[e.length - 1]) ||
-                                ("'" === e[0] && "'" === e[e.length - 1])) &&
+                                (('"' === e[0] && '"' === e[e.length - 1]) ||
+                                    ("'" === e[0] && "'" === e[e.length - 1])) &&
                                 o >= a.getTokenOffset() + 1 &&
                                 o <= a.getTokenEnd() - 1 &&
                                 c.unshift([
                                     a.getTokenOffset() + 1,
                                     a.getTokenEnd() - 1,
                                 ]),
-                            c.push([d, a.getTokenEnd()]));
+                                c.push([d, a.getTokenEnd()]));
                         break;
                     }
                 }
@@ -28015,7 +28015,7 @@
                 (function (e, t, n) {
                     let i = 0,
                         r = e.length - 1;
-                    for (; i <= r; ) {
+                    for (; i <= r;) {
                         const o = ((i + r) / 2) | 0,
                             a = n(e[o], t);
                         if (a < 0) i = o + 1;
@@ -28030,8 +28030,8 @@
         }
         getVoidElements(e) {
             const t = Array.isArray(e)
-                    ? e
-                    : this.getDataProviders().filter((t) => t.isApplicable(e)),
+                ? e
+                : this.getDataProviders().filter((t) => t.isApplicable(e)),
                 n = [];
             return (
                 t.forEach((e) => {
@@ -28051,29 +28051,29 @@
         }
     }
     const dl = {
-            a: "href",
-            area: "href",
-            body: "background",
-            blockquote: "cite",
-            del: "cite",
-            form: "action",
-            frame: ["src", "longdesc"],
-            img: ["src", "longdesc"],
-            ins: "cite",
-            link: "href",
-            object: "data",
-            q: "cite",
-            script: "src",
-            audio: "src",
-            button: "formaction",
-            command: "icon",
-            embed: "src",
-            html: "manifest",
-            input: ["src", "formaction"],
-            source: "src",
-            track: "src",
-            video: ["src", "poster"],
-        },
+        a: "href",
+        area: "href",
+        body: "background",
+        blockquote: "cite",
+        del: "cite",
+        form: "action",
+        frame: ["src", "longdesc"],
+        img: ["src", "longdesc"],
+        ins: "cite",
+        link: "href",
+        object: "data",
+        q: "cite",
+        script: "src",
+        audio: "src",
+        button: "formaction",
+        command: "icon",
+        embed: "src",
+        html: "manifest",
+        input: ["src", "formaction"],
+        source: "src",
+        track: "src",
+        video: ["src", "poster"],
+    },
         ul = {};
     function ml(e, t) {
         return new ws(e, t);
