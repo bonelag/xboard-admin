@@ -369,7 +369,7 @@ const menuItems = SIDEBAR_NAV_GROUPS.flatMap((group) => group.items.map((item) =
     groupKey: group.titleKey,
 })));
 
-function HeaderControls({ auth }) {
+export function HeaderControls({ auth }) {
     const { language, languages, changeLanguage, t: tCommon } = useTranslation("common");
     const { t: tNav } = useTranslation("nav");
     const { t: tSearch } = useTranslation("search");

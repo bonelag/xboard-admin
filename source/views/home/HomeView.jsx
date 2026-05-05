@@ -3,6 +3,7 @@ import { Sidebar } from "../../components/Sidebar.jsx";
 import { useDocumentTitle } from "../../composables/useDocumentTitle.js";
 import { useHashLocation } from "../../composables/useHashLocation.js";
 import { DashboardView } from "./DashboardView.jsx";
+import { SettingsView } from "../config/SettingsView.jsx";
 
 const SIDEBAR_COLLAPSED_KEY = "collapsed-sidebar";
 
@@ -48,6 +49,7 @@ export function HomeView() {
             })} onMobileOpenChange={setMobileSidebarOpen} />
             <main className="admin-shell-main min-h-svh">
                 {location.pathname === "/" ? <DashboardView /> : null}
+                {location.pathname.startsWith("/config/system") ? <SettingsView /> : null}
             </main>
         </div>
     );
